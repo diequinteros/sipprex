@@ -39,7 +39,7 @@ require("../bibliotecas/conexion.php");
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM grupo_tecnico WHERE grupo_tec LIKE ? ORDER BY id_grupo_tec";
 			$params = array("%$search%");
 		}

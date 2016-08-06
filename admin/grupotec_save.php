@@ -53,7 +53,7 @@ else{
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	$alumno = $_POST['grupo_tec'];
+  	$alumno = strip_tags(trim($_POST['grupo_tec']));
     //Se declaran las consultas
     try 
     {

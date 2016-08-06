@@ -39,7 +39,7 @@
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM alumnos, años, especialidades, grupo_tecnico, secciones, grupo_academico WHERE alumnos.grado = años.id_año AND alumnos.especialidad = especialidades.id_especialidad AND alumnos.grupo_Tecnic = grupo_tecnico.id_grupo_tec AND alumnos.secc = secciones.id_seccion AND alumnos.grupo_academ = grupo_academico.id_grupo_aca AND apellido1 LIKE ? ORDER BY carnet";
 			$params = array("%$search%");
 		}

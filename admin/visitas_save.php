@@ -39,9 +39,9 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	$Empresas = $_POST['empresa'];
-    $Fecha = $_POST['fecha_ultima_visita'];
-    $Observacion = $_POST['observacion'];
+  	$Empresas = strip_tags(trim($_POST['empresa']));
+    $Fecha = strip_tags(trim($_POST['fecha_ultima_visita']));
+    $Observacion = strip_tags(trim($_POST['observacion']));
 
     if($Fecha == "")
     {

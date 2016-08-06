@@ -32,8 +32,8 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	 $ocu = $_POST['ocupacion'];
-     $id = $_POST['id_ocupacion']
+  	 $ocu = strip_tags(trim($_POST['ocupacion']));
+     $id = strip_tags(trim($_POST['id_ocupacion']));
 
     try 
     {

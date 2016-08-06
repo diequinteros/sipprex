@@ -33,8 +33,8 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	 $sec = $_POST['seccion'];
-     $id = $_POST['id_seccion']
+  	 $sec = strip_tags(trim($_POST['seccion']));
+     $id = strip_tags(trim($_POST['id_seccion']));
 
     try 
     {

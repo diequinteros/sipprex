@@ -55,8 +55,8 @@ else{
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	$titulo_anuncio = $_POST['titulo_anuncio'];
-    $contenido_anuncio = $_POST['contenido_anuncio'];
+  	$titulo_anuncio = strip_tags(trim($_POST['titulo_anuncio']));
+    $contenido_anuncio = strip_tags(trim($_POST['contenido_anuncio']));
     //Se declaran las consultas
     try 
     {

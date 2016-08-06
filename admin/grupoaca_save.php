@@ -32,8 +32,8 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	 $grupo = $_POST['grupo_aca'];
-     $id = $_POST['id_grupo_aca'];
+  	 $grupo = strip_tags(trim($_POST['grupo_aca']));
+     $id = strip_tags(trim($_POST['id_grupo_aca']));
 
     try 
     {

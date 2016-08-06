@@ -39,7 +39,7 @@ session_start();
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM departamentosempre, empresas WHERE departamentosempre.empresa = empresas.id_empresa AND departamento LIKE ? ORDER BY id_depar";
 			$params = array("%$search%");
 		}

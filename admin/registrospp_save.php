@@ -69,15 +69,15 @@ else{
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	$alumno = $_POST['carnet'];
-    $empresa = $_POST['id_empresa'];
-    $finalizo = $_POST['finalizo'];
-    $observaciones = $_POST['observaciones'];
-    $acuerdo = $_POST['acuerdo'];
-    $bitacora = $_POST['bitacora'];
-    $carta = $_POST['carta'];
-    $evaluaciones = $_POST['evaluaciones'];
-    $observacion_final = $_POST['observacion_final'];
+  	$alumno = strip_tags(trim($_POST['carnet']));
+    $empresa = strip_tags(trim($_POST['id_empresa']));
+    $finalizo = strip_tags(trim($_POST['finalizo']));
+    $observaciones = strip_tags(trim($_POST['observaciones']));
+    $acuerdo = strip_tags(trim($_POST['acuerdo']));
+    $bitacora = strip_tags(trim($_POST['bitacora']));
+    $carta = strip_tags(trim($_POST['carta']));
+    $evaluaciones = strip_tags(trim($_POST['evaluaciones']));
+    $observacion_final = strip_tags(trim($_POST['observacion_final']));
     //Se declaran las consultas
     try 
     {

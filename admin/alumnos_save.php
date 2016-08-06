@@ -75,18 +75,18 @@ else{
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	$contraseña = $_POST['contraseña'];
-    $nie = $_POST['nie'];
-    $nombre1 = $_POST['nombre1'];
-    $nombre2 = $_POST['nombre2'];
-    $apellido1 = $_POST['apellido1'];
-    $apellido2 = $_POST['apellido2'];
-    $grado = $_POST['grado'];
-    $especialidad = $_POST['especialidad'];
-    $grupo_tecnico = $_POST['grupo_Tecnic'];
-    $seccion = $_POST['secc'];
-    $grupo_academico = $_POST['grupo_academ'];
-    $inscrito = $_POST['inscrito'];
+  	$contraseña = strip_tags(trim($_POST['contraseña']));
+    $nie = strip_tags(trim($_POST['nie']));
+    $nombre1 = strip_tags(trim($_POST['nombre1']));
+    $nombre2 = strip_tags(trim($_POST['nombre2']));
+    $apellido1 = strip_tags(trim($_POST['apellido1']));
+    $apellido2 = strip_tags(trim($_POST['apellido2']));
+    $grado = strip_tags(trim($_POST['grado']));
+    $especialidad = strip_tags(trim($_POST['especialidad']));
+    $grupo_tecnico = strip_tags(trim($_POST['grupo_Tecnic']));
+    $seccion = strip_tags(trim($_POST['secc']));
+    $grupo_academico = strip_tags(trim($_POST['grupo_academ']));
+    $inscrito = strip_tags(trim($_POST['inscrito']));
     //Se declaran las consultas
     try 
     {

@@ -28,7 +28,7 @@ include("../inc/nav.php");
 <?php
 if(!empty($_POST))
 {
-	$search = trim($_POST['buscar']);
+	$search = strip_tags(trim($_POST['buscar']));
 	$sql = "SELECT * FROM secciones WHERE seccion LIKE ? ORDER BY seccion";
 	$params = array("%$search%");
 }

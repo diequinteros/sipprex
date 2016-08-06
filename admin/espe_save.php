@@ -34,8 +34,8 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	 $Especialidad = $_POST['especialidad'];
-     $id = $_POST['id_especialidad'];
+  	 $Especialidad = strip_tags(trim($_POST['especialidad']));
+     $id = strip_tags(trim($_POST['id_especialidad']));
 
     try 
     {

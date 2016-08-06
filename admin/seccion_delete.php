@@ -22,7 +22,7 @@ else
 
 if(!empty($_POST))
 {
-	$id = $_POST['id'];
+	$id = strip_tags(trim($_POST['id']));
 	try 
 	{
 		$sql = "DELETE FROM secciones WHERE id_seccion = ?";

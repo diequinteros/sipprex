@@ -59,10 +59,10 @@ else{
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	$departamento = $_POST['departamento'];
-    $encargado = $_POST['encargado'];
-    $telefono_encargado = $_POST['telefono_encargado'];
-    $empresa = $_POST['empresa'];
+  	$departamento = strip_tags(trim($_POST['departamento']));
+    $encargado = strip_tags(trim($_POST['encargado']));
+    $telefono_encargado = strip_tags(trim($_POST['telefono_encargado']));
+    $empresa = strip_tags(trim($_POST['empresa']));
     //Se declaran las consultas
     try 
     {

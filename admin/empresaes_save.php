@@ -33,9 +33,9 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	 $empre = $_POST['empresa'];
-    $espe = $_POST['especialiada'];
-    $id = $_POST['id_espeempresa'];
+  	 $empre = strip_tags(trim($_POST['empresa']));
+    $espe = strip_tags(trim($_POST['especialiada']));
+    $id = strip_tags(trim($_POST['id_espeempresa']));
 
     if($espe == "")
     {

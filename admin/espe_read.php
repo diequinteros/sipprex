@@ -28,7 +28,7 @@
 <?php
 if(!empty($_POST))
 {
-	$search = trim($_POST['buscar']);
+	$search = strip_tags(trim($_POST['buscar']));
 	$sql = "SELECT * FROM especialidades WHERE especialidad LIKE ? ORDER BY especialidad";
 	$params = array("%$search%");
 }

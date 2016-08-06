@@ -39,7 +39,7 @@
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM anuncios WHERE titulo_anuncio LIKE ? ORDER BY id_anuncio";
 			$params = array("%$search%");
 		}

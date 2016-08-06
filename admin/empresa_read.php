@@ -28,7 +28,7 @@
 <?php
 if(!empty($_POST))
 {
-	$search = trim($_POST['buscar']);
+	$search = strip_tags(trim($_POST['buscar']));
 	$sql = "SELECT * FROM empresas WHERE nombre_empresa LIKE ? ORDER BY nombre_empresa";
 	$params = array("%$search%");
 }

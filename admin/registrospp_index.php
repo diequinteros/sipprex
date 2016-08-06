@@ -39,7 +39,7 @@ require("../bibliotecas/conexion.php");
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT * FROM registrospp, alumnos, empresas WHERE registrospp.alumno = alumnos.carnet AND registrospp.empresa = empresas.id_empresa AND apellido1 LIKE ? ORDER BY id_registropp";
 			$params = array("%$search%");
 		}

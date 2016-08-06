@@ -28,7 +28,7 @@ include("../inc/nav.php");
 <?php
 if(!empty($_POST))
 {
-	$search = trim($_POST['buscar']);
+	$search = strip_tags(trim($_POST['buscar']));
 	$sql = "SELECT * FROM grupo_academico WHERE grupo_aca LIKE ? ORDER BY grupo_aca";
 	$params = array("%$search%");
 }
