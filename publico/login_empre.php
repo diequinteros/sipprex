@@ -7,8 +7,8 @@ session_start();
 if(!empty($_POST))
 {
 	$_POST = validator::validateForm($_POST);
-  	$codigo = $_POST['codigo'];
-  	$clave = $_POST['clave'];
+  	$codigo = strip_tags(trim($_POST['codigo']));
+  	$clave = strip_tags(trim($_POST['clave']));
   	try
     {
 		//Se verifica que el codigo y la clave no esten vacios

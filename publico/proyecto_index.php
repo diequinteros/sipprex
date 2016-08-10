@@ -39,7 +39,7 @@ session_start();
 		<?php
 		if(!empty($_POST))
 		{
-			$search = trim($_POST['buscar']);
+			$search = strip_tags(trim($_POST['buscar']));
 			$sql = "SELECT id_proyecto, titulo, descripcion, remunerado, fecha_propuesto, nombre_empresa FROM proyecto, empresas WHERE proyecto.id_empre_encargado = empresas.id_empresa AND id_empre_encargado = ? AND titulo LIKE ? ORDER BY id_proyecto";
 			$params = array($_SESSION['id_empresa'],"%$search%");
 			

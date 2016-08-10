@@ -24,15 +24,15 @@
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	 $Empresas = $_POST['nombre_empresa'];
-    $Rubro = $_POST['rubro'];
-    $Direccion = $_POST['direccion'];
-    $Telefono = $_POST['telefono'];
-    $Contacto = $_POST['contacto'];
-    $Correo = $_POST['correo'];
-    $CodigoEmpresa = $_POST['codigo'];
-    $Contraseña1Empresa = $_POST['contra1'];
-    $Contraseña2Empresa = $_POST['contra2'];
+  	 $Empresas = strip_tags(trim($_POST['nombre_empresa']));
+    $Rubro = strip_tags(trim($_POST['rubro']));
+    $Direccion = strip_tags(trim($_POST['direccion']));
+    $Telefono = strip_tags(trim($_POST['telefono']));
+    $Contacto = strip_tags(trim($_POST['contacto']));
+    $Correo = strip_tags(trim($_POST['correo']));
+    $CodigoEmpresa = strip_tags(trim($_POST['codigo']));
+    $Contraseña1Empresa = strip_tags(trim($_POST['contra1']));
+    $Contraseña2Empresa = strip_tags(trim($_POST['contra2']));
     if($Rubro == "")
     {
         $Rubro = null;

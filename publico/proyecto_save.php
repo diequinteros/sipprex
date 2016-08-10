@@ -54,9 +54,9 @@ else{
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	$titulo = $_POST['titulo'];
-    $descripcion = $_POST['descripcion'];
-    $remunerado = $_POST['remunerado'];
+  	$titulo = strip_tags(trim($_POST['titulo']));
+    $descripcion = strip_tags(trim($_POST['descripcion']));
+    $remunerado = strip_tags(trim($_POST['remunerado']));
     //Se declaran las consultas
     try 
     {
