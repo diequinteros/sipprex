@@ -114,36 +114,36 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
-                        <input id='contraseña' type='text' name='contraseña' class='validate' length='50' maxlenght='50' value='<?php print($contraseña); ?>' required/>
+                        <input id='contraseña' type='text' name='contraseña' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($contraseña)); ?>' required/>
                         <label class="active" for='contraseña'>Contraseña:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='nie' type='text' name='nie' class='validate' length='8'' maxlength='8' value='<?php print($nie); ?>' required/>
+                        <input id='nie' type='text' name='nie' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($nie)); ?>' required/>
                         <label class="active" for='nie'>NIE</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>add_circle</i>
-                        <input id='nombre1' type='text' name='nombre1' class='validate' length='15' maxlength='15' value='<?php print($nombre1); ?>'/>
+                        <input id='nombre1' type='text' name='nombre1' class='validate' length='15' maxlength='15' value='<?php print(htmlspecialchars($nombre1)); ?>'/>
                         <label class="active" for='nombre1'>Primer Nombre:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>add_circle</i>
-                        <input id='nombre2' type='text' name='nombre2' class='validate' length='15' maxlength='25' value='<?php print($nombre2); ?>'/>
+                        <input id='nombre2' type='text' name='nombre2' class='validate' length='15' maxlength='25' value='<?php print(htmlspecialchars($nombre2)); ?>'/>
                         <label class="active" for='nombre2'>Segundo Nombre:</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class='material-icons prefix'>add_circle</i>
-                        <input id='apellido1' type='text' name='apellido1' class='validate' length='15' maxlength='25' value='<?php print($apellido1); ?>'/>
+                        <input id='apellido1' type='text' name='apellido1' class='validate' length='15' maxlength='25' value='<?php print(htmlspecialchars($apellido1)); ?>'/>
                         <label class="active" for='apellido1'>Primer Apellido:</label>
                     </div>
                     <div class="input-field col s12 m6">
                         <i class='material-icons prefix'>add_circle</i>
-                        <input id='apellido2' type='text' name='apellido2' class='validate' length='15' maxlength='25' value='<?php print($apellido2); ?>'/>
+                        <input id='apellido2' type='text' name='apellido2' class='validate' length='15' maxlength='25' value='<?php print(htmlspecialchars($apellido2)); ?>'/>
                         <label class="active" for='apellido2'>Segundo Apellido:</label>
                     </div>
                 </div>
@@ -272,7 +272,7 @@ if(!empty($_POST))
                     </div>
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>visibility</i>
-                        <input id='inscrito' type='text' name='inscrito' class='validate' length='9' maxlength='9' value='<?php print($inscrito); ?>'/>
+                        <input id='inscrito' type='text' name='inscrito' class='validate' length='9' maxlength='9' value='<?php print(htmlspecialchars($inscrito)); ?>'/>
                         <label class="active" for='inscrito'>¿Esta inscrito? (VERDADERO o FALSO)</label>
                     </div>
                 </div>

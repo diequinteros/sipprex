@@ -81,7 +81,7 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m12'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='grupo_tec' type="text" name='grupo_tec' class='validate' length='1' maxlength='1' value='<?php print($grupo); ?>'/>
+                        <input id='grupo_tec' type="text" name='grupo_tec' class='validate' length='1' maxlength='1' value='<?php print(htmlspecialchars($grupo)); ?>'/>
                         <label class="active" for='grupo_tec'>Grupo Técnico</label>
                     </div>
                 </div>

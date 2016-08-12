@@ -67,9 +67,9 @@ session_start();
 				foreach($data as $row)
 				{
 					$tabla .= 	"<tr>
-									<td>$row[id_proyecto]</td>
-									<td>$row[titulo]</td>
-									<td>$row[descripcion]</td>";
+									<td>".htmlspecialchars($row[id_proyecto])."</td>
+									<td>".htmlspecialchars($row[titulo])."</td>
+									<td>".htmlspecialchars($row[descripcion])."</td>";
 									if($row['remunerado'] == 0){
 										$tabla .= "<td>Sí</td>";
 									}

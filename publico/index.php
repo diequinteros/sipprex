@@ -29,12 +29,12 @@
                       $tabla = 	"<div class='z-depth-2'>
                                 <div class='card white'>
                                 <div class='card-content'>";
-                      $tabla .= "<span class='card-title'><h1>$row[titulo_anuncio]</h1></span>";
+                      $tabla .= "<span class='card-title'><h1>".htmlspecialchars($row[titulo_anuncio])."</h1></span>";
                       $tabla .= "<div class='row'>";
         
           
               
-              $tabla .= "<p>$row[contenido_anuncio].</p>";
+              $tabla .= "<p>".htmlspecialchars($row[contenido_anuncio]).".</p>";
               $tabla .= "</div>";
               $tabla .= "
                       </div>

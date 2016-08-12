@@ -65,12 +65,12 @@ if(!empty($_POST))
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='id_ocupacion' type='text' name='id_ocupacion' class='validate' length='50' maxlenght='50' value='<?php print($id); ?>' required/>
+          	<input id='id_ocupacion' type='text' name='id_ocupacion' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($id)); ?>' required/>
           	<label for='id_ocupacion'>ID</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='ocupacion' type='text' name='ocupacion' class='validate' length='200' maxlenght='200' value='<?php print($ocu); ?>'/>
+          	<input id='ocupacion' type='text' name='ocupacion' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($ocu)); ?>'/>
           	<label for='ocupacion'>Ocupacion</label>
         </div>
     </div>

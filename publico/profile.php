@@ -62,24 +62,24 @@ else
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
-                        <input id='contraseña' type='text' name='contraseña' class='validate' length='50' maxlenght='50' value='<?php print($contraseña); ?>' required/>
+                        <input id='contraseña' type='text' name='contraseña' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($contraseña)); ?>' required/>
                         <label class="active" for='contraseña'>Contraseña:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>add_circle</i>
-                        <input id='nombre1' type='text' name='nombre1' class='validate' length='25' maxlength='25' value='<?php print($nombre); ?>' required/>
+                        <input id='nombre1' type='text' name='nombre1' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($nombre)); ?>' required/>
                         <label class="active" for='nombre1'>Nombre</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>account_circle</i>
-                        <input id='apellido1' type='text' name='apellido1' class='validate' length='30' maxlenght='30' value='<?php print($apellido); ?>'/>
+                        <input id='apellido1' type='text' name='apellido1' class='validate' length='30' maxlenght='30' value='<?php print(htmlspecialchars($apellido)); ?>'/>
                         <label class="active" for='apellido1'>Apellido:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>phone</i>
-                        <input id='telefono' type='text' name='telefono' class='validate' length='15' maxlenght='25' value='<?php print($telefono); ?>'/>
+                        <input id='telefono' type='text' name='telefono' class='validate' length='15' maxlenght='25' value='<?php print(htmlspecialchars($telefono)); ?>'/>
                         <label class="active" for='telefono'>Teléfono:</label>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ else
                 <div class='row'>
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>mail_outline</i>
-                        <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='25' maxlenght='25' value='<?php print($correo); ?>'/>
+                        <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='25' maxlenght='25' value='<?php print(htmlspecialchars($correo)); ?>'/>
                         <label class="active" for='correo_electronico'>Correo Electrónico:</label>
                     </div>
                 </div>

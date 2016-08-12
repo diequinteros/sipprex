@@ -52,8 +52,8 @@ if($data != null)
 		foreach($data as $row)
 		{
 	        $tabla .=	"<tr>
-	            			<td>$row[id_especialidad]</td>
-	            			<td>$row[especialidad]</td>
+	            			<td>".htmlspecialchars($row[id_especialidad])."</td>
+	            			<td>".htmlspecialchars($row[especialidad])."</td>
 	            			<td>
 	            				<a href='espe_save.php?id=$row[id_especialidad]' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
 								<a href='espe_delete.php?id=$row[id_especialidad]' class='btn red'><i class='material-icons'>delete</i></a>

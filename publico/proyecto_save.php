@@ -84,16 +84,16 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>book</i>
-                        <input id='titulo' type="text" name='titulo' class='validate' length='100' maxlength='100' value='<?php print($titulo); ?>'/>
+                        <input id='titulo' type="text" name='titulo' class='validate' length='100' maxlength='100' value='<?php print(htmlspecialchars($titulo)); ?>'/>
                         <label class="active" for='titulo'>Titulo:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='descripcion' type="text" name='descripcion' class='validate' length='200' maxlength='200' value='<?php print($descripcion); ?>'/>
+                        <input id='descripcion' type="text" name='descripcion' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($descripcion)); ?>'/>
                         <label class="active" for='descripcion'>Descripcion de proyecto:</label>
                     </div>
                      <p>
-					      <input id='remunerado' type="checkbox" name='remunerado' class="filled-in" id="filled-in-box" checked="checked" value='<?php print($remunerado); ?>' />
+					      <input id='remunerado' type="checkbox" name='remunerado' class="filled-in" id="filled-in-box" checked="checked" value='<?php print(htmlspecialchars($remunerado)); ?>' />
 					      <label for="remunerado">Remunerado:</label>
     				</p>
                     </div>

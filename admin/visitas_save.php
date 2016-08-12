@@ -83,7 +83,7 @@ if(!empty($_POST))
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='empresa' type='text' name='empresa' class='validate' length='50' maxlenght='50' value='<?php print($Empresas); ?>' required/>
+          	<input id='empresa' type='text' name='empresa' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Empresas)); ?>' required/>
           	<label for='empresa'>Empresas</label>
         </div>
         <div class='input-field col s12 m6'>
@@ -95,7 +95,7 @@ if(!empty($_POST))
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <textarea id="observacion" class="materialize-textarea"  name='observacion' class='validate' length='200' maxlenght='200' value='<?php print($Observacion); ?>'/>
+            <textarea id="observacion" class="materialize-textarea"  name='observacion' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Observacion)); ?>'/>
             <label for="observacion">Observaciones</label>
             
         </div>

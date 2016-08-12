@@ -90,19 +90,19 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='departamento' type='text' name='departamento' class='validate' length='12' maxlength='12' value='<?php print($departamento); ?>' required/>
+                        <input id='departamento' type='text' name='departamento' class='validate' length='12' maxlength='12' value='<?php print(htmlspecialchars($departamento)); ?>' required/>
                         <label class="active" for='departamento'>Departamento:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>account_circle</i>
-                        <input id='encargado' type='text' name='encargado' class='validate' length='9' maxlength='9' value='<?php print($encargado); ?>' required/>
+                        <input id='encargado' type='text' name='encargado' class='validate' length='9' maxlength='9' value='<?php print(htmlspecialchars($encargado)); ?>' required/>
                         <label class="active" for='encargado'>Encargado:</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>phone</i>
-                        <input id='telefono_encargado' type='text' name='telefono_encargado' class='validate' length='18' maxlength='18' value='<?php print($telefono_encargado); ?>'/>
+                        <input id='telefono_encargado' type='text' name='telefono_encargado' class='validate' length='18' maxlength='18' value='<?php print(htmlspecialchars($telefono_encargado)); ?>'/>
                         <label class="active" for='telefono_encargado'>Teléfono Encargado:</label>
                     </div>
                     <div class='input-field col s12 m6'>

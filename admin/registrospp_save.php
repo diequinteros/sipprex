@@ -162,7 +162,7 @@ if(!empty($_POST))
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>visibility</i>
-                        <input id='observaciones' type="text" name='observaciones' class='validate' length='200' maxlength='200' value='<?php print($observaciones); ?>'/>
+                        <input id='observaciones' type="text" name='observaciones' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($observaciones)); ?>'/>
                         <label class="active" for='observaciones'>Observaciones</label>
                     </div>
                 </div>
@@ -199,7 +199,7 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='file-field input-field col s12 m12'>
                         <i class='material-icons prefix'>search</i>
-                        <input id='observacion_final' type='text' name='observacion_final' class='validate' length='200' maxlenght='200' value='<?php print($observacion_final); ?>'/>
+                        <input id='observacion_final' type='text' name='observacion_final' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($observacion_final)); ?>'/>
                         <label class="active" for='observacion_final'>Observación Final:</label>
                     </div>
                 </div>

@@ -99,36 +99,36 @@ if(!empty($_POST))
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='nombre_empresa' type='text' name='nombre_empresa' class='validate' length='50' maxlenght='50' value='<?php print($Empresas); ?>' required/>
+          	<input id='nombre_empresa' type='text' name='nombre_empresa' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Empresas)); ?>' required/>
           	<label for='nombre_empresa'>Empresas</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='rubro' type='text' name='rubro' class='validate' length='200' maxlenght='200' value='<?php print($Rubro); ?>'/>
+          	<input id='rubro' type='text' name='rubro' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Rubro)); ?>'/>
           	<label for='rubro'>Rubro</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='direccion' type='text' name='direccion' class='validate' length='50' maxlenght='50' value='<?php print($Direccion); ?>' required/>
+            <input id='direccion' type='text' name='direccion' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Direccion)); ?>' required/>
             <label for='direccion'>Direccion</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='telefono' type='text' name='telefono' class='validate' length='200' maxlenght='200' value='<?php print($Telefono); ?>'/>
+            <input id='telefono' type='text' name='telefono' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Telefono)); ?>'/>
             <label for='telefono'>Telefono</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='contacto' type='text' name='contacto' class='validate' length='50' maxlenght='50' value='<?php print($Contacto); ?>' required/>
+            <input id='contacto' type='text' name='contacto' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Contacto)); ?>' required/>
             <label for='contacto'>Contacto</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='correo' type='text' name='correo' class='validate' length='200' maxlenght='200' value='<?php print($Correo); ?>'/>
+            <input id='correo' type='text' name='correo' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Correo)); ?>'/>
             <label for='correo'>Correo</label>
         </div>
     </div>

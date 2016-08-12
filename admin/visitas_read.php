@@ -53,9 +53,9 @@ if($data != null)
 		foreach($data as $row)
 		{
 	        $tabla .=	"<tr>
-	            			<td>$row[empresa]</td>
-	            			<td>$row[fecha_ultima_visita]</td>
-	            			<td><p class='truncate'>$row[observacion]</p></td>
+	            			<td>".htmlspecialchars($row[empresa])."</td>
+	            			<td>".$row[fecha_ultima_visita]."</td>
+	            			<td><p class='truncate'>".htmlspecialchars($row[observacion])."</p></td>
 	            			<td>
 	            				<a href='visitas_save.php?id=$row[id_visita]' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
 								<a href='visitas_delete.php?id=$row[id_visita]' class='btn red'><i class='material-icons'>delete</i></a>

@@ -66,12 +66,12 @@ if(!empty($_POST))
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='id_seccion' type='text' name='id_seccion' class='validate' length='50' maxlenght='50' value='<?php print($id); ?>' required/>
+          	<input id='id_seccion' type='text' name='id_seccion' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($id)); ?>' required/>
           	<label for='id_seccion'>ID</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='seccion' type='text' name='seccion' class='validate' length='200' maxlenght='200' value='<?php print($sec); ?>'/>
+          	<input id='seccion' type='text' name='seccion' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($sec)); ?>'/>
           	<label for='seccion'>Seccion</label>
         </div>
     </div>

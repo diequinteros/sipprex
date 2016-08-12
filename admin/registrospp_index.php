@@ -73,8 +73,8 @@ require("../bibliotecas/conexion.php");
 				foreach($data as $row)
 				{
 					$tabla .= 	"<tr>
-									<td>$row[id_registropp]</td>
-									<td>$row[nombre1]"." "."$row[nombre2]"." "."$row[apellido1]"." "."$row[apellido2]</td>
+									<td>".htmlspecialchars($row[id_registropp])."</td>
+									<td>".htmlspecialchars($row[nombre1]).""." "."".htmlspecialchars($row[nombre2]).""." "."".htmlspecialchars($row[apellido1]).""." "."".htmlspecialchars($row[apellido2])."</td>
 									<td>$row[nombre_empresa]</td>";
 					if($row['finalizo']==1){
 						$tabla .= "<td>Sí</td>";
@@ -82,7 +82,7 @@ require("../bibliotecas/conexion.php");
 					else{
 						$tabla .= "<td>No</td>";
 					}
-					$tabla .= 		"<td>$row[observaciones]</td>";
+					$tabla .= 		"<td>".htmlspecialchars($row[observaciones])."</td>";
 					if($row['acuerdo']==1){
 						$tabla .= "<td>Sí</td>";
 					}
@@ -107,7 +107,7 @@ require("../bibliotecas/conexion.php");
 					else{
 						$tabla .= "<td>No</td>";
 					}
-					$tabla .=		"<td>$row[observacion_final]</td>
+					$tabla .=		"<td>".htmlspecialchars($row[observacion_final])."</td>
 									<td>
 										<a href='registrospp_save.php?id=$row[id_registropp]' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='registrospp_delete.php?id=$row[id_registropp]' class='btn red'><i class='material-icons'>delete</i></a>

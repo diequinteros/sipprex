@@ -53,8 +53,8 @@ if($data != null)
 		foreach($data as $row)
 		{
 	        $tabla .=	"<tr>
-	            			<td>$row[id_ocupacion]</td>
-	            			<td>$row[ocupaciones]</td>
+	            			<td>".htmlspecialchars($row[id_ocupacion])."</td>
+	            			<td>".htmlspecialchars($row[ocupaciones])."</td>
 	            			<td>
 	            				<a href='ocupaciones_save.php?id=$row[id_ocupacion]' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
 								<a href='ocupaciones_delete.php?id=$row[id_ocupacion]' class='btn red'><i class='material-icons'>delete</i></a>

@@ -55,12 +55,12 @@ if($data != null)
 		foreach($data as $row)
 		{
 	        $tabla .=	"<tr>
-	            			<td>$row[nombre_empresa]</td>
-	            			<td><p class='truncate'>$row[rubro]</p></td>
-	            			<td>$row[direccion]</td>
-	            			<td>$row[telefono]</td>
-	            			<td>$row[contacto]</td>
-	            			<td>$row[correo]</td>
+	            			<td>".htmlspecialchars($row[nombre_empresa])."</td>
+	            			<td><p class='truncate'>".htmlspecialchars($row[rubro])."</p></td>
+	            			<td>".htmlspecialchars($row[direccion])."</td>
+	            			<td>".htmlspecialchars($row[telefono])."</td>
+	            			<td>".htmlspecialchars($row[contacto])."</td>
+	            			<td>".htmlspecialchars($row[correo])."</td>
 	            			<td>
 	            				<a href='empresa_save.php?id=$row[id_empresa]' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
 								<a href='empresa_delete.php?id=$row[id_empresa]' class='btn red'><i class='material-icons'>delete</i></a>

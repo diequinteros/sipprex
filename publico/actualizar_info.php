@@ -130,43 +130,43 @@
         <div class='row'>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='nombre_empresa' type='text' name='nombre_empresa' class='validate' length='50' maxlenght='50' value="<?php print($datosEmpe['nombre_empresa']); ?>" required/>
+                <input id='nombre_empresa' type='text' name='nombre_empresa' class='validate' length='50' maxlenght='50' value="<?php print(htmlspecialchars($datosEmpe['nombre_empresa'])); ?>" required/>
                 <label for='nombre_empresa'>Empresas</label>
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='rubro' type='text' name='rubro' class='validate'  value="<?php print($datosEmpe['rubro']); ?>" length='200' maxlenght='200'/>
+                <input id='rubro' type='text' name='rubro' class='validate'  value="<?php print(htmlspecialchars($datosEmpe['rubro'])); ?>" length='200' maxlenght='200'/>
                 <label for='rubro'>Rubro</label>
             </div>
         </div>
         <div class='row'>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='direccion' type='text' name='direccion' class='validate'  value="<?php print($datosEmpe['direccion']); ?>" length='50' maxlenght='50' required/>
+                <input id='direccion' type='text' name='direccion' class='validate'  value="<?php print(htmlspecialchars($datosEmpe['direccion'])); ?>" length='50' maxlenght='50' required/>
                 <label for='direccion'>Direccion</label>
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='telefono' type='text' name='telefono' class='validate'  value="<?php print($datosEmpe['telefono']); ?>" length='200' maxlenght='200'/>
+                <input id='telefono' type='text' name='telefono' class='validate'  value="<?php print(htmlspecialchars($datosEmpe['telefono'])); ?>" length='200' maxlenght='200'/>
                 <label for='telefono'>Telefono</label>
             </div>
         </div>
         <div class='row'>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='contacto' type='text' name='contacto' class='validate'  value="<?php print($datosEmpe['contacto']); ?>" length='50' maxlenght='50' required/>
+                <input id='contacto' type='text' name='contacto' class='validate'  value="<?php print(htmlspecialchars($datosEmpe['contacto'])); ?>" length='50' maxlenght='50' required/>
                 <label for='contacto'>Contacto</label>
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='correo' type='text' name='correo' class='validate'  value="<?php print($datosEmpe['correo']); ?>" length='200' maxlenght='200'/>
+                <input id='correo' type='text' name='correo' class='validate'  value="<?php print(htmlspecialchars($datosEmpe['correo'])); ?>" length='200' maxlenght='200'/>
                 <label for='correo'>Correo</label>
             </div>
         </div>
         <div class='row'>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='codigo' type='text' name='codigo' class='validate'  value="<?php print($datosEmpe['codigo_empresa']); ?>" length='50' maxlenght='50' required/>
+                <input id='codigo' type='text' name='codigo' class='validate'  value="<?php print(htmlspecialchars($datosEmpe['codigo_empresa'])); ?>" length='50' maxlenght='50' required/>
                 <label for='codigo'>Codigo para inicio de sesion</label>
             </div>
             <div class='input-field col s12 m6'>
