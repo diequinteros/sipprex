@@ -1,4 +1,22 @@
 <?php
+		if (isset($_SESSION["id_exalumnos"]) || isset($_SESSION["carnet"]) || isset($_SESSION["codigo_admin"]))  
+		{ 
+			//sino, calculamos el tiempo transcurrido   
+			$fechaGuardada = $_SESSION["ultimoAcceso"];  
+			$ahora = date("Y-n-j H:i:s");  
+			$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));    
+
+			//comparamos el tiempo transcurrido   
+				if($tiempo_transcurrido >= 1800) 
+				{   
+				//si pasaron 30 minutos o más   
+				session_destroy(); // destruyo la sesión   
+				header("Location: ../publico/login.php"); //envío al usuario a la pag. de autenticación   
+			//sino, actualizo la fecha de la sesión   
+				}else{   
+					$_SESSION["ultimoAcceso"] = $ahora;   
+					}    
+		} 
 		ini_set("date.timezone","America/El_Salvador");
 		if(isset($_SESSION['ses']) && isset($_SESSION['id_exalummnos']) || isset($_SESSION['carnet']) || isset($_SESSION['codigo_admin']) || isset($_SESSION['id_empresa']))
 		{

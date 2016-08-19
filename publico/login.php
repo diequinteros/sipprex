@@ -3,6 +3,7 @@
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
 require("../bibliotecas/verios.php");
+require_once '../email/phpmailer/PHPMailerAutoload.php';
 session_start();
 //Se revisa que los campos esten vacios para validarlos y se empieza con los procesos
 if(!empty($_POST))
@@ -32,7 +33,9 @@ if(!empty($_POST))
 					$_SESSION['ses'] = $sesU;
 					$sqlSes = "INSERT INTO sesiones_exalum(unisesion, usuario, os) VALUES(?, ?, ?)";
 					$parametros = array($sesU, $data[0]['id_exalumno'], os_info($uagent));
-					Database::executeRow($sqlSes, $parametros);  
+					Database::executeRow($sqlSes, $parametros);
+					$ahora = date("Y-n-j H:i:s");
+					$_SESSION["ultimoAcceso"] = $ahora;  
 			      	header("location: index.php");
 				}
 				else 
@@ -60,6 +63,8 @@ if(!empty($_POST))
 						$sqlSes = "INSERT INTO sesiones_alum(unisesion, usuario, os) VALUES(?, ?, ?)";
 						$parametros = array($sesU, $data[0]['carnet'], os_info($uagent));
 						Database::executeRow($sqlSes, $parametros);
+						$ahora = date("Y-n-j H:i:s");
+						$_SESSION["ultimoAcceso"] = $ahora;
 						header("location: index.php");
 					}
 					else 
@@ -79,14 +84,58 @@ if(!empty($_POST))
 						$hash = $data[0]['contraseña_admin'];
 						if($clave == $hash) 
 						{
-							$_SESSION['codigo_admin'] = $data[0]['codigo_admin'];
+							/*$_SESSION['codigo_admin'] = $data[0]['codigo_admin'];
 							$_SESSION['nombre_usuario'] = "Administrador";
 							$sesU = uniqid().'_ses';
 							$_SESSION['ses'] = $sesU;
 							$sqlSes = "INSERT INTO sesiones(unisesion, usuario, os) VALUES(?, ?, ?)";
 							$parametros = array($sesU, $data[0]['codigo_admin'], os_info($uagent));
-							Database::executeRow($sqlSes, $parametros);
-							header("location: ../admin/index.php");
+							Database::executeRow($sqlSes, $parametros);*/
+							function randomPassword() {
+							$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+							$pass = array(); //remember to declare $pass as an array
+							$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+							for ($i = 0; $i < 8; $i++) {
+								$n = rand(0, $alphaLength);
+								$pass[] = $alphabet[$n];
+							}
+							return implode($pass); //turn the array into a string
+
+						}
+
+						$pass = randomPassword();
+						$_SESSION['cod_secre'] = $pass;
+						$_SESSION['codigo_admin_sec'] = $data[0]['codigo_admin'];
+						$_SESSION['nombre_usuario_sec'] = "Administrador";
+						$mail = new PHPMailer;
+						$mail->CharSet = 'UTF-8';
+						$mail->isSMTP();                                      // Set mailer to use SMTP
+						$mail->SMTPDebug = 0;                               // Enable verbose debug output
+						$mail->Debugoutput = 'html'; 
+						
+						$mail->Host = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
+						$mail->Port = 587;                                    // TCP port to connect to
+						$mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
+						$mail->SMTPAuth = true;                               // Enable SMTP authentication 
+						$mail->Username = 'sipprex.ricaldone@gmail.com';                 // SMTP username
+						$mail->Password = 'ricaldone1';                           // SMTP password
+						$mail->setFrom('sipprex.ricaldone@gmail.com', 'Sipprex');
+						$mail->addAddress($data[0]['correo'],'');     // Add a recipient
+						$mail->Subject = 'Codigo de autenticacion';
+						$mail->Body    = 'El codigo de autenticacion es: '.$pass;
+
+						if($mail->send())
+						{
+							//echo "OK";
+							$ahora = date("Y-n-j H:i:s");
+							$_SESSION["ultimoAcceso"] = $ahora;
+							header("location: autenticacion.php");
+						}
+						else
+						{
+							echo "NO";
+						}
+						
 						}
 						else 
 						{
@@ -111,6 +160,15 @@ if(!empty($_POST))
     {
         print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
     }
+}
+else{
+	$sqlVeri = "SELECT COUNT(codigo_admin) FROM administradores";
+	$params = null;
+	$data = Database::getRow($sqlVeri, $params);
+	if($data[0] < 1)
+	{
+		header('location:../admin/crear_admin.php');
+	}
 }
 ?>
 <!-- Se crea el formulario de login -->
