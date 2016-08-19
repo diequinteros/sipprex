@@ -88,7 +88,7 @@
 					}
 					$tabla .=	"<td>
 										<a href='alumnos_save.php?id=$row[carnet]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='alumnos_delete.php?id=$row[carnet]' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='alumnos_delete.php?id=".base64_encode($row['carnet'])."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

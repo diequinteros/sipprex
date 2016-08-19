@@ -75,7 +75,7 @@ session_start();
 									<td>".htmlspecialchars($row['nombre_empresa'])."</td>
 									<td>
 										<a href='departamento_save.php?id=$row[id_depar]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='departamento_delete.php?id=$row[id_depar]' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='departamento_delete.php?id=".base64_encode($row[id_depar])."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

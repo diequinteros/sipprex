@@ -110,7 +110,7 @@ require("../bibliotecas/conexion.php");
 					$tabla .=		"<td>".htmlspecialchars($row['observacion_final'])."</td>
 									<td>
 										<a href='registrospp_save.php?id=$row[id_registropp]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='registrospp_delete.php?id=$row[id_registropp]' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='registrospp_delete.php?id=".base64_encode($row[id_registropp])."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

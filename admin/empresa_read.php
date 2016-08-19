@@ -63,7 +63,7 @@ if($data != null)
 	            			<td>".htmlspecialchars($row['correo'])."</td>
 	            			<td>
 	            				<a href='empresa_save.php?id=$row[id_empresa]' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
-								<a href='empresa_delete.php?id=$row[id_empresa]' class='btn red'><i class='material-icons'>delete</i></a>
+								<a href='empresa_delete.php?id=".base64_encode($row[id_empresa])."' class='btn red'><i class='material-icons'>delete</i></a>
 							</td>
 	        			</tr>";
 		}

@@ -56,7 +56,7 @@ if($data != null)
 	            			<td>".htmlspecialchars($row['grupo_aca'])."</td>
 	            			<td>
 	            				<a href='grupoaca_save.php?id=$row[id_grupo_aca]' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
-								<a href='grupoaca_delete.php?id=$row[id_grupo_aca]' class='btn red'><i class='material-icons'>delete</i></a>
+								<a href='grupoaca_delete.php?id=".base64_encode($row[id_grupo_aca])."' class='btn red'><i class='material-icons'>delete</i></a>
 							</td>
 	        			</tr>";
 		}

@@ -14,7 +14,7 @@
 include("../inc/nav.php");
 if(!empty($_GET['id'])) 
 {
-    $id = $_GET['id'];
+    $id = base64_decode($_GET['id']);
 }
 else
 {

@@ -78,7 +78,7 @@ session_start();
 									}
 					$tabla .=	"	<td>
 										<a href='proyecto_save.php?id=$row[id_proyecto]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='proyecto_delete.php?id=$row[id_proyecto]' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='proyecto_delete.php?id=".base64_encode($row[id_proyecto])."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}
