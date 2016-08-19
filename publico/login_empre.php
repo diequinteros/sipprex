@@ -91,6 +91,8 @@ if(!empty($_POST))
 				</div>
 				<div class="titulo" id="log_btn">
 					<button type='submit' class='btn blue'><i class='material-icons right'>swap_horiz</i>Ingresar</button>
+					<br>
+					<a href="recuperar.php">¿Olvidaste tu contraseña?</a>
 				</div>
                 <div class="titulo" id="log_btn">
 					<a class='btn blue' href="buscar_empresa.php"><i class='material-icons right'>group_add</i>Crear cuenta</a>
