@@ -33,6 +33,8 @@ if(!empty($_POST))
 					$sqlSes = "INSERT INTO sesiones_empre(unisesion, usuario, os) VALUES(?, ?, ?)";
 					$parametros = array($sesU, $data[0]['id_empresa'], os_info($uagent));
 					Database::executeRow($sqlSes, $parametros);
+					$ahora = date("Y-n-j H:i:s");
+					$_SESSION["ultimoAcceso"] = $ahora;
 			      	header("location: index_empresa.php");
 				}
 				else 
