@@ -12,7 +12,7 @@
 	<?php
       include("../inc/nav.php");
       ?>
-<form method='post' class='row'>
+<form method='post'  autocomplete="off" class='row'>
 	<div class='input-field col s6 m4'>
       	<i class='material-icons prefix'>search</i>
       	<input id='buscar' type='text' name='buscar' class='validate'/>

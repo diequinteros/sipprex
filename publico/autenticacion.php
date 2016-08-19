@@ -63,7 +63,7 @@ if(!empty($_POST))
 				<h3 class="white-text">Iniciar Sesión</h3>
 			</div>
 			<!-- Se crea el formulario de login -->
-			<form class='row' method='post'>
+			<form class='row' autocomplete="off" method='post'>
 				<div class='row'>
 				<h3 class="center-align">Introduzca el codigo enviado a su correo electronico</h3>
 					<div class='input-field col m6 offset-m3 s12'>

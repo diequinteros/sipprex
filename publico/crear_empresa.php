@@ -103,7 +103,7 @@ if(!empty($_POST))
 <div class="container">
 <h2>Por favor ingrese los datos de su empresa:</h2>
 </div>
-<form method='post' class='row' enctype='multipart/form-data'>
+<form action="capt.php" method='POST'  autocomplete="off" class='row' enctype='multipart/form-data'>
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
@@ -155,6 +155,8 @@ if(!empty($_POST))
             <i class='material-icons prefix'>add</i>
             <input id='contra2' type='text' name='contra2' class='validate' length='40' maxlenght='25'/>
             <label for='contra2'>Vuelva a introducir su contraseña</label>
+             <BR>
+                <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
         </div>
     </div>
     <a href='login_empre.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
@@ -164,5 +166,7 @@ if(!empty($_POST))
 include("../inc/scripts.php");
 include("../inc/footer.php");
 ?>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="js/jquery.min"></script>
     </body>
 </html>

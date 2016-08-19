@@ -45,7 +45,7 @@ if(!empty($_POST))
 <?php
         //<li> class="collection-header"><h5>Mensaje a administrador de empresa </h5></li>
 ?>
-<form  method='post' enctype='multipart/form-data'>
+<form  method='post' autocomplete="off" enctype='multipart/form-data'>
         <li class="collection-item">
             <div class="input-field col s12">
             <input id="email" name="email" type="email" class="validate">

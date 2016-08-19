@@ -126,7 +126,7 @@
     <div class="container">
     <h2>Por favor ingrese los datos de su empresa:</h2>
     </div>
-    <form method='post' class='row' enctype='multipart/form-data'>
+    <form method='post' class='row' autocomplete="off" enctype='multipart/form-data'>
         <div class='row'>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>

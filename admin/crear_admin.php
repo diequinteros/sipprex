@@ -59,7 +59,7 @@ if(!empty($_POST))
 }
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
-            <form method='post' class='row' enctype='multipart/form-data'>
+            <form action="capt.php" method='POST' class='row' autocomplete="off" enctype='multipart/form-data'>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>person_pin</i>
@@ -82,6 +82,8 @@ if(!empty($_POST))
                         <i class='material-icons prefix'>mail_outline</i>
                         <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='50' maxlenght='50'/>
                         <label class="active" for='correo_electronico'>Correo Electrónico:</label>
+                        <BR>
+                <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
                     </div>
                 </div>
                 <div class='titulo'>
@@ -93,5 +95,7 @@ if(!empty($_POST))
         <!-- Finalmente se relacionan los scripts del sitio -->
         <?php include '../inc/scripts.php'; ?>
         <?php include('../inc/footer.php'); ?>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="js/jquery.min"></script>
     </body>
 </html>

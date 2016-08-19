@@ -14,7 +14,7 @@
       <div class="container">
       <h2>Antes de crear una cuenta, verifique que su empresa no exista en la base de datos, si existe por favor mande un mensaje al administrador con sus datos para obtener su codigo de usuario y contraseña.</h2>
       </div>
-<form method='post' class='row'>
+<form method='post' autocomplete="off" class='row'>
 	<div class='input-field col s6 m4'>
       	<i class='material-icons prefix'>search</i>
       	<input id='buscar' type='text' name='buscar' class='validate'/>

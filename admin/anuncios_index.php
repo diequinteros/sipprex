@@ -20,10 +20,10 @@
 				<h3>Anuncios</h3>
 			</div>
 			<br>
-			<form method='post' class='row'>
+			<form method='post' autocomplete="off" class='row'>
 				<div class='input-field col s6 m4'>
 					<i class='material-icons prefix'>search</i>
-					<input id='buscar' type='text' name='buscar' class='validate'/>
+					<input id='buscar' type='text' autocomplete="off"  name='buscar' class='validate'/>
 					<label for='buscar' class='active'>Búsqueda</label>
 				</div>
 				<div class='input-field col s6 m4'>
