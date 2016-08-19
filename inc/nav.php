@@ -1,5 +1,28 @@
 <?php
-ini_set("date.timezone","America/El_Salvador");
+		ini_set("date.timezone","America/El_Salvador");
+		if(isset($_SESSION['ses']) && isset($_SESSION['id_exalummnos']) || isset($_SESSION['carnet']) || isset($_SESSION['codigo_admin']) || isset($_SESSION['id_empresa']))
+		{
+		$sqlSes = "SELECT * FROM sesiones WHERE unisesion = ? AND usuario = ?";
+		if(isset($_SESSION['id_exalumnos']))
+		{
+		$params = array($_SESSION['ses'], $_SESSION['id_exalummnos']);
+		}
+		if(isset($_SESSION['carnet']))
+		{
+		$params = array($_SESSION['ses'], $_SESSION['carnet']);
+		}
+		if(isset($_SESSION['codigo_admin']))
+		{
+		$params = array($_SESSION['ses'], $_SESSION['codigo_admin']);
+		}
+		if(isset($_SESSION['id_empresa']))
+		{
+		$params = array($_SESSION['ses'], $_SESSION['id_empresa']);
+		}
+		if(Database::getRow($sqlSes,$params) == null){
+		session_destroy();
+		}
+		}
       $sesion = false;
       $filename = basename($_SERVER['PHP_SELF']);
       if(isset($_SESSION['carnet']) || isset($_SESSION['id_exalumnos']) || isset($_SESSION['codigo_admin']) || isset($_SESSION['id_empresa']))
@@ -10,10 +33,12 @@ ini_set("date.timezone","America/El_Salvador");
 			<div id='fixednav' class='navbar-fixed'>
 					<!-- contenido dropdown ajustes -->
 				<ul id='ajustes' class='dropdown-content z-depth-2'>
+				<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesion</a></li>
 				</ul>
 				<ul id='ajustes2' class='dropdown-content z-depth-2'>
+				<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesion</a></li>
 				</ul>
@@ -44,10 +69,12 @@ ini_set("date.timezone","America/El_Salvador");
 			<div id='fixednav' class='navbar-fixed'>
 					<!-- contenido dropdown ajustes -->
 				<ul id='ajustes' class='dropdown-content z-depth-2'>
+				<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 				</ul>
 				<ul id='ajustes2' class='dropdown-content z-depth-2'>
+				<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 				</ul>
@@ -108,6 +135,7 @@ ini_set("date.timezone","America/El_Salvador");
 							</ul>
 								<!-- contenido dropdown ajustes -->
 							<ul id='ajustes' class='dropdown-content z-depth-2'>
+							<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 							<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 							<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 							</ul>
@@ -144,6 +172,7 @@ ini_set("date.timezone","America/El_Salvador");
 							</ul>
 								<!-- contenido dropdown ajustes -->
 							<ul id='ajustes1' class='dropdown-content z-depth-2'>
+							<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 							<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 							<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 							</ul>
@@ -182,10 +211,12 @@ ini_set("date.timezone","America/El_Salvador");
 					<div id='fixednav' class='navbar-fixed'>
 							<!-- contenido dropdown ajustes -->
 						<ul id='ajustes' class='dropdown-content z-depth-2'>
+						<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 						<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 						<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 						</ul>
 						<ul id='ajustes2' class='dropdown-content z-depth-2'>
+						<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 						<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 						<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 						</ul>

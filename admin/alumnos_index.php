@@ -73,13 +73,13 @@
 				{
 					$tabla .= 	"<tr>
 									<td>$row[carnet]</td>
-									<td>".htmlspecialchars($row[nombre1]).""." "."".htmlspecialchars($row[nombre2]).""." "."".htmlspecialchars($row[apellido1]).""." "."".htmlspecialchars($row[apellido2])."</td>
-									<td>".htmlspecialchars($row[nie])."</td>
-									<td>".htmlspecialchars($row[año])."</td>
-									<td>".htmlspecialchars($row[especialidad])."</td>
-									<td>".htmlspecialchars($row[grupo_tec])."</td>
-									<td>".htmlspecialchars($row[seccion])."</td>
-									<td>".htmlspecialchars($row[grupo_aca])."</td>";
+									<td>".htmlspecialchars($row['nombre1']).""." "."".htmlspecialchars($row[nombre2]).""." "."".htmlspecialchars($row[apellido1]).""." "."".htmlspecialchars($row[apellido2])."</td>
+									<td>".htmlspecialchars($row['nie'])."</td>
+									<td>".htmlspecialchars($row['año'])."</td>
+									<td>".htmlspecialchars($row['especialidad'])."</td>
+									<td>".htmlspecialchars($row['grupo_tec'])."</td>
+									<td>".htmlspecialchars($row['seccion'])."</td>
+									<td>".htmlspecialchars($row['grupo_aca'])."</td>";
 					if($row['inscrito'] == "VERDADERO"){
 						$tabla .= "<td><i class='material-icons right'>check_circle</i></td>";
 					}

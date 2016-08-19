@@ -10,10 +10,12 @@ ini_set("date.timezone","America/El_Salvador");
 			<div id='fixednav' class='navbar-fixed'>
 					<!-- contenido dropdown ajustes -->
 				<ul id='ajustes' class='dropdown-content z-depth-2'>
+				<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesion</a></li>
 				</ul>
 				<ul id='ajustes2' class='dropdown-content z-depth-2'>
+				<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesion</a></li>
 				</ul>
@@ -44,10 +46,12 @@ ini_set("date.timezone","America/El_Salvador");
 			<div id='fixednav' class='navbar-fixed'>
 					<!-- contenido dropdown ajustes -->
 				<ul id='ajustes' class='dropdown-content z-depth-2'>
+				<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 				</ul>
 				<ul id='ajustes2' class='dropdown-content z-depth-2'>
+				<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 				</ul>
@@ -108,6 +112,7 @@ ini_set("date.timezone","America/El_Salvador");
 							</ul>
 								<!-- contenido dropdown ajustes -->
 							<ul id='ajustes' class='dropdown-content z-depth-2'>
+							<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 							<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 							<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 							</ul>
@@ -144,6 +149,7 @@ ini_set("date.timezone","America/El_Salvador");
 							</ul>
 								<!-- contenido dropdown ajustes -->
 							<ul id='ajustes1' class='dropdown-content z-depth-2'>
+							<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 							<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 							<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 							</ul>
@@ -182,10 +188,12 @@ ini_set("date.timezone","America/El_Salvador");
 					<div id='fixednav' class='navbar-fixed'>
 							<!-- contenido dropdown ajustes -->
 						<ul id='ajustes' class='dropdown-content z-depth-2'>
+						<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 						<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 						<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 						</ul>
 						<ul id='ajustes2' class='dropdown-content z-depth-2'>
+						<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 						<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 						<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 						</ul>

@@ -2,6 +2,7 @@
 <?php
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/verios.php");
 session_start();
 //Se revisa que los campos esten vacios para validarlos y se empieza con los procesos
 if(!empty($_POST))
@@ -27,6 +28,11 @@ if(!empty($_POST))
 		    	{
 			    	$_SESSION['id_empresa'] = $data[0]['id_empresa'];
 			      	$_SESSION['nombre_empresa'] = $data[0]['nombre_empres'];
+					$sesU = uniqid().'_ses';
+					$_SESSION['ses'] = $sesU;
+					$sqlSes = "INSERT INTO sesiones_empre(unisesion, usuario, os) VALUES(?, ?, ?)";
+					$parametros = array($sesU, $data[0]['id_empresa'], os_info($uagent));
+					Database::executeRow($sqlSes, $parametros);
 			      	header("location: index_empresa.php");
 				}
 				else 

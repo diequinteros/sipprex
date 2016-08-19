@@ -68,11 +68,11 @@ session_start();
 				foreach($data as $row)
 				{
 					$tabla .= 	"<tr>
-									<td>".htmlspecialchars($row[id_depar])."</td>
-									<td>".htmlspecialchars($row[departamento])."</td>
-									<td>".htmlspecialchars($row[encargado])."</td>
-									<td>".htmlspecialchars($row[telefono_encargado])."</td>
-									<td>".htmlspecialchars($row[nombre_empresa])."</td>
+									<td>".htmlspecialchars($row['id_depar'])."</td>
+									<td>".htmlspecialchars($row['departamento'])."</td>
+									<td>".htmlspecialchars($row['encargado'])."</td>
+									<td>".htmlspecialchars($row['telefono_encargado'])."</td>
+									<td>".htmlspecialchars($row['nombre_empresa'])."</td>
 									<td>
 										<a href='departamento_save.php?id=$row[id_depar]' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='departamento_delete.php?id=$row[id_depar]' class='btn red'><i class='material-icons'>delete</i></a>

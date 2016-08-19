@@ -2,6 +2,7 @@
 <?php
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/verios.php");
 session_start();
 //Se revisa que los campos esten vacios para validarlos y se empieza con los procesos
 if(!empty($_POST))
@@ -27,6 +28,11 @@ if(!empty($_POST))
 		    	{
 			    	$_SESSION['id_exalumnos'] = $data[0]['id_exalumnos'];
 			      	$_SESSION['nombre_usuario'] = $data[0]['nombre1']." ".$data[0]['apellido1'];
+					$sesU = uniqid().'_ses';
+					$_SESSION['ses'] = $sesU;
+					$sqlSes = "INSERT INTO sesiones_exalum(unisesion, usuario, os) VALUES(?, ?, ?)";
+					$parametros = array($sesU, $data[0]['id_exalumno'], os_info($uagent));
+					Database::executeRow($sqlSes, $parametros);  
 			      	header("location: index.php");
 				}
 				else 
@@ -49,6 +55,11 @@ if(!empty($_POST))
 					{
 						$_SESSION['carnet'] = $data[0]['carnet'];
 						$_SESSION['nombre_usuario'] = $data[0]['nombre1']." ".$data[0]['nombre2']." ".$data[0]['apellido1']." ".$data[0]['apellido2'];
+						$sesU = uniqid().'_ses';
+						$_SESSION['ses'] = $sesU;
+						$sqlSes = "INSERT INTO sesiones_alum(unisesion, usuario, os) VALUES(?, ?, ?)";
+						$parametros = array($sesU, $data[0]['carnet'], os_info($uagent));
+						Database::executeRow($sqlSes, $parametros);
 						header("location: index.php");
 					}
 					else 
@@ -70,6 +81,11 @@ if(!empty($_POST))
 						{
 							$_SESSION['codigo_admin'] = $data[0]['codigo_admin'];
 							$_SESSION['nombre_usuario'] = "Administrador";
+							$sesU = uniqid().'_ses';
+							$_SESSION['ses'] = $sesU;
+							$sqlSes = "INSERT INTO sesiones(unisesion, usuario, os) VALUES(?, ?, ?)";
+							$parametros = array($sesU, $data[0]['codigo_admin'], os_info($uagent));
+							Database::executeRow($sqlSes, $parametros);
 							header("location: ../admin/index.php");
 						}
 						else 

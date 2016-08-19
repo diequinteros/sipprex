@@ -54,9 +54,9 @@ if($data != null)
 		foreach($data as $row)
 		{
 	        $tabla .=	"<tr>
-	            			<td>".htmlspecialchars($row[nombre_empresa])."</td>
-	            			<td>".htmlspecialchars($row[direccion])."</td>
-	            			<td>".htmlspecialchars($row[correo])."</td>
+	            			<td>".htmlspecialchars($row['nombre_empresa'])."</td>
+	            			<td>".htmlspecialchars($row['direccion'])."</td>
+	            			<td>".htmlspecialchars($row['correo'])."</td>
 	            			<td>
 								<a href='mensaje_empre.php?id=$row[id_empresa]' class='btn blue'><i class='material-icons'>message</i></a>
 							</td>

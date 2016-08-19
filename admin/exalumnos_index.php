@@ -70,13 +70,13 @@ require("../bibliotecas/conexion.php");
 				foreach($data as $row)
 				{
 					$tabla .= 	"<tr>
-									<td>".htmlspecialchars($row[id_exalumnos])."</td>
-									<td>".htmlspecialchars($row[nombre1])."</td>
-									<td>".htmlspecialchars($row[apellido1])."</td>
-									<td>".htmlspecialchars($row[telefono])."</td>
-									<td>".htmlspecialchars($row[ocupacion])."</td>
-									<td>".htmlspecialchars($row[correo_electronico])."</td>
-									<td>".htmlspecialchars($row[observacion])."</td>
+									<td>".htmlspecialchars($row['id_exalumnos'])."</td>
+									<td>".htmlspecialchars($row['nombre1'])."</td>
+									<td>".htmlspecialchars($row['apellido1'])."</td>
+									<td>".htmlspecialchars($row['telefono'])."</td>
+									<td>".htmlspecialchars($row['ocupacion'])."</td>
+									<td>".htmlspecialchars($row['correo_electronico'])."</td>
+									<td>".htmlspecialchars($row['observacion'])."</td>
 									<td>
 										<a href='exalumnos_save.php?id=$row[id_exalumnos]' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='exalumnos_delete.php?id=$row[id_exalumnos]' class='btn red'><i class='material-icons'>delete</i></a>
