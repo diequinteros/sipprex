@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-08-2016 a las 00:50:49
+-- Tiempo de generación: 19-08-2016 a las 19:29:46
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 7.0.4
 
@@ -30,15 +30,16 @@ USE `ssppea`;
 
 CREATE TABLE `administradores` (
   `codigo_admin` int(8) NOT NULL,
-  `contraseña_admin` int(8) NOT NULL
+  `contraseña_admin` int(8) NOT NULL,
+  `correo` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `administradores`
 --
 
-INSERT INTO `administradores` (`codigo_admin`, `contraseña_admin`) VALUES
-(20140666, 666);
+INSERT INTO `administradores` (`codigo_admin`, `contraseña_admin`, `correo`) VALUES
+(20140666, 666, 'diegoquinteros02.04.97@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -958,6 +959,15 @@ CREATE TABLE `sesiones` (
   `os` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `sesiones`
+--
+
+INSERT INTO `sesiones` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`) VALUES
+(6, '57b6e5d50d727_ses', 20140666, '2016-08-19 10:56:21', 'WinNT'),
+(7, '57b6e6c980902_ses', 20140666, '2016-08-19 11:00:25', 'WinNT'),
+(8, '57b6e75b16765_ses', 20140666, '2016-08-19 11:02:51', 'WinNT');
+
 -- --------------------------------------------------------
 
 --
@@ -1247,7 +1257,7 @@ ALTER TABLE `secciones`
 -- AUTO_INCREMENT de la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_alum`
 --
