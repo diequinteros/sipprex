@@ -10,26 +10,27 @@
 				if($tiempo_transcurrido >= 1800) 
 				{   
 				//si pasaron 30 minutos o más  
-				if(isset($_SESSION['ses']) && ( isset($_SESSION['carnet']) || isset($_SESSION['id_exalumno']) || isset($_SESSION['codigo_admin']) || isset($_SESSION['id_empresa'])  ) ){
-				if(isset($_SESSION['carnet']))
-				{
-					$id = $_SESSION['carnet'];
-				}
-				if(isset($_SESSION['id_exalumno']))
-				{
-					$id = $_SESSION['id_exalumno'];
-				}
-				if(isset($_SESSION['codigo_admin']))
-				{
-					$id = $_SESSION['codigo_admin'];
-				}
-				if(isset($_SESSION['id_empresa']))
-				{
-					$id = $_SESSION['id_empresa'];
-				}
-				$sql = "DELETE FROM sesiones WHERE usuario = ? AND unisesion = ?";
-				$params = array($id, $_SESSION['ses']);
-				Database::executeRow($sql,$params); 
+					if(isset($_SESSION['ses']) && ( isset($_SESSION['carnet']) || isset($_SESSION['id_exalumno']) || isset($_SESSION['codigo_admin']) || isset($_SESSION['id_empresa'])  ) ){
+						if(isset($_SESSION['carnet']))
+						{
+							$id = $_SESSION['carnet'];
+						}
+						if(isset($_SESSION['id_exalumno']))
+						{
+							$id = $_SESSION['id_exalumno'];
+						}
+						if(isset($_SESSION['codigo_admin']))
+						{
+							$id = $_SESSION['codigo_admin'];
+						}
+						if(isset($_SESSION['id_empresa']))
+						{
+							$id = $_SESSION['id_empresa'];
+						}
+						$sql = "DELETE FROM sesiones WHERE usuario = ? AND unisesion = ?";
+						$params = array($id, $_SESSION['ses']);
+						Database::executeRow($sql,$params); 
+					}
 				session_destroy(); // destruyo la sesión   
 				header("Location: ../publico/login.php"); //envío al usuario a la pag. de autenticación   
 			//sino, actualizo la fecha de la sesión   
@@ -150,7 +151,7 @@
 							<li class='divider'></li>
 							<li><a href='' class='orange-text'>Grados</a></li>
 							<li class='divider'></li>
-							<li><a href='gruposaca_read.php' class='orange-text'>Grupos academicos</a></li>
+							<li><a href='grupoaca_read.php' class='orange-text'>Grupos academicos</a></li>
 							<li class='divider'></li>
 							<li><a href='grupotec_index.php' class='orange-text'>Grupos tecnicos</a></li>
 							</ul>
