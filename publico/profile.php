@@ -36,7 +36,7 @@ if(!empty($_POST))
 else
 {
     $sql = "SELECT contraseña, nombre1, apellido1, telefono, ocupaciones.id_ocupacion, correo_electronico FROM ex_alumnos, ocupaciones WHERE ex_alumnos.ocupacion = ocupaciones.id_ocupacion AND id_exalumnos = ?";
-    $params = array($_SESSION['id_exalumnos']);
+    $params = array($_SESSION['id_exalumno']);
     $data = Database::getRows($sql, $params);
     $contraseña = $data[0]['contraseña'];
     $nombre = $data[0]['nombre1'];

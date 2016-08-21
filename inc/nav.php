@@ -18,12 +18,12 @@
 					}    
 		} 
 		ini_set("date.timezone","America/El_Salvador");
-		if(isset($_SESSION['ses']) && isset($_SESSION['id_exalummnos']) || isset($_SESSION['carnet']) || isset($_SESSION['codigo_admin']) || isset($_SESSION['id_empresa']))
+		if(isset($_SESSION['ses']) && isset($_SESSION['id_exalumnos']) || isset($_SESSION['carnet']) || isset($_SESSION['codigo_admin']) || isset($_SESSION['id_empresa']))
 		{
 		$sqlSes = "SELECT * FROM sesiones WHERE unisesion = ? AND usuario = ?";
 		if(isset($_SESSION['id_exalumnos']))
 		{
-		$params = array($_SESSION['ses'], $_SESSION['id_exalummnos']);
+		$params = array($_SESSION['ses'], $_SESSION['id_exalumnos']);
 		}
 		if(isset($_SESSION['carnet']))
 		{

@@ -2,7 +2,13 @@
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
-
+$sqlVeri = "SELECT COUNT(codigo_admin) FROM administradores";
+	$params = null;
+	$data = Database::getRow($sqlVeri, $params);
+	if($data[0] > 0)
+	{
+		//header('location:../publico/index.php');
+	}
 //Se realizan los procesos necesarios para modificar e insertar
 
     $head = "";
@@ -59,7 +65,7 @@ if(!empty($_POST))
 }
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
-            <form action="capt.php" method='POST' class='row' autocomplete="off" enctype='multipart/form-data'>
+            <form action="../publico/capt.php" method='POST' class='row' autocomplete="off" enctype='multipart/form-data'>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>person_pin</i>

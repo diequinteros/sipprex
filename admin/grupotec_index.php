@@ -69,7 +69,7 @@ require("../bibliotecas/conexion.php");
 									<td>".htmlspecialchars($row['grupo_tec'])."</td>
 									<td>
 										<a href='grupotec_save.php?id=$row[id_grupo_tec]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='grupotec_delete.php?id=".base64_encode($row[id_grupo_tec])."' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='grupotec_delete.php?id=".base64_encode(htmlspecialchars($row['id_grupo_tec']))."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

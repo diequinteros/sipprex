@@ -71,7 +71,7 @@
 									<td>".htmlspecialchars($row['contenido_anuncio'])."</td>
 									<td>
 										<a href='anuncios_save.php?id=$row[id_anuncio]' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='anuncios_delete.php?id=".base64_encode($row[id_anuncio])."' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='anuncios_delete.php?id=".base64_encode(htmlspecialchars($row['id_anuncio']))."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

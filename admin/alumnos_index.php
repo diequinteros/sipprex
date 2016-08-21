@@ -73,7 +73,7 @@
 				{
 					$tabla .= 	"<tr>
 									<td>$row[carnet]</td>
-									<td>".htmlspecialchars($row['nombre1']).""." "."".htmlspecialchars($row[nombre2]).""." "."".htmlspecialchars($row[apellido1]).""." "."".htmlspecialchars($row[apellido2])."</td>
+									<td>".htmlspecialchars($row['nombre1']).""." "."".htmlspecialchars($row['nombre2']).""." "."".htmlspecialchars($row['apellido1']).""." "."".htmlspecialchars($row['apellido2'])."</td>
 									<td>".htmlspecialchars($row['nie'])."</td>
 									<td>".htmlspecialchars($row['año'])."</td>
 									<td>".htmlspecialchars($row['especialidad'])."</td>

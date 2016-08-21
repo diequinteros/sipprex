@@ -1,7 +1,7 @@
 <!-- Primero referenciamos los archivos que enlazan las clases de conexion, las consultas y las validaciones -->
 <?php
 require("../bibliotecas/conexion.php");
-session_start(true);
+session_start();
 //Se revisa que los campos esten vacios para validarlos y se empieza con los procesos
 if(!empty($_POST))
 {

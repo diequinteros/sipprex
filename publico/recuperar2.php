@@ -2,7 +2,7 @@
 <?php
 require("../bibliotecas/conexion.php");
 require_once '../email/phpmailer/PHPMailerAutoload.php';
-session_start(true);
+session_start();
 if($_SESSION['tipo_usuario'] == 1 || $_SESSION['tipo_usuario'] == 2){
 	if($_SESSION['tipo_usuario'] == 1){
 		//Se revisa que los campos esten vacios para validarlos y se empieza con los procesos

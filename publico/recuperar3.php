@@ -1,9 +1,9 @@
 <!-- Primero referenciamos los archivos que enlazan las clases de conexion, las consultas y las validaciones -->
 <?php
-require("../bibliotecas/database.php");
-session_start(true);
+require("../bibliotecas/conexion.php");
+session_start();
 //Se revisa que los campos esten vacios para validarlos y se empieza con los procesos
-if($_SESSION['tipo_usuario'] == 1){
+if($_SESSION['tipo_usuario'] == 2){
 if(!empty($_POST))
 {
     $clave1 = $_POST['clave1'];
@@ -16,8 +16,8 @@ if(!empty($_POST))
               if($clave1 == $clave2){
                   $clave_nueva = password_hash($clave1, PASSWORD_DEFAULT);
                   //Se realiza la consulta actualizar la clave
-                  $sql = "UPDATE alumnos SET contraseña = ? WHERE carnet = ?";
-                  $param = array($clave_nueva, $_SESSION['carnet']);
+                  $sql = "UPDATE ex_alumnos SET contraseña = ? WHERE id_exalumnos = ?";
+                  $param = array($clave_nueva, $_SESSION['id_exalumno']);
 				  Database::executeRow($sql, $param);
             	  header("location: index.php");
               }

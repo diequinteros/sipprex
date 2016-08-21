@@ -24,7 +24,7 @@ if(!empty($_POST))
 		    if($data != null)
 		    {
 		    	$hash = $data[0]['contraseña'];
-		    	if($clave == $hash) 
+		    	if(password_verify($clave, $hash)) 
 				//Si es ex-alumno, redirecciona al sitio publico del ex-alumno
 		    	{
 			    	$_SESSION['id_exalumnos'] = $data[0]['id_exalumnos'];
@@ -32,7 +32,7 @@ if(!empty($_POST))
 					$sesU = uniqid().'_ses';
 					$_SESSION['ses'] = $sesU;
 					$sqlSes = "INSERT INTO sesiones_exalum(unisesion, usuario, os) VALUES(?, ?, ?)";
-					$parametros = array($sesU, $data[0]['id_exalumno'], os_info($uagent));
+					$parametros = array($sesU, $data[0]['id_exalumnos'], os_info($uagent));
 					Database::executeRow($sqlSes, $parametros);
 					$ahora = date("Y-n-j H:i:s");
 					$_SESSION["ultimoAcceso"] = $ahora;  
