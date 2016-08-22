@@ -60,17 +60,23 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
-      	if($id == null){
+        if(strlen($titulo_anuncio) <= 100 && strlen($contenido_anuncio) <= 400)
+        {
+            if($id == null){
         	$sql = "INSERT INTO anuncios(titulo_anuncio, contenido_anuncio) VALUES(?, ?)";
             $params = array($titulo_anuncio, $contenido_anuncio);
+            }
+            else
+            {
+                $sql = "UPDATE anuncios SET titulo_anuncio = ?, contenido_anuncio = ? WHERE id_anuncio = ?";
+                $params = array($titulo_anuncio, $contenido_anuncio, $id);
+            }
+            Database::executeRow($sql, $params);
+            header("location: anuncios_index.php");
         }
-        else
-        {
-            $sql = "UPDATE anuncios SET titulo_anuncio = ?, contenido_anuncio = ? WHERE id_anuncio = ?";
-            $params = array($titulo_anuncio, $contenido_anuncio, $id);
+        else{
+            print("<div class='card-panel red'><i class='material-icons left'>error</i></div>");    
         }
-        Database::executeRow($sql, $params);
-        header("location: anuncios_index.php");
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)

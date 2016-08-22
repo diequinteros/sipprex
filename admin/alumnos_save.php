@@ -90,17 +90,23 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
-      	if($id == null){
+        if(strlen($contraseña) == 8 && strlen($nie) == 7 && strlen($nombre1) <= 15 && strlen($nombre2) <= 15 && strlen($apellido1) <= 15 && strlen($apellido2) <= 15 && is_int($grado) && is_int($especialidad) && is_int($grupo_tecnico) && is_int($grupo_academico) && $is_int($seccion))
+        {
+            if($id == null){
         	$sql = "INSERT INTO alumnos(contraseña, nie, nombre1, nombre2, apellido1, apellido2, grado, especialidad, grupo_Tecnic, secc, grupo_academ, inscrito) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $params = array($contraseña, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito);
+            }
+            else
+            {
+                $sql = "UPDATE alumnos SET contraseña = ?, nie = ?, nombre1 = ?, nombre2 = ?, apellido1 = ?, apellido2 = ?, grado = ?, especialidad = ?, grupo_Tecnic = ?, secc = ?, grupo_academ = ?, inscrito = ? WHERE carnet = ?";
+                $params = array($contraseña, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito, $id);
+            }
+            Database::executeRow($sql, $params);
+            header("location: alumnos_index.php");
         }
-        else
-        {
-            $sql = "UPDATE alumnos SET contraseña = ?, nie = ?, nombre1 = ?, nombre2 = ?, apellido1 = ?, apellido2 = ?, grado = ?, especialidad = ?, grupo_Tecnic = ?, secc = ?, grupo_academ = ?, inscrito = ? WHERE carnet = ?";
-            $params = array($contraseña, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito, $id);
+        else{
+        print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos ingresados no es correcto, por favor verificque sus datos.</div>");    
         }
-        Database::executeRow($sql, $params);
-        header("location: alumnos_index.php");
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)

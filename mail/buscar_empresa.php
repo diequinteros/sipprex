@@ -58,7 +58,7 @@ if($data != null)
 	            			<td>$row[direccion]</td>
 	            			<td>$row[correo]</td>
 	            			<td>
-								<a href='enviar_mail.php?$toempresa=true&&$id=$row[id_empresas]' class='btn blue'><i class='material-icons'>message</i></a>
+								<a href='enviar_mail.php?toempresa=true&&id=$row[id_empresa]' class='btn blue'><i class='material-icons'>message</i></a>
 							</td>
 	        			</tr>";
 		}

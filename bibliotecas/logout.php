@@ -1,4 +1,5 @@
 <?php
+	require("../bibliotecas/conexion.php");
 	session_start();
 	if(isset($_SESSION['ses']) && ( isset($_SESSION['carnet']) || isset($_SESSION['id_exalumno']) || isset($_SESSION['codigo_admin']) || isset($_SESSION['id_empresa'])  ) ){
 	if(isset($_SESSION['carnet']))

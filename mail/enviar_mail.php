@@ -8,6 +8,9 @@ $toadmin = null;
 if(isset($_GET['toadmin'])){
     $id = 1;
 }
+if(isset($_GET['toempresa']) || isset($_GET['toex']) || isset($_GET['toalum'])){
+    $id = $_GET["id"];
+}
 ?>
 <html>
   <?php
@@ -20,42 +23,87 @@ if(isset($_GET['toadmin'])){
       ?>
     </head>
 <body>
-	<?php
-      include("../inc/nav_mail.php");
-      ?>
-      <div class="container">
-      </div>
 <?php
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
     $titulo = $_POST['titulo'];
     $conte = $_POST['contenido'];
-    if(trim($titulo)!="" && $titulo != null && trim($conte)!="" && $conte != null && $id = 1){
+    if(trim($titulo)!="" && $titulo != null && trim($conte)!="" && $conte != null){
         $sql = null;
         $params = null;
-        if(isset($_SESSION['carnet'])){
+        //Origen de alumno
+        if(isset($_SESSION['carnet']) && isset($_GET['toadmin'])){
             $sql = "INSERT INTO mensajes(id_usuario_origen, admin_des, titulo, contenido) VALUES(?,1,?, ?)";
             $params = array($_SESSION['carnet'], $titulo, $conte);
             print("entra");
         }
-        if(isset($_SESSION['id_empresa'])){
+        if(isset($_SESSION['carnet']) && isset($_GET['toempresa'])){
+            $sql = "INSERT INTO mensajes(id_usuario_origen, id_empre_destino, titulo, contenido) VALUES(?,?,?, ?)";
+            $params = array($_SESSION['carnet'], $id, $titulo, $conte);
+            print("entra");
+        }
+        if(isset($_SESSION['carnet']) && isset($_GET['toex'])){
+            $sql = "INSERT INTO mensajes(id_usuario_origen, id_exalum_destino, titulo, contenido) VALUES(?,?,?, ?)";
+            $params = array($_SESSION['carnet'], $id, $titulo, $conte);
+            print("entra");
+        }
+        //Orgen de empresa
+        if(isset($_SESSION['id_empresa']) && isset($_GET['toadmin'])){
             $sql = "INSERT INTO mensajes(id_empre_origen, admin_des, titulo, contenido) VALUES(?,1,?, ?)";
             $params = array($_SESSION['id_empresa'], $titulo, $conte);
             print("entra");
         }
+        if(isset($_SESSION['id_empresa']) && isset($_GET['toalum'])){
+            $sql = "INSERT INTO mensajes(id_empre_origen, id_usuario_destino, titulo, contenido) VALUES(?,?,?,?)";
+            $params = array($_SESSION['id_empresa'], $id, $titulo, $conte);
+            print("entra");
+        }
+        //Origen admin
+        if(isset($_SESSION['codigo_admin']) && isset($_GET['toempresa'])){
+            $sql = "INSERT INTO mensajes(id_empre_destino, admin_ori, titulo, contenido) VALUES(?,1,?, ?)";
+            $params = array($id, $titulo, $conte);
+            print("entra");
+        }
+        if(isset($_SESSION['codigo_admin']) && isset($_GET['toex'])){
+            $sql = "INSERT INTO mensajes(id_exalum_destino, admin_ori, titulo, contenido) VALUES(?,1,?, ?)";
+            $params = array($id, $titulo, $conte);
+            print("entra".$id);
+        }
+        if(isset($_SESSION['codigo_admin']) && isset($_GET['toalum'])){
+            $sql = "INSERT INTO mensajes(id_usuario_destino, admin_ori, titulo, contenido) VALUES(?,1,?, ?)";
+            $params = array($id, $titulo, $conte);
+            print("entra".$id);
+        }
         Database::executeRow($sql,$params);
-        header("location: mail.php");
+        header("location:mail.php");
     }
 }
 ?>
+	<?php
+      include("../inc/nav_mail.php");
+      ?>
+      <div class="container">
+      </div>
 <div class="container z-depth-5">
 <ul class="collection with-header">
 <?php
         //<li> class="collection-header"><h5>Mensaje a administrador de empresa </h5></li>
         if(isset($_GET['toadmin']))
         {
-            print("<form  method='post' action='enviar_mail.php?toadmin = true' enctype='multipart/form-data'>");
+            print("<form  method='post' action='enviar_mail.php?toadmin=true' enctype='multipart/form-data'>");
+        }
+        if(isset($_GET['toempresa']))
+        {
+            print("<form  method='post' action='enviar_mail.php?toempresa=true&&id=$id' enctype='multipart/form-data'>");
+        }
+        if(isset($_GET['toex']))
+        {
+            print("<form  method='post' action='enviar_mail.php?toex=true&&id=$id' enctype='multipart/form-data'>");
+        }
+        if(isset($_GET['toalum']))
+        {
+            print("<form  method='post' action='enviar_mail.php?toalum=true&&id=$id' enctype='multipart/form-data'>");
         }
 ?>
 

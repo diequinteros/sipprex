@@ -14,20 +14,24 @@
 						if(isset($_SESSION['carnet']))
 						{
 							$id = $_SESSION['carnet'];
+							$sql = "DELETE FROM sesiones_alum WHERE usuario = ? AND unisesion = ?";
 						}
 						if(isset($_SESSION['id_exalumno']))
 						{
+							$sql = "DELETE FROM sesiones_exalum WHERE usuario = ? AND unisesion = ?";
 							$id = $_SESSION['id_exalumno'];
 						}
 						if(isset($_SESSION['codigo_admin']))
 						{
+							$sql = "DELETE FROM sesiones WHERE usuario = ? AND unisesion = ?";
 							$id = $_SESSION['codigo_admin'];
 						}
 						if(isset($_SESSION['id_empresa']))
 						{
+							$sql = "DELETE FROM sesiones_empre WHERE usuario = ? AND unisesion = ?";
 							$id = $_SESSION['id_empresa'];
 						}
-						$sql = "DELETE FROM sesiones WHERE usuario = ? AND unisesion = ?";
+						
 						$params = array($id, $_SESSION['ses']);
 						Database::executeRow($sql,$params); 
 					}
@@ -41,21 +45,24 @@
 		ini_set("date.timezone","America/El_Salvador");
 		if(isset($_SESSION['ses']) && isset($_SESSION['id_exalumnos']) || isset($_SESSION['carnet']) || isset($_SESSION['codigo_admin']) || isset($_SESSION['id_empresa']))
 		{
-		$sqlSes = "SELECT * FROM sesiones WHERE unisesion = ? AND usuario = ?";
 		if(isset($_SESSION['id_exalumnos']))
 		{
+		$sqlSes = "SELECT * FROM sesiones_exalum WHERE unisesion = ? AND usuario = ?";
 		$params = array($_SESSION['ses'], $_SESSION['id_exalumnos']);
 		}
 		if(isset($_SESSION['carnet']))
 		{
+		$sqlSes = "SELECT * FROM sesiones_alum WHERE unisesion = ? AND usuario = ?";
 		$params = array($_SESSION['ses'], $_SESSION['carnet']);
 		}
 		if(isset($_SESSION['codigo_admin']))
 		{
+		$sqlSes = "SELECT * FROM sesiones WHERE unisesion = ? AND usuario = ?";
 		$params = array($_SESSION['ses'], $_SESSION['codigo_admin']);
 		}
 		if(isset($_SESSION['id_empresa']))
 		{
+		$sqlSes = "SELECT * FROM sesiones_empre WHERE unisesion = ? AND usuario = ?";
 		$params = array($_SESSION['ses'], $_SESSION['id_empresa']);
 		}
 		if(Database::getRow($sqlSes,$params) == null){

@@ -558,7 +558,7 @@ if(!empty($_POST))
                 print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del administrador</a>");  
               }
               if($filas['id_empre_destino'] != null){
-                $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre_empresa, id_empresa FROM mensajes, empresas WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_empre_origen = empresas.id_empresa";
+                $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre_empresa, id_empresa FROM mensajes, empresas WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_empre_destino = empresas.id_empresa";
                 $datosEmpre = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
                  <div id='$datosEmpre[cod_mensaje]' class='modal modal-fixed-footer'>
@@ -736,7 +736,7 @@ if(!empty($_POST))
         print("<li><a class='btn-floating red tooltipped'  href='enviar_mail.php?toadmin=true' data-position='left' data-delay='50' data-tooltip='Nuevo mensaje a administrador'><i class='material-icons'>assignment_ind</i></a></li>");
       }
       if(!$isalumno){
-        print("<li><a class='btn-floating green tooltipped'  href='' data-position='left' data-delay='50' data-tooltip='Nuevo mensaje para un alumno'><i class='material-icons'>school</i></a></li>");
+        print("<li><a class='btn-floating green tooltipped'  href='buscar_alum.php' data-position='left' data-delay='50' data-tooltip='Nuevo mensaje para un alumno'><i class='material-icons'>school</i></a></li>");
       }
       if(!$isempresa)
       {
@@ -744,7 +744,7 @@ if(!empty($_POST))
       }
       if(!$isexalumno)
       {
-        print("<li><a class='btn-floating blue tooltipped'  href='' data-position='left' data-delay='50' data-tooltip='Nuevo mensaje para ex alumno'><i class='material-icons'>person</i></a></li>");
+        print("<li><a class='btn-floating blue tooltipped'  href='buscar_ex.php' data-position='left' data-delay='50' data-tooltip='Nuevo mensaje para ex alumno'><i class='material-icons'>person</i></a></li>");
       }
       ?>
     </ul>
