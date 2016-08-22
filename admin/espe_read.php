@@ -29,7 +29,7 @@
 $page = null;
 //Se toma la variable de paginacion
 if(!empty($_GET['page'])) {
-    $page = strip_tags(trim($_GET['page']));
+    $page = strip_tags(trim(base64_decode($_GET['page'])));
 }
 //Si la variable de paginacion esta vacia se pone como 1
 if($page == null) {
@@ -102,17 +102,17 @@ else
                 //caso contrario esta habilitado
                 else {
                     $page2 = $page - 1;
-                    $pagi = "<li class='waves-efect'><a href='espe_read.php?page=$page2'><i class='material-icons'>chevron_left</i></a></li>";
+                    $pagi = "<li class='waves-efect'><a href='espe_read.php?page=".base64_encode($page2)."'><i class='material-icons'>chevron_left</i></a></li>";
                 }
                 //Se imprime cada pagina, si la pagina que se imprimio concide con el numero de pagina que se imprime se imprimira seleccionado
                 for($i = 1; $i<=$filas; $i++) {
                     if($page==$i)
                     {
-                     $pagi .= "<li class='active blue'><a href='espe_read.php?page=$i'>$i</a></li>";
+                     $pagi .= "<li class='active blue'><a href='espe_read.php?page=$i'>".base64_encode($i)."</a></li>";
                     }
                     //Si no solo se imprimira
                     else{
-                        $pagi .= "<li class='waves-effect'><a href='espe_read.php?page=$i'>$i</a></li>";
+                        $pagi .= "<li class='waves-effect'><a href='espe_read.php?page=".base64_encode($i)."'>$i</a></li>";
                     }
                 }
                 //Al igual que si la pagina es la primera, si es la ultima se vera deshabilitada o no
@@ -122,7 +122,7 @@ else
                 }
                 else {
                     $page2 = $page + 1;
-                    $pagi .= "<li class='waves-efect'><a href='espe_read.php?page=$page2'><i class='material-icons'>chevron_right</i></a></li>";
+                    $pagi .= "<li class='waves-efect'><a href='espe_read.php?page=".base64_encode($page2)."'><i class='material-icons'>chevron_right</i></a></li>";
                 }
                 print($pagi);
 	?>
