@@ -8,6 +8,7 @@
       <?php
       include("../inc/styles.php");
       ?>
+      <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 <body>
 <?php
@@ -156,17 +157,17 @@ if(!empty($_POST))
             <input id='contra2' type='text' name='contra2' class='validate' length='40' maxlenght='25'/>
             <label for='contra2'>Vuelva a introducir su contraseña</label>
              <BR>
-                <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
+               <div class="g-recaptcha" data-sitekey="6Ld5KygTAAAAAONOc3wvhotTrjizSpjcc8ptvYxh"></div>
+
         </div>
     </div>
     <a href='login_empre.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
- 	<button type='submit' class='btn  teal darken-3'><i class='material-icons right'>check_circle</i>Crear registro</button>
+ 	<button type='submit' value="Crear registro" class='btn  teal darken-3'><i class='material-icons right'>check_circle</i>Crear registro</button>
 </form>
 <?php
 include("../inc/scripts.php");
 include("../inc/footer.php");
 ?>
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<script src="js/jquery.min"></script>
+
     </body>
 </html>

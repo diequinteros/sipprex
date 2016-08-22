@@ -76,16 +76,16 @@ if(!empty($_POST))
 				<h3 class="white-text">Iniciar Sesión</h3>
 			</div>
 			<!-- Se crea el formulario de login -->
-			<form class='row' method='post'>
+			<form class='row' autocomplete="off" method='post'>
 				<div class='row'>
 					<div class='input-field col m6 offset-m3 s12'>
 						<i class='material-icons prefix blue-text'>person_pin</i>
-						<input id='codigo' type='text' name='codigo' class='validate black-text' required/>
+						<input id='codigo' type='text' autocomplete="off" name='codigo' class='validate black-text' required/>
 						<label class='active white-text' for='codigo'>Código</label>
 					</div>
 					<div class='input-field col m6 offset-m3 s12'>
 						<i class='material-icons prefix blue-text'>vpn_key</i>
-						<input id='clave' type='password' name='clave' class="validate black-text" required/>
+						<input id='clave' type='password' autocomplete="off" name='clave' class="validate black-text" required/>
 						<label class='active white-text' for='clave'>Clave</label>
 					</div>
 				</div>
