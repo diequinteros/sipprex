@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-08-2016 a las 19:29:46
+-- Tiempo de generación: 23-08-2016 a las 03:55:48
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 7.0.4
 
@@ -51,10 +51,10 @@ CREATE TABLE `alumnos` (
   `carnet` int(8) NOT NULL,
   `contraseña` int(8) NOT NULL,
   `nie` int(7) DEFAULT NULL,
-  `nombre1` varchar(9) DEFAULT NULL,
-  `nombre2` varchar(10) DEFAULT NULL,
-  `apellido1` varchar(11) DEFAULT NULL,
-  `apellido2` varchar(11) DEFAULT NULL,
+  `nombre1` varchar(15) DEFAULT NULL,
+  `nombre2` varchar(15) DEFAULT NULL,
+  `apellido1` varchar(15) DEFAULT NULL,
+  `apellido2` varchar(15) DEFAULT NULL,
   `grado` int(2) DEFAULT NULL,
   `especialidad` int(2) DEFAULT NULL,
   `grupo_Tecnic` int(2) DEFAULT NULL,
@@ -441,6 +441,13 @@ CREATE TABLE `departamentosempre` (
   `empresa` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `departamentosempre`
+--
+
+INSERT INTO `departamentosempre` (`id_depar`, `departamento`, `encargado`, `telefono_encargado`, `empresa`) VALUES
+(1, 'D', 'D', '22222', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -750,6 +757,13 @@ CREATE TABLE `espeempresa` (
   `especialidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `espeempresa`
+--
+
+INSERT INTO `espeempresa` (`id_espeempresa`, `empresa`, `especialidad`) VALUES
+(1, 2, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -758,21 +772,23 @@ CREATE TABLE `espeempresa` (
 
 CREATE TABLE `ex_alumnos` (
   `id_exalumnos` int(8) NOT NULL,
-  `contraseña` int(8) NOT NULL,
+  `contraseña` varchar(100) NOT NULL,
   `nombre1` varchar(35) NOT NULL,
   `apellido1` varchar(35) NOT NULL,
   `telefono` int(8) NOT NULL,
   `ocupacion` int(11) NOT NULL,
   `correo_electronico` varchar(50) NOT NULL,
-  `observacion` varchar(200) NOT NULL
+  `observacion` varchar(200) NOT NULL,
+  `pregunta` varchar(50) NOT NULL,
+  `respuesta` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ex_alumnos`
 --
 
-INSERT INTO `ex_alumnos` (`id_exalumnos`, `contraseña`, `nombre1`, `apellido1`, `telefono`, `ocupacion`, `correo_electronico`, `observacion`) VALUES
-(11116666, 666, 'Diego', 'Quinteros', 0, 1, '', '');
+INSERT INTO `ex_alumnos` (`id_exalumnos`, `contraseña`, `nombre1`, `apellido1`, `telefono`, `ocupacion`, `correo_electronico`, `observacion`, `pregunta`, `respuesta`) VALUES
+(11116666, '$2y$10$GKO/EoHGnJVCr1ninUsyYO3cUrdt/gM997udL.8paWC0JcEONBdBa', 'Diego', 'Quinteros', 0, 1, '', '', '¿Cual es tu apellido?', 'Lemus');
 
 -- --------------------------------------------------------
 
@@ -794,7 +810,23 @@ INSERT INTO `grupo_academico` (`id_grupo_aca`, `grupo_aca`) VALUES
 (2, 2),
 (3, 3),
 (4, 4),
-(5, 5);
+(5, 5),
+(6, 11),
+(7, 22),
+(8, 33),
+(9, 44),
+(10, 55),
+(11, 66),
+(12, 77),
+(13, 88),
+(14, 12),
+(15, 13),
+(16, 14),
+(17, 15),
+(18, 16),
+(19, 17),
+(20, 27),
+(21, 33);
 
 -- --------------------------------------------------------
 
@@ -852,7 +884,16 @@ INSERT INTO `mensajes` (`cod_mensaje`, `id_usuario_destino`, `id_empre_destino`,
 (8, NULL, NULL, 11116666, NULL, NULL, NULL, 1, NULL, 'Probar enviar', 'Probando si se envio el mensaje', '2016-07-14 14:16:12', NULL),
 (9, NULL, NULL, NULL, NULL, NULL, 20110122, NULL, 1, 'Titulo', 'Mensaje', '2016-07-15 03:01:20', NULL),
 (10, NULL, NULL, NULL, NULL, 331, NULL, NULL, 1, 'Probando envio de mensajes', 'Enviado', '2016-07-15 08:58:36', NULL),
-(11, NULL, NULL, NULL, NULL, NULL, 20110122, NULL, 1, 'Prueba con el profe pa que vea que furula', 'Yeah', '2016-07-15 15:52:54', NULL);
+(11, NULL, NULL, NULL, NULL, NULL, 20110122, NULL, 1, 'Prueba con el profe pa que vea que furula', 'Yeah', '2016-07-15 15:52:54', NULL),
+(12, NULL, 1, NULL, NULL, NULL, NULL, 1, NULL, 'Mensaje prueba a AAA', 'AAA', '2016-08-22 03:06:28', NULL),
+(13, NULL, 1, NULL, NULL, NULL, NULL, 1, NULL, 'Mensaje prueba a AAA 2', 'AAA2', '2016-08-22 03:10:11', NULL),
+(14, NULL, 1, NULL, NULL, NULL, NULL, 1, NULL, 'Mensaje prueba a AAA 2', 'AAA2', '2016-08-22 03:11:20', NULL),
+(18, NULL, NULL, 11116666, NULL, NULL, NULL, 1, NULL, 'Prueba', 'Cont preuba', '2016-08-22 03:35:55', NULL),
+(20, NULL, NULL, 11116666, NULL, NULL, NULL, 1, NULL, 'Enviar a un ex es to es prueba', 'Prueba prueba prueba', '2016-08-22 03:37:28', NULL),
+(21, 1, NULL, NULL, NULL, NULL, NULL, 1, NULL, 'Enviar a alumno 1', 'Alumno 1', '2016-08-22 04:32:17', NULL),
+(22, NULL, NULL, NULL, NULL, NULL, 20110005, NULL, 1, 'Prueba', 'Esto es una prueba de 20110005', '2016-08-22 13:52:53', NULL),
+(23, NULL, NULL, 11116666, NULL, NULL, 20110005, NULL, NULL, 'Prueba de alum to exalum', 'Enviar a ex alum', '2016-08-22 14:02:27', NULL),
+(24, NULL, 331, NULL, NULL, NULL, 20110005, NULL, NULL, 'Mensaje prueba a AAA De alum', 'De alum a empresa', '2016-08-22 14:03:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -966,7 +1007,13 @@ CREATE TABLE `sesiones` (
 INSERT INTO `sesiones` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`) VALUES
 (6, '57b6e5d50d727_ses', 20140666, '2016-08-19 10:56:21', 'WinNT'),
 (7, '57b6e6c980902_ses', 20140666, '2016-08-19 11:00:25', 'WinNT'),
-(8, '57b6e75b16765_ses', 20140666, '2016-08-19 11:02:51', 'WinNT');
+(8, '57b6e75b16765_ses', 20140666, '2016-08-19 11:02:51', 'WinNT'),
+(9, '57b76d107fe0f_ses', 20140666, '2016-08-19 20:33:20', 'WinNT'),
+(10, '57b76f0ca4025_ses', 20140666, '2016-08-19 20:41:48', 'WinNT'),
+(11, '57b771b46cc26_ses', 20140666, '2016-08-19 20:53:08', 'WinNT'),
+(12, '57b928fcf3e22_ses', 20140666, '2016-08-21 04:07:25', 'WinNT'),
+(14, '57b9d60643166_ses', 20140666, '2016-08-21 16:25:42', 'WinNT'),
+(17, '57ba7c7bd1e67_ses', 20140666, '2016-08-22 04:15:55', 'WinNT');
 
 -- --------------------------------------------------------
 
@@ -981,6 +1028,16 @@ CREATE TABLE `sesiones_alum` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `os` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `sesiones_alum`
+--
+
+INSERT INTO `sesiones_alum` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`) VALUES
+(1, '57baffbd3608d_ses', 20110005, '2016-08-22 13:35:57', 'WinNT'),
+(2, '57bafff17fc32_ses', 20110005, '2016-08-22 13:36:49', 'WinNT'),
+(3, '57bb00471559d_ses', 20110005, '2016-08-22 13:38:15', 'WinNT'),
+(4, '57bb01dc5e52e_ses', 20110005, '2016-08-22 13:45:00', 'WinNT');
 
 -- --------------------------------------------------------
 
@@ -1010,6 +1067,15 @@ CREATE TABLE `sesiones_exalum` (
   `os` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `sesiones_exalum`
+--
+
+INSERT INTO `sesiones_exalum` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`) VALUES
+(1, '57b76bcea4c30_ses', 11116666, '2016-08-19 20:27:58', 'WinNT'),
+(2, '57b76f7ae5bd6_ses', 11116666, '2016-08-19 20:43:38', 'WinNT'),
+(3, '57b76ff9e6168_ses', 11116666, '2016-08-19 20:45:45', 'WinNT');
+
 -- --------------------------------------------------------
 
 --
@@ -1022,6 +1088,13 @@ CREATE TABLE `visitas` (
   `fecha_ultima_visita` date NOT NULL,
   `observaciones` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `visitas`
+--
+
+INSERT INTO `visitas` (`id_visita`, `empresa`, `fecha_ultima_visita`, `observaciones`) VALUES
+(1, 2, '2016-08-09', 'SASDASDA');
 
 --
 -- Índices para tablas volcadas
@@ -1202,7 +1275,7 @@ ALTER TABLE `años`
 -- AUTO_INCREMENT de la tabla `departamentosempre`
 --
 ALTER TABLE `departamentosempre`
-  MODIFY `id_depar` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_depar` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `empresas`
 --
@@ -1217,12 +1290,12 @@ ALTER TABLE `especialidades`
 -- AUTO_INCREMENT de la tabla `espeempresa`
 --
 ALTER TABLE `espeempresa`
-  MODIFY `id_espeempresa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_espeempresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `grupo_academico`
 --
 ALTER TABLE `grupo_academico`
-  MODIFY `id_grupo_aca` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_grupo_aca` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `grupo_tecnico`
 --
@@ -1232,7 +1305,7 @@ ALTER TABLE `grupo_tecnico`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `cod_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `cod_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `ocupaciones`
 --
@@ -1257,12 +1330,12 @@ ALTER TABLE `secciones`
 -- AUTO_INCREMENT de la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_alum`
 --
 ALTER TABLE `sesiones_alum`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_empre`
 --
@@ -1272,12 +1345,12 @@ ALTER TABLE `sesiones_empre`
 -- AUTO_INCREMENT de la tabla `sesiones_exalum`
 --
 ALTER TABLE `sesiones_exalum`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `visitas`
 --
 ALTER TABLE `visitas`
-  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
