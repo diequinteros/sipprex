@@ -42,13 +42,16 @@ if(!empty($_POST))
     $contraseña = strip_tags(trim($_POST['contraseña']));
     $contraseña2 = strip_tags(trim($_POST['contraseña2']));
     $correo = strip_tags(trim($_POST['correo_electronico']));
+    $create = strip_tags(trim($_POST['create']));
+    $update = strip_tags(trim($_POST['update']));
+    $delete = strip_tags(trim($_POST['delete']));
     //Se declaran las consultas
     try 
     {
       	if($contraseña == $contraseña2)
           {
-            $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo) VALUES(?, ?, ?)";
-            $params = array($codigo, $contraseña, $correo);
+            $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
+            $params = array($codigo, $contraseña, $correo, $create, $update, $delete);
             Database::executeRow($sql, $params);
             header("location: ../publico/login.php");
           }
@@ -90,6 +93,29 @@ if(!empty($_POST))
                         <label class="active" for='correo_electronico'>Correo Electrónico:</label>
                         <BR>
                 <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='input-field col s12 m3'>
+                        <label class="active">Permiso de Crear</label>
+                        <input id='c_si' type='radio' name='create' class='with-gap' value='1'/>
+                        <label for='c_si'><i class='material-icons'>check</i></label>
+                        <input id='c_no' type='radio' name='create' class='with-gap' value='0'/>
+                        <label for='c_no'><i class='material-icons'>cancel</i></label>
+                    </div>
+                    <div class='input-field col s12 m3'>
+                        <label class="active">Permiso de Actualizar</label>
+                        <input id='u_si' type='radio' name='update' class='with-gap' value='1'/>
+                        <label for='u_si'><i class='material-icons'>check</i></label>
+                        <input id='u_no' type='radio' name='update' class='with-gap' value='0'/>
+                        <label for='u_no'><i class='material-icons'>cancel</i></label>
+                    </div>
+                    <div class='input-field col s12 m3'>
+                        <label class="active">Permiso de Borrar</label>
+                        <input id='d_si' type='radio' name='delete' class='with-gap' value='1'/>
+                        <label for='d_si'><i class='material-icons'>check</i></label>
+                        <input id='d_no' type='radio' name='delete' class='with-gap' value='0'/>
+                        <label for='d_no'><i class='material-icons'>cancel</i></label>
                     </div>
                 </div>
                 <div class='titulo'>

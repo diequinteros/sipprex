@@ -125,7 +125,7 @@ if(!empty($_POST))
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='nie' type='text' name='nie' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($nie)); ?>' required/>
+                        <input id='nie' type='text' name='nie' class='validate' length='8' maxlength='8' value='<?php print(htmlspecialchars($nie)); ?>' required/>
                         <label class="active" for='nie'>NIE</label>
                     </div>
                 </div>

@@ -197,6 +197,24 @@ if(!empty($_POST))
                     </div>
                 </div>
                 <div class='row'>
+                    <div class='input-field col s12 m3'>
+                        <input id='acuerdo' type='file' name='archivo_acuerdo' class='with-gap'/>
+                        <label for='acuerdo' class='active'>Subir Acuerdo</label>
+                    </div>
+                    <div class='input-field col s12 m3'>
+                        <input id='bitacora' type='file' name='archivo_bitacora' class='with-gap'/>
+                        <label for='bitacora' class='active'>Subir Bitacora</label>
+                    </div>
+                    <div class='input-field col s12 m3'>
+                        <input id='carta' type='file' name='archivo_carta' class='with-gap'/>
+                        <label for='carta' class='active'>Subir Carta</label>
+                    </div>
+                    <div class='input-field col s12 m3'>
+                        <input id='evaluaciones' type='file' name='archivo_evaluaciones' class='with-gap'/>
+                        <label for='evaluaciones' class='active'>Subir Evaluaciones</label>
+                    </div>
+                </div>
+                <div class='row'>
                     <div class='file-field input-field col s12 m12'>
                         <i class='material-icons prefix'>search</i>
                         <input id='observacion_final' type='text' name='observacion_final' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($observacion_final)); ?>'/>

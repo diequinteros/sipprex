@@ -3,115 +3,116 @@
   session_start();
    ?>
     <head>
+    <?php include("../inc/styles.php"); ?>
     </head>
     <!-- NAV -->
-    <?php include("../inc/nav.php")?>
+    <?php include("../inc/nav.php"); ?>
     <body class="grey lighten-3">
-            <?php
-      include("../inc/styles.php");
-      $sql = "SELECT nombre_empresa, finalizo, observaciones, acuerdo, bitacora, carta, evaluaciones, observacion_final FROM registrospp, empresas WHERE registrospp.empresa = empresas.id_empresa AND alumno = ?";
-    $params = array($_SESSION['carnet']);
-    $data = Database::getRows($sql, $params);
-    //Se utiliza el segmento [0] debido a que el fetchAll utilizado en la clase getRows, devuelve un arreglo bi-dimensional y
-    //al devolver un solo valor, se debe especificar de que fila se tomara, en este caso al haber solo una seria la [0]
-    if($data[0]['nombre_empresa'] != null)
-    {
-    $nombreempre = $data[0]['nombre_empresa'];
-    $finalizo = $data[0]['finalizo'];
-    $observaciones = $data[0]['observaciones'];
-    $acuerdo = $data[0]['acuerdo'];
-    $bitacora = $data[0]['bitacora'];
-    $carta = $data[0]['carta'];
-    $evaluaciones = $data[0]['evaluaciones'];
-    $pbservacion_final = $data[0]['observacion_final'];  
-    }
+      <?php
+          $sql = "SELECT * FROM registrospp, empresas WHERE registrospp.empresa = empresas.id_empresa AND alumno = ?";
+          $params = array($_SESSION['carnet']);
+          $data = Database::getRow($sql, $params);
+          if($data['empresa'] != null)
+          {
+          $nombreempre = $data['nombre_empresa'];
+          $finalizo = $data['finalizo'];
+          $observaciones = $data['observaciones'];
+          $acuerdo = $data['acuerdo'];
+          $bitacora = $data['bitacora'];
+          $carta = $data['carta'];
+          $evaluaciones = $data['evaluaciones'];
+          $observacion_final = $data['observacion_final'];  
+          }
       ?>
       <!-- Anuncios -->
       <div class="">
     <form class="white col s12 offset-l1 z-depth-2">
+    <br>
       <div class="row">
-        <div class="input-field col s12">
-          <input disabled id="nombreempre" type="text" class="validate" value="<?php print(htmlspecialchars($nombreempre)); ?>">
+        <div class="input-field col s12 m6">
+          <input disabled id="nombreempre" type="text" class="validate black-text" value="<?php print(htmlspecialchars($nombreempre)); ?>">
           <label for="nombreempre">Empresa</label>
         </div>
-        <div class="input-field col s12">
-          <input disabled id="observacion" type="text" class="validate" value="<?php print(htmlspecialchars($observaciones)); ?>">
-          <label for="observacion">observacion</label>
+        <div class="input-field col s12 m6">
+          <input disabled id="observacion" type="text" class="validate black-text" value="<?php print(htmlspecialchars($observaciones)); ?>">
+          <label for="observacion">Observacion</label>
         </div>
-        <div class="input-field col s12">
+        <br>
+        <div class="input-field col s12 m2">
          <p>
            <?php
            if($acuerdo == 1){
-            print("<input type='checkbox' class='filled-in' id='acuerdo' checked='checked' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='acuerdo' checked='checked' disabled='disabled'/>
             <label for='acuerdo'>Acuerdo</label>"); 
            }
            else {
-            print("<input type='checkbox' class='filled-in' id='acuerdo' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='acuerdo' disabled='disabled'/>
             <label for='acuerdo'>Acuerdo</label>");
            }
             ?>
          </p> 
         </div>
-        <div class="input-field col s12">
+        <div class="input-field col s12 m2">
          <p>
            <?php
            if($carta == 1){
-            print("<input type='checkbox' class='filled-in' id='carta' checked='checked' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='carta' checked='checked' disabled='disabled'/>
             <label for='carta'>Carta</label>");
            }
            else {
-            print("<input type='checkbox' class='filled-in' id='carta' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='carta' disabled='disabled'/>
             <label for='carta'>Carta</label>");
            }
             ?>
          </p> 
         </div>
-        <div class="input-field col s12">
+        <div class="input-field col s12 m2">
          <p>
            <?php
            if($bitacora == 1){
-            print("<input type='checkbox' class='filled-in' id='bita' checked='checked' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='bita' checked='checked' disabled='disabled'/>
             <label for='bita'>Bitacora</label>");
            }
            else {
-            print("<input type='checkbox' class='filled-in' id='bita' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='bita' disabled='disabled'/>
             <label for='bita'>Bitacora</label>");
            }
             ?>
          </p> 
         </div>
-        <div class="input-field col s12">
+        <div class="input-field col s12 m2">
          <p>
            <?php
            if($evaluaciones){
-            print("<input type='checkbox' class='filled-in' id='eva' checked='checked' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='eva' checked='checked' disabled='disabled'/>
             <label for='eva'>Evaluacion</label>");
            }
            else {
-            print("<input type='checkbox' class='filled-in' id='eva' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='eva' disabled='disabled'/>
             <label for='eva'>Evaluacion</label>");
            }
             ?>
          </p> 
         </div>
-        <div class="input-field col s12">
+        <div class="input-field col s12 m2">
          <p>
            <?php
            if($finalizo){
-            print("<input type='checkbox' class='filled-in' id='final' checked='checked' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='final' checked='checked' disabled='disabled'/>
             <label for='final'>Finalizo</label>");
            }
            else {
-            print("<input type='checkbox' class='filled-in' id='final' disabled='disabled'/>
+            print("<input type='checkbox' class='filled-in black-text' id='final' disabled='disabled'/>
             <label for='final'>Finalizo</label>");
            }
             ?>
          </p> 
         </div>
       </div>
+      <br>
       <div class="row">
-        <div class="input-field col s12">
-          <input disabled value="<?php print(htmlspecialchars($pbservacion_final)); ?>" id="obserfinal" type="text" class="validate">
+        <div class="input-field col s12 m12">
+          <input disabled value="<?php print(htmlspecialchars($observacion_final)); ?>" id="obserfinal" type="text" class="validate black-text">
           <label for="obserfinal">Observacion final</label>
         </div>
       </div>

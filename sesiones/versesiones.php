@@ -21,7 +21,7 @@
       $sql = "SELECT id_sesion, fecha, os FROM sesiones WHERE usuario = ?";
       if(isset($_SESSION['id_exalumnos']))
     {
-    $params = array($_SESSION['id_exalummnos']);
+    $params = array($_SESSION['id_exalumnos']);
     }
     if(isset($_SESSION['carnet']))
     {

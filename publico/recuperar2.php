@@ -67,7 +67,7 @@ if($_SESSION['tipo_usuario'] == 1 || $_SESSION['tipo_usuario'] == 2){
 					<h3>Recuperar contraseña</h3>
 				</div>
 				<!-- Se crea el formulario de respuesta -->
-				<form class='row' method='post'>
+				<form class='row' method='post'autocomplete='off'>
 					<div class='row'>
 						<div class='input-field col m12 offset-m3 s12'>
 							<i class='material-icons prefix'>lightbulb_outline</i>
@@ -156,7 +156,7 @@ if($_SESSION['tipo_usuario'] == 1 || $_SESSION['tipo_usuario'] == 2){
 					<h3>Recuperar contraseña</h3>
 				</div>
 				<!-- Se crea el formulario de respuesta -->
-				<form class='row' method='post'>
+				<form class='row' method='post' autocomplete='off'>
 					<div class='row'>
 						<div class='input-field col m12 offset-m3 s12'>
 							<i class='material-icons prefix'>lightbulb_outline</i>

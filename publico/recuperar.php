@@ -83,13 +83,13 @@ if(!empty($_POST))
 		<meta charset="utf-8">
 	</head>
 	<body>
+	<a class='btn' href='index.php'><i class='material-icons'>home</i></a>
 		<div class="log_form">
-        <a class='btn' href='index.php'><i class='material-icons'>home</i></a>
 			<div class="center-align" id="log_tt">
 				<h3>Recuperar contraseña</h3>
 			</div>
 			<!-- Se crea el formulario de login -->
-			<form class='row' method='post'>
+			<form class='row' method='post' autocomplete='off'>
 				<div class='row'>
 					<div class='input-field col m12 offset-m3 s12'>
 						<i class='material-icons prefix'>person_pin</i>

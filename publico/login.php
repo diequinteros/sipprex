@@ -20,19 +20,19 @@ if(!empty($_POST))
 			  //Primero se evalua si es ex-alumno
   			$sql = "SELECT * FROM ex_alumnos WHERE id_exalumnos = ?";
 		    $param = array($codigo);
-		    $data = Database::getRows($sql, $param);
+		    $data = Database::getRow($sql, $param);
 		    if($data != null)
 		    {
-		    	$hash = $data[0]['contraseña'];
+		    	$hash = $data['contraseña'];
 		    	if(password_verify($clave, $hash)) 
 				//Si es ex-alumno, redirecciona al sitio publico del ex-alumno
 		    	{
-			    	$_SESSION['id_exalumnos'] = $data[0]['id_exalumnos'];
-			      	$_SESSION['nombre_usuario'] = $data[0]['nombre1']." ".$data[0]['apellido1'];
+			    	$_SESSION['id_exalumnos'] = $data['id_exalumnos'];
+			      	$_SESSION['nombre_usuario'] = $data['nombre1']." ".$data['apellido1'];
 					$sesU = uniqid().'_ses';
 					$_SESSION['ses'] = $sesU;
 					$sqlSes = "INSERT INTO sesiones_exalum(unisesion, usuario, os) VALUES(?, ?, ?)";
-					$parametros = array($sesU, $data[0]['id_exalumnos'], os_info($uagent));
+					$parametros = array($sesU, $data['id_exalumnos'], os_info($uagent));
 					Database::executeRow($sqlSes, $parametros);
 					$ahora = date("Y-n-j H:i:s");
 					$_SESSION["ultimoAcceso"] = $ahora;  
@@ -49,19 +49,19 @@ if(!empty($_POST))
 		    {
 		    	$sql = "SELECT * FROM alumnos WHERE carnet = ?";
 				$param = array($codigo);
-				$data = Database::getRows($sql, $param);
+				$data = Database::getRow($sql, $param);
 				if($data != null)
 				//Si es asi, redirecciona al sitio publico del alumno
 				{
-					$hash = $data[0]['contraseña'];
-					if($clave == $hash) 
+					$hash = $data['contraseña'];
+					if(password_verify($clave, $hash)) 
 					{
-						$_SESSION['carnet'] = $data[0]['carnet'];
-						$_SESSION['nombre_usuario'] = $data[0]['nombre1']." ".$data[0]['nombre2']." ".$data[0]['apellido1']." ".$data[0]['apellido2'];
+						$_SESSION['carnet'] = $data['carnet'];
+						$_SESSION['nombre_usuario'] = $data['nombre1']." ".$data['nombre2']." ".$data['apellido1']." ".$data['apellido2'];
 						$sesU = uniqid().'_ses';
 						$_SESSION['ses'] = $sesU;
 						$sqlSes = "INSERT INTO sesiones_alum(unisesion, usuario, os) VALUES(?, ?, ?)";
-						$parametros = array($sesU, $data[0]['carnet'], os_info($uagent));
+						$parametros = array($sesU, $data['carnet'], os_info($uagent));
 						Database::executeRow($sqlSes, $parametros);
 						$ahora = date("Y-n-j H:i:s");
 						$_SESSION["ultimoAcceso"] = $ahora;
@@ -77,12 +77,12 @@ if(!empty($_POST))
 				{
 					$sql = "SELECT * FROM administradores WHERE codigo_admin = ?";
 					$param = array($codigo);
-					$data = Database::getRows($sql, $param);
+					$data = Database::getRow($sql, $param);
 					if($data != null)
 					//Si es asi, redirecciona al sitio privado o a la dashboard siendo estos los accesos del administrador
 					{
-						$hash = $data[0]['contraseña_admin'];
-						if($clave == $hash) 
+						$hash = $data['contraseña_admin'];
+						if(password_verify($clave, $hash)) 
 						{
 							/*$_SESSION['codigo_admin'] = $data[0]['codigo_admin'];
 							$_SESSION['nombre_usuario'] = "Administrador";
@@ -105,7 +105,7 @@ if(!empty($_POST))
 
 						$pass = randomPassword();
 						$_SESSION['cod_secre'] = $pass;
-						$_SESSION['codigo_admin_sec'] = $data[0]['codigo_admin'];
+						$_SESSION['codigo_admin_sec'] = $data['codigo_admin'];
 						$_SESSION['nombre_usuario_sec'] = "Administrador";
 						$mail = new PHPMailer;
 						$mail->CharSet = 'UTF-8';
@@ -120,7 +120,7 @@ if(!empty($_POST))
 						$mail->Username = 'sipprex.ricaldone@gmail.com';                 // SMTP username
 						$mail->Password = 'ricaldone1';                           // SMTP password
 						$mail->setFrom('sipprex.ricaldone@gmail.com', 'Sipprex');
-						$mail->addAddress($data[0]['correo'],'');     // Add a recipient
+						$mail->addAddress($data['correo'],'');     // Add a recipient
 						$mail->Subject = 'Codigo de autenticacion';
 						$mail->Body    = 'El codigo de autenticacion es: '.$pass;
 

@@ -42,5 +42,27 @@ class Validator
      		return false;
      	}
 	}
+	public static function validateFile($file)
+	{
+		$file_size = $file["size"];
+     	if($file_size <= 2097152)
+     	{
+     		$file_type = $file["type"];
+	     	if($file_type == "application/msword" || $file_type == "application/pdf")
+	    	{
+	    		$file_temporal = $file["tmp_name"];
+				$archivo = file_get_contents($file_temporal);
+				return base64_encode($archivo);
+	    	}
+	    	else
+	    	{
+	    		return false;
+	    	}
+     	}
+     	else
+     	{
+     		return false;
+     	}
+	}
 }
 ?>

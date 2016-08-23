@@ -79,6 +79,7 @@
 			<div id='fixednav' class='navbar-fixed'>
 					<!-- contenido dropdown ajustes -->
 				<ul id='ajustes' class='dropdown-content z-depth-2'>
+				<li ><a href='../publico/profile.php' class='orange-text'>Perfil</a></li>
 				<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesion</a></li>
@@ -181,6 +182,7 @@
 							</ul>
 								<!-- contenido dropdown ajustes -->
 							<ul id='ajustes' class='dropdown-content z-depth-2'>
+							<li ><a href='../publico/profile.php' class='orange-text'>Perfil</a></li>
 							<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 							<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 							<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
