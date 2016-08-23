@@ -127,58 +127,58 @@ if(!empty($_POST))
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='nombre_empresa' type='text' name='nombre_empresa' class='validate' length='50' maxlenght='50' required/>
+          	<input id='nombre_empresa' type='text' name='nombre_empresa' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($Empresas)); ?>'required/>
           	<label for='nombre_empresa'>Empresas</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='rubro' type='text' name='rubro' class='validate' length='200' maxlenght='200'/>
+          	<input id='rubro' type='text' name='rubro' class='validate' length='10' maxlenght='10'value='<?php print(htmlspecialchars($Empresas)); ?>'/>
           	<label for='rubro'>Rubro</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='direccion' type='text' name='direccion' class='validate' length='50' maxlenght='50' required/>
+            <input id='direccion' type='text' name='direccion' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($Empresas)); ?>'required/>
             <label for='direccion'>Direccion</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='telefono' type='text' name='telefono' class='validate' length='200' maxlenght='200'/>
+            <input id='telefono' type='text' name='telefono' class='validate' length='12'' maxlength='12' value='<?php print(htmlspecialchars($Telefono)); ?>'required/>
             <label for='telefono'>Telefono</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='contacto' type='text' name='contacto' class='validate' length='50' maxlenght='50' required/>
+            <input id='contacto' type='text' name='contacto' class='validate' length='15'' maxlength='15' value='<?php print(htmlspecialchars($Contacto)); ?>'/>
             <label for='contacto'>Contacto</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='correo' type='text' name='correo' class='validate' length='200' maxlenght='200'/>
+            <input id='correo' type='text' name='correo' class='validate' length='20' maxlenght='20'/>
             <label for='correo'>Correo</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='codigo' type='text' name='codigo' class='validate' length='50' maxlenght='50' required/>
+            <input id='codigo'  type='number' name='codigo' class='validate' length='4'' maxlength='4' value='<?php print(htmlspecialchars($CodigoEmpresa)); ?>'/>
             <label for='codigo'>Codigo para inicio de sesion</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='contra1' type='text' name='contra1' class='validate' length='40' maxlenght='25'/>
+            <input id='contra1' type='password' name='contra1' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña1Empresa)); ?>'/>
             <label for='contra1'>Contraseña</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='contra2' type='text' name='contra2' class='validate' length='40' maxlenght='25'/>
+            <input id='contra2' type='password' name='contra2' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>' required/>
             <label for='contra2'>Vuelva a introducir su contraseña</label>
               <BR>
                 <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
-                
         </div>
+                
     </div>
     <a href='login_empre.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
  	<button type='submit' class='btn  teal darken-3'><i class='material-icons right'>check_circle</i>Crear registro</button>

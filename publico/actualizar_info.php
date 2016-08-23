@@ -176,12 +176,12 @@
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='contra1' type='text' name='contra1' class='validate' length='40' maxlenght='25'/>
+                <input id='contra1' type='password' name='contra1' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña1Empresa)); ?>'/>
                 <label for='contra1'>Nueva contraseña</label>
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='contra2' type='text' name='contra2' class='validate' length='40' maxlenght='25'/>
+                <input id='contra2' type='password' name='contra2' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>'/>
                 <label for='contra2'>Vuelva a introducir su contraseña nueva</label>
             </div>
         </div>

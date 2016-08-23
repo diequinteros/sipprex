@@ -31,7 +31,7 @@
     <form class="white col s12 offset-l1 z-depth-2">
       <div class="row">
         <div class="input-field col s12">
-          <input disabled id="nombreempre" type="text" class="validate" value="<?php print(htmlspecialchars($nombreempre)); ?>">
+          <input disabled id="nombreempre" type="text" class="validate" length='25' maxlength='25'  value="<?php print(htmlspecialchars($nombreempre)); ?>">
           <label for="nombreempre">Empresa</label>
         </div>
         <div class="input-field col s12">
