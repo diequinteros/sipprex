@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
@@ -152,3 +153,6 @@ if(!empty($_POST))
 <script src="js/jquery.min"></script>
     </body>
 </html>
+<?php
+ob_end_flush();
+?>

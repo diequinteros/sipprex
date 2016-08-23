@@ -147,7 +147,7 @@
 			}
 			else{
 				if(isset($_SESSION['codigo_admin'])){
-					print("
+					echo("
 						<div id='fixednav' class='navbar-fixed'>
 							<!-- contenido dropdown alumnos -->
 							<ul id='dropdown1' class='dropdown-content z-depth-2'>
@@ -235,6 +235,7 @@
 								<li><a class='dropdown-button' href='../admin/catalumnos.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown1'>Alumnos<i class='material-icons right'>arrow_drop_down</i></a></li>
 								<li><a class='dropdown-button' href='../admin/catexalumnos.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown2'>Ex alumnos<i class='material-icons right'>arrow_drop_down</i></a></li>
 								<li><a class='dropdown-button' href='../admin/catempresas.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown3'>Empresas<i class='material-icons right'>arrow_drop_down</i></a></li>
+								<li><a href='../admin/anuncios_index.php'>Anuncios</a></li>
 								<li><a href='../admin/registrospp_index.php'>Practicas profesionales</a></li>
 								<li><a class='dropdown-button' href='../bibliotecas/logout.php' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes'>$_SESSION[nombre_usuario]<i class='material-icons right'>more_vert</i></a></li>
 								</ul>
@@ -244,6 +245,7 @@
 								<li><a class='dropdown-button' href='../admin/catalumnos.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown11'>Alumnos<i class='material-icons right hide-on-med-and-down'>arrow_drop_down</i></a></li>
 								<li><a class='dropdown-button' href='../admin/catexalumnos.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown21'>Ex alumnos<i class='material-icons right hide-on-med-and-down'>arrow_drop_down</i></a></li>
 								<li><a class='dropdown-button' href='../admin/catempresas.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown31'>Empresas<i class='material-icons right hide-on-med-and-down'>arrow_drop_down</i></a></li>
+								<li><a href='../admin/anuncios_index.php'>Anuncios</a></li>
 								<li><a href='../admin/registrospp_index.php'>Practicas profesionales</a></li>
 								<li><a class='dropdown-button' href='../bibliotecas/logout.php' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes1'>$_SESSION[nombre_usuario]<i class='material-icons hide-on-med-and-down'>more_vert</i></a></li>
 								</ul>

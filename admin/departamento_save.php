@@ -1,5 +1,6 @@
 <!-- Se llaman los diferentes archivos que contienen nuestras clases de conexion y consultas -->
 <?php
+ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
@@ -90,12 +91,12 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='departamento' type='text' name='departamento' class='validate' length='12' maxlength='12' value='<?php print(htmlspecialchars($departamento)); ?>' required/>
+                        <input id='departamento' type='text' name='departamento' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($departamento)); ?>' required/>
                         <label class="active" for='departamento'>Departamento:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>account_circle</i>
-                        <input id='encargado' type='text' name='encargado' class='validate' length='9' maxlength='9' value='<?php print(htmlspecialchars($encargado)); ?>' required/>
+                        <input id='encargado' type='text' name='encargado' class='validate' length='30' maxlength='30' value='<?php print(htmlspecialchars($encargado)); ?>' required/>
                         <label class="active" for='encargado'>Encargado:</label>
                     </div>
                 </div>
@@ -141,3 +142,6 @@ if(!empty($_POST))
         <?php include('../inc/footer.php'); ?>
     </body>
 </html>
+<?php
+ob_end_flush();
+?>

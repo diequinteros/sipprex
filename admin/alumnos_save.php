@@ -1,5 +1,6 @@
 <!-- Se llaman los diferentes archivos que contienen nuestras clases de conexion y consultas -->
 <?php
+ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
@@ -15,7 +16,7 @@ if(empty($_GET['id']))
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                include('../inc/nav.1.php');
+                include('../inc/nav.php');
                 <body>
                     <div class='card-panel paneles'>
                         <div class='titulo'>
@@ -45,9 +46,11 @@ else{
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body>
+                <body>";
+                    
                     include('../inc/nav.php');
-                    <div class='card-panel paneles'>
+                    
+    $head .=  "<div class='card-panel paneles'>
                         <div class='titulo'>
                             <h3>Modificar un Alumno</h3>
                         </div>";
@@ -90,7 +93,7 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
-        if(strlen($contraseña) == 8 && strlen($nie) == 7 && strlen($nombre1) <= 15 && strlen($nombre2) <= 15 && strlen($apellido1) <= 15 && strlen($apellido2) <= 15 && is_int($grado) && is_int($especialidad) && is_int($grupo_tecnico) && is_int($grupo_academico) && $is_int($seccion))
+        if(strlen($contraseña) == 8 && strlen($nie) <= 8 && strlen($nombre1) <= 15 && strlen($nombre2) <= 15 && strlen($apellido1) <= 15 && strlen($apellido2) <= 15 && is_numeric($grado) && is_numeric($especialidad) && is_numeric($grupo_tecnico) && is_numeric($grupo_academico) && is_numeric($seccion) && ($inscrito == "VERDADERO" || $inscrito == "FALSO"))
         {
             if($id == null){
         	$sql = "INSERT INTO alumnos(contraseña, nie, nombre1, nombre2, apellido1, apellido2, grado, especialidad, grupo_Tecnic, secc, grupo_academ, inscrito) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -289,7 +292,12 @@ if(!empty($_POST))
             </form>
         </div>
         <!-- Finalmente se relacionan los scripts del sitio -->
-        <?php include '../inc/scripts.php'; ?>
-        <?php include("../inc/footer.php")?>
+        <?php include '../inc/scripts.php'; 
+        ?>
+        <?php include("../inc/footer.php")
+        ?>
     </body>
 </html>
+<?php
+ob_end_flush();
+?>

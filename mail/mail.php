@@ -126,13 +126,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos, fecha_leeido FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_origen = ex_alumnos.id_exalumnos";
                 $datosEx = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEx[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEx['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEx[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEx['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosEx[nombre1] $datosEx[apellido1]</h5>
+                      <h5>De: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEx[contenido]</p>
+                      <p>".htmlspecialchars($datosEx['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -142,23 +142,23 @@ if(!empty($_POST))
                 print($modalEs);
                 if($datosEx['fecha_leeido'] != null)
                 {
-                  print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]'><h5>$datosEx[titulo]</h5> Mensaje de ex alumno: $datosEx[nombre1] $datosEx[apellido1]<i class='material-icons right'>done</i></a>");  
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de ex alumno: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."<i class='material-icons right'>done</i></a>");  
                 }
                 else{
-                  print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]' onclick='abrir(leido.php?id=$datosEx[cod_mensaje]);'><h5>$datosEx[titulo]</h5> Mensaje de ex alumno: $datosEx[nombre1] $datosEx[apellido1]<i class='material-icons right'>mail_outline</i></a>");
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."' onclick='abrir(leido.php?id=".htmlspecialchars($datosEx['cod_mensaje']).");'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de ex alumno: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."<i class='material-icons right'>mail_outline</i></a>");
                 }
               }
               if($filas['id_usuario_origen'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, carnet, fecha_leeido FROM mensajes, alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_usuario_origen = alumnos.carnet";
                 $datosAlum = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosAlum[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosAlum['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosAlum[titulo]</h4>
+                      <h4>".htmlspecialchars($datosAlum['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosAlum[nombre1] $datosAlum[apellido1]</h5>
+                      <h5>De: ".htmlspecialchars($datosAlum['nombre1'])." ".$datosAlum['apellido1']."</h5>
                       <div class='divider'></div>
-                      <p>$datosAlum[contenido]</p>
+                      <p>".htmlspecialchars($datosAlum['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -168,10 +168,10 @@ if(!empty($_POST))
                 print($modalEs);
                 if($datosAlum['fecha_leeido'] != null)
                 {
-                  print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del alumno: $datosAlum[nombre1] $datosAlum[apellido1]<i class='material-icons right'>done</i></a>");  
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del alumno: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."<i class='material-icons right'>done</i></a>");  
                 }
                 else{
-                  print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del alumno: $datosAlum[nombre1] $datosAlum[apellido1]<i class='material-icons right'>mail_outline</i></a>");
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del alumno: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."<i class='material-icons right'>mail_outline</i></a>");
                 }
                   
               }
@@ -179,13 +179,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre_empresa, id_empresa, fecha_leeido FROM mensajes, empresas WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_empre_origen = empresas.id_empresa";
                 $datosEmpre = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEmpre[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEmpre['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEmpre[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEmpre['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosEmpre[nombre_empresa]</h5>
+                      <h5>De: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEmpre[contenido]</p>
+                      <p>".htmlspecialchars($datosEmpre['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -195,10 +195,10 @@ if(!empty($_POST))
                 print($modalEs);
                 if($datosEmpre['fecha_leeido'] != null)
                 {
-                  print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de la empresa: $datosEmpre[nombre_empresa]<i class='material-icons right'>done</i></a>");  
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de la empresa: ".htmlspecialchars($datosEmpre['nombre_empresa'])."<i class='material-icons right'>done</i></a>");  
                 }
                 else{
-                  print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de la empresa: $datosEmpre[nombre_empresa]<i class='material-icons right'>mail_outline</i></a>");
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de la empresa: ".htmlspecialchars($datosEmpre['nombre_empresa'])."<i class='material-icons right'>mail_outline</i></a>");
                 }
                   
               }
@@ -214,13 +214,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_origen = ex_alumnos.id_exalumnos";
                 $datosEx = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEx[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEx['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEx[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEx['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosEx[nombre1] $datosEx[apellido1]</h5>
+                      <h5>De: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEx[contenido]</p>
+                      <p>".htmlspecialchars($datosEx['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -228,19 +228,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]'><h5>$datosEx[titulo]</h5> Mensaje de ex alumno: $datosEx[nombre1] $datosEx[apellido1]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de ex alumno: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</a>");  
               }
               if($filas['admin_ori'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado FROM mensajes WHERE cod_mensaje = $filas[cod_mensaje]";
                 $datosAlum = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosAlum[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosAlum['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosAlum[titulo]</h4>
+                      <h4>".htmlspecialchars($datosAlum['titulo'])."</h4>
                       <div class='divider'></div>
                       <h5>De: Administrador</h5>
                       <div class='divider'></div>
-                      <p>$datosAlum[contenido]</p>
+                      <p>".htmlspecialchars($datosAlum['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -248,19 +248,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del administrador</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del administrador</a>");  
               }
               if($filas['id_empre_origen'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre_empresa, id_empresa FROM mensajes, empresas WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_empre_origen = empresas.id_empresa";
                 $datosEmpre = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEmpre[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEmpre['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEmpre[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEmpre['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>Para: $datosEmpre[nombre_empresa]</h5>
+                      <h5>Para: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEmpre[contenido]</p>
+                      <p>".htmlspecialchars($datosEmpre['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -268,7 +268,7 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de la empresa: $datosEmpre[nombre_empresa]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de la empresa: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</a>");  
               }
             }
           }
@@ -282,13 +282,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado FROM mensajes WHERE cod_mensaje = $filas[cod_mensaje]";
                 $datosEx = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEx[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEx['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEx[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEx['titulo'])."</h4>
                       <div class='divider'></div>
                       <h5>De: Administrador</h5>
                       <div class='divider'></div>
-                      <p>$datosEx[contenido]</p>
+                      <p>".htmlspecialchars($datosEx['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -296,19 +296,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]'><h5>$datosEx[titulo]</h5> Mensaje de administrador</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de administrador</a>");  
               }
               if($filas['id_usuario_origen'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, carnet FROM mensajes, alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_usuario_origen = alumnos.carnet";
                 $datosAlum = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosAlum[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosAlum['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosAlum[titulo]</h4>
+                      <h4>".htmlspecialchars($datosAlum['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosAlum[nombre1] $datosAlum[apellido1]</h5>
+                      <h5>De: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosAlum[contenido]</p>
+                      <p>".htmlspecialchars($datosAlum['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -316,19 +316,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del alumno: $datosAlum[nombre1] $datosAlum[apellido1]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del alumno: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."</a>");  
               }
               if($filas['id_empre_origen'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre_empresa, id_empresa FROM mensajes, empresas WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_empre_origen = empresas.id_empresa";
                 $datosEmpre = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEmpre[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEmpre['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEmpre[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEmpre['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosEmpre[nombre_empresa]</h5>
+                      <h5>De: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEmpre[contenido]</p>
+                      <p>".htmlspecialchars($datosEmpre['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -336,7 +336,7 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de la empresa: $datosEmpre[nombre_empresa]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de la empresa: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</a>");  
               }
             }
           }
@@ -350,13 +350,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_origen = ex_alumnos.id_exalumnos";
                 $datosEx = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEx[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEx['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEx[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEx['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosEx[nombre1] $datosEx[apellido1]</h5>
+                      <h5>De: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEx[contenido]</p>
+                      <p>".htmlspecialchars($datosEx['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -364,19 +364,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]'><h5>$datosEx[titulo]</h5> Mensaje de ex alumno: $datosEx[nombre1] $datosEx[apellido1]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de ex alumno: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</a>");  
               }
               if($filas['id_usuario_origen'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, carnet FROM mensajes, alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_usuario_origen = alumnos.carnet";
                 $datosAlum = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosAlum[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosAlum['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosAlum[titulo]</h4>
+                      <h4>".htmlspecialchars($datosAlum['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosAlum[nombre1] $datosAlum[apellido1]</h5>
+                      <h5>De: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosAlum[contenido]</p>
+                      <p>".htmlspecialchars($datosAlum['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -384,19 +384,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del alumno: $datosAlum[nombre1] $datosAlum[apellido1]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del alumno: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."</a>");  
               }
               if($filas['admin_ori'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado FROM mensajes WHERE cod_mensaje = $filas[cod_mensaje]";
                 $datosEmpre = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEmpre[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEmpre['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEmpre[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEmpre['titulo'])."</h4>
                       <div class='divider'></div>
                       <h5>De: Administrador</h5>
                       <div class='divider'></div>
-                      <p>$datosEmpre[contenido]</p>
+                      <p>".htmlspecialchars($datosEmpre['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -404,7 +404,7 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de administrador</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de administrador</a>");  
               }
             }
           }
@@ -433,13 +433,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos, fecha_leeido FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_destino = ex_alumnos.id_exalumnos";
                 $datosEx = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEx[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEx['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEx[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEx['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>Para: $datosEx[nombre1] $datosEx[apellido1]</h5>
+                      <h5>Para: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEx[contenido]</p>
+                      <p>".htmlspecialchars($datosEx['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -449,23 +449,23 @@ if(!empty($_POST))
                 print($modalEs);
                 if($datosEx['fecha_leeido'] != null)
                 {
-                  print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]'><h5>$datosEx[titulo]</h5> Mensaje de ex alumno: $datosEx[nombre1] $datosEx[apellido1]<i class='material-icons right'>done</i></a>");  
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de ex alumno: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."<i class='material-icons right'>done</i></a>");  
                 }
                 else{
-                  print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]' onclick='abrir(leido.php?id=$datosEx[cod_mensaje]);'><h5>$datosEx[titulo]</h5> Mensaje de ex alumno: $datosEx[nombre1] $datosEx[apellido1]<i class='material-icons right'>mail_outline</i></a>");
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."' onclick='abrir(leido.php?id=".htmlspecialchars($datosEx['cod_mensaje']).");'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de ex alumno: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."<i class='material-icons right'>mail_outline</i></a>");
                 }
               }
               if($filas['id_usuario_destino'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, carnet, fecha_leeido FROM mensajes, alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_usuario_destino = alumnos.carnet";
                 $datosAlum = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosAlum[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosAlum['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosAlum[titulo]</h4>
+                      <h4>".htmlspecialchars($datosAlum['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>Para: $datosAlum[nombre1] $datosAlum[apellido1]</h5>
+                      <h5>Para: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosAlum[contenido]</p>
+                      <p>".htmlspecialchars($datosAlum['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -475,10 +475,10 @@ if(!empty($_POST))
                 print($modalEs);
                 if($datosAlum['fecha_leeido'] != null)
                 {
-                  print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del alumno: $datosAlum[nombre1] $datosAlum[apellido1]<i class='material-icons right'>done</i></a>");  
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del alumno: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."<i class='material-icons right'>done</i></a>");  
                 }
                 else{
-                  print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del alumno: $datosAlum[nombre1] $datosAlum[apellido1]<i class='material-icons right'>mail_outline</i></a>");
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del alumno: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."<i class='material-icons right'>mail_outline</i></a>");
                 }
                   
               }
@@ -486,13 +486,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre_empresa, id_empresa, fecha_leeido FROM mensajes, empresas WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_empre_destino = empresas.id_empresa";
                 $datosEmpre = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEmpre[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEmpre['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEmpre[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEmpre['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>Para: $datosEmpre[nombre_empresa]</h5>
+                      <h5>Para: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEmpre[contenido]</p>
+                      <p>".htmlspecialchars($datosEmpre['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -502,10 +502,10 @@ if(!empty($_POST))
                 print($modalEs);
                 if($datosEmpre['fecha_leeido'] != null)
                 {
-                  print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de la empresa: $datosEmpre[nombre_empresa]<i class='material-icons right'>done</i></a>");  
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de la empresa: ".htmlspecialchars($datosEmpre['nombre_empresa'])."<i class='material-icons right'>done</i></a>");  
                 }
                 else{
-                  print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de la empresa: $datosEmpre[nombre_empresa]<i class='material-icons right'>mail_outline</i></a>");
+                  print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de la empresa: ".htmlspecialchars($datosEmpre['nombre_empresa'])."<i class='material-icons right'>mail_outline</i></a>");
                 }
                   
               }
@@ -521,13 +521,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_destino = ex_alumnos.id_exalumnos";
                 $datosEx = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEx[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEx['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEx[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEx['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosEx[nombre1] $datosEx[apellido1]</h5>
+                      <h5>De: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEx[contenido]</p>
+                      <p>".htmlspecialchars($datosEx['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -535,19 +535,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]'><h5>$datosEx[titulo]</h5> Mensaje de ex alumno: $datosEx[nombre1] $datosEx[apellido1]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de ex alumno: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</a>");  
               }
               if($filas['admin_des'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado FROM mensajes WHERE cod_mensaje = $filas[cod_mensaje]";
                 $datosAlum = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosAlum[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosAlum['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosAlum[titulo]</h4>
+                      <h4>".htmlspecialchars($datosAlum['titulo'])."</h4>
                       <div class='divider'></div>
                       <h5>Para: Administrador</h5>
                       <div class='divider'></div>
-                      <p>$datosAlum[contenido]</p>
+                      <p>".htmlspecialchars($datosAlum['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -555,19 +555,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del administrador</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del administrador</a>");  
               }
               if($filas['id_empre_destino'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre_empresa, id_empresa FROM mensajes, empresas WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_empre_destino = empresas.id_empresa";
                 $datosEmpre = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEmpre[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEmpre['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEmpre[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEmpre['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosEmpre[nombre_empresa]</h5>
+                      <h5>De: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEmpre[contenido]</p>
+                      <p>".htmlspecialchars($datosEmpre['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -575,7 +575,7 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de la empresa: $datosEmpre[nombre_empresa]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de la empresa: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</a>");  
               }
             }
           }
@@ -589,13 +589,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado FROM mensajes WHERE cod_mensaje = $filas[cod_mensaje]";
                 $datosEx = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEx[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEx['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEx[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEx['titulo'])."</h4>
                       <div class='divider'></div>
                       <h5>Para: Administrador</h5>
                       <div class='divider'></div>
-                      <p>$datosEx[contenido]</p>
+                      <p>".htmlspecialchars($datosEx['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -603,19 +603,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]'><h5>$datosEx[titulo]</h5> Mensaje de administrador</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de administrador</a>");  
               }
               if($filas['id_usuario_destino'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, carnet FROM mensajes, alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_usuario_destino = alumnos.carnet";
                 $datosAlum = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosAlum[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosAlum['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosAlum[titulo]</h4>
+                      <h4>".htmlspecialchars($datosAlum['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosAlum[nombre1] $datosAlum[apellido1]</h5>
+                      <h5>De: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosAlum[contenido]</p>
+                      <p>".htmlspecialchars($datosAlum['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -623,19 +623,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del alumno: $datosAlum[nombre1] $datosAlum[apellido1]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del alumno: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."</a>");  
               }
               if($filas['id_empre_destino'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre_empresa, id_empresa FROM mensajes, empresas WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_empre_destino = empresas.id_empresa";
                 $datosEmpre = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEmpre[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEmpre['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEmpre[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEmpre['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosEmpre[nombre_empresa]</h5>
+                      <h5>De: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEmpre[contenido]</p>
+                      <p>".htmlspecialchars($datosEmpre['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -643,7 +643,7 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de la empresa: $datosEmpre[nombre_empresa]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de la empresa: ".htmlspecialchars($datosEmpre['nombre_empresa'])."</a>");  
               }
             }
           }
@@ -657,13 +657,13 @@ if(!empty($_POST))
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_destino = ex_alumnos.id_exalumnos";
                 $datosEx = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEx[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEx['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEx[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEx['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>De: $datosEx[nombre1] $datosEx[apellido1]</h5>
+                      <h5>De: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosEx[contenido]</p>
+                      <p>".htmlspecialchars($datosEx['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -671,19 +671,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEx[cod_mensaje]'><h5>$datosEx[titulo]</h5> Mensaje de ex alumno: $datosEx[nombre1] $datosEx[apellido1]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEx['cod_mensaje'])."'><h5>".htmlspecialchars($datosEx['titulo'])."</h5> Mensaje de ex alumno: ".htmlspecialchars($datosEx['nombre1'])." ".htmlspecialchars($datosEx['apellido1'])."</a>");  
               }
               if($filas['id_usuario_destino'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, carnet FROM mensajes, alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_usuario_destino = alumnos.carnet";
                 $datosAlum = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosAlum[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosAlum['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosAlum[titulo]</h4>
+                      <h4>".htmlspecialchars($datosAlum['titulo'])."</h4>
                       <div class='divider'></div>
-                      <h5>Para: $datosAlum[nombre1] $datosAlum[apellido1]</h5>
+                      <h5>Para: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."</h5>
                       <div class='divider'></div>
-                      <p>$datosAlum[contenido]</p>
+                      <p>".htmlspecialchars($datosAlum['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -691,19 +691,19 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosAlum[cod_mensaje]'><h5>$datosAlum[titulo]</h5> Mensaje del alumno: $datosAlum[nombre1] $datosAlum[apellido1]</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosAlum['cod_mensaje'])."'><h5>".htmlspecialchars($datosAlum['titulo'])."</h5> Mensaje del alumno: ".htmlspecialchars($datosAlum['nombre1'])." ".htmlspecialchars($datosAlum['apellido1'])."</a>");  
               }
               if($filas['admin_des'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado FROM mensajes WHERE cod_mensaje = $filas[cod_mensaje]";
                 $datosEmpre = Database::getRow($sqlRecibidos1, null);
                 $modalEs = "
-                 <div id='$datosEmpre[cod_mensaje]' class='modal modal-fixed-footer'>
+                 <div id='".htmlspecialchars($datosEmpre['cod_mensaje'])."' class='modal modal-fixed-footer'>
                     <div class='modal-content'>
-                      <h4>$datosEmpre[titulo]</h4>
+                      <h4>".htmlspecialchars($datosEmpre['titulo'])."</h4>
                       <div class='divider'></div>
                       <h5>Para: Administrador</h5>
                       <div class='divider'></div>
-                      <p>$datosEmpre[contenido]</p>
+                      <p>".htmlspecialchars($datosEmpre['contenido'])."</p>
                     </div>
                     <div class='modal-footer'>
                       <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat '>Cerrar</a>
@@ -711,7 +711,7 @@ if(!empty($_POST))
                  </div>
                 ";
                 print($modalEs);
-                print("<a class='modal-trigger collection-item' href='#$datosEmpre[cod_mensaje]'><h5>$datosEmpre[titulo]</h5> Mensaje de administrador</a>");  
+                print("<a class='modal-trigger collection-item' href='#".htmlspecialchars($datosEmpre['cod_mensaje'])."'><h5>".htmlspecialchars($datosEmpre['titulo'])."</h5> Mensaje de administrador</a>");  
               }
             }
           }
@@ -726,7 +726,7 @@ if(!empty($_POST))
   <!-- BOTON ESTATICO -->
   <div class="fixed-action-btn" style="bottom: 20%; right: 10%;">
       <!-- Activador del modal1 -->
-        <a class="modal-trigger btn-floating btn-large red">
+        <a class="btn-floating btn-large red">
           <i class="large material-icons">add</i>
         </a>
         <ul>

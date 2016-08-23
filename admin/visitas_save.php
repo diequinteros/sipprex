@@ -1,5 +1,6 @@
 <html>
   <?php
+  ob_start();
   session_start(); 
   require("../bibliotecas/conexion.php");
   require("../bibliotecas/validator.php");
@@ -110,3 +111,6 @@ include("../inc/footer.php");
 ?>
  	</body>
 </html>
+<?php
+ob_end_flush();
+?>

@@ -27,8 +27,8 @@ if(isset($_GET['toempresa']) || isset($_GET['toex']) || isset($_GET['toalum'])){
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-    $titulo = $_POST['titulo'];
-    $conte = $_POST['contenido'];
+    $titulo = strip_tags(trim($_POST['titulo']));
+    $conte = strip_tags(trim($_POST['contenido']));
     if(trim($titulo)!="" && $titulo != null && trim($conte)!="" && $conte != null){
         $sql = null;
         $params = null;
