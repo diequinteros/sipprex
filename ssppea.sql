@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-08-2016 a las 16:15:09
+-- Tiempo de generación: 23-08-2016 a las 16:32:19
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ssppea`
 --
+CREATE DATABASE IF NOT EXISTS `ssppea` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `ssppea`;
 
 -- --------------------------------------------------------
 
@@ -333,7 +335,7 @@ INSERT INTO `alumnos` (`carnet`, `contraseña`, `nie`, `nombre1`, `nombre2`, `ap
 (20140628, '0', 1683569, 'Gabriela', 'Ileana', 'Blanco', 'Rodríguez', 1, 5, 1, 1, 1, 'VERDADERO', '', '0'),
 (20140635, '0', 1676681, 'Daniela', 'Esmeralda', 'Figueroa', 'Portillo', 1, 3, 1, 1, 1, 'VERDADERO', '', '0'),
 (20140641, '0', 785561, 'Gissela', 'Beatriz', 'Acevedo', 'Calero', 1, 3, 2, 2, 2, 'VERDADERO', '', '0'),
-(20140643, '$2y$10$dkqJqtNrxmRTqVCSt8gbQOgGSJQA23rqqLCBs6Cy9zIIyzBgebUUG', 3982723, 'Jorge', 'Alejandro', 'Calderón', 'De Paz', 1, 6, 1, 2, 2, 'VERDADERO', '¿Nombre de mi primer mascota?', 'Axel'),
+(20140643, '$2y$10$l93FTFCGR/YnIs12gBzICuipIpnSAeuMR1XuXXHv5yqRj5CysW1La', 3982723, 'Jorge', 'Alejandro', 'Calderón', 'De Paz', 1, 6, 1, 2, 2, 'VERDADERO', '¿Nombre de mi primer mascota?', 'Axel'),
 (20140656, '0', 6761992, 'Gabriel', 'Armando', 'Monge', 'Caballero', 1, 6, 2, 1, 3, 'VERDADERO', '', '0'),
 (20140658, '0', 1676905, 'Oscar', 'Rafael', 'Parras', 'Padilla', 1, 4, 1, 1, 3, 'VERDADERO', '', '0'),
 (20140679, '0', 3553700, 'Luis', 'Fernando', 'Larín', 'Contreras', 1, 6, 1, 1, 1, 'VERDADERO', '', '0'),
@@ -860,7 +862,9 @@ INSERT INTO `mensajes` (`cod_mensaje`, `id_usuario_destino`, `id_empre_destino`,
 (8, NULL, NULL, 11116666, NULL, NULL, NULL, 1, NULL, 'Probar enviar', 'Probando si se envio el mensaje', '2016-07-14 14:16:12', NULL),
 (9, NULL, NULL, NULL, NULL, NULL, 20110122, NULL, 1, 'Titulo', 'Mensaje', '2016-07-15 03:01:20', NULL),
 (10, NULL, NULL, NULL, NULL, 331, NULL, NULL, 1, 'Probando envio de mensajes', 'Enviado', '2016-07-15 08:58:36', NULL),
-(11, NULL, NULL, NULL, NULL, NULL, 20110122, NULL, 1, 'Prueba con el profe pa que vea que furula', 'Yeah', '2016-07-15 15:52:54', NULL);
+(11, NULL, NULL, NULL, NULL, NULL, 20110122, NULL, 1, 'Prueba con el profe pa que vea que furula', 'Yeah', '2016-07-15 15:52:54', NULL),
+(12, NULL, NULL, NULL, NULL, NULL, 20140643, NULL, 1, 'Aviso importante', 'Ya termine', '2016-08-23 14:24:46', NULL),
+(13, NULL, NULL, NULL, NULL, NULL, 20140643, NULL, 1, '-:-_::,', '<h1>cualquiercosa</h1>', '2016-08-23 14:25:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -1000,7 +1004,9 @@ INSERT INTO `sesiones_alum` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`)
 (2, '57bbf17f30c04_ses', 20140643, '2016-08-23 06:47:27', 'Windows 7'),
 (5, '57bc008ce8b12_ses', 20140643, '2016-08-23 07:51:40', 'Windows 7'),
 (6, '57bc322d15aa5_ses', 20140643, '2016-08-23 11:23:25', 'Windows 7'),
-(7, '57bc329c9a151_ses', 20140643, '2016-08-23 11:25:16', 'Windows 7');
+(7, '57bc329c9a151_ses', 20140643, '2016-08-23 11:25:16', 'Windows 7'),
+(8, '57bc5b6269677_ses', 20140643, '2016-08-23 14:19:14', 'Windows 7'),
+(9, '57bc5e17e7ec8_ses', 20140643, '2016-08-23 14:30:47', 'Windows 7');
 
 -- --------------------------------------------------------
 
@@ -1277,7 +1283,7 @@ ALTER TABLE `grupo_tecnico`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `cod_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `cod_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `ocupaciones`
 --
@@ -1307,7 +1313,7 @@ ALTER TABLE `sesiones`
 -- AUTO_INCREMENT de la tabla `sesiones_alum`
 --
 ALTER TABLE `sesiones_alum`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_empre`
 --
