@@ -50,10 +50,31 @@ if(!empty($_POST))
     {
       	if($contraseña == $contraseña2)
           {
+              
+                if(isset($_POST['g-recaptcha-response']))
+                        {
+                            $captcha=$_POST['g-recaptcha-response'];
+                        }
+                        if (!$captcha) 
+                        {
+                           print("<div class='card-panel red'><i class='material-icons left'>llena todo los campos</i></div>");
+                        }
+                        $url = 'https://www.google.com/recaptcha/api/siteverify';
+                        $llave = "6Ld5KygTAAAAAHeMM5B63xFqlDzsRnB0-zW9f8oD";
+                        $resultado = file_get_contents($url."?secret=.".$llave."&response=".$_POST['g-recaptcha-response']."");
+                        $data = json_decode($resultado,true);
+                        if (isset($data->success) AND $data->success==true) {
+                            print("<div class='card-panel red'><i class='material-icons left'>spamer</i></div>");
+                           
+                        }
+                        else
+                            {
+                                $hash = password_hash($contraseña, PASSWORD_DEFAULT);
             $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
-            $params = array($codigo, $contraseña, $correo, $create, $update, $delete);
+            $params = array($codigo, $hash, $correo, $create, $update, $delete);
             Database::executeRow($sql, $params);
             header("location: ../publico/login.php");
+                            }
           }
           else{
              print("<div class='card-panel red'><i class='material-icons left'>error</i>Las contraseñas no son iguales</div>"); 
@@ -68,7 +89,7 @@ if(!empty($_POST))
 }
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
-            <form action="../publico/capt.php" method='POST' class='row' autocomplete="off" enctype='multipart/form-data'>
+            <form method='POST' class='row' autocomplete="off" enctype='multipart/form-data'>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>person_pin</i>
