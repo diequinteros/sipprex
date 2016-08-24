@@ -30,10 +30,7 @@ session_start();
 				<div class='input-field col s6 m4'>
 					<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Buscar</button> 	
 				</div>
-				<!-- Se incluye el boton de agregar un nuevo ex-alumno -->
-				<div class='input-field col s12 m4'>
-					<a href='proyecto_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
-				</div>
+				
 			</form>
 		</div>
 		<!-- Se realizan las operaciones de busqueda con la consulta "SELECT" -->
@@ -41,31 +38,13 @@ session_start();
 		if(!empty($_POST))
 		{
 			$search = strip_tags(trim($_POST['buscar']));
-			if(isset($_SESSION['id_empresa']))
-			{
-				$sql = "SELECT id_proyecto, titulo, descripcion, remunerado, fecha_propuesto, nombre_empresa FROM proyecto, empresas WHERE proyecto.id_empre_encargado = empresas.id_empresa AND id_empre_encargado = ? AND titulo LIKE ? ORDER BY id_proyecto";
-				$params = array($_SESSION['id_empresa'],"%$search%");
-			}
-			if(isset($_SESSION['id_exalumnos']))
-			{
-				$sql = "SELECT id_proyecto, titulo, descripcion, remunerado, fecha_propuesto, nombre1, apellido1 FROM proyecto, ex_alumnos WHERE proyecto.id_exalum_encargado = ex_alumnos.id_exalumnos AND id_exalum_encargado = ? AND titulo LIKE ? ORDER BY id_proyecto";
-				$params = array($_SESSION['id_exalumnos'],"%$search%");
-			}
-			
-			
+			$sql = "SELECT id_proyecto, titulo, descripcion, remunerado, fecha_propuesto, id_empre_encargado, id_exalum_encargado FROM proyecto WHERE titulo LIKE ? ORDER BY id_proyecto";
+			$params = array("%$search%");
 		}
 		else
 		{
-			if(isset($_SESSION['id_empresa']))
-			{
-				$sql = "SELECT id_proyecto, titulo, descripcion, remunerado, fecha_propuesto, nombre_empresa FROM proyecto, empresas WHERE proyecto.id_empre_encargado = empresas.id_empresa AND id_empre_encargado = ? ORDER BY id_proyecto";
-				$params = array($_SESSION['id_empresa']);
-			}
-			if(isset($_SESSION['id_exalumnos']))
-			{
-				$sql = "SELECT id_proyecto, titulo, descripcion, remunerado, fecha_propuesto, nombre1, apellido1 FROM proyecto, ex_alumnos WHERE proyecto.id_exalum_encargado = ex_alumnos.id_exalumnos AND id_exalum_encargado = ? ORDER BY id_proyecto";
-				$params = array($_SESSION['id_exalumnos']);
-			}
+			$sql = "SELECT id_proyecto, titulo, descripcion, remunerado, fecha_propuesto, id_empre_encargado, id_exalum_encargado FROM proyecto ORDER BY id_proyecto";
+			$params = array(null);
 		}
 		//A traves de un arreglo se muestran los datos en la tabla 
 		$data = Database::getRows($sql, $params);
@@ -78,6 +57,7 @@ session_start();
 										<th>ID</th>
 										<th>Titulo del proyecto</th>
 										<th>Descripcion del proyecto</th>
+										<th>Encargado</th>
 										<th>remunerado</th>
 									</tr>
 								</thead>
@@ -86,8 +66,21 @@ session_start();
 				{
 					$tabla .= 	"<tr>
 									<td>".htmlspecialchars($row['id_proyecto'])."</td>
-									<td>".htmlspecialchars($row['titulo'])."</td>
-									<td>".htmlspecialchars($row['descripcion'])."</td>";
+									<td>".htmlspecialchars($row['titulo'])."</td>";
+									$tabla .=		"<td>".htmlspecialchars($row['descripcion'])."</td>";
+									if($row['id_empre_encargado'] != null){
+										$sqlEn = "SELECT * FROM empresas WHERE id_empresa = ?";
+										$params = array($row['id_empre_encargado']);
+										$dats = Database::getRow($sqlEn,$params);
+									$tabla .= "<td>".htmlspecialchars($dats['nombre_empresa'])."</td>";
+									}
+									else{
+										$sqlEn = "SELECT * FROM ex_alumnos WHERE id_exalumnos = ?";
+										$params = array($row['id_exalum_encargado']);
+										$dats = Database::getRow($sqlEn,$params);
+										$tabla .=	"<td>".htmlspecialchars($dats['nombre1'])." ".htmlspecialchars($dats['apellido1'])."</td>";
+									}
+					
 									if($row['remunerado'] == 1){
 										$tabla .= "<td>Sí</td>";
 									}
@@ -95,8 +88,6 @@ session_start();
 										$tabla .= "<td>No</td>";
 									}
 					$tabla .=	"	<td>
-										<a href='proyecto_save.php?id=".base64_encode(htmlspecialchars($row['id_proyecto']))."' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='proyecto_delete.php?id=".base64_encode($row['id_proyecto'])."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

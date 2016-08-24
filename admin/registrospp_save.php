@@ -131,21 +131,21 @@ if(!empty($_POST))
                     <div class='input-field col s12 m6'>
                         <!-- Mediante las siguientes sentencias se llena el comboBox con los datos de Empresas -->
                         <?php
-                        $sql = "SELECT id_empresa, nombre_empresa FROM empresas";
+                        $sql = "SELECT id_depar, nombre_empresa, departamento FROM departamentosempre, empresas WHERE departamentosempre.empresa = empresas.id_empresa";
                         $data = Database::getRows($sql, null);
                         $combo = "<br><select class='browser-default' name='id_empresa' required>";
                         if($empresa == null)
                         {
-                            $combo .= "<option value='' disabled selected>Seleccione una empresa</option>";
+                            $combo .= "<option value='' disabled selected>Seleccione un departamento de alguna empresa</option>";
                         }
                         foreach($data as $row)
                         {
                             $combo .= "<option value='$row[0]'";
-                            if(isset($_POST['id_empresa']) == $row[0] || $empresa == $row[0])
+                            if(isset($_POST['id_depar']) == $row[0] || $empresa == $row[0])
                             {
                                 $combo .= " selected";
                             }
-                            $combo .= ">$row[1]</option>";
+                            $combo .= ">$row[1] - $row[2]</option>";
                         }	
                         $combo .= "</select>
                                 <label class='active' style='text-transform: capitalize;'>Empresa:</label>";

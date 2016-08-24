@@ -1,5 +1,6 @@
 <html>
   <?php
+  ob_start();
   session_start(); 
   require("../bibliotecas/conexion.php");
   ("../bibliotecas/Validator.php");
@@ -74,7 +75,7 @@ if($data != null)
 	            			<td>".htmlspecialchars($row['id_ocupacion'])."</td>
 	            			<td>".htmlspecialchars($row['ocupacion'])."</td>
 	            			<td>
-	            				<a href='ocupaciones_save.php?id=$row[id_ocupacion]' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
+	            				<a href='ocupaciones_save.php?id=".base64_encode(htmlspecialchars($row[id_ocupacion]))."' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
 								<a href='ocupaciones_delete.php?id=".base64_encode(htmlspecialchars($row['id_ocupacion']))."' class='btn red'><i class='material-icons'>delete</i></a>
 							</td>
 	        			</tr>";
@@ -134,3 +135,6 @@ include("../inc/footer.php");
 ?>
  	</body>
 </html>
+<?php
+ob_end_flush();
+?>

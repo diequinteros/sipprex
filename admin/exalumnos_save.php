@@ -76,6 +76,7 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
+        $contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
       	if($id == null){
         	  $sql = "INSERT INTO ex_alumnos(contraseña, nombre1, apellido1, telefono, ocupacion, correo_electronico, observacion) VALUES(?, ?, ?, ?, ?, ?, ?)";
             $params = array($contraseña, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion);
@@ -100,7 +101,7 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
-                        <input id='contraseña' type='text' name='contraseña' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($contraseña)); ?>' required/>
+                        <input id='contraseña' type='password' name='contraseña' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($contraseña)); ?>' required/>
                         <label class="active" for='contraseña'>Contraseña:</label>
                     </div>
                     <div class='input-field col s12 m6'>
@@ -150,7 +151,7 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>mail_outline</i>
-                        <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='25' maxlenght='25' value='<?php print(htmlspecialchars($correo)); ?>'/>
+                        <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($correo)); ?>'/>
                         <label class="active" for='correo_electronico'>Correo Electrónico:</label>
                     </div>
                     <div class='file-field input-field col s12 m6'>

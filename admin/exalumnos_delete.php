@@ -1,5 +1,7 @@
 <!-- Se enlazan los archivos que contienen la conexion y las consultas a la base -->
 <?php
+//Se activa el output buffering para enviar todos los output al final del ob_end_flush
+ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 //Se verifica que el id tenga un valor
@@ -57,3 +59,6 @@ if(!empty($_POST))
 		<?php include '../inc/scripts.php'; ?>
 	</body>
 </html>
+<?php
+ob_end_flush();
+?>

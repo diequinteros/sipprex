@@ -12,13 +12,14 @@
 <body>
 <?php
 include("../inc/nav.php");
+
 if(!empty($_GET['id'])) 
 {
     $id = base64_decode($_GET['id']);
 }
 else
 {
-    header("location: grupoaca_read.php");
+    header("location: grado_read.php");
 }
 
 if(!empty($_POST))
@@ -26,10 +27,10 @@ if(!empty($_POST))
 	$id = strip_tags(trim($_POST['id']));
 	try 
 	{
-		$sql = "DELETE FROM grupo_academico WHERE id_grupo_aca = ?";
+		$sql = "DELETE FROM años WHERE id_año = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: grupo_read.php");
+	    header("location: grados_read.php");
 	} 
 	catch (Exception $error) 
 	{
@@ -40,13 +41,13 @@ if(!empty($_POST))
 <form method='post' class='row'>
 	<input type='hidden' name='id' value='<?php print(htmlspecialchars($id)); ?>'/>
 	<button type='submit' class='btn red'><i class='material-icons right'>check_circle</i>Si</button>
-	<a href='grupoaca_read.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>
+	<a href='grado_read.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>
 </form>
 <?php
 include("../inc/scripts.php");
 include("../inc/footer.php");
 ?>
- 	</body>
+	</body>
 </html>
 <?php
 ob_end_flush();

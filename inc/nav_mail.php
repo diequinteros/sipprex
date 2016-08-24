@@ -87,7 +87,7 @@ ini_set("date.timezone","America/El_Salvador");
 							<li class='divider'></li>
 							<li><a href='../admin/espe_read.php' class='orange-text'>Especialidad</a></li>
 							<li class='divider'></li>
-							<li><a href='' class='orange-text'>Grados</a></li>
+							<li><a href='../admin/grado_read.php' class='orange-text'>Grados</a></li>
 							<li class='divider'></li>
 							<li><a href='../admin/gruposaca_read.php' class='orange-text'>Grupos academicos</a></li>
 							<li class='divider'></li>
@@ -124,7 +124,7 @@ ini_set("date.timezone","America/El_Salvador");
 							<li class='divider'></li>
 							<li><a href='../admin/espe_read.php' class='orange-text'>Especialidad</a></li>
 							<li class='divider'></li>
-							<li><a href='' class='orange-text'>Grados</a></li>
+							<li><a href='../admin/grado_read.php' class='orange-text'>Grados</a></li>
 							<li class='divider'></li>
 							<li><a href='../admin/gruposaca_read.php' class='orange-text'>Grupos academicos</a></li>
 							<li class='divider'></li>

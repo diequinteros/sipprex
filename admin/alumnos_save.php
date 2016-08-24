@@ -55,7 +55,7 @@ else{
                             <h3>Modificar un Alumno</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = base64_decode($_GET['id']);
     $sql = "SELECT * FROM alumnos, años, especialidades, grupo_tecnico, secciones, grupo_academico WHERE alumnos.grado = años.id_año AND alumnos.especialidad = especialidades.id_especialidad AND alumnos.grupo_Tecnic = grupo_tecnico.id_grupo_tec AND alumnos.secc = secciones.id_seccion AND alumnos.grupo_academ = grupo_academico.id_grupo_aca AND carnet = ?";
     $params = array($id);
     $data = Database::getRows($sql, $params);
@@ -95,6 +95,7 @@ if(!empty($_POST))
     {
         if(strlen($contraseña) == 8 && strlen($nie) <= 8 && strlen($nombre1) <= 15 && strlen($nombre2) <= 15 && strlen($apellido1) <= 15 && strlen($apellido2) <= 15 && is_numeric($grado) && is_numeric($especialidad) && is_numeric($grupo_tecnico) && is_numeric($grupo_academico) && is_numeric($seccion) && ($inscrito == "VERDADERO" || $inscrito == "FALSO"))
         {
+            $contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
             if($id == null){
         	$sql = "INSERT INTO alumnos(contraseña, nie, nombre1, nombre2, apellido1, apellido2, grado, especialidad, grupo_Tecnic, secc, grupo_academ, inscrito) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $params = array($contraseña, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito);

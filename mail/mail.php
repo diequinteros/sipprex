@@ -1,5 +1,6 @@
 <html>
   <?php
+  ob_start();
   session_start();
    require("../bibliotecas/conexion.php");
    require("../bibliotecas/validator.php");
@@ -46,8 +47,8 @@ else{
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-    $email = $_POST['email'];
-    $nombre = $_POST['nombre'];
+    $email = strip_tags(trim($_POST['email']));
+    $nombre = strip_tags(trim($_POST['nombre']));
     if(trim($email)!="" && $email != null && trim($nombre)!="" && $nombre != null){
         $sql = "INSERT INTO mensajes(id_empre_origen, admin_des, titulo, contenido) VALUES(?,1,?, ?)";
         $sqlNombre = "SELECT nombre_empresa FROM empresas WHERE id_empresa = ?";
@@ -759,3 +760,6 @@ include("../inc/footer.php");
 <script type="text/javascript" src="../js/modal.js"></script>
 	</body>
 </html>
+<?php
+ob_end_flush();
+?>

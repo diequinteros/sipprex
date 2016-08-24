@@ -1,5 +1,7 @@
 <html>
-  <?php require("../bibliotecas/conexion.php");  
+  <?php
+  ob_start();
+   require("../bibliotecas/conexion.php");  
   session_start();
    ?>
     <head>
@@ -72,3 +74,6 @@
       <?php include("../inc/footer.php"); ?>
     </body>
   </html>
+  <?php
+    ob_end_flush();
+  ?>

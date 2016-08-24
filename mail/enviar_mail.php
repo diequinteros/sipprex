@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 if(empty($_SESSION)&&empty($_GET))
 {
@@ -136,3 +137,6 @@ include("../inc/footer.php");
 ?>
 	</body>
 </html>
+<?php
+ob_end_flush();
+?>

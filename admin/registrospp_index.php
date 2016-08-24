@@ -1,5 +1,6 @@
 <!-- Se referencia el archivo de la conexion y nuestras clases -->
 <?php
+ob_start();
 session_start(); 
 require("../bibliotecas/conexion.php"); 
 ?>
@@ -58,12 +59,12 @@ require("../bibliotecas/conexion.php");
 		if(!empty($_POST))
 		{
 			$search = strip_tags(trim(base64_decode($_POST['buscar'])));
-			$sql = "SELECT * FROM registrospp, alumnos, empresas WHERE registrospp.alumno = alumnos.carnet AND registrospp.empresa = empresas.id_empresa AND apellido1 LIKE ? ORDER BY id_registropp LIMIT $page1,20";
+			$sql = "SELECT * FROM registrospp, alumnos, empresas, departamentosempre WHERE registrospp.alumno = alumnos.carnet AND registrospp.empresa = departamentosempre.id_depar AND departamentosempre.empresa = empresas.id_empresa AND apellido1 LIKE ? ORDER BY id_registropp LIMIT $page1,20";
 			$params = array("%$search%");
 		}
 		else
 		{
-			$sql = "SELECT * FROM registrospp, alumnos, empresas WHERE registrospp.alumno = alumnos.carnet AND registrospp.empresa = empresas.id_empresa ORDER BY id_registropp LIMIT $page1,20";
+			$sql = "SELECT * FROM registrospp, alumnos, empresas, departamentosempre WHERE registrospp.alumno = alumnos.carnet AND registrospp.empresa = departamentosempre.id_depar AND departamentosempre.empresa = empresas.id_empresa ORDER BY id_registropp LIMIT $page1,20";
 			$params = null;
 		}
 		//A traves de un arreglo se muestran los datos en la tabla 
@@ -93,7 +94,7 @@ require("../bibliotecas/conexion.php");
 					$tabla .= 	"<tr>
 									<td>".htmlspecialchars($row['id_registropp'])."</td>
 									<td>".htmlspecialchars($row['nombre1']).""." "."".htmlspecialchars($row['nombre2']).""." "."".htmlspecialchars($row['apellido1']).""." "."".htmlspecialchars($row['apellido2'])."</td>
-									<td>$row[nombre_empresa]</td>";
+									<td>".htmlspecialchars($row['nombre_empresa'])." - ".htmlspecialchars($row['departamento'])."</td>";
 					if($row['finalizo']==1){
 						$tabla .= "<td>Sí</td>";
 					}
@@ -127,7 +128,7 @@ require("../bibliotecas/conexion.php");
 					}
 					$tabla .=		"<td>".htmlspecialchars($row['observacion_final'])."</td>
 									<td>
-										<a href='registrospp_save.php?id=$row[id_registropp]' class='btn blue'><i class='material-icons'>edit</i></a>
+										<a href='registrospp_save.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='registrospp_delete.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
@@ -188,3 +189,6 @@ require("../bibliotecas/conexion.php");
 	<!-- Asi como el footer del sitio -->
 	<?php require("../inc/footer.php"); ?>
 </html>
+<?php
+ob_end_flush();
+?>

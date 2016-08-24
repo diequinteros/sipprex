@@ -3,7 +3,7 @@
   ob_start();
   session_start(); 
   require("../bibliotecas/conexion.php");
-  require("../bibliotecas/Validator.php");
+  require("../bibliotecas/validator.php");
    ?>
     <head>
       <?php
@@ -16,17 +16,18 @@ include("../inc/nav.php");
 if(empty($_GET['id'])) 
 {
     $id = null;
-    $sec= null;
+    $año= null;
   
 }
 else
 {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM secciones WHERE id_seccion = ?";
+    $id = base64_decode($_GET['id']);
+    $sql = "SELECT * FROM años WHERE id_año = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
-    $sec = $data['seccion'];
-    $id = $data['id_seccion'];
+    $año = $data['año'];
+    $id = $data['id_año'];
+
     
    
 }
@@ -34,28 +35,28 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	 $sec = strip_tags(trim($_POST['seccion']));
-     $id = strip_tags(trim($_POST['id_seccion']));
+  	 $año = strip_tags(trim($_POST['año']));
+     $id = strip_tags(trim($_POST['id_año']));
 
     try 
     {
-      	if($sec == "")
+      	if($año == "")
         {
             throw new Exception("Datos incompletos.");
         }
 
         if($id == null)
         {
-        	$sql = "INSERT INTO secciones (seccion) VALUES(?)";
-            $params = array($sec);
+        	$sql = "INSERT INTO años(año) VALUES(?)";
+            $params = array($año);
         }
         else
         {
-            $sql = "UPDATE secciones SET seccion = ? WHERE id_seccion = ?";
-            $params = array($sec, $id);
+            $sql = "UPDATE años SET año = ? WHERE id_año = ?";
+            $params = array($año, $id);
         }
         Database::executeRow($sql, $params);
-        header("location: seccion_read.php");
+        header("location: grado_read.php");
     }
     catch (Exception $error)
     {
@@ -63,20 +64,20 @@ if(!empty($_POST))
     }
 }
 ?>
-<form method='post' autocomplete="off" class='row' enctype='multipart/form-data'>
+<form method='post' class='row' autocomplete="off" enctype='multipart/form-data'>
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='id_seccion' type='text' name='id_seccion' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($id)); ?>'/>
-          	<label for='id_seccion'>ID</label>
+          	<input id='id_especialidad' type='text' name='id_año' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($id)); ?>'/>
+          	<label for='id_especialidad'>ID</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='seccion' type='text' name='seccion' class='validate' length='30' maxlenght='30' value='<?php print(htmlspecialchars($sec)); ?>' required/>
-          	<label for='seccion'>Seccion</label>
+          	<input id='especialidad' type='text' name='año' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($año)); ?>' required/>
+          	<label for='especialidad'>Grado</label>
         </div>
     </div>
-    <a href='seccion_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
+    <a href='grado_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
  	<button type='submit' class='btn  teal darken-3'><i class='material-icons right'>check_circle</i>Guardar</button>
 </form>
 <?php

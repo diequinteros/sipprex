@@ -10,6 +10,9 @@
       include("../inc/styles.php");
       ?>
     </head>
+    <?php
+    include("../inc/nav.php");
+    ?>
 <body>
 <?php
 

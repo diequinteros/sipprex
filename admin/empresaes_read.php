@@ -1,5 +1,6 @@
 <html>
   <?php
+  ob_start();
   session_start(); 
   require("../bibliotecas/conexion.php");
    ?>
@@ -75,7 +76,7 @@ if($data != null)
 	            			<td>".htmlspecialchars($row['nombre_empresa'])."</td>
 	            			<td>".htmlspecialchars($row['especialidad'])."</td>
 	            			<td>
-	            				<a href='empresaes_save.php?id=$row[id_espeempresa]' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
+	            				<a href='empresaes_save.php?id=".base64_encode(htmlspecialchars($row['id_espeempresa']))."' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>
 								<a href='empresaes_delete.php?id=".base64_encode(htmlspecialchars($row['id_espeempresa']))."' class='btn red'><i class='material-icons'>delete</i></a>
 							</td>
 	        			</tr>";
@@ -135,3 +136,6 @@ include("../inc/footer.php");
 ?>
 	</body>
 </html>
+<?php
+ob_end_flush();
+?>

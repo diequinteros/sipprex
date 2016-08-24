@@ -107,7 +107,7 @@
 						$tabla .= "<td><i class='material-icons right'>cancel</i></td>";
 					}
 					$tabla .=	"<td>
-										<a href='enviar_mail.php?toalum=true&&id=$row[carnet]' class='btn blue'><i class='material-icons'>message</i></a>
+										<a href='enviar_mail.php?toalum=true&&id=".htmlspecialchars($row['carnet'])."' class='btn blue'><i class='material-icons'>message</i></a>
 									</td>
 								</tr>";
 				}

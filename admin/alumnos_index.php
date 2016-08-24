@@ -1,5 +1,6 @@
 <!-- Se referencia el archivo de la conexion y nuestras clases -->
 <?php
+ob_start();
  require("../bibliotecas/conexion.php");
  session_start(); 
  ?>
@@ -107,7 +108,7 @@
 						$tabla .= "<td><i class='material-icons right'>cancel</i></td>";
 					}
 					$tabla .=	"<td>
-										<a href='alumnos_save.php?id=$row[carnet]' class='btn blue'><i class='material-icons'>edit</i></a>
+										<a href='alumnos_save.php?id=".base64_encode($row['carnet'])."' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='alumnos_delete.php?id=".base64_encode($row['carnet'])."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
@@ -168,3 +169,6 @@
 	<!-- Asi como el footer del sitio -->
 	<?php require("../inc/footer.php"); ?>
 </html>
+<?php
+ob_end_flush();
+?>

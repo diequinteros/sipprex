@@ -1,9 +1,10 @@
 <?php
+ob_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
 
 session_start();
-		if($_SESSION['id_empresa'] != null) 
+		if(!isset($_GET['id'])) 
 {
     $head = "";
     $head .= "<!DOCTYPE html>
@@ -31,19 +32,28 @@ else{
                 <html lang='es'>
                     <head>
                         <title>Anuncios</title>";
-                        include '../inc/styles.php';
+                        include('../inc/styles.php');
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body>
+                <body>";
                 include('../inc/nav.php');
-                    <div class='card-panel paneles'>
+    $head .=         "<div class='card-panel paneles'>
                         <div class='titulo'>
                             <h3>Modificar un Proyecto</h3>
                         </div>";
     print $head;
-    $id = $_GET['id_proyecto'];
-    $sql = "SELECT * FROM proyecto WHERE id_proyecto = ? AND id_empre_encargado = ?";
+    $id = base64_decode($_GET['id']);
+    if(isset($_SESSION['id_empresa']))
+    {
+		$sql = "SELECT * FROM proyecto WHERE id_proyecto = ? AND id_empre_encargado = ?";
     $params = array($id,$_SESSION['id_empresa']);
+	}
+	if(isset($_SESSION['id_exalumnos']))
+	{
+		$sql = "SELECT * FROM proyecto WHERE id_proyecto = ? AND id_exalum_encargado = ?";
+    $params = array($id,$_SESSION['id_exalumnos']);
+	}
+    
     $data = Database::getRows($sql, $params);
     //Se utiliza el segmento [0] debido a que el fetchAll utilizado en la clase getRows, devuelve un arreglo bi-dimensional y
     //al devolver un solo valor, se debe especificar de que fila se tomara, en este caso al haber solo una seria la [0]
@@ -61,13 +71,30 @@ if(!empty($_POST))
     try 
     {
       	if($id == null){
-        	$sql = "INSERT INTO proyecto(titulo, descripcion, remunerado, id_empre_encargado) VALUES(?, ?, ?, ?)";
+            if(isset($_SESSION['id_empresa']))
+			{
+				$sql = "INSERT INTO proyecto(titulo, descripcion, remunerado, id_empre_encargado) VALUES(?, ?, ?, ?)";
             $params = array($titulo, $descripcion, $remunerado, $_SESSION['id_empresa']);
+			}
+			if(isset($_SESSION['id_exalumnos']))
+			{
+				$sql = "INSERT INTO proyecto(titulo, descripcion, remunerado, id_exalum_encargado) VALUES(?, ?, ?, ?)";
+            $params = array($titulo, $descripcion, $remunerado, $_SESSION['id_exalumnos']);
+			}  
         }
         else
         {
-            $sql = "UPDATE proyecto SET titulo = ?, descripcion = ?, remunerado = ? WHERE id_proyecto = ? AND id_empre_encargado = ?";
+            if(isset($_SESSION['id_empresa']))
+			{
+			$sql = "UPDATE proyecto SET titulo = ?, descripcion = ?, remunerado = ? WHERE id_proyecto = ? AND id_empre_encargado = ?";
             $params = array($titulo, $descripcion, $remunerado, $id, $_SESSION['id_empresa']);
+			}
+			if(isset($_SESSION['id_exalumnos']))
+			{
+				$sql = "UPDATE proyecto SET titulo = ?, descripcion = ?, remunerado = ? WHERE id_proyecto = ? AND id_exalum_encargado = ?";
+            $params = array($titulo, $descripcion, $remunerado, $id, $_SESSION['id_exalumnos']);
+			}
+            
         }
         Database::executeRow($sql, $params);
         header("location: proyecto_index.php");
@@ -93,8 +120,17 @@ if(!empty($_POST))
                         <label class="active" for='descripcion'>Descripcion de proyecto:</label>
                     </div>
                      <p>
-					      <input id='remunerado' type="checkbox" name='remunerado' class="filled-in" id="filled-in-box" checked="checked" value='<?php print(htmlspecialchars($remunerado)); ?>' />
-					      <label for="remunerado">Remunerado:</label>
+                     <?php
+                     if(htmlspecialchars($remunerado) == 1)
+                     {
+                        print("<input id='remunerado' type='checkbox' name='remunerado' class='filled-in' id='filled-in-box' checked='checked' value='1' />
+					      <label for='remunerado'>Remunerado:</label>");
+                     }
+                     else{
+                         print("<input id='remunerado' type='checkbox' name='remunerado' class='filled-in' id='filled-in-box' value = '1'/>
+					      <label for='remunerado'>Remunerado:</label>");
+                     }
+                     ?>
     				</p>
                     </div>
                 <div>
@@ -107,3 +143,6 @@ if(!empty($_POST))
         <?php include '../inc/scripts.php'; ?>
     </body>
 </html>
+<?php
+ob_end_flush();
+?>

@@ -96,7 +96,7 @@ require("../bibliotecas/conexion.php");
 									<td>".htmlspecialchars($row['correo_electronico'])."</td>
 									<td>".htmlspecialchars($row['observacion'])."</td>
 									<td>
-                                        <a href='enviar_mail.php?toex=true&&id=$row[id_exalumnos]' class='btn blue'><i class='material-icons'>message</i></a>
+                                        <a href='enviar_mail.php?toex=true&&id=".htmlspecialchars($row[id_exalumnos])."' class='btn blue'><i class='material-icons'>message</i></a>
 									</td>
 								</tr>";
 				}

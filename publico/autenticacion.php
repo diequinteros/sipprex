@@ -1,5 +1,6 @@
 <!-- Primero referenciamos los archivos que enlazan las clases de conexion, las consultas y las validaciones -->
 <?php
+ob_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
 require("../bibliotecas/verios.php");
@@ -96,3 +97,6 @@ if(!empty($_POST))
 		<?php include '../inc/scripts.php'; ?>
 	</body>
 </html>
+<?php
+ob_end_flush();
+?>

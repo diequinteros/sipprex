@@ -95,11 +95,13 @@
 					<a id = 'navlogo' href='index.php' class='brand-logo'>Sipprex</a>
 					<a href='#' data-activates='mobile-demo' class='button-collapse'><i class='material-icons'>menu</i></a>
 					<ul id='navul' class='right hide-on-med-and-down'>
+					<li><a href='proyectos.php'>Proyectos</a></li>
 					<li><a href='pracpalumno.php'>Practicas profesionales</a></li>
 					<!-- Dropdown Trigger -->
 					<li><a class='dropdown-button' href='#!' data-hover = 'true' data-beloworigin = 'true' data-constrainwidth = 'false' data-activates = 'ajustes'>$_SESSION[nombre_usuario]<i class='material-icons right'>more_vert</i></a></li>
 					</ul>
 					<ul class='side-nav' id='mobile-demo'>
+					<li><a href='proyectos.php'>Proyectos</a></li>
 					<li><a href='pracpalumno.php'>Practicas profesionales</a></li>
 					<!-- Dropdown Trigger -->
 					<li><a class='dropdown-button' href='#!' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes2'>$_SESSION[nombre_usuario]<i class='material-icons right hide-on-med-and-down'>more_vert</i></a></li>
@@ -132,11 +134,13 @@
 					<a href='#' data-activates='mobile-demo' class='button-collapse'><i class='material-icons'>menu</i></a>
 					<ul id='navul' class='right hide-on-med-and-down'>
 					<li><a href='profile.php'>Tu información</a></li>
+					<li><a href='proyecto_index.php'>Proyectos</a></li>
 					<!-- Dropdown Trigger -->
 					<li><a class='dropdown-button' href='#!' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes'>$_SESSION[nombre_usuario]<i class='material-icons right'>more_vert</i></a></li>
 					</ul>
 					<ul class='side-nav' id='mobile-demo'>
 						<li><a href='profile.php'>Tu información</a></li>
+						<li><a href='proyecto_index.php'>Proyectos</a></li>
 					<!-- Dropdown Trigger -->
 					<li><a class='dropdown-button' href='#!' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes2'>$_SESSION[nombre_usuario]<i class='material-iconsright hide-on-med-and-down'>more_vert</i></a></li>
 					</ul>
@@ -157,7 +161,7 @@
 							<li class='divider'></li>
 							<li><a href='espe_read.php' class='orange-text'>Especialidad</a></li>
 							<li class='divider'></li>
-							<li><a href='' class='orange-text'>Grados</a></li>
+							<li><a href='grado_read.php' class='orange-text'>Grados</a></li>
 							<li class='divider'></li>
 							<li><a href='grupoaca_read.php' class='orange-text'>Grupos academicos</a></li>
 							<li class='divider'></li>
@@ -195,7 +199,7 @@
 							<li class='divider'></li>
 							<li><a href='espe_read.php' class='orange-text'>Especialidad</a></li>
 							<li class='divider'></li>
-							<li><a href='' class='orange-text'>Grados</a></li>
+							<li><a href='grado_read.php' class='orange-text'>Grados</a></li>
 							<li class='divider'></li>
 							<li><a href='gruposaca_read.php' class='orange-text'>Grupos academicos</a></li>
 							<li class='divider'></li>

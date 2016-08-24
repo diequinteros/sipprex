@@ -1,5 +1,6 @@
 <!-- Se referencia el archivo de la conexion y nuestras clases -->
 <?php
+ob_start();
 session_start();
  require("../bibliotecas/conexion.php"); 
  ?>
@@ -92,7 +93,7 @@ session_start();
 									<td>".htmlspecialchars($row['telefono_encargado'])."</td>
 									<td>".htmlspecialchars($row['nombre_empresa'])."</td>
 									<td>
-										<a href='departamento_save.php?id=$row[id_depar]' class='btn blue'><i class='material-icons'>edit</i></a>
+										<a href='departamento_save.php?id=".base64_encode(htmlspecialchars($row['id_depar']))."' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='departamento_delete.php?id=".base64_encode(htmlspecialchars($row['id_depar']))."' class='btn red'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
@@ -153,3 +154,6 @@ session_start();
 	<!-- Asi como el footer del sitio -->
 	<?php require("../inc/footer.php"); ?>
 </html>
+<?php
+ob_end_flush();
+?>

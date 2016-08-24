@@ -54,11 +54,11 @@ if($data != null)
 		foreach($data as $row)
 		{
 	        $tabla .=	"<tr>
-	            			<td>$row[nombre_empresa]</td>
-	            			<td>$row[direccion]</td>
-	            			<td>$row[correo]</td>
+	            			<td>".htmlspecialchars($row['nombre_empresa'])."</td>
+	            			<td>".htmlspecialchars($row['direccion'])."</td>
+	            			<td>".htmlspecialchars($row['correo'])."</td>
 	            			<td>
-								<a href='enviar_mail.php?toempresa=true&&id=$row[id_empresa]' class='btn blue'><i class='material-icons'>message</i></a>
+								<a href='enviar_mail.php?toempresa=true&&id=".htmlspecialchars($row[id_empresa])."' class='btn blue'><i class='material-icons'>message</i></a>
 							</td>
 	        			</tr>";
 		}

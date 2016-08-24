@@ -1,5 +1,6 @@
 <html>
   <?php
+  ob_start();
   session_start(); 
   require("../bibliotecas/conexion.php");
    ?>
@@ -10,7 +11,7 @@
     </head>
 <body>
 <?php
-include("../inc/nav.php")
+include("../inc/nav.php");
 
 if(!empty($_GET['id'])) 
 {
@@ -40,7 +41,7 @@ if(!empty($_POST))
 <form method='post' class='row'>
 	<input type='hidden' name='id' value='<?php print(htmlspecialchars($id)); ?>'/>
 	<button type='submit' class='btn red'><i class='material-icons right'>check_circle</i>Si</button>
-	<a href='empresa_read.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>
+	<a href='espe_read.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>
 </form>
 <?php
 include("../inc/scripts.php");
@@ -48,3 +49,6 @@ include("../inc/footer.php");
 ?>
 	</body>
 </html>
+<?php
+ob_end_flush();
+?>
