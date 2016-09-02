@@ -108,12 +108,12 @@ if(!empty($_POST))
 				<div class='row'>
 					<div class='input-field col m12 offset-m3 s12'>
 						<i class='material-icons prefix'>lock</i>
-						<input id='clave1' type='password' name='clave1' class='validate' required/>
+						<input id='clave1' type='password' name='clave1' minlength='6' maxlength='25' class='validate' required/>
 						<label class='active black-text' for='clave1'>Nueva clave:</label>
 					</div>
                     <div class='input-field col m12 offset-m3 s12'>
 						<i class='material-icons prefix'>lock</i>
-						<input id='clave2' type='password' name='clave2' class='validate' required/>
+						<input id='clave2' type='password' name='clave2' minlength='6' maxlength='25'class='validate' required/>
 						<label class='active black-text' for='clave2'>Confirmar clave:</label>
 					</div>
 				</div>
