@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-08-2016 a las 16:32:19
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.6.15
+-- Tiempo de generación: 02-09-2016 a las 18:07:19
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -44,7 +44,8 @@ CREATE TABLE `administradores` (
 INSERT INTO `administradores` (`codigo_admin`, `contraseña_admin`, `correo`, `permiso_create`, `permiso_update`, `permiso_delete`) VALUES
 (20140555, '555', 'diegoquinteros02.04.97@gmail.com', 1, 1, 1),
 (20140666, '666', 'diegoquinteros02.04.97@gmail.com', 1, 1, 1),
-(20140777, '$2y$10$INf.7sATvsHL4yturZSowu/X2AHo18wssI3u1Tthb83iA7AkiHv4O', 'gorge.depaz@gmail.com', 1, 1, 1);
+(20140777, '$2y$10$INf.7sATvsHL4yturZSowu/X2AHo18wssI3u1Tthb83iA7AkiHv4O', 'gorge.depaz@gmail.com', 1, 1, 1),
+(20140888, '$2y$10$wm9HFd6hSMXbO5VYfPBUj.pIHDLRjFgd14JuFVGhzRp/hTNakwlde', 'diegoquinteros02.04.97@gmail.com', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,7 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`carnet`, `contraseña`, `nie`, `nombre1`, `nombre2`, `apellido1`, `apellido2`, `grado`, `especialidad`, `grupo_Tecnic`, `secc`, `grupo_academ`, `inscrito`, `pregunta`, `respuesta`) VALUES
-(1, '0', 2, 'w', 'w', 'w', 'w', 2, 2, 2, 2, 2, 'FALSO', '', '0'),
+(1, '$2y$10$1kvnz.bEgmbgWCdu04hTaemZChWXxwRl6iBtYePXp82atkhrU1/hC', 2, 'w2', 'w2', 'w', 'w', 3, 6, 2, 2, 5, 'FALSO', '', '0'),
 (20110005, '0', 1684787, 'Andrea', 'Guadalupe', 'Marroquín', 'Paredes', 1, 3, 1, 1, 2, 'VERDADERO', 'Nombre de mi mascota', 'Pepito'),
 (20110014, '0', 1683484, 'Katya', 'Michelle', 'Mathies', 'Sánchez', 1, 2, 1, 2, 3, 'VERDADERO', '', '0'),
 (20110035, '0', 2330559, 'Diego', 'Alfonso', 'García', 'Flores', 1, 4, 2, 2, 1, 'VERDADERO', '', '0'),
@@ -84,7 +85,7 @@ INSERT INTO `alumnos` (`carnet`, `contraseña`, `nie`, `nombre1`, `nombre2`, `ap
 (20110056, '0', 780160, 'Ricardo', 'Alejandro', 'Velásquez', 'Vega', 1, 6, 2, 1, 3, 'VERDADERO', '', '0'),
 (20110078, '0', 1686240, 'Gerardo', 'Antonio', 'Hernández', 'Hurtado', 1, 4, 2, 2, 2, 'VERDADERO', '', '0'),
 (20110085, '0', 1686145, 'Héctor', 'Antonio', 'Zelaya', 'Abrego', 1, 4, 2, 1, 3, 'VERDADERO', '', '0'),
-(20110086, '0', 1673660, 'Oscar', 'Armando', 'Vargas', 'Hernández', 1, 1, 1, 2, 1, 'VERDADERO', '', '0'),
+(20110086, '12345678', 1673660, 'Oscar', 'Armando', 'Vargas', 'Hernández', 3, 6, 2, 2, 5, 'FALSO', '', '0'),
 (20110092, '0', 1680535, 'Leslie', 'Elizabeth', 'Mejía', 'Ramírez', 1, 3, 2, 2, 2, 'VERDADERO', '', '0'),
 (20110094, '0', 1686239, 'Javier', 'Enrique', 'Guevara', 'Flores', 1, 4, 2, 1, 3, 'VERDADERO', '', '0'),
 (20110099, '0', 1675222, 'Erick', 'Gabriel', 'Soto', 'Mena', 1, 3, 1, 1, 1, 'VERDADERO', '', '0'),
@@ -279,7 +280,7 @@ INSERT INTO `alumnos` (`carnet`, `contraseña`, `nie`, `nombre1`, `nombre2`, `ap
 (20140321, '0', 2029796, 'Isela', 'Abigail', 'Cisneros', 'Olmedo', 1, 1, 1, 2, 1, 'VERDADERO', '', '0'),
 (20140324, '0', 5681612, 'Milagro', 'Margarita', 'Hernández', 'Morán', 1, 6, 1, 2, 1, 'VERDADERO', '', '0'),
 (20140334, '0', 2093944, 'Marvin', 'Fernando', 'Paredes', 'Choto', 1, 4, 2, 1, 3, 'VERDADERO', '', '0'),
-(20140342, '0', 4363634, 'Diego', 'Enrique', 'Quinteros', 'Lemus', 1, 6, 2, 2, 1, 'VERDADERO', '', '0'),
+(20140342, '$2y$10$KTtJoozR/sD9irnKB6BfKuY/jbbCULe.x6ox4OZZFFhyUkyJAp.We', 4363634, 'Diego', 'Enrique', 'Quinteros', 'Lemus', 1, 6, 2, 2, 1, 'VERDADERO', '', '0'),
 (20140349, '0', 7318440, 'María', 'José', 'Pineda', 'Calero', 1, 2, 1, 2, 3, 'VERDADERO', '', '0'),
 (20140353, '0', 1683386, 'Alejandra', 'Beatriz', 'Menjivar', 'Orellana', 1, 6, 1, 2, 1, 'VERDADERO', '', '0'),
 (20140354, '0', 1455995, 'William', 'Adalberto', 'Ovando', 'Méndez', 1, 5, 1, 2, 4, 'VERDADERO', '', '0'),
@@ -393,7 +394,7 @@ CREATE TABLE `anuncios` (
 
 INSERT INTO `anuncios` (`id_anuncio`, `titulo_anuncio`, `contenido_anuncio`) VALUES
 (1, 'Titulo anuncio', 'Aqui va el contenido del anuncio\nAqui va el contenido del anuncio\n\nAqui va el contenido del anuncioAqui va el contenido del anuncio\nAqui va el contenido del anuncio\n\nAqui va el contenido del anuncioAqui va el contenido del anuncio\nAqui va el contenido del anuncio\n\nAqui va el contenido del anuncioAqui va el contenido del anuncio\nAqui va el contenido del anuncio\n\nAqui va el contenido del anuncioAqui'),
-(2, 'Titulo anuncio 2', 'Aqui va el contenido del anuncio\r\nAqui va el contenido del anuncio\r\n\r\nAqui va el contenido del anuncioAqui va el contenido del anuncio\r\nAqui va el contenido del anuncio\r\n\r\nAqui va el contenido del anuncioAqui va el contenido del anuncio\r\nAqui va el contenido del anuncio\r\n\r\nAqui va el contenido del anuncioAqui va el contenido del anuncio\r\nAqui va el contenido del anuncio\r\n\r\nAqui va el contenido del');
+(2, 'Titulo anuncio 22', 'Aqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del anuncioAqui va el contenido del');
 
 -- --------------------------------------------------------
 
@@ -411,7 +412,7 @@ CREATE TABLE `años` (
 --
 
 INSERT INTO `años` (`id_año`, `año`) VALUES
-(1, 'Segundo Año'),
+(1, 'Segundo Año 2'),
 (2, 'Tercer Año'),
 (3, 'Tercer Año PILLET');
 
@@ -442,11 +443,20 @@ INSERT INTO `config` (`id`, `color1`, `color2`) VALUES
 
 CREATE TABLE `departamentosempre` (
   `id_depar` int(7) NOT NULL,
-  `departamento` varchar(12) DEFAULT NULL,
-  `encargado` varchar(9) DEFAULT NULL,
+  `departamento` varchar(25) NOT NULL,
+  `encargado` varchar(30) DEFAULT NULL,
   `telefono_encargado` varchar(18) DEFAULT NULL,
   `empresa` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `departamentosempre`
+--
+
+INSERT INTO `departamentosempre` (`id_depar`, `departamento`, `encargado`, `telefono_encargado`, `empresa`) VALUES
+(1, 'Depart1', 'Diego qyu', '2222222', 2),
+(2, 'Departamento contable', 'Gerardo Muñoz', '70992245', 318),
+(3, 'Sistemas informaticos', 'Zometa', '22552255', 28);
 
 -- --------------------------------------------------------
 
@@ -560,7 +570,7 @@ INSERT INTO `empresas` (`id_empresa`, `nombre_empresa`, `rubro`, `direccion`, `t
 (112, 'MIXTO', 'DISEÑO GRAFICO', 'COL MIRAMONTE', 25127285, 'JANINE', NULL, NULL, '$2y$10$/MmUdu2WwXuHPu3sAebkheUGszRZ/F.PlpGJdpwj/TjKgpxjBRp26'),
 (113, 'MIXTO', 'DISEÑO GRAFICO', NULL, NULL, NULL, NULL, NULL, '$2y$10$/MmUdu2WwXuHPu3sAebkheUGszRZ/F.PlpGJdpwj/TjKgpxjBRp26'),
 (114, 'MELRO Y ASOCIADOS S.A. DE C.V', 'ARQUITECTURA Y DISEÑO GRAFICO', '75 AVE. NORTE, PASAJE TIO CONRRA #13 SAN SALVADOR', 22074568, 'SARAH MELENDEZ MARTINEZ', 'melroyasociados@gmail.com', NULL, '$2y$10$/MmUdu2WwXuHPu3sAebkheUGszRZ/F.PlpGJdpwj/TjKgpxjBRp26'),
-(115, 'A & CREATIVA S.A. DE C.V.', 'DISEÑO GRAFICO', 'CALLE CIRCUMBALACION EDIFICIO INTEL LOCAL 9 TERCERA PLANTA', 22604774, 'BLANCA RIVERA DE CORDOVA', NULL, NULL, '$2y$10$/MmUdu2WwXuHPu3sAebkheUGszRZ/F.PlpGJdpwj/TjKgpxjBRp26'),
+(115, 'A & CREATIVA S.A. DE C.V.', 'DISEÑO GRAFICO', 'CALLE CIRCUMBALACION EDIFICIO INTEL LOCAL 9 TERCERA PLANTA', 22604774, 'BLANCA RIVERA DE CORDOVA', 'banco@gmail.com', NULL, '$2y$10$/MmUdu2WwXuHPu3sAebkheUGszRZ/F.PlpGJdpwj/TjKgpxjBRp26'),
 (116, 'Angel Editores', 'DISEÑO GRAFICO', '12 AV. NTE #1330 COL. MAGAÑA', 22263976, 'FABRICIO ANGEL', 'ANGELEDITORRES@YAHOO.COM', NULL, '$2y$10$/MmUdu2WwXuHPu3sAebkheUGszRZ/F.PlpGJdpwj/TjKgpxjBRp26'),
 (117, 'ITR 3', 'Consejo', 'ITR', NULL, 'P. Manuel Antonio Gomez', 'manuel_gomez@ricaldone.edu.sv', NULL, '$2y$10$/MmUdu2WwXuHPu3sAebkheUGszRZ/F.PlpGJdpwj/TjKgpxjBRp26'),
 (118, 'MIXCO', 'DISEÑO GRAFICO', NULL, NULL, NULL, NULL, NULL, '$2y$10$/MmUdu2WwXuHPu3sAebkheUGszRZ/F.PlpGJdpwj/TjKgpxjBRp26'),
@@ -731,7 +741,7 @@ INSERT INTO `empresas` (`id_empresa`, `nombre_empresa`, `rubro`, `direccion`, `t
 
 CREATE TABLE `especialidades` (
   `id_especialidad` int(2) NOT NULL,
-  `especialidad` varchar(21) DEFAULT NULL
+  `especialidad` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -744,7 +754,8 @@ INSERT INTO `especialidades` (`id_especialidad`, `especialidad`) VALUES
 (3, 'Diseño Gráfico'),
 (4, 'Electromecánica'),
 (5, 'Electrónica'),
-(6, 'Sistemas Informáticos');
+(6, 'Sistemas Informáticos'),
+(7, 'Desarrollo de software');
 
 -- --------------------------------------------------------
 
@@ -782,7 +793,8 @@ CREATE TABLE `ex_alumnos` (
 --
 
 INSERT INTO `ex_alumnos` (`id_exalumnos`, `contraseña`, `nombre1`, `apellido1`, `telefono`, `ocupacion`, `correo_electronico`, `observacion`, `pregunta`, `respuesta`) VALUES
-(11116666, '$2y$10$3DIxv3HxGy.8DjdyBUGkB.YpvBIvwrcSFLcCYf84TPeVNuFBIvIs2', 'Diego', 'Quinteros', 79865432, 3, 'diego_quinteros@gmail.com', 'Estudiante destacado', 'Mi segundo apellido', 'Lemus');
+(0, '$2y$10$RuEduZmU9aKojaarUP111eVnerGZDxgvU7aFOx.N7RZDPiGwfqLZS', 'Diegos', 'Quinteros', 22882288, 3, 'diegoquinteros02.04.97@gmail.com', '', '', ''),
+(11116666, '$2y$10$PhjZWj5hEhogoDR//bLesuP86deFUWhDbOMx8S1HNX4HVBOqkEqTm', 'Diego', 'Quinteros', 79865432, 3, 'diego_quinteros@gmail.com', 'Estudiante destacado', 'Mi segundo apellido', 'Lemus');
 
 -- --------------------------------------------------------
 
@@ -874,7 +886,7 @@ INSERT INTO `mensajes` (`cod_mensaje`, `id_usuario_destino`, `id_empre_destino`,
 
 CREATE TABLE `ocupaciones` (
   `id_ocupacion` int(2) NOT NULL,
-  `ocupacion` varchar(24) DEFAULT NULL
+  `ocupacion` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -909,7 +921,13 @@ CREATE TABLE `proyecto` (
 
 INSERT INTO `proyecto` (`id_proyecto`, `id_exalum_encargado`, `id_empre_encargado`, `titulo`, `descripcion`, `fecha_propuesto`, `vigente`, `remunerado`) VALUES
 (1, NULL, 331, 0, 'Estoy probando esto a las 5 a.m.', '2016-07-15 10:59:09', 1, 0),
-(2, NULL, 331, 0, 'Nuevo', '2016-07-15 11:01:39', 1, 0);
+(2, NULL, 331, 0, 'Nuevo', '2016-07-15 11:01:39', 1, 0),
+(3, 0, NULL, 22, 'Esto es una prueba', '2016-08-24 01:51:29', 1, 0),
+(4, 0, NULL, 0, '', '2016-08-24 01:51:42', 1, 1),
+(5, 0, NULL, 22, '22', '2016-08-24 01:55:03', 1, 0),
+(6, 0, NULL, 33, '33', '2016-08-24 01:55:37', 1, 0),
+(7, 0, NULL, 55, '55', '2016-08-24 01:56:53', 1, 0),
+(8, 11116666, NULL, 0, 'Descreipcion del proyecto', '2016-08-24 16:12:36', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -935,9 +953,7 @@ CREATE TABLE `registrospp` (
 --
 
 INSERT INTO `registrospp` (`id_registropp`, `alumno`, `empresa`, `finalizo`, `observaciones`, `acuerdo`, `bitacora`, `carta`, `evaluaciones`, `observacion_final`) VALUES
-(1, 20110122, 1, 0, '', 0, 0, 0, 0, ''),
-(2, 1, 3, 1, 'JI', 1, 0, 0, 0, 'Hi'),
-(3, 20140643, 1, 0, 'Muy colaborador', 1, 1, 1, 1, 'Concluyo con exito sus practicas');
+(5, 1, 3, 0, '', 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -956,7 +972,8 @@ CREATE TABLE `secciones` (
 
 INSERT INTO `secciones` (`id_seccion`, `seccion`) VALUES
 (1, 'A'),
-(2, 'B');
+(2, 'B'),
+(3, 'C');
 
 -- --------------------------------------------------------
 
@@ -979,7 +996,8 @@ CREATE TABLE `sesiones` (
 INSERT INTO `sesiones` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`) VALUES
 (6, '57b6e5d50d727_ses', 20140666, '2016-08-19 10:56:21', 'WinNT'),
 (7, '57b6e6c980902_ses', 20140666, '2016-08-19 11:00:25', 'WinNT'),
-(8, '57b6e75b16765_ses', 20140666, '2016-08-19 11:02:51', 'WinNT');
+(8, '57b6e75b16765_ses', 20140666, '2016-08-19 11:02:51', 'WinNT'),
+(10, '57c766decca78_ses', 20140888, '2016-08-31 23:23:10', 'WinNT');
 
 -- --------------------------------------------------------
 
@@ -1006,7 +1024,10 @@ INSERT INTO `sesiones_alum` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`)
 (6, '57bc322d15aa5_ses', 20140643, '2016-08-23 11:23:25', 'Windows 7'),
 (7, '57bc329c9a151_ses', 20140643, '2016-08-23 11:25:16', 'Windows 7'),
 (8, '57bc5b6269677_ses', 20140643, '2016-08-23 14:19:14', 'Windows 7'),
-(9, '57bc5e17e7ec8_ses', 20140643, '2016-08-23 14:30:47', 'Windows 7');
+(9, '57bc5e17e7ec8_ses', 20140643, '2016-08-23 14:30:47', 'Windows 7'),
+(10, '57bcf33f3d178_ses', 20140342, '2016-08-24 01:07:11', 'WinNT'),
+(11, '57bd11bf527d5_ses', 20140342, '2016-08-24 03:17:19', 'WinNT'),
+(12, '57bdc7fc935af_ses', 20140342, '2016-08-24 16:14:52', 'WinNT');
 
 -- --------------------------------------------------------
 
@@ -1059,7 +1080,10 @@ INSERT INTO `sesiones_exalum` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os
 (2, '57bb9e374bfd8_ses', 11116666, '2016-08-23 00:52:07', 'Windows 7'),
 (3, '57bb9f40842f2_ses', 11116666, '2016-08-23 00:56:32', 'Windows 7'),
 (5, '57bc1ad0d50f4_ses', 11116666, '2016-08-23 09:43:44', 'Windows 7'),
-(6, '57bc251ecf2c0_ses', 11116666, '2016-08-23 10:27:42', 'Windows 7');
+(6, '57bc251ecf2c0_ses', 11116666, '2016-08-23 10:27:42', 'Windows 7'),
+(7, '57bcfa8e867cc_ses', 0, '2016-08-24 01:38:22', 'WinNT'),
+(8, '57bdc737aa8dc_ses', 11116666, '2016-08-24 16:11:35', 'WinNT'),
+(9, '57bdc791c0ee2_ses', 11116666, '2016-08-24 16:13:05', 'WinNT');
 
 -- --------------------------------------------------------
 
@@ -1253,7 +1277,7 @@ ALTER TABLE `años`
 -- AUTO_INCREMENT de la tabla `departamentosempre`
 --
 ALTER TABLE `departamentosempre`
-  MODIFY `id_depar` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_depar` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `empresas`
 --
@@ -1263,7 +1287,7 @@ ALTER TABLE `empresas`
 -- AUTO_INCREMENT de la tabla `especialidades`
 --
 ALTER TABLE `especialidades`
-  MODIFY `id_especialidad` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_especialidad` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `espeempresa`
 --
@@ -1293,37 +1317,37 @@ ALTER TABLE `ocupaciones`
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `registrospp`
 --
 ALTER TABLE `registrospp`
-  MODIFY `id_registropp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_registropp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id_seccion` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_seccion` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_alum`
 --
 ALTER TABLE `sesiones_alum`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_empre`
 --
 ALTER TABLE `sesiones_empre`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_exalum`
 --
 ALTER TABLE `sesiones_exalum`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `visitas`
 --
@@ -1385,7 +1409,7 @@ ALTER TABLE `proyecto`
 --
 ALTER TABLE `registrospp`
   ADD CONSTRAINT `registrospp_ibfk_1` FOREIGN KEY (`alumno`) REFERENCES `alumnos` (`carnet`),
-  ADD CONSTRAINT `registrospp_ibfk_2` FOREIGN KEY (`empresa`) REFERENCES `empresas` (`id_empresa`);
+  ADD CONSTRAINT `registrospp_ibfk_2` FOREIGN KEY (`empresa`) REFERENCES `departamentosempre` (`id_depar`);
 
 --
 -- Filtros para la tabla `sesiones`
