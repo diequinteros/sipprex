@@ -69,8 +69,8 @@ if(!empty($_POST))
 		<?php include '../inc/styles.php'; ?>
 		<meta charset="utf-8">
 	</head>
-	<body class="blue-grey darken-3">
-		<div class="blue-grey darken-3 log_form">
+	<body class="light-blue darken-1">
+		<div class="light-blue darken-1 log_form">
 			<div class="titulo" id="log_tt">
 				<img class="img_responsive" src="../img/iconSipprex.png" width="150">
 				<h3 class="white-text">Iniciar Sesión</h3>
@@ -79,30 +79,30 @@ if(!empty($_POST))
 			<form class='row' autocomplete="off" method='post'>
 				<div class='row'>
 					<div class='input-field col m6 offset-m3 s12'>
-						<i class='material-icons prefix blue-text'>person_pin</i>
+						<i class='material-icons prefix white-text'>person_pin</i>
 						<input id='codigo' type='text' autocomplete="off" name='codigo' class='validate black-text' required/>
 						<label class='active white-text' for='codigo'>Código</label>
 					</div>
 					<div class='input-field col m6 offset-m3 s12'>
-						<i class='material-icons prefix blue-text'>vpn_key</i>
+						<i class='material-icons prefix white-text'>vpn_key</i>
 						<input id='clave' type='password' autocomplete="off" name='clave' class="validate black-text" required/>
 						<label class='active white-text' for='clave'>Clave</label>
 					</div>
 				</div>
 				<div class="titulo" id="log_btn">
-					<button type='submit' class='btn blue'><i class='material-icons right'>swap_horiz</i>Ingresar</button>
+					<button type='submit' class='btn grey darken-4'><i class='material-icons right'>swap_horiz</i>Ingresar</button>
 					<br>
 					<a href="recuperar.php">¿Olvidaste tu contraseña?</a>
 				</div>
                 <div class="titulo" id="log_btn">
-					<a class='btn blue' href="buscar_empresa.php"><i class='material-icons right'>group_add</i>Crear cuenta</a>
+					<a class='btn grey darken-4' href="buscar_empresa.php"><i class='material-icons right'>group_add</i>Crear cuenta</a>
 				</div>
 			</form>
 		</div>
 		<!--<div class='orange darken-1 log_foot'>
 			<a class="waves-effect waves-teal btn-flat">Empresas</a>
 		</div>-->
-		        <footer class="page-footer blue-grey darken-4 log_foot">
+		        <footer class="page-footer light-blue darken-3 log_foot">
           <div class="">
             <div class="row">
               <div class="col l3 offset-l9 m4 offset-m8 s6 offset-s6">

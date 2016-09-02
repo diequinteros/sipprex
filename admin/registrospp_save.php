@@ -50,7 +50,7 @@ else{
                             <h3>Modificar un Registro</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = base64_decode($_GET['id']);
     $sql = "SELECT * FROM registrospp, alumnos, empresas WHERE registrospp.alumno = alumnos.carnet AND registrospp.empresa = empresas.id_empresa AND id_registropp = ?";
     $params = array($id);
     $data = Database::getRows($sql, $params);

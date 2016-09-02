@@ -58,7 +58,7 @@ if(!empty($_POST))
         Database::executeRow($sql, $params);
         header("location: espe_read.php");
     }
-    catch (Exception $error)
+    catch(Exception $error)
     {
         print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
     }

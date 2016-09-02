@@ -48,7 +48,7 @@ else{
                             <h3>Modificar un Ex-alumno</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT contraseña, nombre1, apellido1, telefono, ocupaciones.id_ocupacion, correo_electronico, observacion FROM ex_alumnos, ocupaciones WHERE ex_alumnos.ocupacion = ocupaciones.id_ocupacion AND id_exalumnos = ?";
     $params = array($id);
     $data = Database::getRows($sql, $params);
@@ -66,6 +66,7 @@ else{
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
+    $id2 = strip_tags(trim($_POST['codigo']));
   	$contraseña = strip_tags(trim($_POST['contraseña']));
     $nombre = strip_tags(trim($_POST['nombre1']));
     $apellido = strip_tags(trim($_POST['apellido1']));
@@ -78,8 +79,8 @@ if(!empty($_POST))
     {
         $contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
       	if($id == null){
-        	  $sql = "INSERT INTO ex_alumnos(contraseña, nombre1, apellido1, telefono, ocupacion, correo_electronico, observacion) VALUES(?, ?, ?, ?, ?, ?, ?)";
-            $params = array($contraseña, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion);
+        	  $sql = "INSERT INTO ex_alumnos(id_exalumnos, contraseña, nombre1, apellido1, telefono, ocupacion, correo_electronico, observacion) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            $params = array($id2, $contraseña, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion);
         }
         else
         {
@@ -98,6 +99,13 @@ if(!empty($_POST))
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
             <form method='post' class='row' autocomplete="off" enctype='multipart/form-data'>
+            <div class='row'>
+                    <div class='input-field col s12 m6'>
+                        <i class="material-icons prefix">keyboard_arrow_right</i>
+                        <input id='codigo' type='text' name='codigo' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($id)); ?>' required/>
+                        <label class="active" for='codigo'>Codigo</label>
+                    </div>
+                </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>

@@ -93,44 +93,56 @@ if(!empty($_POST))
         Database::executeRow($sql, $params);
         header("location: empresa_read.php");
     }
-    catch (Exception $error)
+    catch(Exception $error)
     {
         print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
     }
 }
 ?>
-<form method='post' autocomplete="off" class='row' enctype='multipart/form-data'>
+<form method='post' autocomplete="off" enctype='multipart/form-data'>
     <div class='row'>
-        <div class='input-field col s12 m6'>
+        <div class='input-field col s12 m6 l6'>
+          	<i class='material-icons prefix'>add</i>
+          	<input id='cod_empre' type='text' name='cod_empre' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Empresas)); ?>' required/>
+          	<label for='cod_empre'>Codigo de empresa</label>
+        </div>
+        <div class='input-field col s12 m6 l6'>
+          	<i class='material-icons prefix'>add</i>
+          	<input id='contra' type='text' name='contra' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Rubro)); ?>'/>
+          	<label for='contra'>Contraseña</label>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='nombre_empresa' type='text' name='nombre_empresa' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Empresas)); ?>' required/>
           	<label for='nombre_empresa'>Empresas</label>
         </div>
-        <div class='input-field col s12 m6'>
+        <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='rubro' type='text' name='rubro' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Rubro)); ?>'/>
           	<label for='rubro'>Rubro</label>
         </div>
     </div>
     <div class='row'>
-        <div class='input-field col s12 m6'>
+        <div class='input-field col s12 m6 l6'>
             <i class='material-icons prefix'>add</i>
             <input id='direccion' type='text' name='direccion' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Direccion)); ?>' required/>
             <label for='direccion'>Direccion</label>
         </div>
-        <div class='input-field col s12 m6'>
+        <div class='input-field col s12 m6 l6'>
             <i class='material-icons prefix'>add</i>
             <input id='telefono' type='text' name='telefono' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Telefono)); ?>'/>
             <label for='telefono'>Telefono</label>
         </div>
     </div>
     <div class='row'>
-        <div class='input-field col s12 m6'>
+        <div class='input-field col s12 m6 l6'>
             <i class='material-icons prefix'>add</i>
             <input id='contacto' type='text' name='contacto' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Contacto)); ?>' required/>
             <label for='contacto'>Contacto</label>
         </div>
-        <div class='input-field col s12 m6'>
+        <div class='input-field col s12 m6 l6'>
             <i class='material-icons prefix'>add</i>
             <input id='correo' type='text' name='correo' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Correo)); ?>'/>
             <label for='correo'>Correo</label>

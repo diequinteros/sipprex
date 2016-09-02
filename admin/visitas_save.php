@@ -13,8 +13,6 @@
 <body>
 <?php
 include("../inc/nav.php");
-require("../lib/page.php");
-require("../../lib/conexion.php");
 
 if(empty($_GET['id'])) 
 {

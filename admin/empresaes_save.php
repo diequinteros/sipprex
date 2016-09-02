@@ -3,6 +3,7 @@
   ob_start();
   session_start();
    require("../bibliotecas/conexion.php");
+   require("../bibliotecas/validator.php");
    ?>
     <head>
       <?php
@@ -25,7 +26,6 @@ else
     $sql = "SELECT * FROM espeempresa WHERE id_espeempresa = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
-    $id = $data['id_espeempresa'];
     $empre = $data['empresa'];
     $espe = $data['especialiada'];
   
@@ -35,8 +35,8 @@ if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
   	 $empre = strip_tags(trim($_POST['empresa']));
-    $espe = strip_tags(trim($_POST['especialiada']));
-    $id = strip_tags(trim($_POST['id_espeempresa']));
+    $espe = strip_tags(trim($_POST['especialidad']));
+   
 
     if($espe == "")
     {
@@ -61,6 +61,7 @@ if(!empty($_POST))
             $params = array($empre, $espe);
         Database::executeRow($sql, $params);
         header("location: empresaes_read.php");
+        }
     }
     catch (Exception $error)
     {
