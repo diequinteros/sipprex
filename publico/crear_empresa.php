@@ -95,9 +95,8 @@ if(!empty($_POST))
                         }
                         else
                             {
-                            $hash = password_hash($Contraseña1Empresa, PASSWORD_DEFAULT);
                             $sql = "INSERT INTO empresas(nombre_empresa, rubro, direccion, telefono, contacto, correo, codigo_empresa, contraseña_empre) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-                            $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $CodigoEmpresa, $hash);
+                            $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $CodigoEmpresa, $Contraseña1Empresa);
                             Database::executeRow($sql, $params);
                             session_start();
                             $sql = "SELECT * FROM empresas WHERE codigo_empresa = ?";
@@ -158,24 +157,24 @@ if(!empty($_POST))
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='correo' type='text' name='correo' class='validate' length='20' maxlength='20'/>
+            <input id='correo' type='text' name='correo' class='validate' length='20' maxlenght='20'/>
             <label for='correo'>Correo</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='codigo'  type='number' name='codigo' class='validate' length='4' maxlength='4' value='<?php print(htmlspecialchars($CodigoEmpresa)); ?>'/>
+            <input id='codigo'  type='number' name='codigo' class='validate' length='4'' maxlength='4' value='<?php print(htmlspecialchars($CodigoEmpresa)); ?>'/>
             <label for='codigo'>Codigo para inicio de sesion</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='contra1' type='password' name='contra1' class='validate' length='8' maxlength='8' value='<?php print(htmlspecialchars($Contraseña1Empresa)); ?>'/>
+            <input id='contra1' type='password' name='contra1' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña1Empresa)); ?>'/>
             <label for='contra1'>Contraseña</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='contra2' type='password' name='contra2' class='validate' length='8' maxlength='8' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>' required/>
+            <input id='contra2' type='password' name='contra2' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>' required/>
             <label for='contra2'>Vuelva a introducir su contraseña</label>
               <BR>
                 <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>

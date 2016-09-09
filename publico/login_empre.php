@@ -19,19 +19,19 @@ if(!empty($_POST))
 			  //Primero se evalua si es ex-alumno
   			$sql = "SELECT * FROM empresas WHERE codigo_empresa = ?";
 		    $param = array($codigo);
-		    $data = Database::getRow($sql, $param);
+		    $data = Database::getRows($sql, $param);
 		    if($data != null)
 		    {
-		    	$hash = $data['contraseña_empre'];
-		    	if(password_verify($clave, $hash)) 
+		    	$hash = $data[0]['contraseña_empre'];
+		    	if($clave == $hash) 
 				//Si es ex-alumno, redirecciona al sitio publico del ex-alumno
 		    	{
-			    	$_SESSION['id_empresa'] = $data['id_empresa'];
-			      	$_SESSION['nombre_empresa'] = $data['nombre_empres'];
+			    	$_SESSION['id_empresa'] = $data[0]['id_empresa'];
+			      	$_SESSION['nombre_empresa'] = $data[0]['nombre_empres'];
 					$sesU = uniqid().'_ses';
 					$_SESSION['ses'] = $sesU;
 					$sqlSes = "INSERT INTO sesiones_empre(unisesion, usuario, os) VALUES(?, ?, ?)";
-					$parametros = array($sesU, $data['id_empresa'], os_info($uagent));
+					$parametros = array($sesU, $data[0]['id_empresa'], os_info($uagent));
 					Database::executeRow($sqlSes, $parametros);
 					$ahora = date("Y-n-j H:i:s");
 					$_SESSION["ultimoAcceso"] = $ahora;
