@@ -74,7 +74,7 @@
         }
         if($Empresas == "")
             {
-                $Empresas = "";
+                $Empresas = null;
             }
         try 
         {
@@ -83,12 +83,13 @@
                 $sqlContra = "SELECT * FROM empresas WHERE id_empresa = ?";
                 $P = array($_SESSION['id_empresa']);
                 $contrabase = Database::getRow($sqlContra, $P);
-                if($Contraseña1Empresa != null && $Contraseña2Empresa != null && $ContraActual == $contrabase['contraseña_empre'])
+                if($Contraseña1Empresa != null && $Contraseña2Empresa != null && password_verify($ContraActual, $contrabase['contraseña_empre']))
                 {
                 if($Contraseña1Empresa == $Contraseña2Empresa)
                 {
-                    $sql = "UPDATE empresas SET contraseña_empre = ?";
-                    $params = array($Contraseña1Empresa);
+                    $hash = password_hash($Contraseña1, PASSWORD_DEFAULT);
+                    $sql = "UPDATE empresas SET contraseña_empre = ? WHERE id_empresa = ?";
+                    $params = array($hash, $P);
                     Database::executeRow($sql, $params);
                     session_start();
                     $_SESSION['codigo_empresa'] = $CodigoEmpresa;
@@ -102,10 +103,11 @@
                     throw new Exception("Las contraseñas no coinciden");
                 }
             }
-            if($Empresas != null && $Rubro != null && $Direccion != null && $Telefono != null && $Contacto != null && $Correo != null && $CodigoEmpresa != null)
+            if($Empresas != null && $Rubro != null && $Direccion != null && $Telefono != null && $Contacto != null && $Correo != null && $CodigoEmpresa != null && $Contraseña1Empresa != null && $Contraseña2Empresa != null)
             {
-                    $sql = "UPDATE empresas SET nombre_empresa=?, rubro=?, direccion=?, telefono=?, contacto=?, correo=?, codigo_empresa=? WHERE id_empresa = ?";
-                    $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $CodigoEmpresa, $_SESSION['id_empresa']);
+                    $hash = password_hash($Contraseña1Empresa, PASSWORD_DEFAULT);
+                    $sql = "UPDATE empresas SET nombre_empresa=?, rubro=?, direccion=?, telefono=?, contacto=?, correo=?, codigo_empresa=?, contraseña_empre = ? WHERE id_empresa = ?";
+                    $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $CodigoEmpresa, $hash, $_SESSION['id_empresa']);
                     Database::executeRow($sql, $params);
                     header("location: index_empresa.php");
             }
@@ -172,17 +174,17 @@
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='contra' type='text' name='contra' class='validate' length='40' maxlenght='25'/>
+                <input id='contra' type='password' name='contra' class='validate' length='25' maxlength='25'/>
                 <label for='contra'>Contraseña actual</label>
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='contra1' type='password' name='contra1' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña1Empresa)); ?>'/>
+                <input id='contra1' type='password' name='contra1' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($Contraseña1Empresa)); ?>'/>
                 <label for='contra1'>Nueva contraseña</label>
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='contra2' type='password' name='contra2' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>'/>
+                <input id='contra2' type='password' name='contra2' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>'/>
                 <label for='contra2'>Vuelva a introducir su contraseña nueva</label>
             </div>
         </div>
