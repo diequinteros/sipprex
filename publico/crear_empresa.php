@@ -73,48 +73,56 @@ if(!empty($_POST))
         }
     try 
     {
-      	if($Empresas != null && $Rubro != null && $Direccion != null && $Telefono != null && $Contacto != null && $Correo != null && $CodigoEmpresa != null && $Contraseña1Empresa != null && $Contraseña2Empresa != null)
+      	if($Empresas != null && $Rubro !=null && $Direccion != null && $Telefono != null && $Contacto != null && $Correo != null && $CodigoEmpresa != null && $Contraseña1Empresa != null && $Contraseña2Empresa != null)
           {
               if($Contraseña1Empresa == $Contraseña2Empresa)
               {
-                if(isset($_POST['g-recaptcha-response']))
-                        {
-                            $captcha=$_POST['g-recaptcha-response'];
-                        }
-                        if (!$captcha) 
-                        {
-                           print("<div class='card-panel red'><i class='material-icons left'>llena todo los campos</i></div>");
-                        }
-                        $url = 'https://www.google.com/recaptcha/api/siteverify';
-                        $llave = "6Ld5KygTAAAAAHeMM5B63xFqlDzsRnB0-zW9f8oD";
-                        $resultado = file_get_contents($url."?secret=.".$llave."&response=".$_POST['g-recaptcha-response']."");
-                        $data = json_decode($resultado,true);
-                        if (isset($data->success) AND $data->success==true) {
-                            print("<div class='card-panel red'><i class='material-icons left'>spamer</i></div>");
-                           
-                        }
-                        else
-                            {
-                            $sql = "INSERT INTO empresas(nombre_empresa, rubro, direccion, telefono, contacto, correo, codigo_empresa, contraseña_empre) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-                            $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $CodigoEmpresa, $Contraseña1Empresa);
-                            Database::executeRow($sql, $params);
-                            session_start();
-                            $sql = "SELECT * FROM empresas WHERE codigo_empresa = ?";
-                            $p = array($CodigoEmpresa);
-                            $id_empre = Database::getRow($sql,$p);
-                            $_SESSION['id_empresa'] = $id_empre['id_empresa'];
-                            header("location: index_empresa.php");                           
-                             }
-                            }
-              else {
-                  throw new Exception("Las contraseñas no coinciden");
-                  
-              }
-          }
-        	else {
-                throw new Exception("Debe llenar todos los datos");
+                if(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"])
+                {
+                    var_dump($_POST);
+                    $secret ="6Lff-CcTAAAAAJjQHKT4BcSGTPtEoQGn4lz_lE4f";
+                    $id = $_SERVER["REMOTE_ADDR"];
+
+                    $capt = $_POST["g-recaptcha-response"];
+
+                    $res = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$capt&remoteid=$id");
+
+                    //echo "<br>";
+                    //var_dump($res);
+
+                    $array = json_decode($res, TRUE);
+                    echo "<br>";
+                    if($array["success"])
+                    {
+                        $sql = "INSERT INTO empresas(nombre_empresa, rubro, direccion, telefono, contacto, correo, codigo_empresa, contraseña_empre) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+                        $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $CodigoEmpresa, $Contraseña1Empresa);
+                        Database::executeRow($sql, $params);
+                        session_start();
+                        $sql = "SELECT * FROM empresas WHERE codigo_empresa = ?";
+                        $p = array($CodigoEmpresa);
+                        $id_empre = Database::getRow($sql,$p);
+                        $_SESSION['id_empresa'] = $id_empre['id_empresa'];
+                        header("location: index_empresa.php");      
+                    }     
+                    else{
+                        print("<div class='card-panel red'><i class='material-icons left'>Eres un spamer</i></div>");
+                    }
+                }
+                else 
+                {
+                    throw new Exception("No se resolvio el reCaptcha");                    
+                }
             }
-    }
+            else 
+            {
+                throw new Exception("Las contraseñas son diferentes.");
+            }
+        }
+        else 
+        {
+            throw new Exception("Debe ingresar todos los datos.");
+        }
+    }  
     catch (Exception $error)
     {
         print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
@@ -124,7 +132,7 @@ if(!empty($_POST))
 <div class="container">
 <h2>Por favor ingrese los datos de su empresa:</h2>
 </div>
-<form  method='POST' class='row' autocomplete="off" enctype='multipart/form-data'>
+<form  method = "post"  class='row' autocomplete="off" enctype='multipart/form-data'>
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
@@ -145,39 +153,39 @@ if(!empty($_POST))
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='telefono' type='text' name='telefono' class='validate' length='12'' maxlength='12' value='<?php print(htmlspecialchars($Telefono)); ?>'required/>
+            <input id='telefono' type='text' name='telefono' class='validate' length='12' maxlength='12' value='<?php print(htmlspecialchars($Telefono)); ?>'required/>
             <label for='telefono'>Telefono</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='contacto' type='text' name='contacto' class='validate' length='15'' maxlength='15' value='<?php print(htmlspecialchars($Contacto)); ?>'/>
+            <input id='contacto' type='text' name='contacto' class='validate' length='15' maxlength='15' value='<?php print(htmlspecialchars($Contacto)); ?>'/>
             <label for='contacto'>Contacto</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='correo' type='text' name='correo' class='validate' length='20' maxlenght='20'/>
+            <input id='correo' type='text' name='correo' class='validate' length='20' maxlenght='20'  value='<?php print(htmlspecialchars($Correo)); ?>'/>
             <label for='correo'>Correo</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='codigo'  type='number' name='codigo' class='validate' length='4'' maxlength='4' value='<?php print(htmlspecialchars($CodigoEmpresa)); ?>'/>
+            <input id='codigo'  type='number' name='codigo' class='validate' length='4' maxlength='4' value='<?php print(htmlspecialchars($CodigoEmpresa)); ?>'/>
             <label for='codigo'>Codigo para inicio de sesion</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='contra1' type='password' name='contra1' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña1Empresa)); ?>'/>
+            <input id='contra1' type='password' name='contra1' class='validate' length='8' maxlength='8' value='<?php print(htmlspecialchars($Contraseña1Empresa)); ?>'/>
             <label for='contra1'>Contraseña</label>
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='contra2' type='password' name='contra2' class='validate' length='8'' maxlength='8' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>' required/>
+            <input id='contra2' type='password' name='contra2' class='validate' length='8' maxlength='8' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>' required/>
             <label for='contra2'>Vuelva a introducir su contraseña</label>
               <BR>
-                <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
+                <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lff-CcTAAAAAJt_H1WxWdBYR81AHYkQ0pEa1yNR"></div>
         </div>
                 
     </div>
