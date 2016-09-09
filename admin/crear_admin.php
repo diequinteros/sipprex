@@ -51,37 +51,45 @@ if(!empty($_POST))
     {
       	if($contraseña == $contraseña2)
           {
-              
-                if(isset($_POST['g-recaptcha-response']))
-                        {
-                            $captcha=$_POST['g-recaptcha-response'];
-                        }
-                        if (!$captcha) 
-                        {
-                           print("<div class='card-panel red'><i class='material-icons left'>llena todo los campos</i></div>");
-                        }
-                        $url = 'https://www.google.com/recaptcha/api/siteverify';
-                        $llave = "6Ld5KygTAAAAAHeMM5B63xFqlDzsRnB0-zW9f8oD";
-                        $resultado = file_get_contents($url."?secret=.".$llave."&response=".$_POST['g-recaptcha-response']."");
-                        $data = json_decode($resultado,true);
-                        if (isset($data->success) AND $data->success==true) {
-                            print("<div class='card-panel red'><i class='material-icons left'>spamer</i></div>");
-                           
-                        }
-                        else
-                            {
-                                $hash = password_hash($contraseña, PASSWORD_DEFAULT);
+              if(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"])
+                {
+                    var_dump($_POST);
+                    $secret ="6Lff-CcTAAAAAJjQHKT4BcSGTPtEoQGn4lz_lE4f";
+                    $id = $_SERVER["REMOTE_ADDR"];
+
+                    $capt = $_POST["g-recaptcha-response"];
+
+                    $res = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$capt&remoteid=$id");
+
+                    //echo "<br>";
+                    //var_dump($res);
+
+                    $array = json_decode($res, TRUE);
+                    echo "<br>";
+                    if($array["success"])
+                    {
+                        $hash = password_hash($contraseña, PASSWORD_DEFAULT);
             $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
             $params = array($codigo, $hash, $correo, $create, $update, $delete);
             Database::executeRow($sql, $params);
-            header("location: ../publico/login.php");
-                            }
-          }
-          else{
-             print("<div class='card-panel red'><i class='material-icons left'>error</i>Las contraseñas no son iguales</div>"); 
-          }
-        
-    }
+            header("location: ../publico/login.php");   
+                    }     
+                    else{
+                        print("<div class='card-panel red'><i class='material-icons left'>Eres un spamer</i></div>");
+                    }
+                }
+                else 
+                {
+                    throw new Exception("No se resolvio el reCaptcha");                    
+                }
+            }
+            else 
+            {
+                throw new Exception("Las contraseñas son diferentes.");
+            }
+        }
+                
+       
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)
     {
@@ -94,24 +102,24 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>person_pin</i>
-                        <input id='cod' type='text' name='cod' class='validate' length='50' maxlenght='50' required/>
+                        <input id='cod' type='text' name='cod' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($codigo)); ?>'required/>
                         <label class="active" for='cod'>Codigo de admin (Codigo brindado por institucion):</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
-                        <input id='contraseña' type='password' name='contraseña' class='validate' length='50' maxlenght='50' required/>
+                        <input id='contraseña' type='password' name='contraseña' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($contraseña)); ?>'required/>
                         <label class="active" for='contraseña'>Contraseña:</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
-                        <input id='contraseña2' type='password' name='contraseña2' class='validate' length='50' maxlenght='50' required/>
+                        <input id='contraseña2' type='password' name='contraseña2' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($contraseña2)); ?>'required/>
                         <label class="active" for='contraseña2'>Vuelva a introducir su contraseña:</label>
                     </div>
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>mail_outline</i>
-                        <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='50' maxlenght='50'/>
+                        <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($correo)); ?>'required/>
                         <label class="active" for='correo_electronico'>Correo Electrónico:</label>
                         <BR>
                 <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
