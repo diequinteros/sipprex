@@ -1,5 +1,6 @@
 <html>
   <?php
+  
   ob_start();
   session_start();
    require("../bibliotecas/conexion.php");
@@ -25,6 +26,9 @@
   	<div class='input-field col s12 m4'>
 		<a href='empresa_save.php' class='btn  green darken-4'><i class='material-icons right'>add_circle</i>Nuevo</a>
   	</div>
+    <div class='input-field col s12 m4'>
+    <a href='reporte_empresa.php' class='btn  green darken-4'><i class='material-icons right'>description</i>Nuevo</a>
+    </div>
 </form>
 <?php
 $page = null;
