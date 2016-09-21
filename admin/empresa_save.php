@@ -34,6 +34,8 @@ else
     $sql = "SELECT * FROM empresas WHERE id_empresa = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
+    $codE = $data['nombre_empresa'];
+    $contra = "";
     $Empresas = $data['nombre_empresa'];
     $Rubro = $data['rubro'];
     $Direccion = $data['direccion'];
@@ -45,7 +47,9 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	 $Empresas = strip_tags(trim($_POST['nombre_empresa']));
+    $codE = strip_tags(trim($_POST['cod_empre']));
+    $contra = strip_tags(trim($_POST['contra']));
+  	$Empresas = strip_tags(trim($_POST['nombre_empresa']));
     $Rubro = strip_tags(trim($_POST['rubro']));
     $Direccion = strip_tags(trim($_POST['direccion']));
     $Telefono = strip_tags(trim($_POST['telefono']));
@@ -82,13 +86,15 @@ if(!empty($_POST))
 
         if($id == null)
         {
-        	$sql = "INSERT INTO empresas(nombre_empresa, rubro, direccion, telefono, contacto, correo) VALUES(?, ?, ?, ?, ?, ?)";
-            $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo);
+        	$sql = "INSERT INTO empresas(codigo_empresa, contraseña_empre,nombre_empresa, rubro, direccion, telefono, contacto, correo) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            $contra = password_hash($contra, PASSWORD_DEFAULT);
+            $params = array($codE, $contra, $Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo);
         }
         else
         {
-            $sql = "UPDATE empresas SET nombre_empresa = ?, rubro = ?, direccion = ?, telefono = ?, contacto = ?, correo = ? WHERE id_empresa = ?";
-            $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $id);
+            $sql = "UPDATE empresas SET contraseña_empre = ?, nombre_empresa = ?, rubro = ?, direccion = ?, telefono = ?, contacto = ?, correo = ? WHERE id_empresa = ?";
+            $contra = password_hash($contra, PASSWORD_DEFAULT);
+            $params = array($contra, $Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $id);
         }
         Database::executeRow($sql, $params);
         header("location: empresa_read.php");

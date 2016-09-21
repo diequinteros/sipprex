@@ -13,28 +13,30 @@ require("../bibliotecas/conexion.php");
 		<!-- Se incluye el archivo que llama nuestras hojas de estilo -->
 		<?php include '../inc/styles.php'; ?>
 	</head>
-	<body>
+	<body class='grey lighten-3'>
 		<?php include('../inc/nav.php'); ?>
-		<div class="card-panel paneles">
+		<div class='card-panel paneles z-depth-3'>
 			<!-- Se crea el formulario de busqueda -->
 			<div class="titulo">
 				<h3>Grupos Técnicos</h3>
 			</div>
 			<br>
-			<form method='post' autocomplete="off" class='row'>
-				<div class='input-field col s6 m4'>
-					<i class='material-icons prefix'>search</i>
-					<input id='buscar' type='text' name='buscar' class='validate'/>
-					<label for='buscar' class='active'>Búsqueda</label>
-				</div>
-				<div class='input-field col s6 m4'>
-					<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Buscar</button> 	
-				</div>
-				<!-- Se incluye el boton de agregar un nuevo ex-alumno -->
-				<div class='input-field col s12 m4'>
-					<a href='grupotec_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
-				</div>
-			</form>
+			
+				<form method='post' autocomplete="off" class='row'>
+					<div class='input-field col s6 m4'>
+						<i class='material-icons prefix'>search</i>
+						<input id='buscar' type='text' name='buscar' class='validate'/>
+						<label for='buscar' class='active'>Búsqueda</label>
+					</div>
+					<div class='input-field col s6 m4'>
+						<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Buscar</button> 	
+					</div>
+					<!-- Se incluye el boton de agregar un nuevo ex-alumno -->
+					<div class='input-field col s12 m4'>
+						<a href='grupotec_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
+					</div>
+				</form>
+			
 		</div>
 		<!-- Se realizan las operaciones de busqueda con la consulta "SELECT" -->
 		<?php
@@ -71,7 +73,7 @@ require("../bibliotecas/conexion.php");
 		$data = Database::getRows($sql, $params);
 		if($data != null)
 		{
-			$tabla = 	"<div class='card-panel paneles'>
+			$tabla = 	"<div class='card-panel paneles z-depth-3'>
 							<table class='centered striped responsive-table'>
 								<thead>
 									<tr>

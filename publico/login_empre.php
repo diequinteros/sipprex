@@ -23,7 +23,7 @@ if(!empty($_POST))
 		    if($data != null)
 		    {
 		    	$hash = $data[0]['contraseña_empre'];
-		    	if($clave == $hash) 
+		    	if(password_verify($clave, $hash)) 
 				//Si es ex-alumno, redirecciona al sitio publico del ex-alumno
 		    	{
 			    	$_SESSION['id_empresa'] = $data[0]['id_empresa'];

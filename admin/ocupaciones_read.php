@@ -10,10 +10,14 @@
       include("../inc/styles.php");
       ?>
     </head>
-<body>
+<body class='grey lighten-3'>
 <?php
 include("../inc/nav.php");
 ?>
+<div class='card-panel paneles z-depth-3'>
+<div class="titulo">
+			<h3>Ocupaciones de ex alumnos</h3>
+</div>
 <form method='post' autocomplete="off" class='row'>
 	<div class='input-field col s6 m4'>
       	<i class='material-icons prefix'>search</i>
@@ -26,7 +30,12 @@ include("../inc/nav.php");
   	<div class='input-field col s12 m4'>
 		<a href='ocupaciones_save.php' class='btn  green darken-4'><i class='material-icons right'>add_circle</i>Nuevo</a>
   	</div>
+	  <div class='input-field col s12 m4'>
+		<a href='estadisticas.php#ocupaex' class='btn indigo'><i class='material-icons right'>insert_chart</i>Estadisticas</a>
+	  </div>
 </form>
+</div>
+<div class='card-panel paneles z-depth-3'>
 <?php
 $page = null;
 		//Se toma la variable de paginacion
@@ -89,6 +98,7 @@ else
 	print("<div class='card-panel red'><i class='material-icons left'>warning</i>No hay registros de especialidades.</div>");
 }
 ?>
+</div>
 <ul class="pagination center-align">
 	<?php
 	$cons2 = ("SELECT COUNT(id_ocupacion) FROM ocupaciones");

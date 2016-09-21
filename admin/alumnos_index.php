@@ -13,11 +13,11 @@ ob_start();
 		<!-- Se incluye el archivo que llama nuestras hojas de estilo -->
 		<?php include '../inc/styles.php'; ?>
 	</head>
-	<body>
+	<body class='grey lighten-3'>
 		<?php
 		 include("../inc/nav.php")
 		 ?>
-		<div class="card-panel paneles">
+		<div class="card-panel paneles z-depth-3">
 			<!-- Se crea el formulario de busqueda -->
 			<div class="titulo">
 				<h3>Alumnos</h3>
@@ -73,7 +73,7 @@ ob_start();
 		$data = Database::getRows($sql, $params);
 		if($data != null)
 		{
-			$tabla = 	"<div class='card-panel paneles'>
+			$tabla = 	"<div class='card-panel paneles z-depth-3'>
 							<table class='centered striped responsive-table'>
 								<thead>
 									<tr>

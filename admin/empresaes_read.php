@@ -9,23 +9,32 @@
       include("../inc/styles.php");
       ?>
     </head>
-<body>
+<body class='grey lighten-3'>
 <?php
 include("../inc/nav.php");
 ?>
-<form method='post' autocomplete="off" class='row'>
-	<div class='input-field col s6 m4'>
-      	<i class='material-icons prefix'>search</i>
-      	<input id='buscar' type='text' name='buscar' class='validate'/>
-      	<label for='buscar'>Búsqueda</label>
-    </div>
-    <div class='input-field col s6 m4'>
-    	<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Aceptar</button> 	
-  	</div>
-  	<div class='input-field col s12 m4'>
-		<a href='empresaes_save.php' class='btn  green darken-4'><i class='material-icons right'>add_circle</i>Nuevo</a>
-  	</div>
-</form>
+<div class='card-panel paneles z-depth-3'>
+<div class="titulo">
+			<h3>Especialidades de empresa</h3>
+	</div>
+    <form method='post' autocomplete="off" class='row'>
+        <div class='input-field col s6 m4'>
+            <i class='material-icons prefix'>search</i>
+            <input id='buscar' type='text' name='buscar' class='validate'/>
+            <label for='buscar'>Búsqueda</label>
+        </div>
+        <div class='input-field col s6 m4'>
+            <button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Aceptar</button> 	
+        </div>
+        <div class='input-field col s12 m4'>
+            <a href='empresaes_save.php' class='btn  green darken-4'><i class='material-icons right'>add_circle</i>Nuevo</a>
+        </div>
+        <div class='input-field col s12 m4'>
+			<a href='estadisticas.php#espesoli' class='btn indigo'><i class='material-icons right'>insert_chart</i>Estadisticas</a>
+		</div>
+    </form>
+</div>
+<div class='card-panel paneles z-depth-3'>
 <?php
 $page = null;
 //Se toma la variable de paginacion
@@ -90,6 +99,7 @@ else
 	print("<div class='card-panel red'><i class='material-icons left'>warning</i>No hay registros de empresas.</div>");
 }
 ?>
+</div>
 <ul class="pagination center-align">
 	<?php
 	$cons2 = ("SELECT COUNT(id_espeempresa) FROM espeempresa");

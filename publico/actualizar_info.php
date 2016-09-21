@@ -83,10 +83,11 @@
                 $sqlContra = "SELECT * FROM empresas WHERE id_empresa = ?";
                 $P = array($_SESSION['id_empresa']);
                 $contrabase = Database::getRow($sqlContra, $P);
-                if($Contraseña1Empresa != null && $Contraseña2Empresa != null && $ContraActual == $contrabase['contraseña_empre'])
+                if($Contraseña1Empresa != null && $Contraseña2Empresa != null && password_verify($ContraActual, $contrabase['contraseña_empre']))
                 {
                 if($Contraseña1Empresa == $Contraseña2Empresa)
                 {
+                    $Contraseña1Empresa = password_hash($Contraseña1Empresa, PASSWORD_DEFAULT);
                     $sql = "UPDATE empresas SET contraseña_empre = ?";
                     $params = array($Contraseña1Empresa);
                     Database::executeRow($sql, $params);

@@ -9,23 +9,29 @@
       include("../inc/styles.php");
       ?>
     </head>
-<body>
+<body class="grey lighten-3">
 <?php
 include("../inc/nav.php")
 ?>
-<form method='post' autocomplete="off" class='row'>
-	<div class='input-field col s6 m4'>
-      	<i class='material-icons prefix'>search</i>
-      	<input id='buscar' type='text' name='buscar' class='validate'/>
-      	<label for='buscar'>Búsqueda</label>
-    </div>
-    <div class='input-field col s6 m4'>
-    	<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Aceptar</button> 	
-  	</div>
-  	<div class='input-field col s12 m4'>
-		<a href='visitas_save.php' class='btn  green darken-4'><i class='material-icons right'>add_circle</i>Nuevo</a>
-  	</div>
-</form>
+<div class="card-panel paneles z-depth-3">
+	<div class="titulo">
+			<h3>Visitas</h3>
+	</div>
+	<form method='post' autocomplete="off" class='row'>
+		<div class='input-field col s6 m4'>
+			<i class='material-icons prefix'>search</i>
+			<input id='buscar' type='text' name='buscar' class='validate'/>
+			<label for='buscar'>Búsqueda</label>
+		</div>
+		<div class='input-field col s6 m4'>
+			<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Aceptar</button> 	
+		</div>
+		<div class='input-field col s12 m4'>
+			<a href='visitas_save.php' class='btn  green darken-4'><i class='material-icons right'>add_circle</i>Nuevo</a>
+		</div>
+	</form>
+</div>
+<div class="card-panel paneles z-depth-3">
 <?php
 $page = null;
 		//Se toma la variable de paginacion
@@ -48,12 +54,12 @@ $page = null;
 if(!empty($_POST))
 {
 	$search = strip_tags(trim($_POST['buscar']));
-	$sql = "SELECT * FROM visitas WHERE empresa LIKE ? ORDER BY empresa LIMIT $page1,20";
+	$sql = "SELECT id_visita, departamento, nombre_empresa, fecha_ultima_visita, observaciones FROM visitas, empresas, departamentosempre WHERE visitas.empresa = departamentosempre.id_depar AND departamentosempre.empresa = empresas.id_empresa AND empresa LIKE ? ORDER BY fecha_ultima_visita LIMIT $page1,20";
 	$params = array("%$search%");
 }
 else
 {
-	$sql = "SELECT * FROM visitas, empresas WHERE visitas.empresa = empresas.id_empresa ORDER BY nombre_empresa LIMIT $page1,20";
+	$sql = "SELECT id_visita, departamento, nombre_empresa, fecha_ultima_visita, observaciones FROM visitas, empresas, departamentosempre WHERE visitas.empresa = departamentosempre.id_depar AND departamentosempre.empresa = empresas.id_empresa ORDER BY fecha_ultima_visita LIMIT $page1,20";
 	$params = null;
 }
 $data = Database::getRows($sql, $params);
@@ -62,9 +68,9 @@ if($data != null)
 	$tabla = 	"<table class='centered striped'>
 					<thead>
 			    		<tr>
-				    		<th>empresa</th>
-				    		<th>fecha_ultima_visita</th>
-				    		<th>observacion</th>
+				    		<th>Empresa/Departamento</th>
+				    		<th>Fecha de la visita</th>
+				    		<th>Observaciones</th>
 				    		
 			    		</tr>
 		    		</thead>
@@ -72,7 +78,7 @@ if($data != null)
 		foreach($data as $row)
 		{
 	        $tabla .=	"<tr>
-	            			<td>".htmlspecialchars($row['nombre_empresa'])."</td>
+	            			<td>".htmlspecialchars($row['nombre_empresa'])."/".htmlspecialchars($row['departamento'])."</td>
 	            			<td>".htmlspecialchars($row['fecha_ultima_visita'])."</td>
 	            			<td><p class='truncate'>".htmlspecialchars($row['observaciones'])."</p></td>
 	            			<td>
@@ -90,6 +96,7 @@ else
 	print("<div class='card-panel red'><i class='material-icons left'>warning</i>No hay registros de visitas.</div>");
 }
 ?>
+</div>
 <ul class="pagination center-align">
 	<?php
 	$cons2 = ("SELECT COUNT(id_visita) FROM visitas");
