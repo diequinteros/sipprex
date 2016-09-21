@@ -22,18 +22,25 @@ require("../bibliotecas/conexion.php");
 			</div>
 			<br>
 			<form method='post' autocomplete="off" class='row'>
-				<div class='input-field col s6 m4'>
+				<div class='input-field col s3 m4'>
 					<i class='material-icons prefix'>search</i>
 					<input id='buscar' type='text' name='buscar' class='validate'/>
 					<label for='buscar' class='active'>Búsqueda</label>
 				</div>
-				<div class='input-field col s6 m4'>
+				<div class='input-field col s3 m2'>
 					<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Buscar</button> 	
 				</div>
 				<!-- Se incluye el boton de agregar un nuevo ex-alumno -->
-				<div class='input-field col s12 m4'>
+				<div class='input-field col s3 m2'>
 					<a href='registrospp_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
 				</div>
+				<div class='input-field col s3 m2'>
+					<a href='deben.php' class='btn indigo'><i class='material-icons right'>description</i>Pendientes</a>
+				</div>
+				<div class='input-field col s3 m2'>
+					<a href='finalizo.php' class='btn indigo'><i class='material-icons right'>description</i>Finalizo</a>
+				</div>
+
 			</form>
 		</div>
 		<!-- Se realizan las operaciones de busqueda con la consulta "SELECT" -->

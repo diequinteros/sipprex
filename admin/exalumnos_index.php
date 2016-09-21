@@ -27,12 +27,15 @@ require("../bibliotecas/conexion.php");
 					<input id='buscar' type='text' name='buscar' class='validate'/>
 					<label for='buscar' class='active'>Búsqueda</label>
 				</div>
-				<div class='input-field col s6 m4'>
+				<div class='input-field col s3 m2'>
 					<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Buscar</button> 	
 				</div>
 				<!-- Se incluye el boton de agregar un nuevo ex-alumno -->
-				<div class='input-field col s12 m4'>
+				<div class='input-field col s3 m2'>
 					<a href='exalumnos_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
+				</div>
+				<div class='input-field col s3 m2'>
+					<a href='reporte_ex.php' class='btn indigo'><i class='material-icons right'>description</i>Reporte</a>
 				</div>
 			</form>
 		</div>
