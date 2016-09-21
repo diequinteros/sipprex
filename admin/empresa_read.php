@@ -1,5 +1,6 @@
 <html>
   <?php
+  
   ob_start();
   session_start();
    require("../bibliotecas/conexion.php");
@@ -13,6 +14,7 @@
 	<?php
       include("../inc/nav.php");
       ?>
+<<<<<<< HEAD
       <div class='card-panel paneles z-depth-3'>
       <div class="titulo">
 			<h3>Empresas</h3>
@@ -35,6 +37,24 @@
         </form>
        </div>
        <div class='card-panel paneles z-depth-3'>
+=======
+<form method='post'  autocomplete="off" class='row'>
+	<div class='input-field col s6 m4'>
+      	<i class='material-icons prefix'>search</i>
+      	<input id='buscar' type='text' name='buscar' class='validate'/>
+      	<label for='buscar'>Búsqueda</label>
+    </div>
+    <div class='input-field col s6 m4'>
+    	<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Aceptar</button> 	
+  	</div>
+  	<div class='input-field col s12 m4'>
+		<a href='empresa_save.php' class='btn  green darken-4'><i class='material-icons right'>add_circle</i>Nuevo</a>
+  	</div>
+    <div class='input-field col s12 m4'>
+    <a href='reporte_empresa.php' class='btn  green darken-4'><i class='material-icons right'>description</i>Nuevo</a>
+    </div>
+</form>
+>>>>>>> origin/master
 <?php
 $page = null;
 //Se toma la variable de paginacion

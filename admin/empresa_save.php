@@ -26,11 +26,14 @@ if(empty($_GET['id']))
     $Telefono = null;
     $Contacto = null;
     $Correo = null;
+    $Codigo = null;
+    $Contraseña1 = null;
+    $contraseña2 = null;
 }
 else
 {
     
-    $id = $_GET['id'];
+    $id = base64_decode($_GET['id']);
     $sql = "SELECT * FROM empresas WHERE id_empresa = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
@@ -42,43 +45,30 @@ else
     $Telefono = $data['telefono'];
     $Contacto = $data['contacto'];
     $Correo = $data['correo'];
+    $Codigo = $data['codigo_empresa'];
 }
 
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
+<<<<<<< HEAD
     $codE = strip_tags(trim($_POST['cod_empre']));
     $contra = strip_tags(trim($_POST['contra']));
+=======
+>>>>>>> origin/master
   	$Empresas = strip_tags(trim($_POST['nombre_empresa']));
     $Rubro = strip_tags(trim($_POST['rubro']));
     $Direccion = strip_tags(trim($_POST['direccion']));
     $Telefono = strip_tags(trim($_POST['telefono']));
     $Contacto = strip_tags(trim($_POST['contacto']));
     $Correo = strip_tags(trim($_POST['correo']));
-
-    if($Rubro == "")
-    {
-        $Rubro = null;
-    }
-      if($Direccion == "")
-    {
-        $Direccion = null;
-    }
-      if($Telefono == "")
-    {
-        $Telefono = null;
-    }
-      if($Contacto == "")
-    {
-        $Contacto = null;
-    }
-      if($Correo == "")
-    {
-        $Correo = null;
-    }
+    $Codigo = strip_tags(trim($_POST['codigo_empresa']));
+    $Contraseña1 = strip_tags(trim($_POST['contraseña1']));
+    $Contraseña2 = strip_tags(trim($_POST['contraseña2']));
 
     try 
     {
+<<<<<<< HEAD
       	if($Empresas == "")
         {
             throw new Exception("Datos incompletos.");
@@ -95,6 +85,68 @@ if(!empty($_POST))
             $sql = "UPDATE empresas SET contraseña_empre = ?, nombre_empresa = ?, rubro = ?, direccion = ?, telefono = ?, contacto = ?, correo = ? WHERE id_empresa = ?";
             $contra = password_hash($contra, PASSWORD_DEFAULT);
             $params = array($contra, $Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $id);
+=======
+        if($id == null){
+            if($Contraseña1 = ""){
+                $Contraseña1 = null;
+                $Verif = true;
+            }
+            else{
+                if($Contraseña1 >= 8 && $Contraseña1 <= 25){
+                    $Verif = true;
+                }
+                else{
+                    print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de la contraseña es inválido</div>");
+                }
+            }
+            if($Contraseña2 = ""){
+                $Contraseña2 = null;
+                $Verif2 = true;
+            }
+            else{
+                if($Contraseña2 >= 8 && $Contraseña2 <= 25){
+                    $Verif2 = true;
+                }
+                else{
+                    print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de la confirmación de contraseña es inválido</div>");
+                }
+            }
+            if($Codigo = ""){
+                $Codigo = null;
+                $Verif3 = true;
+            }
+            else{
+                if($Codigo >= 8 && $Codigo <= 30){
+                    $Verif3 = true;
+                }
+                else{
+                    print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato del código es inválido</div>");
+                }
+            }
+            if($Verif == true && $Verif2 == true && Verif3 == true){
+                if($Contraseña1 == $Contraseña2){
+                    if($Contraseña1 != $Codigo){
+                        $hash = password_hash($Contraseña1, PASSWORD_DEFAULT);
+                        $sql = "INSERT INTO empresas(nombre_empresa, rubro, direccion, telefono, contacto, correo, codigo_empresa, contraseña_empre) VALUES(?,?,?,?,?,?,?,?)";
+                        $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $Codigo, $hash);
+                    }
+                    else{
+                        print("<div class='card-panel red'><i class='material-icons left'>error</i>La contraseña y el c´dogio de la empresa no pueden ser iguales.</div>");
+                    }
+                }
+                else{
+                    print("<div class='card-panel red'><i class='material-icons left'>error</i>Las contraseñas no coinciden</div>");
+                }
+            }
+            else{
+                print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos es inválido</div>");
+            }
+        }
+        else{
+            
+            $sql = "UPDATE empresas SET nombre_empresa = ?, rubro = ?, direccion = ?, telefono = ?, contacto = ?, correo = ? WHERE id_empresa = ?";
+            $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $id);
+>>>>>>> origin/master
         }
         Database::executeRow($sql, $params);
         header("location: empresa_read.php");

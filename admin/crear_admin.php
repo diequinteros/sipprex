@@ -102,24 +102,24 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>person_pin</i>
-                        <input id='cod' type='text' name='cod' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($codigo)); ?>'required/>
+                        <input id='cod' type='text' name='cod' class='validate' length='50' maxlenght='50' required/>
                         <label class="active" for='cod'>Codigo de admin (Codigo brindado por institucion):</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
-                        <input id='contraseña' type='password' name='contraseña' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($contraseña)); ?>'required/>
+                        <input id='contraseña' type='password' name='contraseña' class='validate' length='50' maxlenght='50' required/>
                         <label class="active" for='contraseña'>Contraseña:</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
-                        <input id='contraseña2' type='password' name='contraseña2' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($contraseña2)); ?>'required/>
+                        <input id='contraseña2' type='password' name='contraseña2' class='validate' length='50' maxlenght='50' required/>
                         <label class="active" for='contraseña2'>Vuelva a introducir su contraseña:</label>
                     </div>
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>mail_outline</i>
-                        <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($correo)); ?>'required/>
+                        <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='50' maxlenght='50' required/>
                         <label class="active" for='correo_electronico'>Correo Electrónico:</label>
                         <BR>
                 <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
