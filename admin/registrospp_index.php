@@ -22,11 +22,16 @@ require("../bibliotecas/conexion.php");
 			</div>
 			<br>
 			<form method='post' autocomplete="off" class='row'>
+<<<<<<< HEAD
 				<div class='input-field col s6 m4 l4'>
+=======
+				<div class='input-field col s3 m4'>
+>>>>>>> origin/master
 					<i class='material-icons prefix'>search</i>
 					<input id='buscar' type='text' name='buscar' class='validate'/>
 					<label for='buscar' class='active'>Búsqueda</label>
 				</div>
+<<<<<<< HEAD
 				<div class='input-field col s6 m4 l3'>
 					<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Buscar</button> 	
 				</div>
@@ -37,6 +42,22 @@ require("../bibliotecas/conexion.php");
 				<div class='input-field col s12 m4 l3'>
 					<a href='estadisticas.php#practpro' class='btn blue-grey darken-4'><i class='material-icons right'>insert_chart</i>Estadisticas</a>
 				</div>
+=======
+				<div class='input-field col s3 m2'>
+					<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Buscar</button> 	
+				</div>
+				<!-- Se incluye el boton de agregar un nuevo ex-alumno -->
+				<div class='input-field col s3 m2'>
+					<a href='registrospp_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
+				</div>
+				<div class='input-field col s3 m2'>
+					<a href='deben.php' class='btn indigo'><i class='material-icons right'>description</i>Pendientes</a>
+				</div>
+				<div class='input-field col s3 m2'>
+					<a href='finalizo.php' class='btn indigo'><i class='material-icons right'>description</i>Finalizo</a>
+				</div>
+
+>>>>>>> origin/master
 			</form>
 		</div>
 		<!-- Se realizan las operaciones de busqueda con la consulta "SELECT" -->

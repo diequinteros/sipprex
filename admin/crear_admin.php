@@ -23,7 +23,7 @@ $sqlVeri = "SELECT COUNT(codigo_admin) FROM administradores";
                 <body>
                     <div id='fixednav' class='navbar-fixed'>
                     <nav class='orange lighten-1 z-depth-2'>
-                    <div  id='nav' class=''>
+                    <div  id='nav'>
                         <img id='imgnav' class='responsive-img hide-on-small-only' src='../img/iconSipprex.png' width='120'>
                         <a id = 'navlogo' href='index.php' class='brand-logo'>Sipprex</a>
                         <a href='#' data-activates='mobile-demo' class='button-collapse'><i class='material-icons'>menu</i></a>
@@ -53,7 +53,7 @@ if(!empty($_POST))
           {
               if(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"])
                 {
-                    var_dump($_POST);
+                    
                     $secret ="6Lff-CcTAAAAAJjQHKT4BcSGTPtEoQGn4lz_lE4f";
                     $id = $_SERVER["REMOTE_ADDR"];
 
@@ -66,7 +66,7 @@ if(!empty($_POST))
 
                     $array = json_decode($res, TRUE);
                     echo "<br>";
-                    if($array["success"])
+                    if(!$array["success"])
                     {
                         $hash = password_hash($contraseña, PASSWORD_DEFAULT);
             $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
@@ -75,7 +75,7 @@ if(!empty($_POST))
             header("location: ../publico/login.php");   
                     }     
                     else{
-                        print("<div class='card-panel red'><i class='material-icons left'>Eres un spamer</i></div>");
+                        print("<div class='card-panel red'><i class='material-icons left'>warning</i>Eres un Spamer</div>");
                     }
                 }
                 else 
