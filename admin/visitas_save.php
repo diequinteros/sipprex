@@ -4,27 +4,46 @@
   session_start(); 
   require("../bibliotecas/conexion.php");
   require("../bibliotecas/validator.php");
-   ?>
-    <head>
-      <?php
-      include("../inc/styles.php");
-      ?>
-    </head>
-<body>
-<?php
-include("../inc/nav.php");
-
 if(empty($_GET['id'])) 
 {
+    $head = "";
+    $head .= "<!DOCTYPE html>
+                <html lang='es'>
+                    <head>
+                        <title>Visitas</title>";
+                        include '../inc/styles.php';
+    $head .= "<meta charset='utf-8'>
+                </head>
+                <body class='grey lighten-3'>";
+                include('../inc/nav.php');
+    $head .=     "<div class='card-panel paneles'>
+                        <div class='titulo'>
+                            <h3>Registrar una visita</h3>
+                        </div>";
+    print $head;
     $id = null;
     $Empresas= null;
-    $fecha = null;
+    $Fecha = null;
     $Observacion = null;
     
 }
 else
 {
-    
+    $head = "";
+    $head .= "<!DOCTYPE html>
+                <html lang='es'>
+                    <head>
+                        <title>Visitas</title>";
+                        include '../inc/styles.php';
+    $head .= "<meta charset='utf-8'>
+                </head>
+                <body class='grey lighten-3'>";
+                include('../inc/nav.php');
+    $head .=     "<div class='card-panel paneles'>
+                        <div class='titulo'>
+                            <h3>Modificar visitas</h3>
+                        </div>";
+    print $head;
     $id = strip_tags(trim(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM visitas WHERE id_visita = ?";
     $params = array($id);
@@ -108,7 +127,7 @@ if(!empty($_POST))
         <div class='col s12 m6'>
           	<i class='material-icons prefix'>add</i>
               <!--<input type="date" class="datepicker">-->
-          	<input id='fecha_ultima_visita' type='date' name='fecha_ultima_visita' class='datepicker' value='<?php print($Fecha) ?>'/>
+          	<input id='fecha_ultima_visita' type='date' name='fecha_ultima_visita' class='datepicker' value='<?php if($Fecha != null){print($Fecha);} ?>'/>
           	<!--<label for='fecha_ultima_visita'>Fecha</label>-->
         </div>
     </div>
@@ -124,6 +143,7 @@ if(!empty($_POST))
     <a href='visitas_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
  	<button type='submit' class='btn  teal darken-3'><i class='material-icons right'>check_circle</i>Guardar</button>
 </form>
+</div>
 <?php
 include("../inc/scripts.php");
 include("../inc/footer.php");

@@ -16,8 +16,8 @@ if(empty($_GET['id']))
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>";
-                //include('../inc/nav.php');
-                $head .="<body>
+                include('../inc/nav.php');
+                $head .="<body class='grey lighten-3'>
                     <div class='card-panel paneles'>
                         <div class='titulo'>
                             <h3>Agregar un Alumno</h3>
@@ -47,7 +47,7 @@ else{
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body>";
+                <body class='grey lighten-3'>";
                     
                     include('../inc/nav.php');
                     

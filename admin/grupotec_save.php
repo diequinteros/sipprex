@@ -16,9 +16,9 @@ if(empty($_GET['id']))
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body>
-                <?php include('../inc/nav.php'); ?>
-                    <div class='card-panel paneles'>
+                <body class='grey lighten-3'>";
+                include('../inc/nav.php');
+                 $head .= "<div class='card-panel paneles'>
                         <div class='titulo'>
                             <h3>Agregar un Grupo Técnico</h3>
                         </div>";
@@ -35,14 +35,14 @@ else{
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body>
-                <?php include('../inc/nav.php'); ?>
-                    <div class='card-panel paneles'>
+                <body class='grey lighten-3'>";
+                include('../inc/nav.php');
+                  $head .=  "<div class='card-panel paneles'>
                         <div class='titulo'>
                             <h3>Modificar un Grupo Técnico</h3>
                         </div>";
     print $head;
-    $id = $_GET['id'];
+    $id = trim(strip_tags(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM grupo_tecnico WHERE id_grupo_tec = ?";
     $params = array($id);
     $data = Database::getRows($sql, $params);

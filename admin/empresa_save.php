@@ -1,24 +1,25 @@
-<html>
   <?php
   ob_start(); 
   session_start();
  require("../bibliotecas/conexion.php"); 
  require("../bibliotecas/Validator.php"); 
-   ?>
-    <head>
-      <?php
-      include("../inc/styles.php");
-      ?>
-    </head>
-    <?php
-    include("../inc/nav.php");
-    ?>
-<body>
-<?php
-
-
 if(empty($_GET['id'])) 
 {
+    $head = "";
+    $head .= "<!DOCTYPE html>
+                <html lang='es'>
+                    <head>
+                        <title>Empresas</title>";
+                        include '../inc/styles.php';
+    $head .= "<meta charset='utf-8'>
+                </head>
+                <body class='grey lighten-3'>";
+                include('../inc/nav.php');
+    $head .=     "<div class='card-panel paneles'>
+                        <div class='titulo'>
+                            <h3>Agregar una empresa</h3>
+                        </div>";
+    print $head;
     $id = null;
     $Empresas= null;
     $Rubro = null;
@@ -32,7 +33,21 @@ if(empty($_GET['id']))
 }
 else
 {
-    
+    $head = "";
+    $head .= "<!DOCTYPE html>
+                <html lang='es'>
+                    <head>
+                        <title>Empresas</title>";
+                        include '../inc/styles.php';
+    $head .= "<meta charset='utf-8'>
+                </head>
+                <body class='grey lighten-3'>";
+                include('../inc/nav.php');
+    $head .=     "<div class='card-panel paneles'>
+                        <div class='titulo'>
+                            <h3>Agregar una empresa</h3>
+                        </div>";
+    print $head;
     $id = base64_decode($_GET['id']);
     $sql = "SELECT * FROM empresas WHERE id_empresa = ?";
     $params = array($id);
@@ -51,11 +66,6 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-<<<<<<< HEAD
-    $codE = strip_tags(trim($_POST['cod_empre']));
-    $contra = strip_tags(trim($_POST['contra']));
-=======
->>>>>>> origin/master
   	$Empresas = strip_tags(trim($_POST['nombre_empresa']));
     $Rubro = strip_tags(trim($_POST['rubro']));
     $Direccion = strip_tags(trim($_POST['direccion']));
@@ -68,7 +78,7 @@ if(!empty($_POST))
 
     try 
     {
-<<<<<<< HEAD
+
       	if($Empresas == "")
         {
             throw new Exception("Datos incompletos.");
@@ -85,7 +95,6 @@ if(!empty($_POST))
             $sql = "UPDATE empresas SET contraseña_empre = ?, nombre_empresa = ?, rubro = ?, direccion = ?, telefono = ?, contacto = ?, correo = ? WHERE id_empresa = ?";
             $contra = password_hash($contra, PASSWORD_DEFAULT);
             $params = array($contra, $Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $id);
-=======
         if($id == null){
             if($Contraseña1 = ""){
                 $Contraseña1 = null;
@@ -146,10 +155,10 @@ if(!empty($_POST))
             
             $sql = "UPDATE empresas SET nombre_empresa = ?, rubro = ?, direccion = ?, telefono = ?, contacto = ?, correo = ? WHERE id_empresa = ?";
             $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $id);
->>>>>>> origin/master
         }
         Database::executeRow($sql, $params);
         header("location: empresa_read.php");
+    }
     }
     catch(Exception $error)
     {
@@ -209,6 +218,7 @@ if(!empty($_POST))
     <a href='empresa_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
  	<button type='submit' class='btn  teal darken-3'><i class='material-icons right'>check_circle</i>Guardar</button>
 </form>
+</div>
 <?php
 include("../inc/scripts.php");
 include("../inc/footer.php");

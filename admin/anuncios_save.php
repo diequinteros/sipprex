@@ -16,7 +16,7 @@ if(empty($_GET['id']))
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body>
+                <body class='grey lighten-3'>
                 <?php include('../inc/nav.php'); ?>
                     <div class='card-panel paneles'>
                         <div class='titulo'>
@@ -36,7 +36,7 @@ else{
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body>
+                <body class='grey lighten-3'>
                 include('../inc/nav.php');
                     <div class='card-panel paneles'>
                         <div class='titulo'>

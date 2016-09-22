@@ -57,12 +57,12 @@ else {
 if(!empty($_POST))
 {
 	$search = strip_tags(trim($_POST['buscar']));
-	$sql = "SELECT id_espeempresa, especialidades.especialidad, empresas.nombre_empresa FROM espeempresa, empresas, especialidades WHERE espeempresa.especialidad = especialidades.id_especialidad AND espeempresa.empresa = empresas.id_empresa AND empresa LIKE ? ORDER BY empresa LIMIT $page1,20";
+	$sql = "SELECT id_espeempresa, especialidades.especialidad, empresas.nombre_empresa, departamentosempre.departamento FROM espeempresa, empresas, especialidades, departamentosempre WHERE espeempresa.empresa = departamentosempre.id_depar AND departamentosempre.empresa = empresas.id_empresa AND espeempresa.especialidad = especialidades.id_especialidad AND empresa LIKE ? ORDER BY empresas.nombre_empresa LIMIT $page1,20";
 	$params = array("%$search%");
 }
 else
 {
-	$sql = "SELECT id_espeempresa, especialidades.especialidad, empresas.nombre_empresa FROM espeempresa, empresas, especialidades WHERE espeempresa.especialidad = especialidades.id_especialidad AND espeempresa.empresa = empresas.id_empresa ORDER BY empresa LIMIT $page1,20";
+	$sql = "SELECT id_espeempresa, especialidades.especialidad, empresas.nombre_empresa, departamentosempre.departamento FROM espeempresa, empresas, especialidades, departamentosempre WHERE  espeempresa.empresa = departamentosempre.id_depar AND departamentosempre.empresa = empresas.id_empresa AND espeempresa.especialidad = especialidades.id_especialidad ORDER BY empresas.nombre_empresa LIMIT $page1,20";
 	$params = null;
 }
 $data = Database::getRows($sql, $params);
@@ -72,7 +72,7 @@ if($data != null)
 					<thead>
 			    		<tr>
 				    		<th>ID</th>
-				    		<th>Empresa</th>
+				    		<th>Empresa/Departamento</th>
 				    		<th>Especialidad</th>
 				    		
 			    		</tr>
@@ -82,7 +82,7 @@ if($data != null)
 		{
 	        $tabla .=	"<tr>
 	            			<td>".htmlspecialchars($row['id_espeempresa'])."</td>
-	            			<td>".htmlspecialchars($row['nombre_empresa'])."</td>
+	            			<td>".htmlspecialchars($row['nombre_empresa'])."/".htmlspecialchars($row['departamento'])."</td>
 	            			<td>".htmlspecialchars($row['especialidad'])."</td>
 	            			<td>
 	            				<a href='empresaes_save.php?id=".base64_encode(htmlspecialchars($row['id_espeempresa']))."' class='btn  yellow lighten-2'><i class='material-icons'>edit</i></a>

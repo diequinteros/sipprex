@@ -27,7 +27,7 @@
     	<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Aceptar</button> 	
   	</div>
   	<div class='input-field col s12 m4'>
-		<a href='espe_save.php' class='btn  green darken-4'><i class='material-icons right'>add_circle</i>Nuevo</a>
+		<a href='grado_save.php' class='btn  green darken-4'><i class='material-icons right'>add_circle</i>Nuevo</a>
   	</div>
 </form>
 </div>

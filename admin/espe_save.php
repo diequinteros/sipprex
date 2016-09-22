@@ -1,26 +1,46 @@
-<html>
   <?php
   ob_start();
   session_start(); 
   require("../bibliotecas/conexion.php");
   require("../bibliotecas/validator.php");
-   ?>
-    <head>
-      <?php
-      include("../inc/styles.php");
-      ?>
-    </head>
-<body>
-<?php
-include("../inc/nav.php");
 if(empty($_GET['id'])) 
 {
+    $head = "";
+    $head .= "<!DOCTYPE html>
+                <html lang='es'>
+                    <head>
+                        <title>Especialidad</title>";
+                        include '../inc/styles.php';
+    $head .= "<meta charset='utf-8'>
+                </head>";
+                include('../inc/nav.php');
+                $head .="<body class='grey lighten-3'>
+                    <div class='card-panel paneles'>
+                        <div class='titulo'>
+                            <h3>Agregar una Especialidad</h3>
+                        </div>";
+    print($head);
     $id = null;
     $Especialidad= null;
   
 }
 else
 {
+    $head = "";
+    $head .= "<!DOCTYPE html>
+                <html lang='es'>
+                    <head>
+                        <title>Especialidad</title>";
+                        include '../inc/styles.php';
+    $head .= "<meta charset='utf-8'>
+                </head>";
+                include('../inc/nav.php');
+                $head .="<body class='grey lighten-3'>
+                    <div class='card-panel paneles'>
+                        <div class='titulo'>
+                            <h3>Modificar una especialidad</h3>
+                        </div>";
+    print($head);
     $id = $_GET['id'];
     $sql = "SELECT * FROM especialidades WHERE id_especialidad = ?";
     $params = array($id);
@@ -80,6 +100,7 @@ if(!empty($_POST))
     <a href='espe_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
  	<button type='submit' class='btn  teal darken-3'><i class='material-icons right'>check_circle</i>Guardar</button>
 </form>
+</div>
 <?php
 include("../inc/scripts.php");
 include("../inc/footer.php");

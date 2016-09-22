@@ -1,27 +1,48 @@
-<html>
   <?php
   ob_start();
   session_start(); 
   require("../bibliotecas/conexion.php");
   require("../bibliotecas/Validator.php");
-   ?>
-    <head>
-      <?php
-      include("../inc/styles.php");
-      ?>
-    </head>
-<body>
-<?php
-include("../inc/nav.php");
+   
 if(empty($_GET['id'])) 
 {
+    $head = "";
+    $head .= "<!DOCTYPE html>
+                <html lang='es'>
+                    <head>
+                        <title>Grupos academicos</title>";
+                        include '../inc/styles.php';
+    $head .= "<meta charset='utf-8'>
+                </head>";
+                include('../inc/nav.php');
+                $head .="<body class='grey lighten-3'>
+                    <div class='card-panel paneles'>
+                        <div class='titulo'>
+                            <h3>Agregar un grupo academico</h3>
+                        </div>";
+    print($head);
     $id = null;
     $grupo= null;
   
 }
 else
 {
-    $id = $_GET['id'];
+    $head = "";
+    $head .= "<!DOCTYPE html>
+                <html lang='es'>
+                    <head>
+                        <title>Grupos academicos</title>";
+                        include '../inc/styles.php';
+    $head .= "<meta charset='utf-8'>
+                </head>";
+                include('../inc/nav.php');
+                $head .="<body class='grey lighten-3'>
+                    <div class='card-panel paneles'>
+                        <div class='titulo'>
+                            <h3>Modificar un grupo academico</h3>
+                        </div>";
+    print($head);
+    $id = trim(strip_tags(base64_decode($_GET['id'])));
     $sql = "SELECT * FROM grupo_academico WHERE id_grupo_aca = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
@@ -62,7 +83,7 @@ if(!empty($_POST))
     }
 }
 ?>
-<form method='post' autocomplete="off" class='row' enctype='multipart/form-data'>
+<form method='post' autocomplete="off" enctype='multipart/form-data'>
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
@@ -78,6 +99,7 @@ if(!empty($_POST))
     <a href='grupoaca_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
  	<button type='submit' class='btn  teal darken-3'><i class='material-icons right'>check_circle</i>Guardar</button>
 </form>
+</div>
 <?php
 include("../inc/scripts.php");
 include("../inc/footer.php");
