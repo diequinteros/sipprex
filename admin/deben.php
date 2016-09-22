@@ -25,24 +25,6 @@ if(empty($_GET['id']))
     print $head;
     $esp = null;
 }
-else{
-    $head = "";
-    $head .= "<!DOCTYPE html>
-                <html lang='es'>
-                    <head>
-                        <title>Departamentos</title>";
-                        include '../inc/styles.php';
-    $head .= "<meta charset='utf-8'>
-                </head>
-                <body>
-                <?php include('../inc/nav.php'); ?>
-                    <div class='card-panel paneles'>
-                        <div class='titulo'>
-                            <h3>Modificar un departamento</h3>
-                        </div>";
-    print $head;
-    $esp = $data[0]['Especialidad'];
-}
 
 if(!empty($_POST))
 {
@@ -52,8 +34,8 @@ if(!empty($_POST))
 }
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
-            <form method='post' action ='finalizo2.php' class='row' autocomplete="off" enctype='multipart/form-data'>
-                    <div class='input-field col s12 m6'>
+            <form method='post' action ='pendiente.php' class='row' autocomplete="off" enctype='multipart/form-data'>
+                    <div class='input-field col s12 m6'> 
                         <!-- Mediante las siguientes sentencias se llena el comboBox con los datos de Empresas -->
                         <?php
                         $sql = "SELECT id_especialidad, especialidad FROM especialidades";
@@ -79,7 +61,7 @@ if(!empty($_POST))
                     </div>
                 <div class='titulo'>
                     <a href='registrospp_index.php' class='btn grey'><i class='material-icons right'>cancel</i>Cancelar</a>
-                    <button type='submit' href='finalizo2.php' class='btn blue'><i class='material-icons right'>description</i>Reporte</button>
+                    <button type='submit' href='pendiente.php?id=<?php print($esp); ?>' class='btn blue'><i class='material-icons right'>description</i>Reporte</button>
                 </div>
             </form>
         </div>
