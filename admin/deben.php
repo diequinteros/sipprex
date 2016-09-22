@@ -25,13 +25,6 @@ if(empty($_GET['id']))
     print $head;
     $esp = null;
 }
-
-if(!empty($_POST))
-{
-    $_POST = Validator::validateForm($_POST);
-  	
-    $esp = strip_tags(trim($_POST['Especialidad']));
-}
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
             <form method='post' action ='pendiente.php' class='row' autocomplete="off" enctype='multipart/form-data'>
@@ -61,7 +54,7 @@ if(!empty($_POST))
                     </div>
                 <div class='titulo'>
                     <a href='registrospp_index.php' class='btn grey'><i class='material-icons right'>cancel</i>Cancelar</a>
-                    <button type='submit' href='pendiente.php?id=<?php print($esp); ?>' class='btn blue'><i class='material-icons right'>description</i>Reporte</button>
+                    <button type='submit' class='btn blue'><i class='material-icons right'>description</i>Reporte</button>
                 </div>
             </form>
         </div>
