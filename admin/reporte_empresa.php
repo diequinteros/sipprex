@@ -15,15 +15,15 @@ header("Content-Disposition: attachment; filename=Reporte_Personal_empresas.xls"
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <body>
-<table width="1%" border="1" cellspacing="0" cellpadding="0">
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="6" bgcolor="Teal"><CENTER><strong>REPORTE DE LA TABLA EMPRESA</strong></CENTER></td>
+    <td colspan="4" bgcolor="Teal"><CENTER><strong><font color="white">REPORTE DE LA TABLA EMPRESA</strong></CENTER></td>
   </tr>
-  <tr bgcolor="LightSeaGreen">
-    <td><strong>Nombre</strong></td>
-    <td><strong>Contacto</strong></td>
-    <td><strong>Telefono</strong></td>
-    <td><strong>Correo</strong></td>
+  <tr>
+    <td bgcolor="LightSeaGreen"><strong><font color="white">Nombre</font></strong></td>
+    <td bgcolor="LightSeaGreen"><strong><font color="white">Contacto</font></strong></td>
+    <td bgcolor="LightSeaGreen"><strong><font color="white">Telefono</font></strong></td>
+    <td bgcolor="LightSeaGreen"><strong><font color="white">Correo</font></strong></td>
   </tr>
   
 <?php

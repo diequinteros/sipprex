@@ -17,14 +17,16 @@ header("Content-Disposition: attachment; filename=Reporte_Personal_practicas.xls
 <body>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="4" bgcolor="ForestGreen"><CENTER><strong>REPORTE DE LA TABLA PRACTICAS</strong></CENTER></td>
+    <td colspan="6" bgcolor="DarkCyan"><CENTER><strong><font color="white">REPORTE DE LA TABLA PRACTICAS</font></font></strong></CENTER></td>
   </tr>
-  <tr bgcolor="MediumSeaGreen">
-    <td><strong>Primer nombre</strong></td>
-    <td><strong>segundo nombre</strong></td>
-    <td><strong>carnet</strong></td>
-    <td><strong>especialidad</strong></td>
-    
+  <tr>
+    <td bgcolor="Honeydew"><strong>carnet</strong></td>
+    <td bgcolor="Honeydew"><strong>Primer nombre</strong></td>
+    <td bgcolor="Honeydew"><strong>segundo nombre</strong></td>
+    <td bgcolor="Honeydew"><strong>primer apellido</strong></td>
+    <td bgcolor="Honeydew"><strong>segundo apellido</strong></td>
+    <td bgcolor="Honeydew"><strong>especialidad</strong></td>
+  
   </tr>
   
 <?php

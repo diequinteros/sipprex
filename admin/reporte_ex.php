@@ -3,8 +3,8 @@
 <?php
   
     require("../bibliotecas/conexion.php");
-header("Content-type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename=Reporte_Personal_ex-alumnos.xls");
+ header("Content-type: application/vnd.ms-excel");
+ header("Content-Disposition: attachment; filename=Reporte_Personal_ex-alumnos.xls");
 
 
 	
@@ -17,18 +17,18 @@ header("Content-Disposition: attachment; filename=Reporte_Personal_ex-alumnos.xl
 <body>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="5" bgcolor="IndianRed"><CENTER><strong>REPORTE DE LA TABLA EX-AlUMNOS</strong></CENTER></td>
+    <td colspan="5" bgcolor="IndianRed"><CENTER><strong><font color="white">REPORTE DE LA TABLA EX-AlUMNOS</font></strong></CENTER></td>
   </tr>
-  <tr bgcolor="DarkSalmon">
-    <td><strong>Nombre</strong></td>
-    <td><strong>Apellido</strong></td>
-    <td><strong>Telefono</strong></td>
-    <td><strong>Ocupacion</strong></td>
-      <td><strong>Correo</strong></td>
+  <tr>
+    <td bgcolor="DarkSalmon"><strong><font color="white">Nombre</font></strong></td>
+    <td bgcolor="DarkSalmon"><strong><font color="white">Apellido</font></strong></td>
+    <td bgcolor="DarkSalmon"><strong><font color="white">Telefono</font></strong></td>
+    <td bgcolor="DarkSalmon"><strong><font color="white">Ocupacion</font></strong></td>
+      <td bgcolor="DarkSalmon"><strong><font color="white">Correo</font></strong></td>
   </tr>
   
 <?php
-$sql="SELECT nombre1, apellido1, telefono, correo_electronico, ocupaciones.ocupacion from ex_alumnos, ocupaciones WHERE ex_alumnos.ocupacion = ocupaciones.ocupacion";
+$sql="SELECT nombre1, apellido1, telefono, correo_electronico, ocupaciones.ocupacion from ex_alumnos, ocupaciones WHERE ex_alumnos.ocupacion = ocupaciones.id_ocupacion";
 $valores = array(null);
 $datos = Database::getRows($sql,$valores);
 foreach($datos as $res)
