@@ -118,7 +118,6 @@
         ]);
 
         var options = {
-          title: 'Chess opening moves',
           width: 900,
           height: <?php print($HEx); ?>,
           legend: { position: 'none' },
@@ -231,11 +230,11 @@
         var data4 = new google.visualization.arrayToDataTable([
           ['Documentos', 'Alumnos que lo han entregado'],
           <?php
-          $sqlADA = "SELECT COUNT(id_registropp) FROM registrospp WHERE acuerdo = 1";
+          $sqlADA = "SELECT COUNT(id_registropp) FROM registrospp WHERE acuerdo IS NOT NULL";
           $acuerdo = Database::getRow($sqlADA, null);
-          $sqlADB = "SELECT COUNT(id_registropp) FROM registrospp WHERE bitacora = 1";
+          $sqlADB = "SELECT COUNT(id_registropp) FROM registrospp WHERE bitacora IS NOT NULL";
           $bitacora = Database::getRow($sqlADB, null);
-          $sqlADC = "SELECT COUNT(id_registropp) FROM registrospp WHERE carta = 1";
+          $sqlADC = "SELECT COUNT(id_registropp) FROM registrospp WHERE carta IS NOT NULL";
           $carta = Database::getRow($sqlADC, null);
             print("['Acuerdo', ".$acuerdo[0]."],");
             print("['Bitacora', ".$bitacora[0]."],");
@@ -248,11 +247,11 @@
           width: 900,
           height: 500,
           legend: { position: 'none' },
-          chart: { title: 'Especialidades en departamentos de empresas', subtitle: 'Vista de especialidades mas solicitadas' },
+          chart: { title: 'Numero de documentos entregados'},
           bars: 'horizontal', // Required for Material Bar Charts.
           axes: {
             x: {
-              0: { side: 'top', label: 'Departamentos de empresas que necesitan la especialidad'} // Top x-axis.
+              0: { side: 'top', label: 'Numero de alumnos que han entregado el documento'} // Top x-axis.
             }
           },
           bar: { groupWidth: "90%" }

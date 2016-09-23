@@ -30,7 +30,7 @@ foreach($datos as $res)
 {		
 	$id_proyecto = $res["id_proyecto"];
     if($res["id_exalum_encargado"] != null){
-        $sql = "SELECT nombre1, apellido1 FROM exalumnos WHERE id_exalumnos = ?";
+        $sql = "SELECT nombre1, apellido1 FROM ex_alumnos WHERE id_exalumnos = ?";
         $values = array($res["id_exalum_encargado"]);
         $data = Database::getRow($sql, $values);
         $encargado = $data["nombre1"]." ".$data["apellido1"];

@@ -33,6 +33,7 @@ if(empty($_GET['id']))
     $carta = null;
     $evaluaciones = null;
     $observacion_final = null;
+    $Fecha = null;
 }
 else{
     $head = "";
@@ -65,6 +66,7 @@ else{
     $carta = $data[0]['carta'];
     $evaluaciones = $data[0]['evaluaciones'];
     $observacion_final = $data[0]['observacion_final'];
+    $Fecha = $data[0]['fecha_finalizo'];
 }
 
 if(!empty($_POST))
@@ -79,17 +81,18 @@ if(!empty($_POST))
     $carta = strip_tags(trim($_POST['carta']));
     $evaluaciones = strip_tags(trim($_POST['evaluaciones']));
     $observacion_final = strip_tags(trim($_POST['observacion_final']));
+    $Fecha = strip_tags(trim($_POST['fecha']));
     //Se declaran las consultas
     try 
     {
       	if($id == null){
-        	  $sql = "INSERT INTO registrospp(alumno, empresa, finalizo, observaciones, acuerdo, bitacora, carta, evaluaciones, observacion_final) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final);
+        	  $sql = "INSERT INTO registrospp(alumno, empresa, finalizo, observaciones, acuerdo, bitacora, carta, evaluaciones, observacion_final, fecha_finalizo) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $Fecha);
         }
         else
         {
-            $sql = "UPDATE registrospp SET alumno = ?, empresa = ?, finalizo = ?, observaciones = ?, acuerdo = ?, bitacora = ?, carta = ?, evaluaciones = ?, observacion_final = ? WHERE id_registropp = ?";
-            $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $id);
+            $sql = "UPDATE registrospp SET alumno = ?, empresa = ?, finalizo = ?, observaciones = ?, acuerdo = ?, bitacora = ?, carta = ?, evaluaciones = ?, observacion_final = ?, fecha_finalizo = ? WHERE id_registropp = ?";
+            $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $id, $Fecha);
         }
         Database::executeRow($sql, $params);
         header("location: registrospp_index.php");
@@ -164,7 +167,7 @@ if(!empty($_POST))
                     <div class='col s12 m6'>
                         <i class='material-icons prefix'>add</i>
                         <!--<input type="date" class="datepicker">-->
-                        <input id='fecha_ultima_visita' type='date' name='fecha_ultima_visita' class='datepicker' value='<?php if($Fecha != null){print($Fecha);} ?>'/>
+                        <input id='fecha_ultima_visita' type='date' name='fecha' class='datepicker' value='<?php if($Fecha != null){print($Fecha);} ?>'/>
                         <!--<label for='fecha_ultima_visita'>Fecha</label>-->
                     </div>
                     <div class='input-field col s12 m6'>

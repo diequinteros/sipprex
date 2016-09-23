@@ -74,7 +74,7 @@ require("../bibliotecas/conexion.php");
 		}
 		else
 		{
-			$sql = "SELECT * FROM registrospp, alumnos, empresas WHERE registrospp.alumno = alumnos.carnet AND registrospp.empresa = empresas.id_empresa ORDER BY id_registropp LIMIT $page1,20";
+			$sql = "SELECT * FROM registrospp, alumnos, empresas, departamentosempre WHERE registrospp.alumno = alumnos.carnet AND registrospp.empresa = departamentosempre.id_depar AND departamentosempre.empresa = empresas.id_empresa ORDER BY id_registropp LIMIT $page1,20";
 			$params = null;
 		}
 		//A traves de un arreglo se muestran los datos en la tabla 
@@ -104,7 +104,7 @@ require("../bibliotecas/conexion.php");
 					$tabla .= 	"<tr>
 									<td>".htmlspecialchars($row['id_registropp'])."</td>
 									<td>".htmlspecialchars($row['nombre1']).""." "."".htmlspecialchars($row['nombre2']).""." "."".htmlspecialchars($row['apellido1']).""." "."".htmlspecialchars($row['apellido2'])."</td>
-									<td>".htmlspecialchars($row['nombre_empresa'])."</td>";
+									<td>".htmlspecialchars($row['nombre_empresa'])." - ".htmlspecialchars($row['departamento'])."</td>";
 					if($row['finalizo']==1){
 						$tabla .= "<td>Sí</td>";
 					}
