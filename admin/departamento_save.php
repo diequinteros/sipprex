@@ -16,7 +16,7 @@ if(empty($_GET['id']))
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body class='grey lighten-3'>";
+                <body class='grey lighten-3 z-depth-3'>";
                 include('../inc/nav.php');
     $head .=       "<div class='card-panel paneles'>
                         <div class='titulo'>
@@ -40,7 +40,7 @@ else{
                 </head>
                 <body class='grey lighten-3'>";
                 include('../inc/nav.php');
-    $head .=     "<div class='card-panel paneles'>
+    $head .=     "<div class='card-panel paneles z-depth-3'>
                         <div class='titulo'>
                             <h3>Modificar un departamento</h3>
                         </div>";

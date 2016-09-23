@@ -16,7 +16,7 @@ if(empty($_GET['id']))
                 </head>";
                 include('../inc/nav.php');
                 $head .="<body class='grey lighten-3'>
-                    <div class='card-panel paneles'>
+                    <div class='card-panel paneles z-depth-3'>
                         <div class='titulo'>
                             <h3>Agregar un grado</h3>
                         </div>";
@@ -37,7 +37,7 @@ else
                 </head>";
                 include('../inc/nav.php');
                 $head .="<body class='grey lighten-3'>
-                    <div class='card-panel paneles'>
+                    <div class='card-panel paneles z-depth-3'>
                         <div class='titulo'>
                             <h3>Modificar grados</h3>
                         </div>";

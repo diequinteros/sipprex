@@ -18,7 +18,7 @@ if(empty($_GET['id']))
                 </head>
                 <body class='grey lighten-3'>";
                 include('../inc/nav.php');
-    $head .=     "<div class='card-panel paneles'>
+    $head .=     "<div class='card-panel paneles z-depth-3'>
                         <div class='titulo'>
                             <h3>Agregar un Registro</h3>
                         </div>";
@@ -45,7 +45,7 @@ else{
                 </head>
                 <body class='grey lighten-3'>";
                 include('../inc/nav.php');
-    $head .=      "<div class='card-panel paneles'>
+    $head .=      "<div class='card-panel paneles z-depth-3'>
                         <div class='titulo'>
                             <h3>Modificar un Registro</h3>
                         </div>";
@@ -161,6 +161,12 @@ if(!empty($_POST))
                         <input id='f_no' type='radio' name='finalizo' class='with-gap' value='0' <?php print(($finalizo == 0)?"checked":""); ?>/>
                         <label for='f_no'><i class='material-icons'>cancel</i></label>
                     </div>
+                    <div class='col s12 m6'>
+                        <i class='material-icons prefix'>add</i>
+                        <!--<input type="date" class="datepicker">-->
+                        <input id='fecha_ultima_visita' type='date' name='fecha_ultima_visita' class='datepicker' value='<?php if($Fecha != null){print($Fecha);} ?>'/>
+                        <!--<label for='fecha_ultima_visita'>Fecha</label>-->
+                    </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>visibility</i>
                         <input id='observaciones' type="text" name='observaciones' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($observaciones)); ?>'/>
@@ -232,6 +238,7 @@ if(!empty($_POST))
         <?php include '../inc/scripts.php'; ?>
         <?php include('../inc/footer.php'); ?>
     </body>
+    <script type="text/javascript" src="../js/datepicker.js"></script>
 </html>
 <?php
 ob_end_flush();

@@ -18,7 +18,7 @@ if(empty($_GET['id']))
                 </head>
                 <body class='grey lighten-3'>";
                 include('../inc/nav.php');
-                 $head .= "<div class='card-panel paneles'>
+                 $head .= "<div class='card-panel paneles z-depth-3'>
                         <div class='titulo'>
                             <h3>Agregar un Grupo Técnico</h3>
                         </div>";
@@ -37,7 +37,7 @@ else{
                 </head>
                 <body class='grey lighten-3'>";
                 include('../inc/nav.php');
-                  $head .=  "<div class='card-panel paneles'>
+                  $head .=  "<div class='card-panel paneles z-depth-3'>
                         <div class='titulo'>
                             <h3>Modificar un Grupo Técnico</h3>
                         </div>";

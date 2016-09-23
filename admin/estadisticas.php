@@ -18,15 +18,15 @@
       <!-- Categorias -->
       <div id="cont" class="container">
 
-      <div id="espesoli" style="width: 900px;"></div>
+      <div class='card-panel z-depth-3' id="espesoli"></div>
       <br>
-      <div id="ocupaex" style="width: 900px;"></div>
+      <div class='card-panel z-depth-3' id="ocupaex"></div>
       <br>
-        <div id="practpro"></div>
+        <div class='card-panel z-depth-3' id="practpro"></div>
         <br>
-        <div id="empreesta"></div>
+        <div class='card-panel z-depth-3' id="empreesta"></div>
         <br>
-      <div id="espedepar" style="width: 900px;"></div>
+      <div class='card-panel z-depth-3' id="espedepar"></div>
       </div>
       </div>
       <?php

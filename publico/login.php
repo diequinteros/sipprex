@@ -205,7 +205,7 @@ else{
 				<div class="titulo" id="log_btn">
 					<button type='submit' class='btn blue'><i class='material-icons right'>swap_horiz</i>Aceptar</button>
 					<br>
-					<a href="recuperar.php">¿Olvidaste tu contraseña?</a>
+					<a class='white-text' href="recuperar.php">¿Olvidaste tu contraseña? Haz clic aqui.</a>
 				</div>
 			</form>
 		</div>
