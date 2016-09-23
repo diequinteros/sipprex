@@ -14,7 +14,7 @@ session_start();
 		<?php include '../inc/styles.php'; ?>
 	</head>
 	<body>
-		<?php include("../inc/nav.php")?>
+		<?php include("../inc/nav.php"); ?>
 		<div class="card-panel paneles">
 			<!-- Se crea el formulario de busqueda -->
 			<div class="titulo">
@@ -30,8 +30,8 @@ session_start();
 				<div class='input-field col s6 m4'>
 					<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Buscar</button> 	
 				</div>
-				
 			</form>
+			<a class="btn" href="reporte_proyectos.php"><i class="material-icons prefix">assignment</i> Lista de Proyectos Vigentes</a>
 		</div>
 		<!-- Se realizan las operaciones de busqueda con la consulta "SELECT" -->
 		<?php
