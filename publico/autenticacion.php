@@ -68,7 +68,7 @@ if(!empty($_POST))
 				<div class='row'>
 				<h3 class="center-align">Introduzca el codigo enviado a su correo electronico</h3>
 					<div class='input-field col m6 offset-m3 s12'>
-						<input id='codigo' type='text' name='codigo' class='validate black-text' required/>
+						<input id='codigo' type='number' name='codigo' class='validate black-text' required/>
 						<label class='active white-text' for='codigo'>Código de autenticacion</label>
 					</div>
 				</div>

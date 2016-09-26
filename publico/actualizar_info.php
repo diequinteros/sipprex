@@ -87,15 +87,10 @@
                 {
                 if($Contraseña1Empresa == $Contraseña2Empresa)
                 {
-<<<<<<< HEAD
                     $Contraseña1Empresa = password_hash($Contraseña1Empresa, PASSWORD_DEFAULT);
-                    $sql = "UPDATE empresas SET contraseña_empre = ?";
-                    $params = array($Contraseña1Empresa);
-=======
                     $hash = password_hash($Contraseña1, PASSWORD_DEFAULT);
                     $sql = "UPDATE empresas SET contraseña_empre = ? WHERE id_empresa = ?";
                     $params = array($hash, $P);
->>>>>>> origin/master
                     Database::executeRow($sql, $params);
                     session_start();
                     $_SESSION['codigo_empresa'] = $CodigoEmpresa;

@@ -95,13 +95,20 @@ if(!empty($_POST))
                     if($array["success"])
                     {
                         $sql = "INSERT INTO empresas(nombre_empresa, rubro, direccion, telefono, contacto, correo, codigo_empresa, contraseña_empre) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-                        $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $CodigoEmpresa, $Contraseña1Empresa);
+                        $pas = password_hash($Contraseña1Empresa, PASSWORD_DEFAULT);
+                        $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $CodigoEmpresa, $pas);
                         Database::executeRow($sql, $params);
-                        session_start();
                         $sql = "SELECT * FROM empresas WHERE codigo_empresa = ?";
                         $p = array($CodigoEmpresa);
                         $id_empre = Database::getRow($sql,$p);
                         $_SESSION['id_empresa'] = $id_empre['id_empresa'];
+                        $sesU = uniqid().'_ses';
+					$_SESSION['ses'] = $sesU;
+					$sqlSes = "INSERT INTO sesiones_empre(unisesion, usuario, os) VALUES(?, ?, ?)";
+					$parametros = array($sesU, $id_empre, os_info($uagent));
+					Database::executeRow($sqlSes, $parametros);
+					$ahora = date("Y-n-j H:i:s");
+					$_SESSION["ultimoAcceso"] = $ahora;
                         header("location: index_empresa.php");      
                     }     
                     else{
@@ -141,7 +148,7 @@ if(!empty($_POST))
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='rubro' type='text' name='rubro' class='validate' length='10' maxlenght='10'value='<?php print(htmlspecialchars($Empresas)); ?>'/>
+          	<input id='rubro' type='text' name='rubro' class='validate' length='70' maxlenght='70'value='<?php print(htmlspecialchars($Empresas)); ?>'/>
           	<label for='rubro'>Rubro</label>
         </div>
     </div>
@@ -165,7 +172,7 @@ if(!empty($_POST))
         </div>
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
-            <input id='correo' type='text' name='correo' class='validate' length='20' maxlenght='20'  value='<?php print(htmlspecialchars($Correo)); ?>'/>
+            <input id='correo' type='text' name='correo' class='validate' length='49' maxlenght='49'  value='<?php print(htmlspecialchars($Correo)); ?>'/>
             <label for='correo'>Correo</label>
         </div>
     </div>

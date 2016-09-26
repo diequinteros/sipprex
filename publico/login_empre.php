@@ -22,11 +22,7 @@ if(!empty($_POST))
 		    $data = Database::getRow($sql, $param);
 		    if($data != null)
 		    {
-<<<<<<< HEAD
-		    	$hash = $data[0]['contraseña_empre'];
-=======
 		    	$hash = $data['contraseña_empre'];
->>>>>>> origin/master
 		    	if(password_verify($clave, $hash)) 
 				//Si es ex-alumno, redirecciona al sitio publico del ex-alumno
 		    	{

@@ -55,9 +55,9 @@
         data.addColumn('number', 'Alumnos');
         //Se agregan las filas
         <?php
-        $sql1 = "SELECT COUNT(alumno) FROM registrospp WHERE finalizo = 1 GROUP BY alumno";
+        $sql1 = "SELECT COUNT(alumno) FROM registrospp WHERE finalizo = 1";
         $alumfi = Database::getRow($sql1, null);
-        $sql2 = "SELECT COUNT(alumno) FROM registrospp WHERE finalizo = 0 GROUP BY alumno";
+        $sql2 = "SELECT COUNT(alumno) FROM registrospp WHERE finalizo = 0";
         $alumsi = Database::getRow($sql2, null);
         $sql3 = "SELECT COUNT(carnet) FROM alumnos";
         $alumno = Database::getRow($sql3, null);
@@ -83,7 +83,7 @@
         // Se definen las opciones del grafico
         var options = {'title':'Grafico de alumnos en practicas profesionales',
                        'width':900,
-                       'height':250};
+                       'height':650};
 
         // Se instancia y dibuja nuestro grafico, ademas se pasan las opciones.
         var chart = new google.visualization.PieChart(document.getElementById('practpro'));
@@ -216,7 +216,7 @@
         // Se definen las opciones del grafico
         var options3 = {'title':'Grafico de empresas y su estado en el sistema',
                        'width':900,
-                       'height':250};
+                       'height':650};
 
         // Se instancia y dibuja nuestro grafico, ademas se pasan las opciones.
         var chart = new google.visualization.PieChart(document.getElementById('empreesta'));
@@ -245,7 +245,7 @@
         var options4 = {
           title: 'Chess opening moves',
           width: 900,
-          height: 500,
+          height: 300,
           legend: { position: 'none' },
           chart: { title: 'Numero de documentos entregados'},
           bars: 'horizontal', // Required for Material Bar Charts.

@@ -15,9 +15,9 @@
       <div id="cont" class="row">
         <div class="col l10">
             <div class="row">
-             <div class="card col l3 offset-l3 m3 offset-m3 s12">
+             <div class="card col l3 offset-l3 m3 offset-m3 s12 z-depth-3">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" src="../img/Alumnos.png">
+                    <a href="catalumnos.php"><img class="responsive-img"  src="../img/AlumnosN.png"></a>
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Alumnos<i class="material-icons right">more_vert</i></span>
@@ -28,9 +28,9 @@
                     <p>Esta categoria le permitira visualizar, agregar, modificar o eliminar registros de los alumnos.</p>
                 </div>
              </div>
-             <div class="card col l3 offset-l2 m3 offset-m2 s12">
+             <div class="card col l3 offset-l2 m3 offset-m2 s12 z-depth-3">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" src="../img/ExAlumnos.png">
+                    <a href="catexalumnos.php"><img class="responsive-img" src="../img/ExAlumnosN.png"></a>
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Ex alumnos<i class="material-icons right">more_vert</i></span>
@@ -41,9 +41,9 @@
                     <p>Esta categoria le permitira visualizar, agregar, modificar o eliminar registros de los ex alumnos.</p>
                 </div>
              </div>
-             <div class="card col l3 offset-l3 m3 offset-m3 s12">
+             <div class="card col l3 offset-l3 m3 offset-m3 s12 z-depth-3">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" src="../img/Empresa.png">
+                    <a href="catempresas.php"><img class="responsive-img" src="../img/EmpresaN.png"></a>
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Empresas<i class="material-icons right">more_vert</i></span>
@@ -54,13 +54,13 @@
                     <p>Esta categoria contiene la informacion de las empresas, le permitira visualizar, agregar, modificar o eliminar registros.</p>
                 </div>
              </div>
-             <div class="card col l3 offset-l2 m3 offset-m2 s12">
+             <div class="card col l3 offset-l2 m3 offset-m2 s12 z-depth-3">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" src="../img/PracticasProfesionales.png">
+                    <a href="registrospp_index.php"><img class="responsive-img" src="../img/PracticasProfesionalesN.png"></a>
                 </div>
                 <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Registros practicas profesionales<i class="material-icons right">more_vert</i></span>
-                    <p><a href="pracpro_read.php">Entrar</a></p>
+                    <span class="card-title activator grey-text text-darken-4">Pcas profesionales<i class="material-icons right">more_vert</i></span>
+                    <p><a href="registrospp_index.php">Entrar</a></p>
                 </div>
                 <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4">Practicas profesionales<i class="material-icons right">close</i></span>

@@ -140,7 +140,7 @@ require("../bibliotecas/conexion.php");
 									<td>
 										<a href='registrospp_save.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='registrospp_delete.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn red'><i class='material-icons'>delete</i></a>
-										<a href='reporte_observaciones.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn red'><i class='material-icons'>assignment</i></a>
+										<a href='reporte_observaciones.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn red'><i class='material-icons'>description</i></a>
 									</td>
 								</tr>";
 				}

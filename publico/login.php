@@ -92,10 +92,11 @@ if(!empty($_POST))
 							$parametros = array($sesU, $data[0]['codigo_admin'], os_info($uagent));
 							Database::executeRow($sqlSes, $parametros);*/
 							function randomPassword() {
-							$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+							//$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+							$alphabet = '1234567890';
 							$pass = array(); //remember to declare $pass as an array
 							$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-							for ($i = 0; $i < 8; $i++) {
+							for ($i = 0; $i < 6; $i++) {
 								$n = rand(0, $alphaLength);
 								$pass[] = $alphabet[$n];
 							}
@@ -133,7 +134,8 @@ if(!empty($_POST))
 						}
 						else
 						{
-							echo "NO";
+							//echo "NO";
+							print("<div class='card-panel red'><i class='material-icons left'>error</i>Ha ocurrido un error al enviar el codigo de autenticacion, por favor vuelve a intentarlo.</div>");
 						}
 						
 						}
@@ -167,7 +169,7 @@ else{
 	$data = Database::getRow($sqlVeri, $params);
 	if($data[0] < 1)
 	{
-		header('location:../admin/crear_admin.php');
+		header('location:../admin/crear_priadmin.php');
 	}
 }
 ?>
