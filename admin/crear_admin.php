@@ -72,10 +72,10 @@ if(!empty($_POST))
                     if(!$array["success"])
                     {
                         $hash = password_hash($contraseña, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
-            $params = array($codigo, $hash, $correo, 1, 1, 1);
-            Database::executeRow($sql, $params);
-            header("location: ../publico/login.php");   
+                        $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
+                        $params = array($codigo, $hash, $correo, 1, 1, 1);
+                        Database::executeRow($sql, $params);
+                        header("location: ../publico/login.php");   
                     }     
                     else{
                         print("<div class='card-panel red'><i class='material-icons left'>warning</i>Eres un Spamer</div>");
@@ -130,7 +130,7 @@ if(!empty($_POST))
                         <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='50' maxlenght='50' required/>
                         <label class="active" for='correo_electronico'>Correo Electrónico:</label>
                         <BR>
-                <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
+                        <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
                     </div>
                 </div>
                 <div class='row'>

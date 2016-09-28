@@ -16,7 +16,7 @@
           {
           $nombreempre = $data['nombre_empresa'];
           $finalizo = $data['finalizo'];
-          $observaciones = $data['observaciones'];
+          $observaciones = $data['observaciones_tecnicas'];
           $acuerdo = $data['acuerdo'];
           $bitacora = $data['bitacora'];
           $carta = $data['carta'];
@@ -49,75 +49,43 @@
           <label for="observacion">Observacion</label>
         </div>
         <br>
-        <div class="input-field col s12 m2">
-         <p>
-           <?php
-           if($acuerdo == 1){
-            print("<input type='checkbox' class='filled-in black-text' id='acuerdo' checked='checked' disabled='disabled'/>
-            <label for='acuerdo'>Acuerdo</label>"); 
-           }
-           else {
-            print("<input type='checkbox' class='filled-in black-text' id='acuerdo' disabled='disabled'/>
-            <label for='acuerdo'>Acuerdo</label>");
-           }
-            ?>
-         </p> 
+        <div class="file-field input-field col s12 m6">
+         <div class="btn blue-grey darken-2">
+            <span>Acuerdo</span>
+            <input name="acuerdo" id="acuerdo" type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
         </div>
-        <div class="input-field col s12 m2">
-         <p>
-           <?php
-           if($carta == 1){
-            print("<input type='checkbox' class='filled-in black-text' id='carta' checked='checked' disabled='disabled'/>
-            <label for='carta'>Carta</label>");
-           }
-           else {
-            print("<input type='checkbox' class='filled-in black-text' id='carta' disabled='disabled'/>
-            <label for='carta'>Carta</label>");
-           }
-            ?>
-         </p> 
+        <div class="file-field input-field col s12 m6">
+         <div class="btn blue-grey darken-2">
+            <span>Bitacora</span>
+            <input name="bitacora" id="bitacora" type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
         </div>
-        <div class="input-field col s12 m2">
-         <p>
-           <?php
-           if($bitacora == 1){
-            print("<input type='checkbox' class='filled-in black-text' id='bita' checked='checked' disabled='disabled'/>
-            <label for='bita'>Bitacora</label>");
-           }
-           else {
-            print("<input type='checkbox' class='filled-in black-text' id='bita' disabled='disabled'/>
-            <label for='bita'>Bitacora</label>");
-           }
-            ?>
-         </p> 
+      </div>
+      <div class="row">
+        <div class="file-field input-field col s12 m6">
+         <div class="btn blue-grey darken-2">
+            <span>Carta</span>
+            <input name="carta" id="carta" type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div> 
         </div>
-        <div class="input-field col s12 m2">
-         <p>
-           <?php
-           if($evaluaciones){
-            print("<input type='checkbox' class='filled-in black-text' id='eva' checked='checked' disabled='disabled'/>
-            <label for='eva'>Evaluacion</label>");
-           }
-           else {
-            print("<input type='checkbox' class='filled-in black-text' id='eva' disabled='disabled'/>
-            <label for='eva'>Evaluacion</label>");
-           }
-            ?>
-         </p> 
-        </div>
-        <div class="input-field col s12 m2">
-         <p>
-           <?php
-           if($finalizo){
-            print("<input type='checkbox' class='filled-in black-text' id='final' checked='checked' disabled='disabled'/>
-            <label for='final'>Finalizo</label>");
-           }
-           else {
-            print("<input type='checkbox' class='filled-in black-text' id='final' disabled='disabled'/>
-            <label for='final'>Finalizo</label>");
-           }
-            ?>
-         </p> 
+        <div class="file-field input-field col s12 m6">
+          <div class="btn blue-grey darken-2">
+              <span>Evaluaciones</span>
+              <input name="evaluaciones" id="evaluaciones" type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
         </div>
       </div>
       <br>

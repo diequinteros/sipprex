@@ -37,14 +37,18 @@ foreach($datos as $res)
 {		
 	$nombre1=$res["nombre1"];
 	$nombre2=$res["nombre2"];
+  $apellido1=$res["apellido1"];
+  $apellido2=$res["apellido2"];
 	$carnet=$res["carnet"];
 	$especialidad=$res["especialidad"];
 
 ?>  
  <tr>
+ <td><?php echo $carnet; ?></td>
 	<td><?php echo $nombre1; ?></td>
 	<td><?php echo $nombre2; ?></td>
-	<td><?php echo $carnet; ?></td>
+  <td><?php echo $apellido1; ?></td>
+	<td><?php echo $apellido2; ?></td>
 	<td><?php echo $especialidad; ?></td>
                    
  </tr> 

@@ -52,7 +52,7 @@ if(!empty($_POST))
 }
 ?>
 <!-- Se crea nuestro formulario general ya sea de creacion o modificacion -->
-            <form method='post' class='row' autocomplete="off" enctype='multipart/form-data'>
+            <form method='post' action='finalizo2.php' class='row' autocomplete="off" enctype='multipart/form-data'>
                     <div class='input-field col s12 m6'>
                         <!-- Mediante las siguientes sentencias se llena el comboBox con los datos de Empresas -->
                         <?php

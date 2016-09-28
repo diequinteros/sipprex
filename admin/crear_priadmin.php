@@ -44,9 +44,6 @@ if(!empty($_POST))
     $contraseña = strip_tags(trim($_POST['contraseña']));
     $contraseña2 = strip_tags(trim($_POST['contraseña2']));
     $correo = strip_tags(trim($_POST['correo_electronico']));
-    $create = strip_tags(trim($_POST['create']));
-    $update = strip_tags(trim($_POST['update']));
-    $delete = strip_tags(trim($_POST['delete']));
     //Se declaran las consultas
     try 
     {
@@ -72,10 +69,10 @@ if(!empty($_POST))
                     if(!$array["success"])
                     {
                         $hash = password_hash($contraseña, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
-            $params = array($codigo, $hash, $correo, $create, $update, $delete);
-            Database::executeRow($sql, $params);
-            header("location: ../publico/login.php");   
+                        $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
+                        $params = array($codigo, $hash, $correo, 1, 1, 1);
+                        Database::executeRow($sql, $params);
+                        header("location: ../publico/login.php");   
                     }     
                     else{
                         print("<div class='card-panel red'><i class='material-icons left'>warning</i>Eres un Spamer</div>");
