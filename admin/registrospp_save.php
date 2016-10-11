@@ -4,6 +4,7 @@ ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/functions.php");
 
 //Se realizan los procesos necesarios para modificar e insertar
 if(empty($_GET['id'])) 
@@ -74,28 +75,60 @@ if(!empty($_POST))
     $_POST = Validator::validateForm($_POST);
   	$alumno = strip_tags(trim($_POST['carnet']));
     $empresa = strip_tags(trim($_POST['id_empresa']));
-    $finalizo = strip_tags(trim($_POST['finalizo']));
+    if($_POST['finalizo_si'] != null){
+	$finalizo = 1;
+    }
+    else{
+	$finalizo = 0;
+    }
     $observaciones = strip_tags(trim($_POST['observaciones']));
-    $acuerdo = strip_tags(trim($_POST['acuerdo']));
-    $bitacora = strip_tags(trim($_POST['bitacora']));
-    $carta = strip_tags(trim($_POST['carta']));
-    $evaluaciones = strip_tags(trim($_POST['evaluaciones']));
+    if($_POST['acuerdo'] == 1){
+	$acuerdo = 1;
+    }
+    else{
+	$acuerdo = 0;
+    }
+    if($_POST['carta'] == 1){
+        $carta = 1;
+    }
+    else{
+        $carta = 0;
+    }
+    if($_POST['bitacora'] == 1){
+        $bitacora = 1;
+    }
+    else{
+        $bitacora = 0;
+    }
+    if($_POST['evaluaciones'] == 1){
+        $evaluaciones = 1;
+    }
+    else{
+        $evaluaciones = 0;
+    }
     $observacion_final = strip_tags(trim($_POST['observacion_final']));
     $Fecha = strip_tags(trim($_POST['fecha']));
     //Se declaran las consultas
     try 
     {
-      	if($id == null){
-        	  $sql = "INSERT INTO registrospp(alumno, empresa, finalizo, observaciones, acuerdo, bitacora, carta, evaluaciones, observacion_final, fecha_finalizo) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        if(!is_numeric($observacion_final) && !is_numeric($observaciones))
+        {
+            if($id == null){
+        	  $sql = "INSERT INTO registrospp(alumno, empresa, finalizo, observaciones_tecnicas, acuerdo, bitacora, carta, evaluaciones, observacion_final, fecha_finalizo) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $Fecha);
         }
         else
         {
-            $sql = "UPDATE registrospp SET alumno = ?, empresa = ?, finalizo = ?, observaciones = ?, acuerdo = ?, bitacora = ?, carta = ?, evaluaciones = ?, observacion_final = ?, fecha_finalizo = ? WHERE id_registropp = ?";
+            $sql = "UPDATE registrospp SET alumno = ?, empresa = ?, finalizo = ?, observaciones_tecnicas = ?, acuerdo = ?, bitacora = ?, carta = ?, evaluaciones = ?, observacion_final = ?, fecha_finalizo = ? WHERE id_registropp = ?";
             $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $id, $Fecha);
         }
         Database::executeRow($sql, $params);
         header("location: registrospp_index.php");
+        }
+        else{
+            print("<div class='card-panel red'><i class='material-icons left'>error</i>Error en los datos, verifique que las observaciones no sean solo numeros</div>");
+        }
+      	
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)
@@ -161,7 +194,7 @@ if(!empty($_POST))
                         <label class="active">¿Finalizó?</label>
                         <input id='f_si' type='radio' name='finalizo' class='with-gap' value='1' <?php print(($finalizo == 1)?"checked":""); ?>/>
                         <label for='f_si'><i class='material-icons'>check</i></label>
-                        <input id='f_no' type='radio' name='finalizo' class='with-gap' value='0' <?php print(($finalizo == 0)?"checked":""); ?>/>
+                        <input id='f_no' type='radio' name='finalizo' class='with-gap' <?php print(($finalizo == 0)?"checked":""); ?>/>
                         <label for='f_no'><i class='material-icons'>cancel</i></label>
                     </div>
                     <div class='col s12 m6'>

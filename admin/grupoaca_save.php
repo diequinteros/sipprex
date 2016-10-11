@@ -3,6 +3,7 @@
   session_start(); 
   require("../bibliotecas/conexion.php");
   require("../bibliotecas/Validator.php");
+  require("../bibliotecas/functions.php");
    
 if(empty($_GET['id'])) 
 {
@@ -63,8 +64,9 @@ if(!empty($_POST))
         {
             throw new Exception("Datos incompletos.");
         }
-
-        if($id == null)
+        if(is_numeric($grupo))
+        {
+            if($id == null)
         {
         	$sql = "INSERT INTO grupo_academico (grupo_aca)  VALUES(?)";
             $params = array($grupo);
@@ -76,6 +78,12 @@ if(!empty($_POST))
         }
         Database::executeRow($sql, $params);
         header("location: grupoaca_read.php");
+        }
+        else
+        {
+        print("<div class='card-panel red'><i class='material-icons left'>error</i>El grupo academico solo debe ser un numero</div>");    
+        }
+        
     }
     catch (Exception $error)
     {

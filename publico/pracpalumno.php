@@ -23,6 +23,17 @@
           $evaluaciones = $data['evaluaciones'];
           $observacion_final = $data['observacion_final'];  
           }
+          else{
+            $nombreempre = null;
+          $finalizo = null;
+          $observaciones = null;
+          $acuerdo = null;
+          $bitacora = null;
+          $carta = null;
+          $evaluaciones = null;
+          $observacion_final = null;
+          print("<div class='card-panel red'><i class='material-icons left'>error</i>No has empezado el proceso de practicas profesionales</div>");
+          }
       ?>
       <!-- Anuncios -->
       <div class="">

@@ -105,32 +105,32 @@ require("../bibliotecas/conexion.php");
 									<td>".htmlspecialchars($row['id_registropp'])."</td>
 									<td>".htmlspecialchars($row['nombre1']).""." "."".htmlspecialchars($row['nombre2']).""." "."".htmlspecialchars($row['apellido1']).""." "."".htmlspecialchars($row['apellido2'])."</td>
 									<td>".htmlspecialchars($row['nombre_empresa'])." - ".htmlspecialchars($row['departamento'])."</td>";
-					if($row['finalizo']==1){
+					if($row['finalizo'] == 1){
 						$tabla .= "<td>Sí</td>";
 					}
 					else{
 						$tabla .= "<td>No</td>";
 					}
 					$tabla .= 		"<td>".htmlspecialchars($row['observaciones_tecnicas'])."</td>";
-					if($row['acuerdo']==1){
+					if($row['acuerdo'] == 1){
 						$tabla .= "<td>Sí</td>";
 					}
 					else{
 						$tabla .= "<td>No</td>";
 					}
-					if($row['bitacora']==1){
+					if($row['bitacora'] == 1){
 						$tabla .= "<td>Sí</td>";
 					}
 					else{
 						$tabla .= "<td>No</td>";
 					}
-					if($row['carta']==1){
+					if($row['carta'] == 1){
 						$tabla .= "<td>Sí</td>";
 					}
 					else{
 						$tabla .= "<td>No</td>";
 					}
-					if($row['evaluaciones']==1){
+					if($row['evaluaciones'] == 1){
 						$tabla .= "<td>Sí</td>";
 					}
 					else{

@@ -4,6 +4,7 @@
   session_start();
    require("../bibliotecas/conexion.php");
    require("../bibliotecas/validator.php");
+   require("../bibliotecas/functions.php");
 if(empty($_GET['id'])) 
 {   
     $head = "";
@@ -70,19 +71,21 @@ if(!empty($_POST))
         {
             throw new Exception("Datos incompletos.");
         }
-
-        if($id == null)
-        {
-        	$sql = "INSERT INTO espeempresa(empresa, especialida) VALUES(?, ?)";
-            $params = array($empre, $espe);
-        }
-        else
-        {
-            $sql = "UPDATE espeempresa SET empresa = ?, especialidad = ?  WHERE id_espeempresa = ?";
-            $params = array($empre, $espe, $id);
-        Database::executeRow($sql, $params);
-        header("location: empresaes_read.php");
-        }
+        
+                if($id == null)
+            {
+                $sql = "INSERT INTO espeempresa(empresa, especialida) VALUES(?, ?)";
+                $params = array($empre, $espe);
+            }
+            else
+            {
+                $sql = "UPDATE espeempresa SET empresa = ?, especialidad = ?  WHERE id_espeempresa = ?";
+                $params = array($empre, $espe, $id);
+            Database::executeRow($sql, $params);
+            header("location: empresaes_read.php");
+            }
+        
+        
     }
     catch (Exception $error)
     {

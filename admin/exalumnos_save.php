@@ -4,6 +4,7 @@ ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/functions.php");
 
 //Se realizan los procesos necesarios para modificar e insertar
 if(empty($_GET['id'])) 
@@ -77,6 +78,12 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
+       /* if (ctype_alpha(str_replace(' ', '', $name)) === false)  {
+        $errors[] = 'Name must contain letters and spaces only';
+        }
+        */
+        if(filter_var($correo, FILTER_VALIDATE_EMAIL) && ctype_alpha(str_replace(' ', '', $nombre)) && ctype_alpha(str_replace(' ', '', $apellido)) && (ctype_alpha(str_replace(' ', '', $observacion)) || $observacion == null) &&  is_numeric($id2) && $contraseña != null)
+        {
         $contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
       	if($id == null){
         	  $sql = "INSERT INTO ex_alumnos(id_exalumnos, contraseña, nombre1, apellido1, telefono, ocupacion, correo_electronico, observacion) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -89,11 +96,16 @@ if(!empty($_POST))
         }
         Database::executeRow($sql, $params);
         header("location: exalumnos_index.php");
+        }
+        else{
+         print("<div class='card-panel red'><i class='material-icons left'>error</i>Por favor verifique que su correo, nombre (Solo letras) y observacion (Solo letras) sea valido.</div>");       
+        }
+    
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)
     {
-        print("<div class='card-panel red'><i class='material-icons left'>error</i>".$error->getMessage()."</div>");
+        
     }
 }
 ?>
@@ -126,7 +138,7 @@ if(!empty($_POST))
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>phone</i>
-                        <input id='telefono' type='text' name='telefono' class='validate' length='15' maxlenght='25' value='<?php print(htmlspecialchars($telefono)); ?>'/>
+                        <input id='telefono' type='tel' name='telefono' class='validate' length='15' maxlenght='25' value='<?php print(htmlspecialchars($telefono)); ?>'/>
                         <label class="active" for='telefono'>Teléfono:</label>
                     </div>
                 </div>
@@ -159,7 +171,7 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>mail_outline</i>
-                        <input id='correo_electronico' type='text' name='correo_electronico' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($correo)); ?>'/>
+                        <input id='correo_electronico' type='email' name='correo_electronico' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($correo)); ?>'/>
                         <label class="active" for='correo_electronico'>Correo Electrónico:</label>
                     </div>
                     <div class='file-field input-field col s12 m6'>

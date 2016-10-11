@@ -3,6 +3,7 @@
   session_start(); 
   require("../bibliotecas/conexion.php");
   require("../bibliotecas/validator.php");
+  require("../bibliotecas/functions.php");
 if(empty($_GET['id'])) 
 {
     $head = "";
@@ -64,8 +65,9 @@ if(!empty($_POST))
         {
             throw new Exception("Datos incompletos.");
         }
-
-        if($id == null)
+        if(ctype_alpha(str_replace(' ', '', $Especialidad)))
+        {
+            if($id == null)
         {
         	$sql = "INSERT INTO especialidades (especialidad) VALUES(?)";
             $params = array($Especialidad);
@@ -77,6 +79,10 @@ if(!empty($_POST))
         }
         Database::executeRow($sql, $params);
         header("location: espe_read.php");
+        }
+        else{
+            print("<div class='card-panel red'><i class='material-icons left'>error</i>La especialidad solo debe contener numeros</div>");    
+        }
     }
     catch(Exception $error)
     {

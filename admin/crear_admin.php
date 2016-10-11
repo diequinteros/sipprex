@@ -3,6 +3,7 @@ ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/functions.php");
 $sqlVeri = "SELECT COUNT(codigo_admin) FROM administradores";
 	$params = null;
 	$data = Database::getRow($sqlVeri, $params);
@@ -49,7 +50,9 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
-      	if($contraseña == $contraseña2)
+        if(filter_var($correo, FILTER_VALIDATE_EMAIL))
+        {
+            if($contraseña == $contraseña2)
           {
               if(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"])
                 {
@@ -88,6 +91,11 @@ if(!empty($_POST))
                 throw new Exception("Las contraseñas son diferentes.");
             }
         }
+        else{
+            print("<div class='card-panel red'><i class='material-icons left'>error</i>El correo ingresado no es valido</div>");    
+        }
+      	
+    }
                 
        
     //En caso de error se muestra al administrador en turno

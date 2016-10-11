@@ -4,6 +4,7 @@
   session_start(); 
   require("../bibliotecas/conexion.php");
   require("../bibliotecas/validator.php");
+  require("../bibliotecas/functions.php");
 if(empty($_GET['id'])) 
 {
     $head = "";
@@ -77,8 +78,9 @@ if(!empty($_POST))
         {
             throw new Exception("Datos incompletos.");
         }
-
-        if($id == null)
+        if(is_numeric($Observacion))
+        {
+            if($id == null)
         {
         	$sql = "INSERT INTO visitas (empresa, fecha_ultima_visita, observaciones) VALUES(?, ?, ?)";
             $params = array($Empresas, $Fecha, $Observacion);
@@ -91,6 +93,10 @@ if(!empty($_POST))
         }
         Database::executeRow($sql, $params);
         header("location: visitas_read.php");
+        }
+        else{
+            print("<div class='card-panel red'><i class='material-icons left'>error</i>La observacion no puede contener solo numeros</div>");
+        }
     }
     catch (Exception $error)
     {

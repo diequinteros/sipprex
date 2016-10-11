@@ -3,7 +3,7 @@
   ob_start();
   session_start();
  require("../bibliotecas/conexion.php"); 
- require("../bibliotecas/Validator.php");
+ require("../bibliotecas/validator.php");
  if(!isset($_SESSION['id_empresa']))
  {
      header("location: login.php");

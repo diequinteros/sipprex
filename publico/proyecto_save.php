@@ -2,6 +2,7 @@
 ob_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/functions.php");
 
 session_start();
 		if(!isset($_GET['id'])) 
@@ -70,7 +71,9 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
-      	if($id == null){
+        if(!is_numeric($titulo) && !is_numeric($descripcion))
+        {
+            if($id == null){
             if(isset($_SESSION['id_empresa']))
 			{
 				$sql = "INSERT INTO proyecto(titulo, descripcion, remunerado, id_empre_encargado) VALUES(?, ?, ?, ?)";
@@ -98,6 +101,11 @@ if(!empty($_POST))
         }
         Database::executeRow($sql, $params);
         header("location: proyecto_index.php");
+        }
+        else
+      	{
+              print("<div class='card-panel red'><i class='material-icons left'>error</i>El titulo y la descripcion no deben contener solo numeros</div>");
+          }
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)

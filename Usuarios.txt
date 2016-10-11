@@ -1,0 +1,6 @@
+Admin
+Codigo: 20140666	Contraseña: 666
+Alumno:
+Codigo 20140643		Contraseña: 123456
+Ex alumno
+Codigo 11116666		Contraseña 123456

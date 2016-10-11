@@ -4,6 +4,7 @@
   session_start(); 
   require("../bibliotecas/conexion.php");
   require("../bibliotecas/validator.php");
+  require("../bibliotecas/functions.php");
 if(empty($_GET['id'])) 
 {
     $head = "";
@@ -65,7 +66,8 @@ if(!empty($_POST))
         {
             throw new Exception("Datos incompletos.");
         }
-
+        if(ctype_alpha(str_replace(' ', '', $año)))
+        {
         if($id == null)
         {
         	$sql = "INSERT INTO años(año) VALUES(?)";
@@ -75,6 +77,10 @@ if(!empty($_POST))
         {
             $sql = "UPDATE años SET año = ? WHERE id_año = ?";
             $params = array($año, $id);
+        }    
+        }
+        else{
+            print("<div class='card-panel red'><i class='material-icons left'>error</i>El grado debe contener solo letras.</div>");
         }
         Database::executeRow($sql, $params);
         header("location: grado_read.php");
@@ -89,7 +95,7 @@ if(!empty($_POST))
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='id_especialidad' type='text' name='id_año' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($id)); ?>'/>
+          	<input id='id_especialidad' type='text' name='id_año' class='validate' length='50' maxlenght='50' disabled value='<?php print(htmlspecialchars($id)); ?>'/>
           	<label for='id_especialidad'>ID</label>
         </div>
         <div class='input-field col s12 m6'>

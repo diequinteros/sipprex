@@ -4,6 +4,7 @@ ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/functions.php");
 
 //Se realizan los procesos necesarios para modificar e insertar
 if(empty($_GET['id'])) 
@@ -58,7 +59,9 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
-      	if($id == null){
+        if(is_numeric($grupo))
+        {
+            if($id == null){
         	$sql = "INSERT INTO grupo_tecnico(grupo_tec) VALUES(?)";
             $params = array($grupo);
         }
@@ -69,6 +72,10 @@ if(!empty($_POST))
         }
         Database::executeRow($sql, $params);
         header("location: grupotec_index.php");
+        }
+        else{
+            print("<div class='card-panel red'><i class='material-icons left'>error</i>El grupo tecnico debe ser un numero</div>");
+        }
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)

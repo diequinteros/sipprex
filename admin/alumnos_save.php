@@ -4,6 +4,7 @@ ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/functions.php");
 
 //Se realizan los procesos necesarios para modificar e insertar
 if(empty($_GET['id'])) 
@@ -94,7 +95,7 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
-        if(strlen($nie) <= 8 && strlen($nombre1) <= 15 && strlen($nombre2) <= 15 && strlen($apellido1) <= 15 && strlen($apellido2) <= 15 && is_numeric($grado) && is_numeric($especialidad) && is_numeric($grupo_tecnico) && is_numeric($grupo_academico) && is_numeric($seccion) && ($inscrito == "VERDADERO" || $inscrito == "FALSO"))
+        if(strlen($nie) <= 8 && strlen($nombre1) <= 15 && strlen($nombre2) <= 15 && strlen($apellido1) <= 15 && strlen($apellido2) <= 15 && is_numeric($grado) && is_numeric($especialidad) && is_numeric($grupo_tecnico) && is_numeric($grupo_academico) && is_numeric($seccion) && ($inscrito == "VERDADERO" || $inscrito == "FALSO") && ctype_alpha(str_replace(' ', '', $nombre1)) && ctype_alpha(str_replace(' ', '', $nombre2)) && ctype_alpha(str_replace(' ', '', $apellido1)) && ctype_alpha(str_replace(' ', '', $apellido2)))
         {
             if($id == null){
                 $id = strip_tags(trim($_POST['carnet']));
@@ -151,7 +152,7 @@ if(!empty($_POST))
             header("location: alumnos_index.php");
         }
         else{
-        print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos ingresados no es correcto, por favor verifique sus datos.</div>");    
+        print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos ingresados no es correcto, por favor verifique sus datos (Sus nombres y apellidos deben contener solo letras).</div>");    
         }
     }
     //En caso de error se muestra al administrador en turno

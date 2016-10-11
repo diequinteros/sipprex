@@ -1,8 +1,9 @@
-  <?php
+ <?php
   ob_start(); 
   session_start();
  require("../bibliotecas/conexion.php"); 
- require("../bibliotecas/Validator.php"); 
+ require("../bibliotecas/validator.php"); 
+ require("../bibliotecas/functions.php");
 if(empty($_GET['id'])) 
 {
     $head = "";
@@ -83,7 +84,6 @@ if(!empty($_POST))
         {
             throw new Exception("Datos incompletos.");
         }
-
         if($id == null)
         {
         	$sql = "INSERT INTO empresas(codigo_empresa, contraseña_empre,nombre_empresa, rubro, direccion, telefono, contacto, correo) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -140,7 +140,7 @@ if(!empty($_POST))
                         $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $Codigo, $hash);
                     }
                     else{
-                        print("<div class='card-panel red'><i class='material-icons left'>error</i>La contraseña y el c´dogio de la empresa no pueden ser iguales.</div>");
+                        print("<div class='card-panel red'><i class='material-icons left'>error</i>La contraseña y el codigo de la empresa no pueden ser iguales.</div>");
                     }
                 }
                 else{

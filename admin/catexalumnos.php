@@ -1,6 +1,7 @@
 <html>
-  <?php require("../bibliotecas/conexion.php");
-   session_start();
+  <?php
+   require("../bibliotecas/conexion.php");
+  session_start();
    ?>
     <head>
       <?php
@@ -8,19 +9,20 @@
       ?>
     </head>
     <!-- NAV -->
-    <?php include("../inc/nav.php")?>
+    <?php include("../inc/nav.php");?>
     <body class="grey lighten-3">
-      <!-- Botones cat empresa -->
-      <div id="cont" class="row">
-        <div class="col l10">
+      <!-- Anuncios -->
+      <div id="cont" class = "card-panel paneles z-depth-3">
+        <div>
             <div class="row">
-             <h2 class="col l12"> Categoria alumnos </h2>
-             <a class="waves-effect waves-light btn col l4 offset-l4">Ex alumnos</a>
-             <div class="divider col l4 offset-l4"></div>
+             <h2 class="col l12 center-align"> Categoria ex alumnos </h2>
+             <a class="waves-effect waves-light btn col l4 offset-l4" href="exalumnos_index.php">Ex alumnos</a>
+            </div>
+             
              <br>
-             <a class="waves-effect waves-light btn col l4 offset-l4">Ocupaciones</a>
-             <div class="divider col l4 offset-l4"></div>
-             <br>
+             <div class="row">
+             <a class="waves-effect waves-light btn col l4 offset-l4" href="ocupaciones_read.php">Ocupaciones</a>
+             </div>
            </div>
         </div>
       </div>

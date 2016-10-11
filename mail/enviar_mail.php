@@ -17,6 +17,7 @@ if(isset($_GET['toempresa']) || isset($_GET['toex']) || isset($_GET['toalum'])){
   <?php
    require("../bibliotecas/conexion.php");
    require("../bibliotecas/validator.php");
+   require("../bibliotecas/functions.php");
    ?>
     <head>
       <?php
@@ -30,7 +31,7 @@ if(!empty($_POST))
     $_POST = Validator::validateForm($_POST);
     $titulo = strip_tags(trim($_POST['titulo']));
     $conte = strip_tags(trim($_POST['contenido']));
-    if(trim($titulo)!="" && $titulo != null && trim($conte)!="" && $conte != null){
+    if(trim($titulo)!="" && $titulo != null && trim($conte)!="" && $conte != null && !is_numeric($titulo) && !is_numeric($conte)){
         $sql = null;
         $params = null;
         //Origen de alumno
@@ -78,6 +79,9 @@ if(!empty($_POST))
         }
         Database::executeRow($sql,$params);
         header("location:mail.php");
+    }
+    else{
+        print("<div class='card-panel red'><i class='material-icons left'>error</i>El titulo y contenido no puede ir vacio o solo contener numeros.</div>");
     }
 }
 ?>

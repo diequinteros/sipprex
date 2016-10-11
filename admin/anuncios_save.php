@@ -4,6 +4,7 @@ ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/functions.php");
 
 //Se realizan los procesos necesarios para modificar e insertar
 if(empty($_GET['id'])) 
@@ -61,7 +62,7 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
-        if(strlen($titulo_anuncio) <= 100 && strlen($contenido_anuncio) <= 400)
+        if(strlen($titulo_anuncio) <= 100 && strlen($contenido_anuncio) <= 400 && !is_numeric($titulo_anuncio) && !is_numeric($contenido_anuncio))
         {
             if($id == null){
         	$sql = "INSERT INTO anuncios(titulo_anuncio, contenido_anuncio) VALUES(?, ?)";
@@ -76,7 +77,7 @@ if(!empty($_POST))
             header("location: anuncios_index.php");
         }
         else{
-            print("<div class='card-panel red'><i class='material-icons left'>error</i></div>");    
+            print("<div class='card-panel red'><i class='material-icons left'>error</i>El titulo del anuncio no puede ser solo numeros y no puede contener mas de 100 caracteres, el contenido el anuncio no pueden ser solo numeros y no debe superar los 400 caracteres</div>");    
         }
     }
     //En caso de error se muestra al administrador en turno

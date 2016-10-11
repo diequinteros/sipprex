@@ -159,7 +159,7 @@ ini_set("date.timezone","America/El_Salvador");
 								<a id = 'navlogo' href='../admin/index.php' class='brand-logo'>Sipprex</a>
 								<a href='#' data-activates='mobile-demo' class='button-collapse'><i class='material-icons'>menu</i></a>
 								<ul id='navul' class='right hide-on-med-and-down'>
-								<li><a href='../admin/index.html'>Inicio</a></li>
+								<li><a href='../admin/index.php'>Inicio</a></li>
 								<!-- Dropdown Trigger -->
 								<li><a class='dropdown-button' href='../admin/catalumnos.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown1'>Alumnos<i class='material-icons right'>arrow_drop_down</i></a></li>
 								<li><a class='dropdown-button' href='../admin/catexalumnos.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown2'>Ex alumnos<i class='material-icons right'>arrow_drop_down</i></a></li>
@@ -168,7 +168,7 @@ ini_set("date.timezone","America/El_Salvador");
 								<li><a class='dropdown-button' href='../bibliotecas/logout.php' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes'>$_SESSION[nombre_usuario]<i class='material-icons right'>more_vert</i></a></li>
 								</ul>
 								<ul class='side-nav' id='mobile-demo'>
-									<li><a href='../admin/index.html'>Inicio</a></li>
+									<li><a href='../admin/index.php'>Inicio</a></li>
 								<!-- Dropdown Trigger -->
 								<li><a class='dropdown-button' href='../admin/catalumnos.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown11'>Alumnos<i class='material-icons right hide-on-med-and-down'>arrow_drop_down</i></a></li>
 								<li><a class='dropdown-button' href='../admin/catexalumnos.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown21'>Ex alumnos<i class='material-icons right hide-on-med-and-down'>arrow_drop_down</i></a></li>

@@ -3,7 +3,9 @@
   ob_start();
   session_start();
  require("../bibliotecas/conexion.php"); 
- require("../bibliotecas/Validator.php"); 
+ require("../bibliotecas/validator.php");
+ require("../bibliotecas/functions.php");
+ require("../bibliotecas/verios.php");
    ?>
     <head>
       <?php
@@ -73,13 +75,13 @@ if(!empty($_POST))
         }
     try 
     {
-      	if($Empresas != null && $Rubro !=null && $Direccion != null && $Telefono != null && $Contacto != null && $Correo != null && $CodigoEmpresa != null && $Contraseña1Empresa != null && $Contraseña2Empresa != null)
+      	if($Empresas != null && $Rubro !=null && $Direccion != null && $Telefono != null && $Contacto != null && $Correo != null && $CodigoEmpresa != null && $Contraseña1Empresa != null && $Contraseña2Empresa != null && filter_var($Correo, FILTER_VALIDATE_EMAIL) && !is_numeric($Empresas) && !is_numeric($Contacto) && !is_numeric($Rubro) && !is_numeric($Direccion))
           {
               if($Contraseña1Empresa == $Contraseña2Empresa)
               {
                 if(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"])
                 {
-                    var_dump($_POST);
+                    //var_dump($_POST);
                     $secret ="6Lff-CcTAAAAAJjQHKT4BcSGTPtEoQGn4lz_lE4f";
                     $id = $_SERVER["REMOTE_ADDR"];
 
@@ -105,7 +107,7 @@ if(!empty($_POST))
                         $sesU = uniqid().'_ses';
 					$_SESSION['ses'] = $sesU;
 					$sqlSes = "INSERT INTO sesiones_empre(unisesion, usuario, os) VALUES(?, ?, ?)";
-					$parametros = array($sesU, $id_empre, os_info($uagent));
+					$parametros = array($sesU, $id_empre['id_empresa'], os_info($uagent));
 					Database::executeRow($sqlSes, $parametros);
 					$ahora = date("Y-n-j H:i:s");
 					$_SESSION["ultimoAcceso"] = $ahora;
@@ -127,7 +129,7 @@ if(!empty($_POST))
         }
         else 
         {
-            throw new Exception("Debe ingresar todos los datos.");
+            throw new Exception("Debe ingresar todos los datos y verificar que el nombre de su empresa, contacto, rubro y direccion no sean solo numeros.");
         }
     }  
     catch (Exception $error)
@@ -191,9 +193,9 @@ if(!empty($_POST))
             <i class='material-icons prefix'>add</i>
             <input id='contra2' type='password' name='contra2' class='validate' length='8' maxlength='8' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>' required/>
             <label for='contra2'>Vuelva a introducir su contraseña</label>
-              <BR>
-                <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lff-CcTAAAAAJt_H1WxWdBYR81AHYkQ0pEa1yNR"></div>
+              <BR>     
         </div>
+        <div class="g-recaptcha col s12 m6" data-theme="dark" data-sitekey="6Lff-CcTAAAAAJt_H1WxWdBYR81AHYkQ0pEa1yNR"></div>
                 
     </div>
     <a href='login_empre.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>
@@ -209,3 +211,4 @@ include("../inc/footer.php");
 <?php
 ob_end_flush();
 ?>
+

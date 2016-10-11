@@ -4,6 +4,7 @@ ob_start();
 session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
+require("../bibliotecas/functions.php");
 
 //Se realizan los procesos necesarios para modificar e insertar
 if(empty($_GET['id'])) 
@@ -67,7 +68,9 @@ if(!empty($_POST))
     //Se declaran las consultas
     try 
     {
-      	if($id == null){
+        if(ctype_alpha(str_replace(' ', '', $encargado)) && !is_numeric($departamento))
+        {
+            if($id == null){
         	  $sql = "INSERT INTO departamentosempre(departamento, encargado, telefono_encargado, empresa) VALUES(?, ?, ?, ?)";
             $params = array($departamento, $encargado, $telefono_encargado, $empresa);
         }
@@ -78,6 +81,11 @@ if(!empty($_POST))
         }
         Database::executeRow($sql, $params);
         header("location: departamento_index.php");
+        }
+        else
+      	{
+              print("<div class='card-panel red'><i class='material-icons left'>error</i>El nombre del encargado deben ser solo numeros, el nombre del departamento no puede contener solo numeros</div>");
+        }
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)
