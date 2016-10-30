@@ -74,7 +74,11 @@ if(!empty($_POST))
                 $params = array($titulo_anuncio, $contenido_anuncio, $id);
             }
             Database::executeRow($sql, $params);
-            header("location: anuncios_index.php");
+            print("<script>
+            alert('Porceso  exitoso.');
+            window.location='anuncios_index.php';
+            </script>");
+           
         }
         else{
             print("<div class='card-panel red'><i class='material-icons left'>error</i>El titulo del anuncio no puede ser solo numeros y no puede contener mas de 100 caracteres, el contenido el anuncio no pueden ser solo numeros y no debe superar los 400 caracteres</div>");    

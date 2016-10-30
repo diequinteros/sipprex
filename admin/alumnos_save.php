@@ -61,6 +61,7 @@ else{
     $sql = "SELECT * FROM alumnos, años, especialidades, grupo_tecnico, secciones, grupo_academico WHERE alumnos.grado = años.id_año AND alumnos.especialidad = especialidades.id_especialidad AND alumnos.grupo_Tecnic = grupo_tecnico.id_grupo_tec AND alumnos.secc = secciones.id_seccion AND alumnos.grupo_academ = grupo_academico.id_grupo_aca AND carnet = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
+
     //Se utiliza el segmento [0] debido a que el fetchAll utilizado en la clase getRows, devuelve un arreglo bi-dimensional y
     //al devolver un solo valor, se debe especificar de que fila se tomara, en este caso al haber solo una seria la [0]
     $nie = $data['nie'];
@@ -149,7 +150,11 @@ if(!empty($_POST))
                 }
             }
             Database::executeRow($sql, $params);
-            header("location: alumnos_index.php");
+            print("<script>
+            alert('Porceso  exitoso.');
+            window.location='alumnos_index.php';
+            </script>");
+           
         }
         else{
         print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos ingresados no es correcto, por favor verifique sus datos (Sus nombres y apellidos deben contener solo letras).</div>");    

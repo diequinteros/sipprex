@@ -95,12 +95,20 @@ if(!empty($_POST))
             $params = array($contraseña, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion, $id);
         }
         Database::executeRow($sql, $params);
+<<<<<<< HEAD
+         print("<script>
+            alert('Porceso  exitoso.');
+            window.location='exalumnos_index.php';
+            </script>");
+        
+=======
         header("location: exalumnos_index.php");
         }
         else{
          print("<div class='card-panel red'><i class='material-icons left'>error</i>Por favor verifique que su correo, nombre (Solo letras) y observacion (Solo letras) sea valido.</div>");       
         }
     
+>>>>>>> origin/master
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)

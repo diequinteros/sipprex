@@ -23,7 +23,10 @@ if(!empty($_POST))
 		$sql = "DELETE FROM anuncios WHERE id_anuncio = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: anuncios_index.php");
+	   print("<script>
+            alert('Eliminado exitoso.');
+            window.location='anuncios_index.php';
+            </script>");
 	}
 	//En caso de error se le muestra al administrador en turno 
 	catch (Exception $error) 

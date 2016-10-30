@@ -71,6 +71,24 @@ if(!empty($_POST))
         {
             throw new Exception("Datos incompletos.");
         }
+<<<<<<< HEAD
+
+        if($id == null)
+        {
+        	$sql = "INSERT INTO espeempresa(empresa, especialida) VALUES(?, ?)";
+            $params = array($empre, $espe);
+        }
+        else
+        {
+            $sql = "UPDATE espeempresa SET empresa = ?, especialidad = ?  WHERE id_espeempresa = ?";
+            $params = array($empre, $espe, $id);
+        Database::executeRow($sql, $params);
+        print("<script>
+            alert('Porceso  exitoso.');
+            window.location='empresaes_read.php';
+            </script>");
+        }
+=======
         
                 if($id == null)
             {
@@ -86,6 +104,7 @@ if(!empty($_POST))
             }
         
         
+>>>>>>> origin/master
     }
     catch (Exception $error)
     {

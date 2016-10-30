@@ -77,12 +77,19 @@ if(!empty($_POST))
             $params = array($grupo, $id);
         }
         Database::executeRow($sql, $params);
+<<<<<<< HEAD
+         print("<script>
+            alert('Porceso  exitoso.');
+            window.location='grupoaca_read.php';
+            </script>");
+=======
         header("location: grupoaca_read.php");
         }
         else
         {
         print("<div class='card-panel red'><i class='material-icons left'>error</i>El grupo academico solo debe ser un numero</div>");    
         }
+>>>>>>> origin/master
         
     }
     catch (Exception $error)

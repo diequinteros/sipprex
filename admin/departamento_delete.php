@@ -23,7 +23,11 @@ if(!empty($_POST))
 		$sql = "DELETE FROM departamentosempre WHERE id_depar = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: departamaneto_index.php");
+	     print("<script>
+            alert('Eliminado exitoso.');
+            window.location='departamaneto_index.php';
+            </script>");
+
 	}
 	//En caso de error se le muestra al administrador en turno 
 	catch (Exception $error) 

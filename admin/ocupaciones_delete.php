@@ -30,7 +30,10 @@ if(!empty($_POST))
 		$sql = "DELETE FROM ocupaciones WHERE id_ocupacion = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: ocupaciones_read.php");
+	    print("<script>
+            alert('Eliminado  exitoso.');
+            window.location='ocupaciones_read.php';
+            </script>");
 	} 
 	catch (Exception $error) 
 	{

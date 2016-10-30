@@ -79,11 +79,18 @@ if(!empty($_POST))
             $params = array($sec, $id);
         }
         Database::executeRow($sql, $params);
+<<<<<<< HEAD
+         print("<script>
+            alert('Porceso  exitoso.');
+            window.location='seccion_read.php';
+            </script>");
+=======
         header("location: seccion_read.php");
         }
         else{
         print("<div class='card-panel red'><i class='material-icons left'>error</i>La seccion solo debe contener letras</div>");    
         }
+>>>>>>> origin/master
         
     }
     catch (Exception $error)

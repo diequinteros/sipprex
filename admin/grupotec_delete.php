@@ -23,7 +23,11 @@ if(!empty($_POST))
 		$sql = "DELETE FROM grupo_tecnico WHERE id_grupo_tec = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: grupotec_index.php");
+	    print("<script>
+            alert('Eliminado  exitoso.');
+            window.location='grupotec_index.php';
+            </script>");
+	
 	}
 	//En caso de error se le muestra al administrador en turno 
 	catch (Exception $error) 

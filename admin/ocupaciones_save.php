@@ -74,11 +74,20 @@ if(!empty($_POST))
             $params = array($ocu, $id);    
         }
         Database::executeRow($sql, $params);
+<<<<<<< HEAD
+         print("<script>
+            alert('Porceso  exitoso.');
+            window.location='ocupaciones_read.php';
+            </script>");
+        
+        
+=======
         header("location: ocupaciones_read.php");
         }
         else{
         print("<div class='card-panel red'><i class='material-icons left'>error</i>La ocupacion solo debe contener letras</div>");    
         }
+>>>>>>> origin/master
     }
     catch (Exception $error)
     {

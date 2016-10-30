@@ -23,7 +23,11 @@ if(!empty($_POST))
 		$sql = "DELETE FROM registrospp WHERE id_registropp = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: registrospp_index.php");
+	    print("<script>
+            alert('Eliminado  exitoso.');
+            window.location='registrospp_index.php';
+            </script>");
+	  
 	}
 	//En caso de error se le muestra al administrador en turno 
 	catch (Exception $error) 

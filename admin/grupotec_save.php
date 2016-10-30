@@ -47,6 +47,10 @@ else{
     $sql = "SELECT * FROM grupo_tecnico WHERE id_grupo_tec = ?";
     $params = array($id);
     $data = Database::getRows($sql, $params);
+     print("<script>
+            alert('Porceso  exitoso.');
+            </script>");
+        
     //Se utiliza el segmento [0] debido a que el fetchAll utilizado en la clase getRows, devuelve un arreglo bi-dimensional y
     //al devolver un solo valor, se debe especificar de que fila se tomara, en este caso al haber solo una seria la [0]
     $grupo = $data[0]['grupo_tec'];
@@ -71,11 +75,19 @@ if(!empty($_POST))
             $params = array($grupo, $id);
         }
         Database::executeRow($sql, $params);
+<<<<<<< HEAD
+         print("<script>
+            alert('Porceso  exitoso.');
+            window.location='grupotec_index.php';
+            </script>");
+        
+=======
         header("location: grupotec_index.php");
         }
         else{
             print("<div class='card-panel red'><i class='material-icons left'>error</i>El grupo tecnico debe ser un numero</div>");
         }
+>>>>>>> origin/master
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)

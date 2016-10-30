@@ -24,7 +24,10 @@ if(!empty($_POST))
 		$sql = "DELETE FROM ex_alumnos WHERE id_exalumnos = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: exalumnos_index.php");
+	     print("<script>
+            alert('Eliminado exitoso.');
+            window.location='exalumnos_index.php';
+            </script>");
 	}
 	//En caso de error se le muestra al administrador en turno 
 	catch (Exception $error) 

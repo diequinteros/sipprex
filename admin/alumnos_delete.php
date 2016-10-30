@@ -23,7 +23,11 @@ if(!empty($_POST))
 		$sql = "DELETE FROM alumnos WHERE carnet = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: alumnos_index.php");
+	     print("<script>
+            alert('Se ha eliminado exitosamente.');
+            window.location='alumnos_index.php';
+            </script>");
+       
 	}
 	//En caso de error se le muestra al administrador en turno 
 	catch (Exception $error) 

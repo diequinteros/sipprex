@@ -123,12 +123,21 @@ if(!empty($_POST))
             $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $id, $Fecha);
         }
         Database::executeRow($sql, $params);
+<<<<<<< HEAD
+         print("<script>
+            alert('Porceso  exitoso.');
+            window.location='registrospp_index.php';
+            </script>");
+        
+      
+=======
         header("location: registrospp_index.php");
         }
         else{
             print("<div class='card-panel red'><i class='material-icons left'>error</i>Error en los datos, verifique que las observaciones no sean solo numeros</div>");
         }
       	
+>>>>>>> origin/master
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)

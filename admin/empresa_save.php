@@ -157,7 +157,11 @@ if(!empty($_POST))
             $params = array($Empresas, $Rubro, $Direccion, $Telefono, $Contacto, $Correo, $id);
         }
         Database::executeRow($sql, $params);
-        header("location: empresa_read.php");
+        print("<script>
+            alert('Porceso  exitoso.');
+            window.location='empresa_read.php';
+            </script>");
+    
     }
     }
     catch(Exception $error)

@@ -29,7 +29,10 @@ if(!empty($_POST))
 		$sql = "DELETE FROM grupo_academico WHERE id_grupo_aca = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: grupo_read.php");
+	     print("<script>
+            alert('Eliminado exitoso.');
+            window.location='grupo_read.php';
+            </script>");
 	} 
 	catch (Exception $error) 
 	{

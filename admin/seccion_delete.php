@@ -29,7 +29,11 @@ if(!empty($_POST))
 		$sql = "DELETE FROM secciones WHERE id_seccion = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: seccion_read.php");
+	       print("<script>
+            alert('Eliminado  exitoso.');
+            window.location='seccion_read.php';
+            </script>");
+	  
 	} 
 	catch (Exception $error) 
 	{
