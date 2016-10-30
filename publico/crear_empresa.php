@@ -111,7 +111,11 @@ if(!empty($_POST))
 					Database::executeRow($sqlSes, $parametros);
 					$ahora = date("Y-n-j H:i:s");
 					$_SESSION["ultimoAcceso"] = $ahora;
-                        header("location: index_empresa.php");      
+                    print("<script>
+            alert('Porceso  exitoso.');
+            window.location=' index_empresa.php';
+            </script>");
+                             
                     }     
                     else{
                         print("<div class='card-panel red'><i class='material-icons left'>Eres un spamer</i></div>");

@@ -23,7 +23,11 @@ if(!empty($_POST))
 		$sql = "DELETE FROM proyecto WHERE id_proyecto = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: proyecto_index.php");
+	         print("<script>
+            alert('Porceso  exitoso.');
+            window.location=' proyecto_index.php';
+            </script>");
+	 
 	}
 	//En caso de error se le muestra al administrador en turno 
 	catch (Exception $error) 

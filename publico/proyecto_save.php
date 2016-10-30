@@ -100,12 +100,21 @@ if(!empty($_POST))
             
         }
         Database::executeRow($sql, $params);
+<<<<<<< HEAD
+          print("<script>
+            alert('Porceso  exitoso.');
+            window.location='proyecto_index.php';
+            </script>");
+           
+        
+=======
         header("location: proyecto_index.php");
         }
         else
       	{
               print("<div class='card-panel red'><i class='material-icons left'>error</i>El titulo y la descripcion no deben contener solo numeros</div>");
           }
+>>>>>>> origin/master
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)
