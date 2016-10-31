@@ -2,3 +2,4 @@
 <script type="text/javascript" src="../js/materialize.min.js"></script>
 <script type="text/javascript" src="../js/slider.js"></script>
 <script type="text/javascript" src="../js/sidenav.js"></script>
+<script type="text/javascript" src="../js/tooltips.js"></script>

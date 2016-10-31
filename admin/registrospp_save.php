@@ -61,7 +61,7 @@ else{
     $alumno = $data[0]['carnet'];
     $empresa = $data[0]['id_empresa'];
     $finalizo = $data[0]['finalizo'];
-    $observaciones = $data[0]['observaciones'];
+    $observaciones = $data[0]['observaciones_tecnicas'];
     $acuerdo = $data[0]['acuerdo'];
     $bitacora = $data[0]['bitacora'];
     $carta = $data[0]['carta'];
@@ -123,21 +123,15 @@ if(!empty($_POST))
             $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $id, $Fecha);
         }
         Database::executeRow($sql, $params);
-<<<<<<< HEAD
          print("<script>
             alert('Porceso  exitoso.');
             window.location='registrospp_index.php';
             </script>");
-        
-      
-=======
-        header("location: registrospp_index.php");
+            header("location: registrospp_index.php");
         }
         else{
             print("<div class='card-panel red'><i class='material-icons left'>error</i>Error en los datos, verifique que las observaciones no sean solo numeros</div>");
         }
-      	
->>>>>>> origin/master
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)
@@ -246,24 +240,6 @@ if(!empty($_POST))
                         <label for='e_si'><i class='material-icons'>check</i></label>
                         <input id='e_no' type='radio' name='evaluaciones' class='with-gap' value='0' <?php print(($evaluaciones == 0)?"checked":""); ?>/>
                         <label for='e_no'><i class='material-icons'>cancel</i></label>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='input-field col s12 m3'>
-                        <input id='acuerdo' type='file' name='archivo_acuerdo' class='with-gap'/>
-                        <label for='acuerdo' class='active'>Subir Acuerdo</label>
-                    </div>
-                    <div class='input-field col s12 m3'>
-                        <input id='bitacora' type='file' name='archivo_bitacora' class='with-gap'/>
-                        <label for='bitacora' class='active'>Subir Bitacora</label>
-                    </div>
-                    <div class='input-field col s12 m3'>
-                        <input id='carta' type='file' name='archivo_carta' class='with-gap'/>
-                        <label for='carta' class='active'>Subir Carta</label>
-                    </div>
-                    <div class='input-field col s12 m3'>
-                        <input id='evaluaciones' type='file' name='archivo_evaluaciones' class='with-gap'/>
-                        <label for='evaluaciones' class='active'>Subir Evaluaciones</label>
                     </div>
                 </div>
                 <div class='row'>
