@@ -142,7 +142,7 @@ if(!empty($_POST))
                             print("<div class='card-panel red'><i class='material-icons left'>error</i>Las contraseñas no coinciden.</div>");
                         }
                     }
-                    print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de las contraseñas no es valido.</div>");
+                    print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de las contraseñas no es valido recuerde que deben ser de 8 caracteres minimo y 25 maximo.</div>");
                 }
                 else{
                     $sql = "UPDATE alumnos SET carnet = ?, nie = ?, nombre1 = ?, nombre2 = ?, apellido1 = ?, apellido2 = ?, grado = ?, especialidad = ?, grupo_Tecnic = ?, secc = ?, grupo_academ = ?, inscrito = ? WHERE carnet = ?";

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2016 a las 16:39:33
+-- Tiempo de generación: 31-10-2016 a las 18:39:51
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 7.0.4
 
@@ -37,6 +37,13 @@ CREATE TABLE `administradores` (
   `permiso_delete` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`codigo_admin`, `contraseña_admin`, `correo`, `permiso_create`, `permiso_update`, `permiso_delete`) VALUES
+(33, '$2y$10$sZgtLqnOfc3zDbncHBXu8OIDpK4PCgqpLzV1crTaRG6xaaKEL.CS.', 'gestion_empresarial@ricaldone.edu.sv', 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +67,13 @@ CREATE TABLE `alumnos` (
   `pregunta` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `respuesta` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `alumnos`
+--
+
+INSERT INTO `alumnos` (`carnet`, `contraseña`, `nie`, `nombre1`, `nombre2`, `apellido1`, `apellido2`, `grado`, `especialidad`, `grupo_Tecnic`, `secc`, `grupo_academ`, `inscrito`, `pregunta`, `respuesta`) VALUES
+(20150437, '$2y$10$uAq58x4D0TczYJDRN21BNuVsA7WuGto1bWFCz/rl32ebEunL661TK', 481193, 'Erick', 'Fabricio', 'Arevalo', 'Henriquez', 3, 7, 2, 3, 5, 'VERDADERO', '', '');
 
 -- --------------------------------------------------------
 
@@ -635,10 +649,10 @@ CREATE TABLE `registrospp` (
   `finalizo` tinyint(1) NOT NULL,
   `fecha_finalizo` date DEFAULT NULL,
   `observaciones_tecnicas` varchar(200) NOT NULL,
-  `acuerdo` tinyint(1) DEFAULT NULL,
-  `bitacora` tinyint(1) DEFAULT NULL,
-  `carta` tinyint(1) DEFAULT NULL,
-  `evaluaciones` tinyint(1) DEFAULT NULL,
+  `acuerdo` tinyint(1) NOT NULL DEFAULT '0',
+  `bitacora` tinyint(1) NOT NULL DEFAULT '0',
+  `carta` tinyint(1) NOT NULL DEFAULT '0',
+  `evaluaciones` tinyint(1) NOT NULL DEFAULT '0',
   `observacion_final` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -675,6 +689,13 @@ CREATE TABLE `sesiones` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `os` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `sesiones`
+--
+
+INSERT INTO `sesiones` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`) VALUES
+(1, '5817774612798_ses', 33, '2016-10-31 16:54:30', 'WinNT');
 
 -- --------------------------------------------------------
 
@@ -901,7 +922,7 @@ ALTER TABLE `visitas`
 -- AUTO_INCREMENT de la tabla `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id_anuncio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_anuncio` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `años`
 --
@@ -941,7 +962,7 @@ ALTER TABLE `grupo_tecnico`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `cod_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `cod_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `ocupaciones`
 --
@@ -956,7 +977,7 @@ ALTER TABLE `proyecto`
 -- AUTO_INCREMENT de la tabla `registrospp`
 --
 ALTER TABLE `registrospp`
-  MODIFY `id_registropp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_registropp` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `secciones`
 --
@@ -966,27 +987,27 @@ ALTER TABLE `secciones`
 -- AUTO_INCREMENT de la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_alum`
 --
 ALTER TABLE `sesiones_alum`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_empre`
 --
 ALTER TABLE `sesiones_empre`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_exalum`
 --
 ALTER TABLE `sesiones_exalum`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `visitas`
 --
 ALTER TABLE `visitas`
-  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
