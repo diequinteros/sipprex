@@ -40,3 +40,13 @@
       );
       }
 ?>
+<script type="text/javascript">
+$(document).on("scroll",function(){
+    if($(document).scrollTop()>100){
+        $("header").removeClass("extendido").addClass("contraido");
+    } else{
+        $("header").removeClass("contraido").addClass("extendido");
+    }
+});
+        
+</script>

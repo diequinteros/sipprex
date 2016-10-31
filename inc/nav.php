@@ -89,9 +89,9 @@
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesion</a></li>
 				</ul>
-				<nav class='orange lighten-1 z-depth-2'>
+				<nav class='orange lighten-1 z-depth-2 extendido'>
 				<div  id='nav' class=''>
-					<img id='imgnav' class='responsive-img hide-on-small-only' src='../img/iconSipprex.png' width='120'>
+					<img id='imgnav' class='responsive-img hide-on-small-only' src='../img/iconSipprex.png'>
 					<a id = 'navlogo' href='index.php' class='brand-logo'>Sipprex</a>
 					<a href='#' data-activates='mobile-demo' class='button-collapse'><i class='material-icons'>menu</i></a>
 					<ul id='navul' class='right hide-on-med-and-down'>
@@ -127,7 +127,7 @@
 				<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 				<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 				</ul>
-				<nav class='orange lighten-1 z-depth-2'>
+				<nav class='orange lighten-1 z-depth-2 extendido'>
 				<div  id='nav' class=''>
 					<img id='imgnav' class='responsive-img hide-on-small-only' src='../img/iconSipprex.png' width='120'>
 					<a id = 'navlogo' href='index.php' class='brand-logo'>Sipprex</a>
@@ -228,7 +228,7 @@
 							<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 							<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 							</ul>
-							<nav class='orange lighten-1 z-depth-2'>
+							<nav class='orange lighten-1 z-depth-2 extendido'>
 							<div  id='nav' class=''>
 								<img id='imgnav' class='responsive-img hide-on-small-only' src='../img/iconSipprex.png' width='120'>
 								<a id = 'navlogo' href='index.php' class='brand-logo'>Sipprex</a>
@@ -274,7 +274,7 @@
 						<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
 						<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 						</ul>
-						<nav class='orange lighten-1 z-depth-2'>
+						<nav class='orange lighten-1 z-depth-2 extendido'>
 						<div  id='nav' class=''>
 							<img id='imgnav' class='responsive-img hide-on-small-only' src='../img/iconSipprex.png' width='120'>
 							<a id = 'navlogo' href='index_empresa.php' class='brand-logo'>Sipprex</a>
