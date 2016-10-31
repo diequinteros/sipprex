@@ -189,6 +189,7 @@
 							<li ><a href='../publico/profile.php' class='orange-text'>Perfil</a></li>
 							<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 							<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
+							<li ><a href='crear_admin.php' class='orange-text'>Agregar admin</a></li>
 							<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 							</ul>
 							<!-- contenido dropdown alumnos -->
@@ -223,9 +224,11 @@
 							<li><a href='departamento_index.php' class='orange-text'>Departamento por empresa</a></li>
 							</ul>
 								<!-- contenido dropdown ajustes -->
-							<ul id='ajustes1' class='dropdown-content z-depth-2'>
+							<ul id='ajustes' class='dropdown-content z-depth-2'>
+							<li ><a href='../publico/profile.php' class='orange-text'>Perfil</a></li>
 							<li ><a href='../sesiones/versesiones.php' class='orange-text'>Sesiones abiertas</a></li>
 							<li ><a href='../mail/mail.php' class='orange-text'>Mensajes</a></li>
+							<li ><a href='crear_admin.php' class='orange-text'>Agregar admin</a></li>
 							<li ><a href='../bibliotecas/logout.php' class='orange-text'>Cerrar sesión</a></li>
 							</ul>
 							<nav class='orange lighten-1 z-depth-2 extendido'>

@@ -14,7 +14,6 @@
 	<?php
       include("../inc/nav.php");
       ?>
-<<<<<<< HEAD
       <div class='card-panel paneles z-depth-3'>
       <div class="titulo">
 			<h3>Empresas</h3>

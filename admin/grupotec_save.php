@@ -75,19 +75,14 @@ if(!empty($_POST))
             $params = array($grupo, $id);
         }
         Database::executeRow($sql, $params);
-<<<<<<< HEAD
          print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso exitoso.');
             window.location='grupotec_index.php';
             </script>");
-        
-=======
-        header("location: grupotec_index.php");
         }
         else{
             print("<div class='card-panel red'><i class='material-icons left'>error</i>El grupo tecnico debe ser un numero</div>");
         }
->>>>>>> origin/master
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)

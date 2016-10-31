@@ -78,13 +78,11 @@ if(!empty($_POST))
             $params = array($Especialidad, $id);
         }
         Database::executeRow($sql, $params);
-<<<<<<< HEAD
+
         print("<script>
             alert('Porceso  exitoso.');
             window.location='espe_read.php';
             </script>");
-=======
-        header("location: espe_read.php");
         }
         else{
             print("<div class='card-panel red'><i class='material-icons left'>error</i>La especialidad solo debe contener numeros</div>");    

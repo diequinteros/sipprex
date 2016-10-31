@@ -71,8 +71,6 @@ if(!empty($_POST))
         {
             throw new Exception("Datos incompletos.");
         }
-<<<<<<< HEAD
-
         if($id == null)
         {
         	$sql = "INSERT INTO espeempresa(empresa, especialida) VALUES(?, ?)";

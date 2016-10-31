@@ -2,7 +2,7 @@
   ob_start();
   session_start(); 
   require("../bibliotecas/conexion.php");
-  require("../bibliotecas/Validator.php");
+  require("../bibliotecas/validator.php");
   require("../bibliotecas/functions.php");
    
 if(empty($_GET['id'])) 
@@ -77,19 +77,15 @@ if(!empty($_POST))
             $params = array($grupo, $id);
         }
         Database::executeRow($sql, $params);
-<<<<<<< HEAD
          print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso exitoso.');
             window.location='grupoaca_read.php';
             </script>");
-=======
-        header("location: grupoaca_read.php");
         }
         else
         {
         print("<div class='card-panel red'><i class='material-icons left'>error</i>El grupo academico solo debe ser un numero</div>");    
         }
->>>>>>> origin/master
         
     }
     catch (Exception $error)

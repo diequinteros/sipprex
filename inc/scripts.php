@@ -3,3 +3,4 @@
 <script type="text/javascript" src="../js/slider.js"></script>
 <script type="text/javascript" src="../js/scrollfire.js"></script>
 <script type="text/javascript" src="../js/sidenav.js"></script>
+<script type="text/javascript" src="../js/tooltips.js"></script>

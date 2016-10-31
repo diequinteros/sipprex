@@ -96,12 +96,12 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>book</i>
-                        <input id='titulo_anuncio' type="text" name='titulo_anuncio' class='validate' length='100' maxlength='100' value='<?php print(htmlspecialchars($titulo_anuncio)); ?>'/>
+                        <input class='tooltipped' data-position='bottom' data-delay='25' data-tooltip='Ingrese el título del anuncio' id='titulo_anuncio' type="text" name='titulo_anuncio' class='validate' length='100' maxlength='100' value='<?php print(htmlspecialchars($titulo_anuncio)); ?>'/>
                         <label class="active" for='titulo_anuncio'>Titulo del Anuncio:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='contenido_anuncio' type="text" name='contenido_anuncio' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($contenido_anuncio)); ?>'/>
+                        <input class='tooltipped' data-position='bottom' data-delay='25' data-tooltip='Ingrese el contenido del anuncio' id='contenido_anuncio' type="text" name='contenido_anuncio' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($contenido_anuncio));
                         <label class="active" for='contenido_anuncio'>Contenido del Anuncio:</label>
                     </div>
                 </div>

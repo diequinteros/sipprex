@@ -80,15 +80,11 @@ if(!empty($_POST))
             $params = array($departamento, $encargado, $telefono_encargado, $empresa, $id);
         }
         Database::executeRow($sql, $params);
-<<<<<<< HEAD
+
         print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso exitoso.');
             window.location='departamento_index.php';
-            </script>");
-           
-    
-=======
-        header("location: departamento_index.php");
+            </script>");        
         }
         else
       	{
