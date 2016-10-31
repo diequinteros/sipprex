@@ -25,7 +25,7 @@ if(!empty($_POST))
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
 	     print("<script>
-            alert('Eliminado exitoso.');
+            alert('Se ha eliminado exitosamente.');
             window.location='exalumnos_index.php';
             </script>");
 	}

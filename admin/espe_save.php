@@ -80,7 +80,7 @@ if(!empty($_POST))
         Database::executeRow($sql, $params);
 
         print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso  exitoso.');
             window.location='espe_read.php';
             </script>");
         }

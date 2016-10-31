@@ -151,7 +151,7 @@ if(!empty($_POST))
             }
             Database::executeRow($sql, $params);
             print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso  exitoso.');
             window.location='alumnos_index.php';
             </script>");
            

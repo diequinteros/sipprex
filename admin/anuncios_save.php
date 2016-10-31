@@ -75,7 +75,7 @@ if(!empty($_POST))
             }
             Database::executeRow($sql, $params);
             print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso  exitoso.');
             window.location='anuncios_index.php';
             </script>");
            
