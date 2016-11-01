@@ -161,7 +161,7 @@ if(!empty($_POST))
            
         }
         else{
-        print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos ingresados no es correcto, por favor verifique sus datos (Sus nombres y apellidos deben contener solo letras) $inscrito.</div>");    
+        print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos ingresados no es correcto, por favor verifique sus datos (Sus nombres y apellidos deben contener solo letras).</div>");    
         }
     }
     //En caso de error se muestra al administrador en turno
