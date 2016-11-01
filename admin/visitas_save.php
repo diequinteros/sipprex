@@ -94,7 +94,7 @@ if(!empty($_POST))
         Database::executeRow($sql, $params);
 
          print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso Exitoso.');
             window.location=' visitas_read.php';
             </script>");
 

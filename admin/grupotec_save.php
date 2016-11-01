@@ -48,7 +48,7 @@ else{
     $params = array($id);
     $data = Database::getRows($sql, $params);
      print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso  exitoso.');
             </script>");
         
     //Se utiliza el segmento [0] debido a que el fetchAll utilizado en la clase getRows, devuelve un arreglo bi-dimensional y

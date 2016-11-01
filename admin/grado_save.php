@@ -83,7 +83,10 @@ if(!empty($_POST))
             print("<div class='card-panel red'><i class='material-icons left'>error</i>El grado debe contener solo letras.</div>");
         }
         Database::executeRow($sql, $params);
-        header("location: grado_read.php");
+        print("<script>
+            alert('Proceso  exitoso.');
+            window.location='grado_read.php';
+            </script>");
     }
     catch (Exception $error)
     {

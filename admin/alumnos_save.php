@@ -155,7 +155,7 @@ if(!empty($_POST))
             }
             Database::executeRow($sql, $params);
             print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso  exitoso.');
             window.location='alumnos_index.php';
             </script>");
            
@@ -188,12 +188,28 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
-                        <input id='contraseña1' type='password' name='contraseña1' class='validate' length='8' maxlength='25'/>
+                        <?php
+                                if(!empty($_GET['id'])){
+                                    print("<input id='contraseña1' type='password' name='contraseña1' class='validate' length='8' maxlength='25' disabled/>");
+                                }
+                                else{
+                                    print("<input id='contraseña1' type='password' name='contraseña1' class='validate' length='8' maxlength='25'/>");
+                                }
+                        ?>
+                        
                         <label class="active" for='contraseña1'>Contraseña:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
-                        <input id='contraseña2' type='password' name='contraseña2' class='validate' length='8' maxlength='25' />
+                        <?php
+                        if(!empty($_GET['id'])){
+                            print("<input id='contraseña2' type='password' name='contraseña2' class='validate' length='8' maxlength='25' disabled/>");
+                        }
+                        else{
+                            print("<input id='contraseña2' type='password' name='contraseña2' class='validate' length='8' maxlength='25'/>");
+                        }
+                        ?>
+                        
                         <label class="active" for='contraseña2'>Confirmar Contraseña:</label>
                     </div>
                 </div>

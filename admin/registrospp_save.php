@@ -124,7 +124,7 @@ if(!empty($_POST))
         }
         Database::executeRow($sql, $params);
          print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso exitoso.');
             window.location='registrospp_index.php';
             </script>");
             header("location: registrospp_index.php");
