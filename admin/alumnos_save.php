@@ -75,6 +75,7 @@ else{
     $seccion = $data['secc'];
     $grupo_academico = $data['grupo_academ'];
     $inscrito = $data['inscrito'];
+    
 }
 
 if(!empty($_POST))
@@ -93,6 +94,9 @@ if(!empty($_POST))
     $seccion = strip_tags(trim($_POST['secc']));
     $grupo_academico = strip_tags(trim($_POST['grupo_academ']));
     $inscrito = strip_tags(trim($_POST['inscrito']));
+    if($inscrito == NULL){
+        $inscrito = "FALSO";
+    }
     //Se declaran las consultas
     try 
     {
@@ -157,7 +161,7 @@ if(!empty($_POST))
            
         }
         else{
-        print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos ingresados no es correcto, por favor verifique sus datos (Sus nombres y apellidos deben contener solo letras).</div>");    
+        print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos ingresados no es correcto, por favor verifique sus datos (Sus nombres y apellidos deben contener solo letras) $inscrito.</div>");    
         }
     }
     //En caso de error se muestra al administrador en turno
@@ -340,11 +344,15 @@ if(!empty($_POST))
                         print($combo);
                         ?>
                     </div>
-                    <div class='file-field input-field col s12 m6'>
-                        <i class='material-icons prefix'>visibility</i>
-                        <input id='inscrito' type='text' name='inscrito' class='validate' length='9' maxlength='9' value='<?php print(htmlspecialchars($inscrito)); ?>'/>
-                        <label class="active" for='inscrito'>¿Esta inscrito? (VERDADERO o FALSO)</label>
+                    <div class='col s12 m6'>
+                    <input type="checkbox" name="inscrito" class="filled-in" id="filled-in-box" value="VERDADERO"/>
+                    <label for="filled-in-box">¿Esta inscrito? (Marcado para si, en blanco para no)</label>
                     </div>
+                    
+                        <!--<i class='material-icons prefix'>visibility</i>
+                        <input id='inscrito' type='text' name='inscrito' class='validate' length='9' maxlength='9' value='<?php print(htmlspecialchars($inscrito)); ?>'/>
+                        <label class="active" for='inscrito'>¿Esta inscrito? (VERDADERO o FALSO)</label>-->
+                    
                 </div>
                 <div class='titulo'>
                     <a href='alumnos_index.php' class='btn grey'><i class='material-icons right'>cancel</i>Cancelar</a>

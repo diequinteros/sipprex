@@ -90,7 +90,6 @@ if(!empty($_POST))
       	{
               print("<div class='card-panel red'><i class='material-icons left'>error</i>El nombre del encargado deben ser solo numeros, el nombre del departamento no puede contener solo numeros</div>");
         }
->>>>>>> origin/master
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)
