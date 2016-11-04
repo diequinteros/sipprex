@@ -24,7 +24,7 @@ if(!empty($_POST))
 		    if($data != null)
 		    {
 		    	$hash = $data['contraseña'];
-		    	if(password_verify($clave, $hash)) 
+		    	if($clave == base64_decode($hash)) 
 				//Si es ex-alumno, redirecciona al sitio publico del ex-alumno
 		    	{
 			    	$_SESSION['id_exalumnos'] = $data['id_exalumnos'];
@@ -54,7 +54,7 @@ if(!empty($_POST))
 				//Si es asi, redirecciona al sitio publico del alumno
 				{
 					$hash = $data['contraseña'];
-					if(password_verify($clave, $hash)) 
+					if($clave == base64_decode($hash)) 
 					{
 						$_SESSION['carnet'] = $data['carnet'];
 						$_SESSION['nombre_usuario'] = $data['nombre1']." ".$data['nombre2']." ".$data['apellido1']." ".$data['apellido2'];

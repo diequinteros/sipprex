@@ -103,59 +103,50 @@ if(!empty($_POST))
         if(strlen($nie) <= 8 && strlen($nombre1) <= 15 && strlen($nombre2) <= 15 && strlen($apellido1) <= 15 && strlen($apellido2) <= 15 && is_numeric($grado) && is_numeric($especialidad) && is_numeric($grupo_tecnico) && is_numeric($grupo_academico) && is_numeric($seccion) && ($inscrito == "VERDADERO" || $inscrito == "FALSO") && ctype_alpha(str_replace(' ', '', $nombre1)) && ctype_alpha(str_replace(' ', '', $nombre2)) && ctype_alpha(str_replace(' ', '', $apellido1)) && ctype_alpha(str_replace(' ', '', $apellido2)))
         {
             if($id == null){
+                function randomPassword() {
+                    //$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+                    $alphabet = '1234567890';
+                    $pass = array(); //remember to declare $pass as an array
+                    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+                    for ($i = 0; $i < 6; $i++) {
+                        $n = rand(0, $alphaLength);
+                        $pass[] = $alphabet[$n];
+                    }
+                    return implode($pass); //turn the array into a string
+
+                }
+                $contra = base64_encode(substr($nombre1, 0, 1).substr($apellido1, 0, 1).randomPassword());
                 $id = strip_tags(trim($_POST['carnet']));
-                if($contraseña1 != null && $contraseña2 != null){
-                    if(strlen($id) >= 8 && strlen($contraseña1) >= 8 && strlen($contraseña1) <= 25 && strlen($contraseña2) >= 8 && strlen($contraseña2) <= 25){
-                        if($contraseña1 == $contraseña2){
-                            if($contraseña1 != $id){
-                                $hash = password_hash($contraseña1, PASSWORD_DEFAULT);
+                if(strlen($id) >= 8){        
+                            if($contra != $id){
                                 $sql = "INSERT INTO alumnos(carnet, contraseña, nie, nombre1, nombre2, apellido1, apellido2, grado, especialidad, grupo_Tecnic, secc, grupo_academ, inscrito) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                                $params = array($id, $hash, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito);
+                                $params = array($id, $contra, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito);
                             }
                             else{
                                 print("<div class='card-panel red'><i class='material-icons left'>error</i>La contraseña no puede seri igual al código del carnet.</div>");
                             }
-                        }
-                        else{
-                            print("<div class='card-panel red'><i class='material-icons left'>error</i>Las contraseñas no coinciden.</div>");    
-                        }
+                        
                     }
                     else{
                         print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de las contraseñas no es valido</div>");    
                     }
-                }
-                else{
-                    print("<div class='card-panel red'><i class='material-icons left'>error</i>Las contraseñas no pueden estar vacias.</div>");    
-                }
             }
             else
             {
-                if($contraseña1 != null && $contraseña2 != null){
-                    if(strlen($id) >= 8 && strlen($contraseña1) >= 8 && strlen($contraseña1) <=25 && strlen($contraseña2) >= 8 && strlen($contraseña2) <= 25){
-                        if($contraseña1 == $contraseña2){
-                            if($contraseña1 != $id){
-                                $hash = password_hash($contraseña1, PASSWORD_DEFAULT);
-                                $sql = "UPDATE alumnos SET carnet = ?, contraseña = ?, nie = ?, nombre1 = ?, nombre2 = ?, apellido1 = ?, apellido2 = ?, grado = ?, especialidad = ?, grupo_Tecnic = ?, secc = ?, grupo_academ = ?, inscrito = ? WHERE carnet = ?";
-                                $params = array($id, $hash, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito, $id);
-                            }
-                            else{
-                                print("<div class='card-panel red'><i class='material-icons left'>error</i>La contraseña nueva no puede ser igual al carnet.</div>");
-                            }
-                        }
-                        else{
-                            print("<div class='card-panel red'><i class='material-icons left'>error</i>Las contraseñas no coinciden.</div>");
-                        }
+                
+                    if(strlen($id) >= 8){
+                                $sql = "UPDATE alumnos SET carnet = ?, nie = ?, nombre1 = ?, nombre2 = ?, apellido1 = ?, apellido2 = ?, grado = ?, especialidad = ?, grupo_Tecnic = ?, secc = ?, grupo_academ = ?, inscrito = ? WHERE carnet = ?";
+                                $params = array($id, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito, $id);
                     }
-                    print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de las contraseñas no es valido recuerde que deben ser de 8 caracteres minimo y 25 maximo.</div>");
-                }
-                else{
-                    $sql = "UPDATE alumnos SET carnet = ?, nie = ?, nombre1 = ?, nombre2 = ?, apellido1 = ?, apellido2 = ?, grado = ?, especialidad = ?, grupo_Tecnic = ?, secc = ?, grupo_academ = ?, inscrito = ? WHERE carnet = ?";
-                    $params = array($id, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito, $id);
-                }
+                    else{
+                        print("<div class='card-panel red'><i class='material-icons left'>error</i>El carnet debe ser mayor o igual a ocho caracteres.</div>");   
+                    }
+                    
+                
             }
             Database::executeRow($sql, $params);
             print("<script>
-            alert('Proceso  exitoso.');
+            alert('Proceso exitoso.');
             window.location='alumnos_index.php';
             </script>");
            
@@ -185,34 +176,7 @@ if(!empty($_POST))
                         <label class="active" for='nie'>NIE</label>
                     </div>
                 </div>
-                <div class='row'>
-                    <div class='input-field col s12 m6'>
-                        <i class='material-icons prefix'>lock</i>
-                        <?php
-                                if(!empty($_GET['id'])){
-                                    print("<input id='contraseña1' type='password' name='contraseña1' class='validate' length='8' maxlength='25' disabled/>");
-                                }
-                                else{
-                                    print("<input id='contraseña1' type='password' name='contraseña1' class='validate' length='8' maxlength='25'/>");
-                                }
-                        ?>
-                        
-                        <label class="active" for='contraseña1'>Contraseña:</label>
-                    </div>
-                    <div class='input-field col s12 m6'>
-                        <i class='material-icons prefix'>lock</i>
-                        <?php
-                        if(!empty($_GET['id'])){
-                            print("<input id='contraseña2' type='password' name='contraseña2' class='validate' length='8' maxlength='25' disabled/>");
-                        }
-                        else{
-                            print("<input id='contraseña2' type='password' name='contraseña2' class='validate' length='8' maxlength='25'/>");
-                        }
-                        ?>
-                        
-                        <label class="active" for='contraseña2'>Confirmar Contraseña:</label>
-                    </div>
-                </div>
+                
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>add_circle</i>
