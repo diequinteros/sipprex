@@ -8,7 +8,7 @@
       ?>
     </head>
     <!-- NAV -->
-    <?php include("../inc/nav.php");?>
+    <?php include("../inc/nav.php")?>
     <body class="grey lighten-3">
       <!-- Botones cat empresa -->
       <div id="cont" class="row">

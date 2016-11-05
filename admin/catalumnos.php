@@ -16,17 +16,17 @@
         <div>
             <div class="row">
              <h2 class="col l12 center-align"> Categoria alumnos </h2>
-             <a href='alumnos_index.php' class="waves-effect waves-light btn-large col l4 offset-l4">Alumnos</a>
+             <a class="waves-effect waves-light btn-large col l4 offset-l4">Alumnos</a>
             </div>
              
              <br>
              <div class="row">
-             <a href='espe_read.php' class="waves-effect waves-light btn-large col l4 offset-l4">Especialidades</a>
+             <a class="waves-effect waves-light btn-large col l4 offset-l4">Especialidades</a>
              </div>
              
              <br>
              <div class="row">
-             <a href='grado_read.php' class="waves-effect waves-light btn-large col l4 offset-l4">Grado</a>
+             <a class="waves-effect waves-light btn-large col l4 offset-l4">Grado</a>
              </div>
              
              <br>
@@ -41,7 +41,7 @@
              
              <br>
              <div class="row">
-             <a href='grupotec_index.php' class="waves-effect waves-light btn-large col l4 offset-l4">Grupo técnico</a>
+             <a class="waves-effect waves-light btn-large col l4 offset-l4">Grupo técnico</a>
              </div>
            </div>
         </div>

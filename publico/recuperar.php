@@ -91,9 +91,9 @@ if(!empty($_POST))
 			<!-- Se crea el formulario de login -->
 			<form class='row' method='post' autocomplete='off'>
 				<div class='row'>
-					<div class='input-field col m6 offset-m3 s6'>
+					<div class='input-field col m12 offset-m3 s12'>
 						<i class='material-icons prefix'>person_pin</i>
-						<input class='tooltipped' data-position='right' data-delay='25' data-tooltip='Ingrese su número de carnet' id='carnet' type='text' name='carnet' class='validate black-text'  maxlength='10' required />
+						<input id='carnet' type='text' name='carnet' class='validate black-text'  maxlength='10' required />
 						<label class='active black-text' for='carnet'>Código:</label>
 					</div>
 				</div>
