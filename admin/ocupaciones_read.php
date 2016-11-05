@@ -3,7 +3,7 @@
   ob_start();
   session_start(); 
   require("../bibliotecas/conexion.php");
-  ("../bibliotecas/Validator.php");
+  ("../bibliotecas/validator.php");
    ?>
     <head>
       <?php

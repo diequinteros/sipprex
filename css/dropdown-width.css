@@ -5,20 +5,36 @@
 #fixednav{
     padding-bottom: 150px;
 }
-#navlogo{
+/*#navlogo{
     padding-left: 5px;
     padding-top: 30px;
     font-size: 75px;
-}
-nav{
+}*/
+/*#navlogo{
+    padding-left: 5px;
+    padding-top: 0px;
+    font-size: 40px;
+}*/
+/*nav{
     height: 130px;
-}
-#imgnav{
+}*/
+/*nav{
+    height: 70px;
+}*/
+/*#imgnav{
     padding-top: 4.5px;
-}
-#navul{
+     width: 120px;
+}*/
+/*#imgnav{
+    padding-top: 4.5px;
+     width: 0px;
+}*/
+/*#navul{
     padding-top: 66px;
-}
+}*/
+/*#navul{
+    padding-top: 0px;
+}*/
 body {
   display: flex;
   min-height: 100vh;
@@ -31,4 +47,25 @@ main {
 #footer2
 {
     height: 50px;
+}
+
+nav.extendido{ height: 130px; }
+nav.extendido img{ padding-top: 4.5px; width: 120px; }
+nav.extendido #navul{ padding-top: 66px; }
+nav.extendido #navlogo{ padding-left: 5px;
+    padding-top: 30px;
+    font-size: 75px; }
+
+nav.contraido{ height: 63px; }
+nav.contraido img{ padding-top: 4.5px; width: 0px; }
+nav.contraido #navul{ padding-top: 0px; }
+nav.contraido #navlogo{ padding-left: 5px;
+    padding-top: 0px;
+    font-size: 40px; }
+
+nav, a, img, ul, li{
+  transition: all 0.5s;
+  -moz-transition: all 0.5s; /* Firefox 4 */
+  -webkit-transition: all 0.5s; /* Safari and Chrome */
+  -o-transition: all 0.5s; /* Opera */
 }

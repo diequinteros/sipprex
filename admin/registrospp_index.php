@@ -141,6 +141,7 @@ require("../bibliotecas/conexion.php");
 										<a href='registrospp_save.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='registrospp_delete.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn red'><i class='material-icons'>delete</i></a>
 										<a href='reporte_observaciones.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn red'><i class='material-icons'>description</i></a>
+										<a href='graduar.php?id=".base64_encode(htmlspecialchars($row['alumno']))."' class='btn blue'><i class='material-icons right'>school</i>Graduar</a>
 									</td>
 								</tr>";
 				}

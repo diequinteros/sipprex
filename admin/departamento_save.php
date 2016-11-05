@@ -80,21 +80,16 @@ if(!empty($_POST))
             $params = array($departamento, $encargado, $telefono_encargado, $empresa, $id);
         }
         Database::executeRow($sql, $params);
-<<<<<<< HEAD
+
         print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso Exitoso .');
             window.location='departamento_index.php';
-            </script>");
-           
-    
-=======
-        header("location: departamento_index.php");
+            </script>");        
         }
         else
       	{
               print("<div class='card-panel red'><i class='material-icons left'>error</i>El nombre del encargado deben ser solo numeros, el nombre del departamento no puede contener solo numeros</div>");
         }
->>>>>>> origin/master
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)

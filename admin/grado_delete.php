@@ -30,7 +30,10 @@ if(!empty($_POST))
 		$sql = "DELETE FROM años WHERE id_año = ?";
 	    $params = array($id);
 	    Database::executeRow($sql, $params);
-	    header("location: grados_read.php");
+	     print("<script>
+            alert('Se ha eliminado exitosamente.');
+            window.location='grado_read.php';
+            </script>");
 	} 
 	catch (Exception $error) 
 	{

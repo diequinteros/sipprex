@@ -26,7 +26,7 @@ ob_start();
 			<form method='post' autocomplete="off" class='row'>
 				<div class='input-field col s6 m4'>
 					<i class='material-icons prefix'>search</i>
-					<input id='buscar' autocomplete="off" type='text' name='buscar' class='validate'/>
+					<input class='tooltipped' data-position='bottom' data-delay='25' data-tooltip='Ingrese datos para buscar' id='buscar' autocomplete="off" type='text' name='buscar' class='validate'/>
 					<label for='buscar' class='active'>Búsqueda</label>
 				</div>
 				<div class='input-field col s6 m4'>

@@ -92,19 +92,17 @@ if(!empty($_POST))
             $params = array($Empresas, $Fecha, $Observacion, $id);
         }
         Database::executeRow($sql, $params);
-<<<<<<< HEAD
+
          print("<script>
-            alert('Porceso  exitoso.');
+            alert('Proceso Exitoso.');
             window.location=' visitas_read.php';
             </script>");
-       
-=======
-        header("location: visitas_read.php");
+
         }
         else{
             print("<div class='card-panel red'><i class='material-icons left'>error</i>La observacion no puede contener solo numeros</div>");
         }
->>>>>>> origin/master
+
     }
     catch (Exception $error)
     {

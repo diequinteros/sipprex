@@ -18,7 +18,7 @@ if(isset($_SESSION['carnet'])){
             {
                 if($clave1 == $clave2){
                     if($clave1 != $_SESSION['carnet']){
-                        $hash = password_hash($clave1, PASSWORD_DEFAULT);
+                        $hash = base64_encode($clave1);
                         $sql = "UPDATE alumnos SET contraseña= ?, pregunta = ?, respuesta = ? WHERE carnet = ?";
                         $params = array($hash, $pregunta, $respuesta, $_SESSION['carnet']);
                     }
@@ -39,7 +39,7 @@ if(isset($_SESSION['carnet'])){
             {
                 if($clave1 == $clave2){
                     if($clave1 != $_SESSION['carnet']){
-                        $hash = password_hash($clave1, PASSWORD_DEFAULT);
+                        $hash = base64_encode($clave1);
                         $sql = "UPDATE alumnos SET contraseña= ? WHERE carnet = ?";
                         $params = array($hash, $_SESSION['carnet']);
                     }
@@ -213,7 +213,7 @@ elseif(isset($_SESSION['id_exalumnos'])){
             {
                 if($clave1 == $clave2){
                     if($clave1 != $_SESSION['id_exalumnos']){
-                        $hash = password_hash($clave1, PASSWORD_DEFAULT);
+                        $hash = base64_encode($clave1);
                         $sql = "UPDATE ex_alumnos SET contraseña= ?, nombre1 = ?, apellido1 = ?, telefono = ?, ocupacion = ?, correo_electronico = ?, observacion = ?, pregunta = ?, respuesta = ? WHERE id_exalumnos = ?";
                         $params = array($hash, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion, $pregunta, $respuesta, $_SESSION['id_exalumnos']);
                     }
@@ -234,7 +234,7 @@ elseif(isset($_SESSION['id_exalumnos'])){
             {
                 if($clave1 == $clave2){
                     if($clave1 != $_SESSION['id_exalumnos']){
-                        $hash = password_hash($clave1, PASSWORD_DEFAULT);
+                        $hash = base64_encode($clave1);
                         $sql = "UPDATE ex_alumnos SET contraseña= ?, nombre1 = ?, apellido1 = ?, telefono = ?, ocupacion = ?, correo_electronico = ? WHERE id_exalumnos = ?";
                         $params = array($hash, $_SESSION['id_exalumnos']);
                     }

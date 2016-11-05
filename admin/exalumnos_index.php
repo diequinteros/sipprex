@@ -62,12 +62,12 @@ require("../bibliotecas/conexion.php");
 		if(!empty($_POST))
 		{
 			$search = strip_tags(trim($_POST['buscar']));
-			$sql = "SELECT * FROM ex_alumnos, ocupaciones WHERE ex_alumnos.ocupacion = ocupaciones.id_ocupacion AND apellido1 LIKE ? ORDER BY id_exalumnos LIMIT $page1,20";
+			$sql = "SELECT * FROM ex_alumnos WHERE apellido1 LIKE ? ORDER BY id_exalumnos LIMIT $page1,20";
 			$params = array("%$search%");
 		}
 		else
 		{
-			$sql = "SELECT * FROM ex_alumnos, ocupaciones WHERE ocupaciones.id_ocupacion = ex_alumnos.ocupacion ORDER BY id_exalumnos LIMIT $page1,20";
+			$sql = "SELECT * FROM ex_alumnos ORDER BY id_exalumnos LIMIT $page1,20";
 			$params = null;
 		}
 		//A traves de un arreglo se muestran los datos en la tabla 
@@ -82,7 +82,7 @@ require("../bibliotecas/conexion.php");
 										<th>Nombre</th>
 										<th>Apellido</th>
 										<th>Teléfono</th>
-										<th>Ocupación</th>
+										
 										<th>Email</th>
 										<th>Observación</th>
 										<th>Acción</th>
@@ -96,7 +96,7 @@ require("../bibliotecas/conexion.php");
 									<td>".htmlspecialchars($row['nombre1'])."</td>
 									<td>".htmlspecialchars($row['apellido1'])."</td>
 									<td>".htmlspecialchars($row['telefono'])."</td>
-									<td>".htmlspecialchars($row['ocupacion'])."</td>
+									
 									<td>".htmlspecialchars($row['correo_electronico'])."</td>
 									<td>".htmlspecialchars($row['observacion'])."</td>
 									<td>
