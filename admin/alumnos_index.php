@@ -33,8 +33,11 @@ ob_start();
 					<button type='submit' class='btn grey left'><i class='material-icons right'>pageview</i>Buscar</button> 	
 				</div>
 				<!-- Se incluye el boton de agregar un nuevo ex-alumno -->
-				<div class='input-field col s12 m4'>
+				<div class='input-field col s12 m2'>
 					<a href='alumnos_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
+				</div>
+				<div class='input-field col s12 m2'>
+					<a href='carnet_contraseña.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Reporte</a>
 				</div>
 			</form>
 		</div>
