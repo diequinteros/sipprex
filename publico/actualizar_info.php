@@ -180,12 +180,12 @@
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='contra1' type='password' name='contra1' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($Contraseña1Empresa)); ?>'/>
+                <input id='contra1' type='password' name='contra1' class='validate' length='25' maxlength='25'/>
                 <label for='contra1'>Nueva contraseña</label>
             </div>
             <div class='input-field col s12 m6'>
                 <i class='material-icons prefix'>add</i>
-                <input id='contra2' type='password' name='contra2' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($Contraseña2Empresa)); ?>'/>
+                <input id='contra2' type='password' name='contra2' class='validate' length='25' maxlength='25''/>
                 <label for='contra2'>Vuelva a introducir su contraseña nueva</label>
             </div>
         </div>

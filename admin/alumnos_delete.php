@@ -50,7 +50,7 @@ if(!empty($_POST))
 	<body>
 		<div class="card-panel paneles">
 			<div class="titulo">
-				<h3>¿Eliminar Alumno?</h3>
+				<h3>¿Desea eliminar el alumno? Tenga en cuenta que si lo elimana se borraran todos los datos del sistema incluyendo su registro de practicas profesionales.</h3>
 				<form method='post' class='row'>
 					<input type='hidden' name='id' value='<?php htmlspecialchars(print($id)); ?>'/>
 					<button type='submit' class='btn red'><i class='material-icons right'>check_circle</i>Si</button>

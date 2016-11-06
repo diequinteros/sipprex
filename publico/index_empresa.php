@@ -26,7 +26,7 @@
       <div class="row container">
         <div class="card col l3 m3 offset-m3 s12">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" src="../img/icono_proyectos.png">
+                    <img class="activator responsive-img" src="../img/icono_proyectos.svg">
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Mis proyectos<i class="material-icons right">more_vert</i></span>
@@ -39,7 +39,7 @@
         </div>
         <div class="card col l3 offset-l1 m3 offset-m3 s12">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" src="../img/icono_msj.png">
+                    <img class="activator responsive-img" src="../img/icono_msj.svg">
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Bandeja de mensajes<i class="material-icons right">more_vert</i></span>
@@ -52,7 +52,7 @@
         </div>
         <div class="card col l3 offset-l1 m3 offset-m3 s12">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" src="../img/icono_info.png">
+                    <img class="activator responsive-img" src="../img/icono_info.svg">
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">Informacion de mi empresa<i class="material-icons right">more_vert</i></span>

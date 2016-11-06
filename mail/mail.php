@@ -208,8 +208,8 @@ if(!empty($_POST))
           //Empiezo de USUARIO
           if($isalumno)
           {
-            $sqlRecibidos = "SELECT cod_mensaje, id_exalum_origen, id_empre_origen, admin_ori FROM mensajes WHERE id_usuario_destino IS NOT NULL";
-            $obtenerids = Database::getRows($sqlRecibidos ,null);
+            $sqlRecibidos = "SELECT cod_mensaje, id_exalum_origen, id_empre_origen, admin_ori FROM mensajes WHERE id_usuario_destino = ? AND id_usuario_destino IS NOT NULL";
+            $obtenerids = Database::getRows($sqlRecibidos ,array($_SESSION['carnet']));
             foreach ($obtenerids as $filas) {
               if($filas['id_exalum_origen'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_origen = ex_alumnos.id_exalumnos";
@@ -276,8 +276,8 @@ if(!empty($_POST))
           //EMPIEZO DE Exalumno
           if($isexalumno)
           {
-            $sqlRecibidos = "SELECT cod_mensaje, admin_ori, id_empre_origen, id_usuario_origen FROM mensajes WHERE id_exalum_destino IS NOT NULL";
-            $obtenerids = Database::getRows($sqlRecibidos ,null);
+            $sqlRecibidos = "SELECT cod_mensaje, admin_ori, id_empre_origen, id_usuario_origen FROM mensajes WHERE id_exalum_destino = ? AND id_exalum_destino IS NOT NULL";
+            $obtenerids = Database::getRows($sqlRecibidos ,array($_SESSION['id_exalumnos']));
             foreach ($obtenerids as $filas) {
               if($filas['admin_ori'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado FROM mensajes WHERE cod_mensaje = $filas[cod_mensaje]";
@@ -344,8 +344,8 @@ if(!empty($_POST))
           //EMPIEZO DE EMPRESA
           if($isempresa)
           {
-            $sqlRecibidos = "SELECT cod_mensaje, id_exalum_origen, id_empre_origen, id_usuario_origen FROM mensajes WHERE id_empre_destino IS NOT NULL";
-            $obtenerids = Database::getRows($sqlRecibidos ,null);
+            $sqlRecibidos = "SELECT cod_mensaje, id_exalum_origen, id_empre_origen, id_usuario_origen FROM mensajes WHERE id_empre_destino = ? AND id_empre_destino IS NOT NULL";
+            $obtenerids = Database::getRows($sqlRecibidos , array($_SESSION['id_empresa']));
             foreach ($obtenerids as $filas) {
               if($filas['id_exalum_origen'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_origen = ex_alumnos.id_exalumnos";
@@ -515,8 +515,8 @@ if(!empty($_POST))
           //Empiezo de USUARIO
           if($isalumno)
           {
-            $sqlRecibidos = "SELECT cod_mensaje, id_exalum_destino, id_empre_destino, admin_des FROM mensajes WHERE id_usuario_origen IS NOT NULL";
-            $obtenerids = Database::getRows($sqlRecibidos ,null);
+            $sqlRecibidos = "SELECT cod_mensaje, id_exalum_destino, id_empre_destino, admin_des FROM mensajes WHERE id_usuario_origen = ? AND id_usuario_origen IS NOT NULL";
+            $obtenerids = Database::getRows($sqlRecibidos ,array($_SESSION['carnet']));
             foreach ($obtenerids as $filas) {
               if($filas['id_exalum_destino'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_destino = ex_alumnos.id_exalumnos";
@@ -583,8 +583,8 @@ if(!empty($_POST))
           //EMPIEZO DE Exalumno
           if($isexalumno)
           {
-            $sqlRecibidos = "SELECT cod_mensaje, admin_des, id_empre_destino, id_usuario_destino FROM mensajes WHERE id_exalum_origen IS NOT NULL";
-            $obtenerids = Database::getRows($sqlRecibidos ,null);
+            $sqlRecibidos = "SELECT cod_mensaje, admin_des, id_empre_destino, id_usuario_destino FROM mensajes WHERE id_exalum_origen = ? AND id_exalum_origen IS NOT NULL";
+            $obtenerids = Database::getRows($sqlRecibidos ,array($_SESSION['id_exalumnos']));
             foreach ($obtenerids as $filas) {
               if($filas['admin_des'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado FROM mensajes WHERE cod_mensaje = $filas[cod_mensaje]";
@@ -651,8 +651,8 @@ if(!empty($_POST))
           //EMPIEZO DE EMPRESA
           if($isempresa)
           {
-            $sqlRecibidos = "SELECT cod_mensaje, id_exalum_destino, admin_des, id_usuario_destino FROM mensajes WHERE id_empre_origen IS NOT NULL";
-            $obtenerids = Database::getRows($sqlRecibidos ,null);
+            $sqlRecibidos = "SELECT cod_mensaje, id_exalum_destino, admin_des, id_usuario_destino FROM mensajes WHERE id_empre_origen = ? AND id_empre_origen IS NOT NULL";
+            $obtenerids = Database::getRows($sqlRecibidos ,array($_SESSION['id_empresa']));
             foreach ($obtenerids as $filas) {
               if($filas['id_exalum_destino'] != null){
                 $sqlRecibidos1 = "SELECT cod_mensaje, titulo, contenido, fecha_enviado, nombre1, apellido1, id_exalumnos FROM mensajes, ex_alumnos WHERE cod_mensaje = $filas[cod_mensaje] AND mensajes.id_exalum_destino = ex_alumnos.id_exalumnos";

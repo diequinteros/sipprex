@@ -53,7 +53,7 @@ else
     $sql = "SELECT * FROM empresas WHERE id_empresa = ?";
     $params = array($id);
     $data = Database::getRow($sql, $params);
-    $codE = $data['nombre_empresa'];
+    $codE = $data['codigo_empresa'];
     $contra = "";
     $Empresas = $data['nombre_empresa'];
     $Rubro = $data['rubro'];
@@ -174,12 +174,12 @@ if(!empty($_POST))
     <div class='row'>
         <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='cod_empre' type='text' name='cod_empre' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Empresas)); ?>' required/>
+          	<input id='cod_empre' type='text' name='cod_empre' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($codE)); ?>' required/>
           	<label for='cod_empre'>Codigo de empresa</label>
         </div>
         <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='contra' type='text' name='contra' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Rubro)); ?>'/>
+          	<input id='contra' type='text' name='contra' class='validate' length='200' maxlenght='200''/>
           	<label for='contra'>Contraseña</label>
         </div>
     </div>
