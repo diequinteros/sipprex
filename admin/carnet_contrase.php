@@ -17,7 +17,7 @@ header("Content-Disposition: attachment; filename=Reporte_carnet_contraseña.xls
 <body>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="4" bgcolor="Teal"><CENTER><strong><font color="white">REPORTE DE CARNET Y CONTRASEÑA</strong></CENTER></td>
+    <td colspan="2" bgcolor="Teal"><CENTER><strong><font color="white">REPORTE DE CARNET Y CONTRASEÑA</strong></CENTER></td>
   </tr>
   <tr>
     <td bgcolor="LightSeaGreen"><strong><font color="white">Carnet</font></strong></td>
@@ -35,8 +35,8 @@ foreach($datos as $res)
 	
 ?>  
  <tr>
-	<td><?php echo .base64_encode($canet).; ?></td>
-	<td><?php echo .base64_encode($contraseña).; ?></td>                 
+	<td><?php echo $carnet ; ?></td>
+	<td><?php echo base64_decode($contraseña); ?></td>                 
  </tr> 
   <?php
 }

@@ -37,7 +37,7 @@ ob_start();
 					<a href='alumnos_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
 				</div>
 				<div class='input-field col s12 m2'>
-					<a href='carnet_contraseña.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Reporte</a>
+					<a href='carnet_contrase.php' class='btn indigo'><i class='material-icons right'>description</i>Reporte</a>
 				</div>
 			</form>
 		</div>
@@ -113,6 +113,7 @@ ob_start();
 					$tabla .=	"<td>
 										<a href='alumnos_save.php?id=".base64_encode($row['carnet'])."' class='btn blue'><i class='material-icons'>edit</i></a>
 										<a href='alumnos_delete.php?id=".base64_encode($row['carnet'])."' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='reporte_por_alumno.php?id=".base64_encode(htmlspecialchars($row['carnet']))."' class='btn  teal'><i class='material-icons'>description</i></a>
 									</td>
 								</tr>";
 				}
