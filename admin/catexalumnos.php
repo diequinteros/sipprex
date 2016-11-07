@@ -16,12 +16,12 @@
         <div>
             <div class="row">
              <h2 class="col l12 center-align"> Categoria ex alumnos </h2>
-             <a class="waves-effect waves-light btn col l4 offset-l4" href="exalumnos_index.php">Ex alumnos</a>
+             <a class="waves-effect waves-light btn col l4 offset-l4 tooltipped" data-position='right' data-delay='10' data-tooltip='Datos de exalumnos' href="exalumnos_index.php">Ex alumnos</a>
             </div>
              
              <br>
              <div class="row">
-             <a class="waves-effect waves-light btn col l4 offset-l4" href="ocupaciones_read.php">Ocupaciones</a>
+             <a class="waves-effect waves-light btn col l4 offset-l4 tooltipped" data-position='right' data-delay='10' data-tooltip='Datos de ocupaciones' href="ocupaciones_read.php">Ocupaciones</a>
              </div>
            </div>
         </div>

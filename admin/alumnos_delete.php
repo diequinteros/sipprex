@@ -53,7 +53,7 @@ if(!empty($_POST))
 				<h3>¿Desea eliminar el alumno? Tenga en cuenta que si lo elimana se borraran todos los datos del sistema incluyendo su registro de practicas profesionales.</h3>
 				<form method='post' class='row'>
 					<input type='hidden' name='id' value='<?php htmlspecialchars(print($id)); ?>'/>
-					<button type='submit' class='btn red'><i class='material-icons right'>check_circle</i>Si</button>
+					<button type='submit' class='btn red tooltipped' data-position='bottom' data-delay='10' data-tooltip='Se eliminarán los datos permanentemente'><i class='material-icons right'>check_circle</i>Si</button>
 					<a href='alumnos_index.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>
 				</form>
 			</div>

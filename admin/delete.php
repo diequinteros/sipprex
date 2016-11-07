@@ -48,7 +48,7 @@ if(!empty($_POST))
 				<h3>¿Eliminar Ex-alumno?</h3>
 				<form method='post' class='row'>
 					<input type='hidden' name='id' value='<?php print(htmlspecialchars($id)); ?>'/>
-					<button type='submit' class='btn red'><i class='material-icons right'>check_circle</i>Si</button>
+					<button type='submit' class='btn red tooltipped' data-position='bottom' data-delay='10' data-tooltip='Se eliminarán los datos de este exalumno'><i class='material-icons right'>check_circle</i>Si</button>
 					<a href='index.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>
 				</form>
 			</div>

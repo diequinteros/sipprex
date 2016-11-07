@@ -32,7 +32,7 @@ ob_start();
 				</div>
 				<!-- Se incluye el boton de agregar un nuevo ex-alumno -->
 				<div class='input-field col s12 m4'>
-					<a href='anuncios_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
+					<a href='anuncios_save.php' class='btn indigo tooltipped' data-position='bottom' data-delay='10' data-tooltip='Agregar un nuevo anuncio'><i class='material-icons right'>add_circle</i>Nuevo</a>
 				</div>
 			</form>
 		</div>
@@ -89,8 +89,8 @@ ob_start();
 									<td>".htmlspecialchars($row['titulo_anuncio'])."</td>
 									<td>".htmlspecialchars($row['contenido_anuncio'])."</td>
 									<td>
-										<a href='anuncios_save.php?id=".base64_encode(htmlspecialchars($row['id_anuncio']))."' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='anuncios_delete.php?id=".base64_encode(htmlspecialchars($row['id_anuncio']))."' class='btn red'><i class='material-icons'>delete</i></a>
+										<a href='anuncios_save.php?id=".base64_encode(htmlspecialchars($row['id_anuncio']))."' class='btn blue tooltipped' data-position='bottom' data-delay='10' data-tooltip='Modificar anuncio'><i class='material-icons'>edit</i></a>
+										<a href='anuncios_delete.php?id=".base64_encode(htmlspecialchars($row['id_anuncio']))."' class='btn red tooltipped' data-position='bottom' data-delay='10' data-tooltip='Eliminar anuncio'><i class='material-icons'>delete</i></a>
 									</td>
 								</tr>";
 				}

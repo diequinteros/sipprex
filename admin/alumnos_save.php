@@ -167,12 +167,12 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='carnet' type='text' name='carnet' class='validate' length='8' maxlength='8' value='<?php print(htmlspecialchars($id)); ?>' required/>
+                        <input id='carnet' type='text' name='carnet' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='8 dígitos, solo números' length='8' maxlength='8' value='<?php print(htmlspecialchars($id)); ?>' required/>
                         <label class="active" for='carnet'>Carnet</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input id='nie' type='text' name='nie' class='validate' length='8' maxlength='8' value='<?php print(htmlspecialchars($nie)); ?>' required/>
+                        <input id='nie' type='text' name='nie' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='8 dígitos, solo números' length='8' maxlength='8' value='<?php print(htmlspecialchars($nie)); ?>' required/>
                         <label class="active" for='nie'>NIE</label>
                     </div>
                 </div>
@@ -180,24 +180,24 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>add_circle</i>
-                        <input id='nombre1' type='text' name='nombre1' class='validate' length='15' maxlength='15' value='<?php print(htmlspecialchars($nombre1)); ?>'/>
+                        <input id='nombre1' type='text' name='nombre1' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='25 caracteres, solo letras' length='25' maxlength='25' value='<?php print(htmlspecialchars($nombre1)); ?>'/>
                         <label class="active" for='nombre1'>Primer Nombre:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>add_circle</i>
-                        <input id='nombre2' type='text' name='nombre2' class='validate' length='15' maxlength='25' value='<?php print(htmlspecialchars($nombre2)); ?>'/>
+                        <input id='nombre2' type='text' name='nombre2' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='25 caracteres, solo letras' length='25' maxlength='25' value='<?php print(htmlspecialchars($nombre2)); ?>'/>
                         <label class="active" for='nombre2'>Segundo Nombre:</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class='material-icons prefix'>add_circle</i>
-                        <input id='apellido1' type='text' name='apellido1' class='validate' length='15' maxlength='25' value='<?php print(htmlspecialchars($apellido1)); ?>'/>
+                        <input id='apellido1' type='text' name='apellido1' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='25 caracteres, solo letras' length='25' maxlength='25' value='<?php print(htmlspecialchars($apellido1)); ?>'/>
                         <label class="active" for='apellido1'>Primer Apellido:</label>
                     </div>
                     <div class="input-field col s12 m6">
                         <i class='material-icons prefix'>add_circle</i>
-                        <input id='apellido2' type='text' name='apellido2' class='validate' length='15' maxlength='25' value='<?php print(htmlspecialchars($apellido2)); ?>'/>
+                        <input id='apellido2' type='text' name='apellido2' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='25 caracteres, solo letras' length='25' maxlength='25' value='<?php print(htmlspecialchars($apellido2)); ?>'/>
                         <label class="active" for='apellido2'>Segundo Apellido:</label>
                     </div>
                 </div>
@@ -336,7 +336,7 @@ if(!empty($_POST))
                 </div>
                 <div class='titulo'>
                     <a href='alumnos_index.php' class='btn grey'><i class='material-icons right'>cancel</i>Cancelar</a>
-                    <button type='submit' class='btn blue'><i class='material-icons right'>check_circle</i>Guardar</button>
+                    <button type='submit' class='btn blue tooltipped' data-position='bottom' data-delay='10' data-tooltip='Guardar datos'><i class='material-icons right'>check_circle</i>Guardar</button>
                 </div>
             </form>
         </div>

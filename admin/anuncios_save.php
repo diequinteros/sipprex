@@ -101,13 +101,13 @@ if(!empty($_POST))
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
-                        <input class='tooltipped' data-position='bottom' data-delay='25' data-tooltip='Ingrese el contenido del anuncio' id='contenido_anuncio' type="text" name='contenido_anuncio' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($contenido_anuncio));
+                        <input class='tooltipped' data-position='bottom' data-delay='25' data-tooltip='Ingrese el contenido del anuncio' id='contenido_anuncio' type="text" name='contenido_anuncio' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($contenido_anuncio)); ?>'>
                         <label class="active" for='contenido_anuncio'>Contenido del Anuncio:</label>
                     </div>
                 </div>
                 <div class='titulo'>
                     <a href='anuncios_index.php' class='btn grey'><i class='material-icons right'>cancel</i>Cancelar</a>
-                    <button type='submit' class='btn blue'><i class='material-icons right'>check_circle</i>Guardar</button>
+                    <button type='submit' class='btn blue tooltipped' data-position='bottom' data-delay='10' data-tooltip='Guardar datos'><i class='material-icons right'>check_circle</i>Guardar</button>
                 </div>
             </form>
         </div>

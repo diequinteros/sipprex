@@ -158,7 +158,7 @@ if(!empty($_POST))
                 </div>
                 <div class='titulo'>
                     <a href='index.php' class='btn grey'><i class='material-icons right'>cancel</i>Cancelar</a>
-                    <button type='submit' class='btn blue'><i class='material-icons right'>check_circle</i>Guardar</button>
+                    <button type='submit' class='btn blue tooltipped' data-position='bottom' data-delay='10' data-tooltip='Guardar admin'><i class='material-icons right'>check_circle</i>Guardar</button>
                 </div>
             </form>
         </div>

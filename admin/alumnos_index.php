@@ -26,7 +26,7 @@ ob_start();
 			<form method='post' autocomplete="off" class='row'>
 				<div class='input-field col s6 m4'>
 					<i class='material-icons prefix'>search</i>
-					<input class='tooltipped' data-position='bottom' data-delay='25' data-tooltip='Ingrese datos para buscar' id='buscar' autocomplete="off" type='text' name='buscar' class='validate'/>
+					<input class='tooltipped' data-position='bottom' data-delay='10' data-tooltip='Ingrese datos para buscar' id='buscar' autocomplete="off" type='text' name='buscar' class='validate'/>
 					<label for='buscar' class='active'>Búsqueda</label>
 				</div>
 				<div class='input-field col s6 m4'>
@@ -34,10 +34,10 @@ ob_start();
 				</div>
 				<!-- Se incluye el boton de agregar un nuevo ex-alumno -->
 				<div class='input-field col s12 m2'>
-					<a href='alumnos_save.php' class='btn indigo'><i class='material-icons right'>add_circle</i>Nuevo</a>
+					<a href='alumnos_save.php' class='btn indigo tooltipped' data-position='bottom' data-delay='10' data-tooltip='Agregar un nuevo alumno'><i class='material-icons right'>add_circle</i>Nuevo</a>
 				</div>
 				<div class='input-field col s12 m2'>
-					<a href='carnet_contrase.php' class='btn indigo'><i class='material-icons right'>description</i>Reporte</a>
+					<a href='carnet_contrase.php' class='btn indigo tooltipped' data-position='bottom' data-delay='10' data-tooltip='Reporte de códigos y contraseñas'><i class='material-icons right'>description</i>Reporte</a>
 				</div>
 			</form>
 		</div>
@@ -111,9 +111,9 @@ ob_start();
 						$tabla .= "<td><i class='material-icons right'>cancel</i></td>";
 					}
 					$tabla .=	"<td>
-										<a href='alumnos_save.php?id=".base64_encode($row['carnet'])."' class='btn blue'><i class='material-icons'>edit</i></a>
-										<a href='alumnos_delete.php?id=".base64_encode($row['carnet'])."' class='btn red'><i class='material-icons'>delete</i></a>
-										<a href='reporte_por_alumno.php?id=".base64_encode(htmlspecialchars($row['carnet']))."' class='btn  teal'><i class='material-icons'>description</i></a>
+										<a href='alumnos_save.php?id=".base64_encode($row['carnet'])."' class='btn blue tooltipped' data-position='right' data-delay='10' data-tooltip='Editar alumno'><i class='material-icons'>edit</i></a>
+										<a href='alumnos_delete.php?id=".base64_encode($row['carnet'])."' class='btn red tooltipped' data-position='right' data-delay='10' data-tooltip='Eliminar alumno'><i class='material-icons'>delete</i></a>
+										<a href='reporte_por_alumno.php?id=".base64_encode(htmlspecialchars($row['carnet']))."' class='btn  teal tooltipped' data-position='right' data-delay='10' data-tooltip='Reporte del alumno'><i class='material-icons'>description</i></a>
 									</td>
 								</tr>";
 				}
