@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2016 a las 17:26:21
+-- Tiempo de generación: 04-01-2017 a las 15:35:37
 -- Versión del servidor: 10.1.10-MariaDB
--- Versión de PHP: 7.0.4
+-- Versión de PHP: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,12 +29,13 @@ USE `ssppea`;
 --
 
 CREATE TABLE `administradores` (
-  `codigo_admin` int(8) NOT NULL,
+  `codigo_admin` varchar(8) NOT NULL,
   `contraseña_admin` varchar(100) NOT NULL,
   `correo` varchar(300) NOT NULL,
   `permiso_create` tinyint(1) NOT NULL,
   `permiso_update` tinyint(1) NOT NULL,
-  `permiso_delete` tinyint(1) NOT NULL
+  `permiso_delete` tinyint(1) NOT NULL,
+  `ultimaemail` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -476,22 +477,10 @@ CREATE TABLE `ex_alumnos` (
   `correo_electronico` varchar(50) DEFAULT NULL,
   `observacion` varchar(200) DEFAULT NULL,
   `pregunta` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `respuesta` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+  `respuesta` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `empresa` varchar(100) DEFAULT NULL,
+  `sugerencias` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `ex_alumnos`
---
-
-INSERT INTO `ex_alumnos` (`id_exalumnos`, `contraseña`, `nombre1`, `apellido1`, `telefono`, `ocupacion`, `correo_electronico`, `observacion`, `pregunta`, `respuesta`) VALUES
-(0, '$2y$10$RuEduZmU9aKojaarUP111eVnerGZDxgvU7aFOx.N7RZDPiGwfqLZS', 'Diegos', 'Quinteros', 22882288, 3, 'diegoquinteros02.04.97@gmail.com', '', '', ''),
-(22, '$2y$10$u6oLmmuILtzd67t3rlR7lOHJfuAi.6ti8226.tErje5L5/5iO0YG2', 'Prueba', 'Prueba', 11111111, 3, '1@gmail.com', 'E', '', ''),
-(123, '123', '123', '123', NULL, NULL, NULL, NULL, NULL, NULL),
-(222555, '$2y$10$aZ7vCDgru/VjbcP7bRPv3..YstFO2YgZuwUTeT85/dh2iDMJEZR9G', 'A', 'A', 22882222, 3, 'd@gmail.com', '', '', ''),
-(11116666, '$2y$10$asWa5FV5BKEQSUWXWA/Q7uxaT4747.TZhABO7GPvFXLBTsJwYMKKe', 'Diego', 'Quinteros', 79865432, 3, 'diego_quinteros@gmail.com', 'Estudiante destacado', 'Mi segundo apellido', 'Lemus'),
-(20110046, '0', 'Eduardo', 'Batres', NULL, NULL, NULL, NULL, NULL, NULL),
-(20110122, '0', 'María', 'Nuila', NULL, NULL, NULL, NULL, NULL, NULL),
-(20130881, '0', 'David', 'Miranda', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -556,20 +545,6 @@ CREATE TABLE `mensajes` (
   `fecha_leeido` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `mensajes`
---
-
-INSERT INTO `mensajes` (`cod_mensaje`, `id_usuario_destino`, `id_empre_destino`, `id_exalum_destino`, `id_exalum_origen`, `id_empre_origen`, `id_usuario_origen`, `admin_ori`, `admin_des`, `titulo`, `contenido`, `fecha_enviado`, `fecha_leeido`) VALUES
-(1, NULL, NULL, NULL, NULL, 115, NULL, NULL, 1, 'HU', 'HE', '2016-07-12 04:39:12', NULL),
-(2, NULL, NULL, NULL, NULL, 115, NULL, NULL, 1, 'MENSAJE DE EMPRESA - ENVIO DE USU Y CONTRA', 'CORREO EMPRESA: diegoquinteros02.04.97@gmail.com AL PROPIETARIO: Diego', '2016-07-12 04:43:13', '0000-00-00 00:00:00'),
-(3, NULL, NULL, NULL, NULL, 115, NULL, NULL, 1, 'MENSAJE DEL SISTEMA - EMPRESA CON ID: 115 Y NOMBRE: Array SOLICITA USU', 'CORREO EMPRESA: diegoquinteros02.04.97@gmail.com AL PROPIETARIO: Diego', '2016-07-12 04:49:56', '0000-00-00 00:00:00'),
-(4, NULL, NULL, NULL, NULL, 115, NULL, NULL, 1, 'MENSAJE DEL SISTEMA - EMPRESA CON ID: 115 Y NOMBRE: A & CREATIVA S.A. ', 'CORREO EMPRESA: diegoquinteros02.04.97@gmail.com AL PROPIETARIO: Diego', '2016-07-12 04:53:26', '0000-00-00 00:00:00'),
-(5, NULL, NULL, NULL, 11116666, NULL, NULL, NULL, 1, 'D', 'A', '2016-07-13 23:48:13', NULL),
-(6, NULL, NULL, NULL, 11116666, NULL, NULL, NULL, 1, 'Prueba', 'Contenido de la prueba', '2016-07-14 00:51:03', NULL),
-(8, NULL, NULL, 11116666, NULL, NULL, NULL, 1, NULL, 'Probar enviar', 'Probando si se envio el mensaje', '2016-07-14 14:16:12', NULL),
-(10, NULL, NULL, NULL, NULL, 331, NULL, NULL, 1, 'Probando envio de mensajes', 'Enviado', '2016-07-15 08:58:36', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -607,21 +582,6 @@ CREATE TABLE `proyecto` (
   `remunerado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `proyecto`
---
-
-INSERT INTO `proyecto` (`id_proyecto`, `id_exalum_encargado`, `id_empre_encargado`, `titulo`, `descripcion`, `fecha_propuesto`, `vigente`, `remunerado`) VALUES
-(1, NULL, 331, '0', 'Estoy probando esto a las 5 a.m.', '2016-07-15 10:59:09', 1, 0),
-(2, NULL, 331, '0', 'Nuevo', '2016-07-15 11:01:39', 1, 0),
-(3, 0, NULL, '22', 'Esto es una prueba', '2016-08-24 01:51:29', 1, 0),
-(4, 0, NULL, '0', '', '2016-08-24 01:51:42', 1, 1),
-(5, 0, NULL, '22', '22', '2016-08-24 01:55:03', 1, 0),
-(6, 0, NULL, '33', '33', '2016-08-24 01:55:37', 1, 0),
-(7, 0, NULL, '55', '55', '2016-08-24 01:56:53', 1, 0),
-(8, 11116666, NULL, '0', 'Descreipcion del proyecto', '2016-08-24 16:12:36', 1, 0),
-(9, 11116666, NULL, 'Sistma para negocio', 'Es necesario un sistema para mi negocio que cnsiste en un restaurante', '2016-09-29 01:41:46', 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -633,13 +593,15 @@ CREATE TABLE `registrospp` (
   `alumno` int(11) NOT NULL,
   `empresa` int(11) NOT NULL,
   `finalizo` tinyint(1) NOT NULL,
+  `fecha_ini` date NOT NULL,
   `fecha_finalizo` date DEFAULT NULL,
   `observaciones_tecnicas` varchar(200) NOT NULL,
   `acuerdo` tinyint(1) NOT NULL DEFAULT '0',
   `bitacora` tinyint(1) NOT NULL DEFAULT '0',
   `carta` tinyint(1) NOT NULL DEFAULT '0',
   `evaluaciones` tinyint(1) NOT NULL DEFAULT '0',
-  `observacion_final` varchar(200) NOT NULL
+  `observacion_final` varchar(200) NOT NULL,
+  `horas` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -671,7 +633,7 @@ INSERT INTO `secciones` (`id_seccion`, `seccion`) VALUES
 CREATE TABLE `sesiones` (
   `id_sesion` int(11) NOT NULL,
   `unisesion` varchar(100) NOT NULL,
-  `usuario` int(11) NOT NULL,
+  `usuario` varchar(8) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `os` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -753,6 +715,7 @@ ALTER TABLE `administradores`
 --
 ALTER TABLE `alumnos`
   ADD PRIMARY KEY (`carnet`),
+  ADD UNIQUE KEY `nie` (`nie`),
   ADD KEY `grado` (`grado`),
   ADD KEY `especialidad` (`especialidad`),
   ADD KEY `grupo_Tecnic` (`grupo_Tecnic`),
@@ -855,9 +818,9 @@ ALTER TABLE `proyecto`
 --
 ALTER TABLE `registrospp`
   ADD PRIMARY KEY (`id_registropp`),
-  ADD UNIQUE KEY `alumno_2` (`alumno`),
   ADD KEY `alumno` (`alumno`),
-  ADD KEY `empresa` (`empresa`);
+  ADD KEY `empresa` (`empresa`),
+  ADD KEY `alumno_4` (`alumno`);
 
 --
 -- Indices de la tabla `secciones`
@@ -973,7 +936,7 @@ ALTER TABLE `secciones`
 -- AUTO_INCREMENT de la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_alum`
 --
@@ -1056,7 +1019,7 @@ ALTER TABLE `registrospp`
 -- Filtros para la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  ADD CONSTRAINT `fk_admin` FOREIGN KEY (`usuario`) REFERENCES `administradores` (`codigo_admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `sesiones_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `administradores` (`codigo_admin`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `sesiones_alum`

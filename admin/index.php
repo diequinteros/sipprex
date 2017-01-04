@@ -14,10 +14,37 @@
       <!-- Categorias -->
       <div id="cont" class="row">
       <?php
-      $sql = "SELECT * FROM alumnos";
-      
+      $sql = "SELECT carnet FROM alumnos";
+      $params = null;
+      $data = Database::getRows($sql, $params);
+        if($data != null)
+        {
+            $codigos = null;
+            
+            foreach($data as $row)
+            {
+                $sql2 = "SELECT * FROM ex_alumnos WHERE id_exalumnos = ?";
+                $params2 = array($row['carnet']);
+                $ex = null;
+                $ex = Database::getRow($sql2, $params2);
+                if($ex != null){
+                        if($codigos == null){
+                            $codigos = $row['carnet'];
+                        }
+                        else{
+                            $codigos .= ", ".$row['carnet'];
+                        }
+                    }
+            }
+            if($codigos != null)
+            {
+                print("<div class='card-panel red'><i class='material-icons left'>error</i>Los codigos de carnet: ".$codigos." estan repetidos en la tabla alumnos y ex alumnos, esto puede generar errores, por favor verifique los datos.</div>");
+            }
+            
+        }
       ?>
         <div class="col l10">
+        
             <div class="row">
              <div class="card col l3 offset-l3 m3 offset-m3 s12 z-depth-3">
                 <div class="card-image waves-effect waves-block waves-light">

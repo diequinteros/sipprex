@@ -1,0 +1,8 @@
+Luego de obtener la hoja de datos de los alumnos se deben seguir los siguientes pasos:
+-Reemplazar la especialidad de los alumnos por el id de la especialidad de la BD de sipprex
+-Reemplazar el grupo academico de los alumnos por el id del grupo academico de la BD de sipprex
+-Reemplazar el grupo tecnico de los alumnos por el id del grupo tecnico de la BD de sipprex
+-Reemplazar el grado de los alumnos por el id del año de la BD de sipprex
+-Agregar una fila al principio que contenga los mismos nombres de campo que la tabla alumnos dependiendo la columna (Para el primer nombre del alumno el nombre de campo seria 'nombre1')
+-Luego se deben importar los datos hacia la tabla de alumnos usando la opcion 'Importar desde una hoja de datos'
+-Ingresar al sistema como admin para verificar que los alumnos ingresados no se repitan en la tabla ex alumnos, el sistema alertara eso, si se repiten debe borrar o modifar los datos hasta que no hayan duplicados
