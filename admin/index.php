@@ -13,13 +13,17 @@
     <body class="grey lighten-3">
       <!-- Categorias -->
       <div id="cont" class="row">
+      <?php
+      $sql = "SELECT * FROM alumnos";
+      
+      ?>
         <div class="col l10">
             <div class="row">
              <div class="card col l3 offset-l3 m3 offset-m3 s12 z-depth-3">
                 <div class="card-image waves-effect waves-block waves-light">
                     <a href="catalumnos.php"><img class="responsive-img"  src="../img/AlumnosN.png"></a>
                 </div>
-                <div class="card-content">
+                <div class="card-content">  
                     <span class="card-title activator grey-text text-darken-4">Alumnos<i class="material-icons right">more_vert</i></span>
                     <p><a href="catalumnos.php">Entrar</a></p>
                 </div>

@@ -68,8 +68,8 @@ if($data != null)
 	$tabla = 	"<table class='centered striped'>
 					<thead>
 			    		<tr>
-				    		<th>ID</th>
-				    		<th>especialidad</th>
+				    		<th>Codigo</th>
+				    		<th>Especialidad</th>
 				    		
 			    		</tr>
 		    		</thead>

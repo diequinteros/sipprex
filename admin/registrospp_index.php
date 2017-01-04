@@ -94,6 +94,7 @@ require("../bibliotecas/conexion.php");
 										<th>Bitácora</th>
 										<th>Carta</th>
 										<th>Evaluaciones</th>
+										<th>Horas (Totales)</th>
 										<th>Observación Final</th>
 										<th>Acción</th>
 									</tr>
@@ -101,6 +102,9 @@ require("../bibliotecas/conexion.php");
 								<tbody>";
 				foreach($data as $row)
 				{
+					$sql2 = "SELECT SUM(horas) FROM registrospp WHERE alumno = ?";
+					$params2 = array($row['carnet']);
+					$horas = Database::getRow($sql2, $params2);
 					$tabla .= 	"<tr>
 									<td>".htmlspecialchars($row['id_registropp'])."</td>
 									<td>".htmlspecialchars($row['nombre1']).""." "."".htmlspecialchars($row['nombre2']).""." "."".htmlspecialchars($row['apellido1']).""." "."".htmlspecialchars($row['apellido2'])."</td>
@@ -136,6 +140,7 @@ require("../bibliotecas/conexion.php");
 					else{
 						$tabla .= "<td>No</td>";
 					}
+					$tabla .= "<td>".$horas[0]."</td>";
 					$tabla .=		"<td>".htmlspecialchars($row['observacion_final'])."</td>
 									<td>
 										<a href='registrospp_save.php?id=".base64_encode(htmlspecialchars($row['id_registropp']))."' class='btn blue'><i class='material-icons'>edit</i></a>

@@ -117,7 +117,7 @@ if(!empty($_POST))
                         <?php
                         $sql = "SELECT id_depar, nombre_empresa, departamento FROM departamentosempre, empresas WHERE departamentosempre.empresa = empresas.id_empresa";
                         $data = Database::getRows($sql, null);
-                        $combo = "<br><select class='browser-default' name='id_empresa' required>";
+                        $combo = "<br><select id='empresas' class='browser-default' name='id_empresa' required>";
                         if($Empresas == null)
                         {
                             $combo .= "<option value='' disabled selected>Seleccione un departamento de alguna empresa</option>";
@@ -137,8 +137,8 @@ if(!empty($_POST))
                         ?>
         </div>
         <div class='col s12 m6'>
-          	<i class='material-icons prefix'>add</i>
-              <!--<input type="date" class="datepicker">-->
+          	
+            <label class="active grey-text text-darken-4" for="observacion">Fecha de visita</label>
           	<input id='fecha_ultima_visita' type='date' name='fecha_ultima_visita' class='datepicker' value='<?php if($Fecha != null){print($Fecha);} ?>'/>
           	<!--<label for='fecha_ultima_visita'>Fecha</label>-->
         </div>
@@ -147,7 +147,7 @@ if(!empty($_POST))
         <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>add</i>
             <textarea id="observacion" class="materialize-textarea"  name='observacion' class='validate' length='200' maxlenght='200'/><?php print(htmlspecialchars($Observacion));?></textarea>
-            <label for="observacion">Observaciones</label>
+            <label class="active grey-text text-darken-4" for="observacion">Observaciones</label>
             
         </div>
     </div>
@@ -160,6 +160,9 @@ if(!empty($_POST))
 include("../inc/scripts.php");
 include("../inc/footer.php");
 ?>
+<script>
+$(document).ready(function(){$('#empresas').select2();});
+</script>
 <script type="text/javascript" src="../js/datepicker.js"></script>
  	</body>
 </html>

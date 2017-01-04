@@ -21,6 +21,7 @@ if(empty($_GET['id']))
                             <h3>Agregar una empresa</h3>
                         </div>";
     print $head;
+    $codE = null;
     $id = null;
     $Empresas= null;
     $Rubro = null;
@@ -67,6 +68,7 @@ else
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
+    $codE =  strip_tags(trim($_POST['cod_empre']));
   	$Empresas = strip_tags(trim($_POST['nombre_empresa']));
     $Rubro = strip_tags(trim($_POST['rubro']));
     $Direccion = strip_tags(trim($_POST['direccion']));
@@ -175,48 +177,48 @@ if(!empty($_POST))
         <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='cod_empre' type='text' name='cod_empre' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($codE)); ?>' required/>
-          	<label for='cod_empre'>Codigo de empresa</label>
+          	<label class="active grey-text text-darken-4" for='cod_empre'>Codigo de empresa</label>
         </div>
         <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='contra' type='text' name='contra' class='validate' length='200' maxlenght='200''/>
-          	<label for='contra'>Contraseña</label>
+          	<input id='contra' type='text' name='contra' class='validate' length='200' maxlenght='200'/>
+          	<label class="active grey-text text-darken-4" for='contra'>Contraseña</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='nombre_empresa' type='text' name='nombre_empresa' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Empresas)); ?>' required/>
-          	<label for='nombre_empresa'>Empresas</label>
+          	<label class="active grey-text text-darken-4" for='nombre_empresa'>Empresas</label>
         </div>
         <div class='input-field col s12 m6 l6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='rubro' type='text' name='rubro' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Rubro)); ?>'/>
-          	<label for='rubro'>Rubro</label>
+          	<label class="active grey-text text-darken-4" for='rubro'>Rubro</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6 l6'>
             <i class='material-icons prefix'>add</i>
             <input id='direccion' type='text' name='direccion' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Direccion)); ?>' required/>
-            <label for='direccion'>Direccion</label>
+            <label class="active grey-text text-darken-4" for='direccion'>Direccion</label>
         </div>
         <div class='input-field col s12 m6 l6'>
             <i class='material-icons prefix'>add</i>
             <input id='telefono' type='text' name='telefono' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Telefono)); ?>'/>
-            <label for='telefono'>Telefono</label>
+            <label class="active grey-text text-darken-4" for='telefono'>Telefono</label>
         </div>
     </div>
     <div class='row'>
         <div class='input-field col s12 m6 l6'>
             <i class='material-icons prefix'>add</i>
             <input id='contacto' type='text' name='contacto' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($Contacto)); ?>' required/>
-            <label for='contacto'>Contacto</label>
+            <label class="active grey-text text-darken-4" for='contacto'>Contacto</label>
         </div>
         <div class='input-field col s12 m6 l6'>
             <i class='material-icons prefix'>add</i>
             <input id='correo' type='text' name='correo' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Correo)); ?>'/>
-            <label for='correo'>Correo</label>
+            <label class="active grey-text text-darken-4" for='correo'>Correo</label>
         </div>
     </div>
     <a href='empresa_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>

@@ -5,6 +5,24 @@ require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
 require("../bibliotecas/verios.php");
 session_start();
+$sqlFe = "SELECT ultimaemail FROM administradores WHERE codigo_admin = ?";
+$parm = array($_SESSION['codigo_admin_sec']);
+$fecha = Database::getRow($sqlFe, $parm);
+if($fecha['ultimaemail'] == null){
+$fecha['ultimaemail'] == 0;
+}
+else{
+if((strtotime(date('Y-m-d')) - strtotime($fecha['ultimaemail'])) < 172800){
+					$_SESSION['codigo_admin'] = $_SESSION['codigo_admin_sec'];
+					$_SESSION['nombre_usuario'] = "Administrador";
+					$sesU = uniqid().'_ses';
+					$_SESSION['ses'] = $sesU;
+					$sqlSes = "INSERT INTO sesiones(unisesion, usuario, os) VALUES(?, ?, ?)";
+					$parametros = array($sesU, $_SESSION['codigo_admin'], os_info($uagent));
+					Database::executeRow($sqlSes, $parametros);
+					header("location: ../admin/index.php");
+}
+}
 //Se revisa que los campos esten vacios para validarlos y se empieza con los procesos
 if(!empty($_POST))
 {
@@ -27,6 +45,9 @@ if(!empty($_POST))
 					$sqlSes = "INSERT INTO sesiones(unisesion, usuario, os) VALUES(?, ?, ?)";
 					$parametros = array($sesU, $_SESSION['codigo_admin'], os_info($uagent));
 					Database::executeRow($sqlSes, $parametros);
+					$sqlFechaN = "UPDATE administradores SET ultimaemail = ? WHERE codigo_admin = ?";
+					$parmetro = array(date('Y-m-d'), $_SESSION['codigo_admin_sec']);
+					Database::executeRow($sqlFechaN, $parmetro);
 					header("location: ../admin/index.php");
 				}
 				else 

@@ -75,12 +75,12 @@ if($data != null)
 	$tabla = 	"<table class='centered striped conteiner'>
 					<thead>
 			    		<tr>
-				    		<th>nombre_empresa</th>
-				    		<th>rubro</th>
-				    		<th>direccion</th>
-				    		<th>telefono</th>
-				    		<th>contacto</th>
-				    		<th>correo</th>
+				    		<th>Nombre de empresa</th>
+				    		<th>Rubro</th>
+				    		<th>Direccion</th>
+				    		<th>Telefono</th>
+				    		<th>Contacto</th>
+				    		<th>Correo</th>
 			    		</tr>
 		    		</thead>
 		    		<tbody>";

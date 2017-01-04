@@ -81,8 +81,6 @@ else{
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	$contraseña1 = strip_tags(trim($_POST['contraseña1']));
-    $contraseña2 = strip_tags(trim($_POST['contraseña2']));
     $nie = strip_tags(trim($_POST['nie']));
     $nombre1 = strip_tags(trim($_POST['nombre1']));
     $nombre2 = strip_tags(trim($_POST['nombre2']));
@@ -119,8 +117,17 @@ if(!empty($_POST))
                 $id = strip_tags(trim($_POST['carnet']));
                 if(strlen($id) >= 8){        
                             if($contra != $id){
+                                $ex = null;
+                                $sqlEx = "SELECT nombre1 FROM ex_alumnos WHERE id_exalumnos = ?";
+                                $paramsEx = Array($id);
+                                $ex = Database::getRow($sqlEx, $paramsEx);
+                                if($ex == null){
                                 $sql = "INSERT INTO alumnos(carnet, contraseña, nie, nombre1, nombre2, apellido1, apellido2, grado, especialidad, grupo_Tecnic, secc, grupo_academ, inscrito) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                                 $params = array($id, $contra, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito);
+                                }
+                                else{
+                                    print("<div class='card-panel red'><i class='material-icons left'>error</i>El numero de carnet introducido ya existe en un registro de ex alumnos, por favor verifique sus datos.</div>");
+                                }
                             }
                             else{
                                 print("<div class='card-panel red'><i class='material-icons left'>error</i>La contraseña no puede seri igual al código del carnet.</div>");
@@ -135,8 +142,8 @@ if(!empty($_POST))
             {
                 
                     if(strlen($id) >= 8){
-                                $sql = "UPDATE alumnos SET carnet = ?, nie = ?, nombre1 = ?, nombre2 = ?, apellido1 = ?, apellido2 = ?, grado = ?, especialidad = ?, grupo_Tecnic = ?, secc = ?, grupo_academ = ?, inscrito = ? WHERE carnet = ?";
-                                $params = array($id, $nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito, $id);
+                                $sql = "UPDATE alumnos SET nie = ?, nombre1 = ?, nombre2 = ?, apellido1 = ?, apellido2 = ?, grado = ?, especialidad = ?, grupo_Tecnic = ?, secc = ?, grupo_academ = ?, inscrito = ? WHERE carnet = ?";
+                                $params = array($nie, $nombre1, $nombre2, $apellido1, $apellido2, $grado, $especialidad, $grupo_tecnico, $seccion, $grupo_academico, $inscrito, $id);
                     }
                     else{
                         print("<div class='card-panel red'><i class='material-icons left'>error</i>El carnet debe ser mayor o igual a ocho caracteres.</div>");   
@@ -144,12 +151,13 @@ if(!empty($_POST))
                     
                 
             }
-            Database::executeRow($sql, $params);
-            print("<script>
+            if($ex == null){
+               Database::executeRow($sql, $params);
+               print("<script>
             alert('Proceso exitoso.');
             window.location='alumnos_index.php';
-            </script>");
-           
+            </script>"); 
+            }
         }
         else{
         print("<div class='card-panel red'><i class='material-icons left'>error</i>El formato de los datos ingresados no es correcto, por favor verifique sus datos (Sus nombres y apellidos deben contener solo letras).</div>");    
@@ -168,12 +176,12 @@ if(!empty($_POST))
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
                         <input id='carnet' type='text' name='carnet' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='8 dígitos, solo números' length='8' maxlength='8' value='<?php print(htmlspecialchars($id)); ?>' required/>
-                        <label class="active" for='carnet'>Carnet</label>
+                        <label class="active grey-text text-darken-4" for='carnet'>Carnet</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
                         <input id='nie' type='text' name='nie' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='8 dígitos, solo números' length='8' maxlength='8' value='<?php print(htmlspecialchars($nie)); ?>' required/>
-                        <label class="active" for='nie'>NIE</label>
+                        <label class="active grey-text text-darken-4" for='nie'>NIE</label>
                     </div>
                 </div>
                 
@@ -181,24 +189,24 @@ if(!empty($_POST))
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>add_circle</i>
                         <input id='nombre1' type='text' name='nombre1' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='25 caracteres, solo letras' length='25' maxlength='25' value='<?php print(htmlspecialchars($nombre1)); ?>'/>
-                        <label class="active" for='nombre1'>Primer Nombre:</label>
+                        <label class="active grey-text text-darken-4" for='nombre1'>Primer Nombre:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>add_circle</i>
                         <input id='nombre2' type='text' name='nombre2' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='25 caracteres, solo letras' length='25' maxlength='25' value='<?php print(htmlspecialchars($nombre2)); ?>'/>
-                        <label class="active" for='nombre2'>Segundo Nombre:</label>
+                        <label class="active grey-text text-darken-4" for='nombre2'>Segundo Nombre:</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class='material-icons prefix'>add_circle</i>
                         <input id='apellido1' type='text' name='apellido1' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='25 caracteres, solo letras' length='25' maxlength='25' value='<?php print(htmlspecialchars($apellido1)); ?>'/>
-                        <label class="active" for='apellido1'>Primer Apellido:</label>
+                        <label class="active grey-text text-darken-4" for='apellido1'>Primer Apellido:</label>
                     </div>
                     <div class="input-field col s12 m6">
                         <i class='material-icons prefix'>add_circle</i>
                         <input id='apellido2' type='text' name='apellido2' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='25 caracteres, solo letras' length='25' maxlength='25' value='<?php print(htmlspecialchars($apellido2)); ?>'/>
-                        <label class="active" for='apellido2'>Segundo Apellido:</label>
+                        <label class="active grey-text text-darken-4" for='apellido2'>Segundo Apellido:</label>
                     </div>
                 </div>
                 <div class='row'>
@@ -331,7 +339,7 @@ if(!empty($_POST))
                     
                         <!--<i class='material-icons prefix'>visibility</i>
                         <input id='inscrito' type='text' name='inscrito' class='validate' length='9' maxlength='9' value='<?php print(htmlspecialchars($inscrito)); ?>'/>
-                        <label class="active" for='inscrito'>¿Esta inscrito? (VERDADERO o FALSO)</label>-->
+                        <label class="active grey-text text-darken-4" for='inscrito'>¿Esta inscrito? (VERDADERO o FALSO)</label>-->
                     
                 </div>
                 <div class='titulo'>

@@ -17,9 +17,9 @@ if(empty($_GET['id']))
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body class='grey lighten-3 z-depth-3'>
-                <?php include('../inc/nav.php'); ?>
-                    <div class='card-panel paneles'>
+                <body class='grey lighten-3 z-depth-3'>";
+                include('../inc/nav.php');
+        $head .=            "<div class='card-panel paneles'>
                         <div class='titulo'>
                             <h3>Agregar un Anuncio</h3>
                         </div>";
@@ -37,9 +37,9 @@ else{
                         include '../inc/styles.php';
     $head .= "<meta charset='utf-8'>
                 </head>
-                <body class='grey lighten-3'>
+                <body class='grey lighten-3'>";
                 include('../inc/nav.php');
-                    <div class='card-panel paneles z-depth-3'>
+              $head .=      "<div class='card-panel paneles z-depth-3'>
                         <div class='titulo'>
                             <h3>Modificar un Anuncio</h3>
                         </div>";
@@ -97,12 +97,12 @@ if(!empty($_POST))
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>book</i>
                         <input class='tooltipped' data-position='bottom' data-delay='25' data-tooltip='Ingrese el título del anuncio' id='titulo_anuncio' type="text" name='titulo_anuncio' class='validate' length='100' maxlength='100' value='<?php print(htmlspecialchars($titulo_anuncio)); ?>'/>
-                        <label class="active" for='titulo_anuncio'>Titulo del Anuncio:</label>
+                        <label class="active grey-text text-darken-4" for='titulo_anuncio'>Titulo del Anuncio:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
                         <input class='tooltipped' data-position='bottom' data-delay='25' data-tooltip='Ingrese el contenido del anuncio' id='contenido_anuncio' type="text" name='contenido_anuncio' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($contenido_anuncio)); ?>'>
-                        <label class="active" for='contenido_anuncio'>Contenido del Anuncio:</label>
+                        <label class="active grey-text text-darken-4" for='contenido_anuncio'>Contenido del Anuncio:</label>
                     </div>
                 </div>
                 <div class='titulo'>
@@ -113,6 +113,7 @@ if(!empty($_POST))
         </div>
         <!-- Finalmente se relacionan los scripts del sitio -->
         <?php include '../inc/scripts.php'; ?>
+        <?php include '../inc/footer.php'; ?>
     </body>
 </html>
 <?php

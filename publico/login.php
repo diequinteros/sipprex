@@ -124,7 +124,11 @@ if(!empty($_POST))
 						$mail->addAddress($data['correo'],'');     // Add a recipient
 						$mail->Subject = 'Codigo de autenticacion';
 						$mail->Body    = 'El codigo de autenticacion es: '.$pass;
-
+						$sqlFe = "SELECT ultimaemail FROM administradores WHERE codigo_admin = ?";
+						$parm = array($_SESSION['codigo_admin_sec']);
+						$fecha = Database::getRow($sqlFe, $parm);
+						if($fecha['ultimaemail'] == null){
+						$fecha['ultimaemail'] == 0;
 						if($mail->send())
 						{
 							//echo "OK";
@@ -137,6 +141,29 @@ if(!empty($_POST))
 							//echo "NO";
 							print("<div class='card-panel red'><i class='material-icons left'>error</i>Ha ocurrido un error al enviar el codigo de autenticacion, por favor vuelve a intentarlo.</div>");
 						}
+						}
+						else{
+						if((strtotime(date('Y-m-d')) - strtotime($fecha['ultimaemail'])) < 172800){
+							$ahora = date("Y-n-j H:i:s");
+							$_SESSION["ultimoAcceso"] = $ahora;
+							header("location: autenticacion.php");				
+						}
+						else{
+							if($mail->send())
+						{
+							//echo "OK";
+							$ahora = date("Y-n-j H:i:s");
+							$_SESSION["ultimoAcceso"] = $ahora;
+							header("location: autenticacion.php");
+						}
+						else
+						{
+							//echo "NO";
+							print("<div class='card-panel red'><i class='material-icons left'>error</i>Ha ocurrido un error al enviar el codigo de autenticacion, por favor vuelve a intentarlo.</div>");
+						}
+						}
+						}
+						
 						
 						}
 						else 

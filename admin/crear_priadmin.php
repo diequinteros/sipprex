@@ -4,6 +4,23 @@ session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
 require("../bibliotecas/functions.php");
+function comprobar_nombre_usuario($nombre_usuario){ 
+   //compruebo que el tamaño del string sea válido. 
+   if (strlen($nombre_usuario)<= 8 || strlen($nombre_usuario)> 4){ 
+      print("<div class='card-panel red'><i class='material-icons left'>warning</i>El codigo puede tener maximo 8 caracteres y minimo 5.</div>"); 
+      return false; 
+   } 
+
+   //compruebo que los caracteres sean los permitidos 
+   $permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; 
+   for ($i=0; $i<strlen($nombre_usuario); $i++){ 
+      if (strpos($permitidos, substr($nombre_usuario,$i,1))===false){ 
+         print("<div class='card-panel red'><i class='material-icons left'>warning</i>El codigo debe contener letras y numeros.</div>"); 
+         return false; 
+      } 
+   }  
+   return true; 
+}
 $sqlVeri = "SELECT COUNT(codigo_admin) FROM administradores";
 	$params = null;
 	$data = Database::getRow($sqlVeri, $params);
@@ -68,11 +85,14 @@ if(!empty($_POST))
                     echo "<br>";
                     if(!$array["success"])
                     {
-                        $hash = password_hash($contraseña, PASSWORD_DEFAULT);
-                        $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
-                        $params = array($codigo, $hash, $correo, 1, 1, 1);
-                        Database::executeRow($sql, $params);
-                        header("location: ../publico/login.php");   
+                        if(comprobar_nombre_usuario($codigo))
+                        {
+                            $hash = password_hash($contraseña, PASSWORD_DEFAULT);
+                            $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
+                            $params = array($codigo, $hash, $correo, 1, 1, 1);
+                            Database::executeRow($sql, $params);
+                            header("location: ../publico/login.php");
+                        }   
                     }     
                     else{
                         print("<div class='card-panel red'><i class='material-icons left'>warning</i>Eres un Spamer</div>");
@@ -107,25 +127,25 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>person_pin</i>
-                        <input id='cod' type='text' name='cod' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='8 dígitos, solo números' length='50' maxlenght='50' required/>
-                        <label class="active" for='cod'>Codigo de admin (Codigo brindado por institucion):</label>
+                        <input id='cod' type='text' name='cod' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='El codigo no puede ser solo numerico debe contener una letra por lo menos, y debe contener entre 5 a 8 caracteres' length='50' maxlenght='50' required/>
+                        <label class="active grey-text text-darken-4" for='cod'>Codigo de admin (Codigo brindado por institucion):</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
                         <input id='contraseña' type='password' name='contraseña' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='Ingrese su contraseña' length='50' maxlenght='50' required/>
-                        <label class="active" for='contraseña'>Contraseña:</label>
+                        <label class="active grey-text text-darken-4" for='contraseña'>Contraseña:</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
                         <input id='contraseña2' type='password' name='contraseña2' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='Confirme su contraseña' length='50' maxlenght='50' required/>
-                        <label class="active" for='contraseña2'>Vuelva a introducir su contraseña:</label>
+                        <label class="active grey-text text-darken-4" for='contraseña2'>Vuelva a introducir su contraseña:</label>
                     </div>
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>mail_outline</i>
                         <input id='correo_electronico' type='text' name='correo_electronico' class='validate tooltipped' data-position='bottom' data-delay='10' data-tooltip='ejemplo@ejemplo.ejemplo' length='50' maxlenght='50' required/>
-                        <label class="active" for='correo_electronico'>Correo Electrónico:</label>
+                        <label class="active grey-text text-darken-4" for='correo_electronico'>Correo Electrónico:</label>
                         <BR>
                 <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
                     </div>

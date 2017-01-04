@@ -47,7 +47,7 @@ else
     $params = array($id);
     $data = Database::getRow($sql, $params);
     $Especialidad = $data['especialidad'];
-    $id = $data['id_especialidad'];
+    
 
     
    
@@ -57,7 +57,7 @@ if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
   	 $Especialidad = strip_tags(trim($_POST['especialidad']));
-     $id = strip_tags(trim($_POST['id_especialidad']));
+     
 
     try 
     {
@@ -87,7 +87,6 @@ if(!empty($_POST))
         else{
             print("<div class='card-panel red'><i class='material-icons left'>error</i>La especialidad solo debe contener numeros</div>");    
         }
->>>>>>> origin/master
     }
     catch(Exception $error)
     {
@@ -97,15 +96,11 @@ if(!empty($_POST))
 ?>
 <form method='post' class='row' autocomplete="off" enctype='multipart/form-data'>
     <div class='row'>
-        <div class='input-field col s12 m6'>
-          	<i class='material-icons prefix'>add</i>
-          	<input id='id_especialidad' type='text' name='id_especialidad' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($id)); ?>'/>
-          	<label for='id_especialidad'>ID</label>
-        </div>
+        
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='especialidad' type='text' name='especialidad' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($Especialidad)); ?>' required/>
-          	<label for='especialidad'>Especialidad</label>
+          	<label class="active grey-text text-darken-4" for='especialidad'>Especialidad</label>
         </div>
     </div>
     <a href='espe_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>

@@ -48,7 +48,6 @@ else
     $params = array($id);
     $data = Database::getRow($sql, $params);
     $grupo = $data['grupo_aca'];
-    $id = $data['id_grupo_aca'];
    
 }
 
@@ -56,7 +55,7 @@ if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
   	 $grupo = strip_tags(trim($_POST['grupo_aca']));
-     $id = strip_tags(trim($_POST['id_grupo_aca']));
+     
 
     try 
     {
@@ -98,13 +97,8 @@ if(!empty($_POST))
     <div class='row'>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
-          	<input id='id_grupo_aca' type='text' name='id_grupo_aca' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($id)); ?>'/>
-          	<label for='id_grupo_aca'>ID</label>
-        </div>
-        <div class='input-field col s12 m6'>
-          	<i class='material-icons prefix'>add</i>
           	<input id='grupo_aca' type='text' name='grupo_aca' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($grupo)); ?>' required/>
-          	<label for='grupo_aca'>Grupo Academico</label>
+          	<label class="active grey-text text-darken-4" for='grupo_aca'>Grupo Academico</label>
         </div>
     </div>
     <a href='grupoaca_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>

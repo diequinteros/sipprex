@@ -120,7 +120,7 @@ if(!empty($_POST))
                         <?php
                         $sql = "SELECT id_depar, nombre_empresa, departamento FROM departamentosempre, empresas WHERE departamentosempre.empresa = empresas.id_empresa";
                         $data = Database::getRows($sql, null);
-                        $combo = "<br><select class='browser-default' name='id_empresa' required>";
+                        $combo = "<br><select id='empresas' class='browser-default' name='id_empresa' required>";
                         if($empre == null)
                         {
                             $combo .= "<option value='' disabled selected>Seleccione un departamento de alguna empresa</option>";
@@ -176,6 +176,9 @@ if(!empty($_POST))
 include("../inc/scripts.php");
 include("../inc/footer.php");
 ?>
+<script>
+$(document).ready(function(){$('#empresas').select2();});
+</script>
 	</body>
 </html>
 <?php

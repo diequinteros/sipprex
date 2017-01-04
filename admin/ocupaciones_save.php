@@ -48,13 +48,12 @@ else
     $params = array($id);
     $data = Database::getRow($sql, $params);
     $ocu = $data['ocupacion'];
-    $id = $data['id_ocupacion'];
+    
 }
 if(!empty($_POST))
 {
     $_POST = Validator::validateForm($_POST);
-  	 $ocu = strip_tags(trim($_POST['ocupacion']));
-     $id = strip_tags(trim($_POST['id_ocupacion']));
+  	$ocu = strip_tags(trim($_POST['ocupacion']));
 
     try 
     {
@@ -92,14 +91,11 @@ if(!empty($_POST))
 ?>
 <form method='post' autocomplete="off" enctype='multipart/form-data'>
     <div class='row'>
-        <div class='input-field col s12 m6'>
-          	<i class='material-icons prefix'>add</i>
-          	<input id='id_ocupacion' type='text' name='id_ocupacion' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($id)); ?>'/>
-        </div>
+        
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='ocupacion' type='text' name='ocupacion' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($ocu)); ?>'  required/>
-          	<label for='ocupacion'>Ocupacion</label>
+          	<label class="active grey-text text-darken-4" for='ocupacion'>Ocupacion</label>
         </div>
     </div>
     <a href='ocupaciones_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>

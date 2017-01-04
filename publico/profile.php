@@ -205,6 +205,8 @@ elseif(isset($_SESSION['id_exalumnos'])){
         $observacion = strip_tags(trim($_POST['observacion']));
         $pregunta = strip_tags(trim($_POST['pregunta']));
         $respuesta = strip_tags(trim($_POST['respuesta']));
+        $sugerencias = strip_tags(trim($_POST['sugerencias']));
+        $empresa = strip_tags(trim($_POST['empresa']));
         $clave1 = strip_tags(trim($_POST['clave1']));
         $clave2 = strip_tags(trim($_POST['clave2']));
         try 
@@ -214,8 +216,8 @@ elseif(isset($_SESSION['id_exalumnos'])){
                 if($clave1 == $clave2){
                     if($clave1 != $_SESSION['id_exalumnos']){
                         $hash = base64_encode($clave1);
-                        $sql = "UPDATE ex_alumnos SET contraseña= ?, nombre1 = ?, apellido1 = ?, telefono = ?, ocupacion = ?, correo_electronico = ?, observacion = ?, pregunta = ?, respuesta = ? WHERE id_exalumnos = ?";
-                        $params = array($hash, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion, $pregunta, $respuesta, $_SESSION['id_exalumnos']);
+                        $sql = "UPDATE ex_alumnos SET contraseña= ?, nombre1 = ?, apellido1 = ?, telefono = ?, ocupacion = ?, correo_electronico = ?, observacion = ?, pregunta = ?, respuesta = ?, empresa = ? WHERE id_exalumnos = ?";
+                        $params = array($hash, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion, $pregunta, $respuesta, $empresa, $_SESSION['id_exalumnos']);
                     }
                     else{
                         throw new Exception("La nueva contraseña no puede ser igual a su codigo.");
@@ -227,8 +229,8 @@ elseif(isset($_SESSION['id_exalumnos'])){
             }
             else if($nombre != "" && $apellido != "" && $telefono != "" && $ocupacion != "" && $correo != "" && $pregunta != "" && $respuesta != "")
             {
-                $sql = "UPDATE ex_alumnos SET nombre1 = ?, apellido1 = ?, telefono = ?, ocupacion = ?, correo_electronico = ?, observacion = ?, pregunta = ?, respuesta = ? WHERE id_exalumnos = ?";
-                $params = array($nombre, $apellido, $telefono, $ocupacion, $correo, $observacion, $pregunta, $respuesta, $_SESSION['id_exalumnos']);
+                $sql = "UPDATE ex_alumnos SET nombre1 = ?, apellido1 = ?, telefono = ?, ocupacion = ?, correo_electronico = ?, observacion = ?, pregunta = ?, respuesta = ?, empresa = ? WHERE id_exalumnos = ?";
+                $params = array($nombre, $apellido, $telefono, $ocupacion, $correo, $observacion, $pregunta, $respuesta, $empresa, $_SESSION['id_exalumnos']);
             }
             else if($nombre != "" && $apellido != "" && $telefono != "" && $ocupacion != "" && $correo != "" && $clave1 != "" && $clave2 != "")
             {
@@ -259,7 +261,7 @@ elseif(isset($_SESSION['id_exalumnos'])){
     }
     else
     {
-        $sql = "SELECT id_exalumnos, nombre1, apellido1, telefono, correo_electronico, observacion, pregunta, respuesta, ocupaciones.ocupacion FROM ex_alumnos, ocupaciones WHERE ex_alumnos.ocupacion = ocupaciones.id_ocupacion AND id_exalumnos = ?";
+        $sql = "SELECT id_exalumnos, nombre1, apellido1, telefono, correo_electronico, observacion, pregunta, respuesta, ocupaciones.ocupacion, empresa, sugerencias FROM ex_alumnos, ocupaciones WHERE ex_alumnos.ocupacion = ocupaciones.id_ocupacion AND id_exalumnos = ?";
         $params = array($_SESSION['id_exalumnos']);
         $data = Database::getRow($sql, $params);
         $id_exalumnos = $data['id_exalumnos'];
@@ -271,6 +273,8 @@ elseif(isset($_SESSION['id_exalumnos'])){
         $observacion = $data['observacion'];
         $pregunta = $data['pregunta'];
         $respuesta = $data['respuesta'];
+        $empresa = $data['empresa'];
+        $sugerencias = $data['sugerencias'];
     }
 ?>
 <!DOCTYPE html>
@@ -367,6 +371,18 @@ elseif(isset($_SESSION['id_exalumnos'])){
                         <i class='material-icons prefix'>lock</i>
                         <input id='clave2' type='password' name='clave2' class='validate black-text' length='25' maxlength='25'/>
                         <label class="active" for='clave2'>Confirmar Contraseña:</label>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='file-field input-field col s12 m6'>
+                        <i class='material-icons prefix'>add_circle</i>
+                        <input id='empresa' type='text' name='empresa' class='validate' length='100' maxlenght='100' value='<?php print(htmlspecialchars($empresa)); ?>'/>
+                        <label class="active grey-text text-darken-4" for='empresa'>Nombre empresa donde trabaja:</label>
+                    </div>
+                    <div class='file-field input-field col s12 m6'>
+                        <i class='material-icons prefix'>add_circle</i>
+                        <input id='sugerencias' type='text' name='sugerencias' class='validate' length='250' maxlenght='250' disabled value='<?php print(htmlspecialchars($sugerencias)); ?>'/>
+                        <label class="active grey-text text-darken-4" for='sugerencias'>Sugerencias:</label>
                     </div>
                 </div>
                 <div class='titulo'>

@@ -72,8 +72,8 @@ if($data != null)
 	$tabla = 	"<table class='centered striped'>
 					<thead>
 			    		<tr>
-				    		<th>id_ocupacion</th>
-				    		<th>ocupacion</th>
+				    		<th>Codigo</th>
+				    		<th>Ocupacion</th>
 				    		
 			    		</tr>
 		    		</thead>

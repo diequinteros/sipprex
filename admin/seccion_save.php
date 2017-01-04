@@ -49,7 +49,7 @@ else
     $params = array($id);
     $data = Database::getRow($sql, $params);
     $sec = $data['seccion'];
-    $id = $data['id_seccion'];
+    
     
    
 }
@@ -101,15 +101,11 @@ if(!empty($_POST))
 
 <form method='post' autocomplete="off" class='row' enctype='multipart/form-data'>
     <div class='row'>
-        <div class='input-field col s12 m6'>
-          	<i class='material-icons prefix'>add</i>
-          	<input id='id_seccion' type='text' name='id_seccion' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($id)); ?>'/>
-          	<label for='id_seccion'>ID</label>
-        </div>
+        
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='seccion' type='text' name='seccion' class='validate' length='30' maxlenght='30' value='<?php print(htmlspecialchars($sec)); ?>' required/>
-          	<label for='seccion'>Seccion</label>
+          	<label class="active grey-text text-darken-4" for='seccion'>Seccion</label>
         </div>
     </div>
     <a href='seccion_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>

@@ -11,7 +11,7 @@
     </head>
 <body>
 <?php
-include("../inc/styles.php");
+include("../inc/nav.php");
 
 if(!empty($_GET['id'])) 
 {
@@ -42,6 +42,7 @@ if(!empty($_POST))
 }
 ?>
 <form method='post' class='row'>
+<h2>¿Desea eliminar esta ocupacion de sus registros?</h2>
 	<input type='hidden' name='id' value='<?php print(htmlspecialchars($id)); ?>'/>
 	<button type='submit' class='btn red'><i class='material-icons right'>check_circle</i>Si</button>
 	<a href='ocupaciones_read.php' class='btn grey'><i class='material-icons right'>cancel</i>No</a>

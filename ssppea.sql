@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-11-2016 a las 16:56:08
+-- Tiempo de generación: 07-11-2016 a las 17:26:21
 -- Versión del servidor: 10.1.10-MariaDB
 -- Versión de PHP: 7.0.4
 
@@ -37,14 +37,6 @@ CREATE TABLE `administradores` (
   `permiso_delete` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `administradores`
---
-
-INSERT INTO `administradores` (`codigo_admin`, `contraseña_admin`, `correo`, `permiso_create`, `permiso_update`, `permiso_delete`) VALUES
-(33, '$2y$10$sZgtLqnOfc3zDbncHBXu8OIDpK4PCgqpLzV1crTaRG6xaaKEL.CS.', 'gestion_empresarial@ricaldone.edu.sv', 1, 1, 1),
-(20140342, '$2y$10$gTTFh6tedGdRr2OAqYMsreHjAsKZXQb3IaRtBsl2H3pY7AzHI7CHy', 'diegoquinteros02.04.97@gmail.com', 1, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -68,13 +60,6 @@ CREATE TABLE `alumnos` (
   `pregunta` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `respuesta` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `alumnos`
---
-
-INSERT INTO `alumnos` (`carnet`, `contraseña`, `nie`, `nombre1`, `nombre2`, `apellido1`, `apellido2`, `grado`, `especialidad`, `grupo_Tecnic`, `secc`, `grupo_academ`, `inscrito`, `pregunta`, `respuesta`) VALUES
-(12345678, 'RFE4Mjg0OTQ=', 12345678, 'Diego', 'Enrique', 'Quinteros', 'Lemus', 1, 1, 1, 1, 1, 'VERDADERO', '', '');
 
 -- --------------------------------------------------------
 
@@ -691,17 +676,6 @@ CREATE TABLE `sesiones` (
   `os` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `sesiones`
---
-
-INSERT INTO `sesiones` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`) VALUES
-(1, '5817774612798_ses', 33, '2016-10-31 16:54:30', 'WinNT'),
-(2, '5817bf7b74963_ses', 20140342, '2016-10-31 22:02:35', 'WinNT'),
-(3, '58191a866f9e3_ses', 20140342, '2016-11-01 22:43:18', 'WinNT'),
-(4, '581bd93f1f919_ses', 20140342, '2016-11-04 00:41:35', 'WinNT'),
-(5, '581f524f8e440_ses', 20140342, '2016-11-06 15:54:55', 'WinNT');
-
 -- --------------------------------------------------------
 
 --
@@ -729,6 +703,13 @@ CREATE TABLE `sesiones_empre` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `os` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `sesiones_empre`
+--
+
+INSERT INTO `sesiones_empre` (`id_sesion`, `unisesion`, `usuario`, `fecha`, `os`) VALUES
+(1, '581f581ac7079_ses', 335, '2016-11-06 16:19:38', 'WinNT');
 
 -- --------------------------------------------------------
 
@@ -992,7 +973,7 @@ ALTER TABLE `secciones`
 -- AUTO_INCREMENT de la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_alum`
 --
@@ -1002,7 +983,7 @@ ALTER TABLE `sesiones_alum`
 -- AUTO_INCREMENT de la tabla `sesiones_empre`
 --
 ALTER TABLE `sesiones_empre`
-  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `sesiones_exalum`
 --

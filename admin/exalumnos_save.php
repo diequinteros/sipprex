@@ -32,6 +32,8 @@ if(empty($_GET['id']))
     $ocupacion = null;
     $correo = null;
     $observacion = null;
+    $sugerencias = null;
+    $empresa = null;
 }
 else{
     $head = "";
@@ -50,7 +52,7 @@ else{
                         </div>";
     print $head;
     $id = strip_tags(trim(base64_decode($_GET['id'])));
-    $sql = "SELECT contraseña, nombre1, apellido1, telefono, ocupaciones.id_ocupacion, correo_electronico, observacion FROM ex_alumnos, ocupaciones WHERE ex_alumnos.ocupacion = ocupaciones.id_ocupacion AND id_exalumnos = ?";
+    $sql = "SELECT contraseña, nombre1, apellido1, telefono, ocupaciones.id_ocupacion, correo_electronico, observacion, sugerencias, empresa FROM ex_alumnos, ocupaciones WHERE ex_alumnos.ocupacion = ocupaciones.id_ocupacion AND id_exalumnos = ?";
     $params = array($id);
     $data = Database::getRows($sql, $params);
     //Se utiliza el segmento [0] debido a que el fetchAll utilizado en la clase getRows, devuelve un arreglo bi-dimensional y
@@ -62,6 +64,8 @@ else{
     $ocupacion = $data[0]['id_ocupacion'];
     $correo = $data[0]['correo_electronico'];
     $observacion = $data[0]['observacion'];
+    $sugerencias = $data[0]['sugerencias'];
+    $empresa = $data[0]['empresa'];
 }
 
 if(!empty($_POST))
@@ -75,6 +79,8 @@ if(!empty($_POST))
     $ocupacion = strip_tags(trim($_POST['ocupacion']));
     $correo = strip_tags(trim($_POST['correo_electronico']));
     $observacion = strip_tags(trim($_POST['observacion']));
+    $sugerencias = strip_tags(trim($_POST['sugerencias']));
+    $empresa = strip_tags(trim($_POST['empresa']));
     //Se declaran las consultas
     try 
     {
@@ -86,25 +92,34 @@ if(!empty($_POST))
         {
         $contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
       	if($id == null){
-        	  $sql = "INSERT INTO ex_alumnos(id_exalumnos, contraseña, nombre1, apellido1, telefono, ocupacion, correo_electronico, observacion) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-            $params = array($id2, $contraseña, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion);
+            $AL = null;
+            $sqlAl = "SELECT nombre1 FROM alumnos WHERE carnet = ?";
+            $paramsAl = Array($id2);
+            $AL = Database::getRow($sqlAl, $paramsAl);
+            if($AL == null){
+                $sql = "INSERT INTO ex_alumnos(id_exalumnos, contraseña, nombre1, apellido1, telefono, ocupacion, correo_electronico, observacion, sugerencias, empresa) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $params = array($id2, $contraseña, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion, $sugerencias, $empresa);
+            }
+            else{
+                print("<div class='card-panel red'><i class='material-icons left'>error</i>El numero de carnet introducido ya existe en un registro de alumnos, por favor verifique sus datos.</div>");
+            }
         }
         else
         {
-            $sql = "UPDATE ex_alumnos SET contraseña = ?, nombre1 = ?, apellido1 = ?, telefono = ?, ocupacion = ?, correo_electronico = ?, observacion = ? WHERE id_exalumnos = ?";
-            $params = array($contraseña, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion, $id);
+            $sql = "UPDATE ex_alumnos SET contraseña = ?, nombre1 = ?, apellido1 = ?, telefono = ?, ocupacion = ?, correo_electronico = ?, observacion = ?, sugerencias = ?, empresa = ? WHERE id_exalumnos = ?";
+            $params = array($contraseña, $nombre, $apellido, $telefono, $ocupacion, $correo, $observacion, $sugerencias, $empresa, $id);
         }
+        if($AL == null){
         Database::executeRow($sql, $params);
          print("<script>
             alert('Proceso  exitoso.');
             window.location='exalumnos_index.php';
             </script>");
         }
+        }
         else{
          print("<div class='card-panel red'><i class='material-icons left'>error</i>Por favor verifique que su correo, nombre (Solo letras) y observacion (Solo letras) sea valido.</div>");       
         }
-    
->>>>>>> origin/master
     }
     //En caso de error se muestra al administrador en turno
     catch (Exception $error)
@@ -119,31 +134,31 @@ if(!empty($_POST))
                     <div class='input-field col s12 m6'>
                         <i class="material-icons prefix">keyboard_arrow_right</i>
                         <input id='codigo' type='text' name='codigo' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($id)); ?>' required/>
-                        <label class="active" for='codigo'>Codigo</label>
+                        <label class="active grey-text text-darken-4" for='codigo'>Codigo</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
                         <input id='contraseña' type='password' name='contraseña' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($contraseña)); ?>' required/>
-                        <label class="active" for='contraseña'>Contraseña:</label>
+                        <label class="active grey-text text-darken-4" for='contraseña'>Contraseña:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>add_circle</i>
                         <input id='nombre1' type='text' name='nombre1' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($nombre)); ?>' required/>
-                        <label class="active" for='nombre1'>Nombre</label>
+                        <label class="active grey-text text-darken-4" for='nombre1'>Nombre</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>account_circle</i>
                         <input id='apellido1' type='text' name='apellido1' class='validate' length='30' maxlenght='30' value='<?php print(htmlspecialchars($apellido)); ?>'/>
-                        <label class="active" for='apellido1'>Apellido:</label>
+                        <label class="active grey-text text-darken-4" for='apellido1'>Apellido:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>phone</i>
                         <input id='telefono' type='tel' name='telefono' class='validate' length='15' maxlenght='25' value='<?php print(htmlspecialchars($telefono)); ?>'/>
-                        <label class="active" for='telefono'>Teléfono:</label>
+                        <label class="active grey-text text-darken-4" for='telefono'>Teléfono:</label>
                     </div>
                 </div>
                 <div class='row'>
@@ -176,12 +191,24 @@ if(!empty($_POST))
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>mail_outline</i>
                         <input id='correo_electronico' type='email' name='correo_electronico' class='validate' length='50' maxlenght='50' value='<?php print(htmlspecialchars($correo)); ?>'/>
-                        <label class="active" for='correo_electronico'>Correo Electrónico:</label>
+                        <label class="active grey-text text-darken-4" for='correo_electronico'>Correo Electrónico:</label>
                     </div>
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>visibility</i>
                         <input id='observacion' type='text' name='observacion' class='validate' length='100' maxlenght='100' value='<?php print(htmlspecialchars($observacion)); ?>'/>
-                        <label class="active" for='observacion'>Observación:</label>
+                        <label class="active grey-text text-darken-4" for='observacion'>Observación:</label>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='file-field input-field col s12 m6'>
+                        <i class='material-icons prefix'>add_circle</i>
+                        <input id='empresa' type='text' name='empresa' class='validate' length='100' maxlenght='100' value='<?php print(htmlspecialchars($empresa)); ?>'/>
+                        <label class="active grey-text text-darken-4" for='empresa'>Nombre empresa donde trabaja:</label>
+                    </div>
+                    <div class='file-field input-field col s12 m6'>
+                        <i class='material-icons prefix'>add_circle</i>
+                        <input id='sugerencias' type='text' name='sugerencias' class='validate' length='250' maxlenght='250' value='<?php print(htmlspecialchars($sugerencias)); ?>'/>
+                        <label class="active grey-text text-darken-4" for='sugerencias'>Sugerencias:</label>
                     </div>
                 </div>
                 <div class='titulo'>

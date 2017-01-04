@@ -35,6 +35,8 @@ if(empty($_GET['id']))
     $evaluaciones = null;
     $observacion_final = null;
     $Fecha = null;
+    $horas = null;
+    $Fecha_ini = null;
 }
 else{
     $head = "";
@@ -68,6 +70,8 @@ else{
     $evaluaciones = $data[0]['evaluaciones'];
     $observacion_final = $data[0]['observacion_final'];
     $Fecha = $data[0]['fecha_finalizo'];
+    $Fecha_ini = $data[0]['fecha_ini'];
+    $horas = $data[0]['horas'];
 }
 
 if(!empty($_POST))
@@ -75,7 +79,7 @@ if(!empty($_POST))
     $_POST = Validator::validateForm($_POST);
   	$alumno = strip_tags(trim($_POST['carnet']));
     $empresa = strip_tags(trim($_POST['id_empresa']));
-    if($_POST['finalizo_si'] != null){
+    if($_POST['finalizo_si'] == 1){
 	$finalizo = 1;
     }
     else{
@@ -108,26 +112,29 @@ if(!empty($_POST))
     }
     $observacion_final = strip_tags(trim($_POST['observacion_final']));
     $Fecha = strip_tags(trim($_POST['fecha']));
+    $Fecha_ini = strip_tags(trim($_POST['fecha_ini']));
+    $horas = strip_tags(trim($_POST['horas']));
     //Se declaran las consultas
     try 
     {
         if(!is_numeric($observacion_final) && !is_numeric($observaciones))
         {
-            if($id == null){
-        	  $sql = "INSERT INTO registrospp(alumno, empresa, finalizo, observaciones_tecnicas, acuerdo, bitacora, carta, evaluaciones, observacion_final, fecha_finalizo) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $Fecha);
+        if($id == null){
+        	  $sql = "INSERT INTO registrospp(alumno, empresa, finalizo, observaciones_tecnicas, acuerdo, bitacora, carta, evaluaciones, observacion_final, fecha_finalizo, fecha_ini, horas) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $Fecha, $Fecha_ini, $horas);
         }
         else
         {
-            $sql = "UPDATE registrospp SET alumno = ?, empresa = ?, finalizo = ?, observaciones_tecnicas = ?, acuerdo = ?, bitacora = ?, carta = ?, evaluaciones = ?, observacion_final = ?, fecha_finalizo = ? WHERE id_registropp = ?";
-            $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $id, $Fecha);
+            $sql = "UPDATE registrospp SET alumno = ?, empresa = ?, finalizo = ?, observaciones_tecnicas = ?, acuerdo = ?, bitacora = ?, carta = ?, evaluaciones = ?, observacion_final = ?, fecha_finalizo = ?, fecha_ini = ?, horas = ? WHERE id_registropp = ?";
+            $params = array($alumno, $empresa, $finalizo, $observaciones, $acuerdo, $bitacora, $carta, $evaluaciones, $observacion_final, $Fecha, $Fecha_ini, $horas, $id);
         }
         Database::executeRow($sql, $params);
-         print("<script>
+            print("<script>
             alert('Proceso exitoso.');
             window.location='registrospp_index.php';
             </script>");
             header("location: registrospp_index.php");
+            
         }
         else{
             print("<div class='card-panel red'><i class='material-icons left'>error</i>Error en los datos, verifique que las observaciones no sean solo numeros</div>");
@@ -148,7 +155,7 @@ if(!empty($_POST))
                         <?php
                         $sql = "SELECT carnet, nombre1, nombre2, apellido1, apellido2 FROM alumnos";
                         $data = Database::getRows($sql, null);
-                        $combo = "<br><select class='browser-default' name='carnet' required>";
+                        $combo = "<br><select id='carnet' class='browser-default' name='carnet' required>";
                         if($alumno == null)
                         {
                             $combo .= "<option value='' disabled selected>Seleccione un alumno</option>";
@@ -163,16 +170,17 @@ if(!empty($_POST))
                             $combo .= ">$row[0]"." - "."$row[1]"." "."$row[2]"." "."$row[3]"." "."$row[4]</option>";
                         }	
                         $combo .= "</select>
-                                <label class='active' style='text-transform: capitalize;'>Alumnos:</label>";
+                                <label class='active grey-text text-darken-4' style='text-transform: capitalize;'>Alumnos:</label>";
                         print($combo);
                         ?>
                     </div>
+                    
                     <div class='input-field col s12 m6'>
                         <!-- Mediante las siguientes sentencias se llena el comboBox con los datos de Empresas -->
                         <?php
                         $sql = "SELECT id_depar, nombre_empresa, departamento FROM departamentosempre, empresas WHERE departamentosempre.empresa = empresas.id_empresa";
                         $data = Database::getRows($sql, null);
-                        $combo = "<br><select class='browser-default' name='id_empresa' required>";
+                        $combo = "<br><select id = 'empresas' class='browser-default' name='id_empresa' required>";
                         if($empresa == null)
                         {
                             $combo .= "<option value='' disabled selected>Seleccione un departamento de alguna empresa</option>";
@@ -187,66 +195,66 @@ if(!empty($_POST))
                             $combo .= ">$row[1] - $row[2]</option>";
                         }	
                         $combo .= "</select>
-                                <label class='active' style='text-transform: capitalize;'>Empresa:</label>";
+                                <label class='active grey-text text-darken-4' style='text-transform: capitalize;'>Empresa:</label>";
                         print($combo);
                         ?>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
-                        <label class="active">¿Finalizó?</label>
-                        <input id='f_si' type='radio' name='finalizo' class='with-gap' value='1' <?php print(($finalizo == 1)?"checked":""); ?>/>
-                        <label for='f_si'><i class='material-icons'>check</i></label>
-                        <input id='f_no' type='radio' name='finalizo' class='with-gap' <?php print(($finalizo == 0)?"checked":""); ?>/>
-                        <label for='f_no'><i class='material-icons'>cancel</i></label>
-                    </div>
-                    <div class='col s12 m6'>
-                        <i class='material-icons prefix'>add</i>
-                        <!--<input type="date" class="datepicker">-->
-                        <input id='fecha_ultima_visita' type='date' name='fecha' class='datepicker' value='<?php if($Fecha != null){print($Fecha);} ?>'/>
-                        <!--<label for='fecha_ultima_visita'>Fecha</label>-->
+                        <input type="checkbox" name="finalizo_si" class="filled-in" id="fi" value=1/>
+                        <label for="fi">¿El alumno finalizo sus practicas profesionales? (Marcado para si, en blanco para no)</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>visibility</i>
                         <input id='observaciones' type="text" name='observaciones' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($observaciones)); ?>'/>
-                        <label class="active" for='observaciones'>Observaciones</label>
+                        <label class="active grey-text text-darken-4" for='observaciones'>Observaciones</label>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col s12 m6'>
+                        <!--<input type="date" class="datepicker">-->
+                        <label class="black-text" for='fecha'>Fecha de inicio</label>
+                        <input id='fecha' type='date' name='fecha_ini' class='datepicker'/>
+                        
+                    </div>
+                    <div class='col s12 m6'>
+                        <!--<input type="date" class="datepicker">-->
+                        <label class="black-text" for='fecha_ultima_visita'>Fecha de finalizacion</label>
+                        <input id='fecha_ultima_visita' type='date' name='fecha' class='datepicker'/>
+                        
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='input-field col s12 m6'>
+                        <i class='material-icons prefix'>access_time</i>
+                        <input id='horas' type="text" name='horas' class='validate' length='200' maxlength='200' value='<?php print(htmlspecialchars($observaciones)); ?>'/>
+                        <label class="active grey-text text-darken-4" for='horas'>Horas realizadas</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m3'>
-                        <label class="active">¿Entrego Acuerdo?</label>
-                        <input id='a_si' type='radio' name='acuerdo' class='with-gap' value='1' <?php print(($acuerdo == 1)?"checked":""); ?>/>
-                        <label for='a_si'><i class='material-icons'>check</i></label>
-                        <input id='a_no' type='radio' name='acuerdo' class='with-gap' value='0' <?php print(($acuerdo == 0)?"checked":""); ?>/>
-                        <label for='a_no'><i class='material-icons'>cancel</i></label>
+                        <input type="checkbox" name="acuerdo" class="filled-in" id="acu" value="1"/>
+                        <label for="acu">¿Entrego el acuerdo? (Marcado para si, en blanco para no)</label>
                     </div>
                     <div class='input-field col s12 m3'>
-                        <label class="active">¿Entrego Bitácora?</label>
-                        <input id='b_si' type='radio' name='bitacora' class='with-gap' value='1' <?php print(($bitacora == 1)?"checked":""); ?>/>
-                        <label for='b_si'><i class='material-icons'>check</i></label>
-                        <input id='b_no' type='radio' name='bitacora' class='with-gap' value='0' <?php print(($bitacora == 0)?"checked":""); ?>/>
-                        <label for='b_no'><i class='material-icons'>cancel</i></label>
+                        <input type="checkbox" name="bitacora" class="filled-in" id="bit" value="1"/>
+                        <label for="bit">¿Entrego la bitacora? (Marcado para si, en blanco para no)</label>
                     </div>
                     <div class='input-field col s12 m3'>
-                        <label class="active">¿Entrego Carta?</label>
-                        <input id='c_si' type='radio' name='carta' class='with-gap' value='1' <?php print(($carta == 1)?"checked":""); ?>/>
-                        <label for='c_si'><i class='material-icons'>check</i></label>
-                        <input id='c_no' type='radio' name='carta' class='with-gap' value='0' <?php print(($carta == 0)?"checked":""); ?>/>
-                        <label for='c_no'><i class='material-icons'>cancel</i></label>
+                        <input type="checkbox" name="carta" class="filled-in" id="car" value="1"/>
+                        <label for="car">¿Entrego la carta? (Marcado para si, en blanco para no)</label>
                     </div>
                     <div class='input-field col s12 m3'>
-                        <label class="active">¿Entrego Evaluaciones?</label>
-                        <input id='e_si' type='radio' name='evaluaciones' class='with-gap' value='1' <?php print(($evaluaciones == 1)?"checked":""); ?>/>
-                        <label for='e_si'><i class='material-icons'>check</i></label>
-                        <input id='e_no' type='radio' name='evaluaciones' class='with-gap' value='0' <?php print(($evaluaciones == 0)?"checked":""); ?>/>
-                        <label for='e_no'><i class='material-icons'>cancel</i></label>
+                        <input type="checkbox" name="evaluaciones" class="filled-in" id="eva" value="1"/>
+                        <label for="eva">¿Entrego el acuerdo? (Marcado para si, en blanco para no)</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='file-field input-field col s12 m12'>
                         <i class='material-icons prefix'>search</i>
                         <input id='observacion_final' type='text' name='observacion_final' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($observacion_final)); ?>'/>
-                        <label class="active" for='observacion_final'>Observación Final:</label>
+                        <label class="active grey-text text-darken-4" for='observacion_final'>Observación Final:</label>
                     </div>
                 </div>
                 <div class='titulo'>
@@ -259,6 +267,10 @@ if(!empty($_POST))
         <?php include '../inc/scripts.php'; ?>
         <?php include('../inc/footer.php'); ?>
     </body>
+    <script>
+        $(document).ready(function(){$('#empresas').select2();});
+        $(document).ready(function(){$('#carnet').select2();});
+    </script>
     <script type="text/javascript" src="../js/datepicker.js"></script>
 </html>
 <?php

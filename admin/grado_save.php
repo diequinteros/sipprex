@@ -99,12 +99,12 @@ if(!empty($_POST))
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='id_especialidad' type='text' name='id_año' class='validate' length='50' maxlenght='50' disabled value='<?php print(htmlspecialchars($id)); ?>'/>
-          	<label for='id_especialidad'>ID</label>
+          	<label class="active grey-text text-darken-4" for='id_especialidad'>ID</label>
         </div>
         <div class='input-field col s12 m6'>
           	<i class='material-icons prefix'>add</i>
           	<input id='especialidad' type='text' name='año' class='validate' length='200' maxlenght='200' value='<?php print(htmlspecialchars($año)); ?>' required/>
-          	<label for='especialidad'>Grado</label>
+          	<label class="active grey-text text-darken-4" for='especialidad'>Grado</label>
         </div>
     </div>
     <a href='grado_read.php' class='btn  green darken-4'><i class='material-icons right'>cancel</i>Cancelar</a>

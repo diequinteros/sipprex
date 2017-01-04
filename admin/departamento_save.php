@@ -104,26 +104,26 @@ if(!empty($_POST))
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>edit</i>
                         <input id='departamento' type='text' name='departamento' class='validate' length='25' maxlength='25' value='<?php print(htmlspecialchars($departamento)); ?>' required/>
-                        <label class="active" for='departamento'>Departamento:</label>
+                        <label class="active grey-text text-darken-4" for='departamento'>Departamento:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>account_circle</i>
                         <input id='encargado' type='text' name='encargado' class='validate' length='30' maxlength='30' value='<?php print(htmlspecialchars($encargado)); ?>' required/>
-                        <label class="active" for='encargado'>Encargado:</label>
+                        <label class="active grey-text text-darken-4" for='encargado'>Encargado:</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>phone</i>
                         <input id='telefono_encargado' type='text' name='telefono_encargado' class='validate' length='18' maxlength='18' value='<?php print(htmlspecialchars($telefono_encargado)); ?>'/>
-                        <label class="active" for='telefono_encargado'>Teléfono Encargado:</label>
+                        <label class="active grey-text text-darken-4" for='telefono_encargado'>Teléfono Encargado:</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <!-- Mediante las siguientes sentencias se llena el comboBox con los datos de Empresas -->
                         <?php
                         $sql = "SELECT id_empresa, nombre_empresa FROM empresas";
                         $data = Database::getRows($sql, null);
-                        $combo = "<br><select class='browser-default' name='empresa' required>";
+                        $combo = "<br><select id='empresas' class='browser-default' name='empresa' required>";
                         if($empresa == null)
                         {
                             $combo .= "<option value='' disabled selected>Seleccione una empresa</option>";
@@ -152,6 +152,9 @@ if(!empty($_POST))
         <!-- Finalmente se relacionan los scripts del sitio -->
         <?php include '../inc/scripts.php'; ?>
         <?php include('../inc/footer.php'); ?>
+        <script>
+        $(document).ready(function(){$('#empresas').select2();});
+        </script>
     </body>
 </html>
 <?php

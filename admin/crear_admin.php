@@ -4,6 +4,23 @@ session_start();
 require("../bibliotecas/conexion.php");
 require("../bibliotecas/validator.php");
 require("../bibliotecas/functions.php");
+function comprobar_nombre_usuario($nombre_usuario){ 
+   //compruebo que el tamaño del string sea válido. 
+   if (strlen($nombre_usuario)<= 8 || strlen($nombre_usuario)> 4){ 
+      print("<div class='card-panel red'><i class='material-icons left'>warning</i>El codigo puede tener maximo 8 caracteres y minimo 5.</div>"); 
+      return false; 
+   } 
+
+   //compruebo que los caracteres sean los permitidos 
+   $permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; 
+   for ($i=0; $i<strlen($nombre_usuario); $i++){ 
+      if (strpos($permitidos, substr($nombre_usuario,$i,1))===false && !is_numeric($nombre_usuario)){ 
+         print("<div class='card-panel red'><i class='material-icons left'>warning</i>El codigo debe contener letras y numeros.</div>"); 
+         return false; 
+      } 
+   }  
+   return true; 
+}
 $sqlVeri = "SELECT COUNT(codigo_admin) FROM administradores";
 	$params = null;
 	$data = Database::getRow($sqlVeri, $params);
@@ -71,11 +88,14 @@ if(!empty($_POST))
                     echo "<br>";
                     if(!$array["success"])
                     {
-                        $hash = password_hash($contraseña, PASSWORD_DEFAULT);
-                        $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
-                        $params = array($codigo, $hash, $correo, 1, 1, 1);
-                        Database::executeRow($sql, $params);
-                        header("location: ../publico/login.php");   
+                        if(comprobar_nombre_usuario($codigo))
+                        {
+                            $hash = password_hash($contraseña, PASSWORD_DEFAULT);
+                            $sql = "INSERT INTO administradores(codigo_admin, contraseña_admin, correo, permiso_create, permiso_update, permiso_delete) VALUES(?, ?, ?, ?, ?, ?)";
+                            $params = array($codigo, $hash, $correo, 1, 1, 1);
+                            Database::executeRow($sql, $params);
+                            header("location: ../publico/login.php");   
+                        }
                     }     
                     else{
                         print("<div class='card-panel red'><i class='material-icons left'>warning</i>Eres un Spamer</div>");
@@ -110,46 +130,46 @@ if(!empty($_POST))
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>person_pin</i>
-                        <input data-position='top' data-delay='25' data-tooltip='6 dígitos, solo números' id='cod' type='text' name='cod' class='validate tooltipped' length='50' maxlenght='50' required/>
-                        <label class="active" for='cod'>Codigo de admin (Codigo brindado por institucion):</label>
+                        <input data-position='top' data-delay='25' data-tooltip='El codigo no puede ser solo numerico debe contener una letra por lo menos, y debe contener entre 5 a 8 caracteres.' id='cod' type='text' name='cod' class='validate tooltipped' length='50' maxlenght='50' required/>
+                        <label class="active grey-text text-darken-4" for='cod'>Codigo de admin (Codigo brindado por institucion):</label>
                     </div>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
                         <input data-position='top' data-delay='25' data-tooltip='Digíte su contraseña' id='contraseña' type='password' name='contraseña' class='validate tooltipped' length='50' maxlenght='50' required/>
-                        <label class="active" for='contraseña'>Contraseña:</label>
+                        <label class="active grey-text text-darken-4" for='contraseña'>Contraseña:</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m6'>
                         <i class='material-icons prefix'>lock</i>
                         <input data-position='top' data-delay='25' data-tooltip='Confirme su contraseña' id='contraseña2' type='password' name='contraseña2' class='validate tooltipped' length='50' maxlenght='50' required/>
-                        <label class="active" for='contraseña2'>Vuelva a introducir su contraseña:</label>
+                        <label class="active grey-text text-darken-4" for='contraseña2'>Vuelva a introducir su contraseña:</label>
                     </div>
                     <div class='file-field input-field col s12 m6'>
                         <i class='material-icons prefix'>mail_outline</i>
                         <input data-position='top' data-delay='25' data-tooltip='ejemplo@ejemplo.com' id='correo_electronico' type='text' name='correo_electronico' class='validate tooltipped' length='50' maxlenght='50' required/>
-                        <label class="active" for='correo_electronico'>Correo Electrónico:</label>
+                        <label class="active grey-text text-darken-4" for='correo_electronico'>Correo Electrónico:</label>
                         <BR>
                         <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lf9QiYTAAAAAG93eoZBNCZG0FVGOPevW3bhugra"></div>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12 m3'>
-                        <label class="active">Permiso de Crear</label>
+                        <label class="active grey-text text-darken-4">Permiso de Crear</label>
                         <input id='c_si' type='radio' name='create' class='with-gap' value='1'/>
                         <label for='c_si'><i class='material-icons'>check</i></label>
                         <input id='c_no' type='radio' name='create' class='with-gap' value='0'/>
                         <label for='c_no'><i class='material-icons'>cancel</i></label>
                     </div>
                     <div class='input-field col s12 m3'>
-                        <label class="active">Permiso de Actualizar</label>
+                        <label class="active grey-text text-darken-4">Permiso de Actualizar</label>
                         <input id='u_si' type='radio' name='update' class='with-gap' value='1'/>
                         <label for='u_si'><i class='material-icons'>check</i></label>
                         <input id='u_no' type='radio' name='update' class='with-gap' value='0'/>
                         <label for='u_no'><i class='material-icons'>cancel</i></label>
                     </div>
                     <div class='input-field col s12 m3'>
-                        <label class="active">Permiso de Borrar</label>
+                        <label class="active grey-text text-darken-4">Permiso de Borrar</label>
                         <input id='d_si' type='radio' name='delete' class='with-gap' value='1'/>
                         <label for='d_si'><i class='material-icons'>check</i></label>
                         <input id='d_no' type='radio' name='delete' class='with-gap' value='0'/>

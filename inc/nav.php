@@ -244,7 +244,7 @@
 								<li><a class='dropdown-button' href='../admin/catempresas.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown3'>Empresas<i class='material-icons right'>arrow_drop_down</i></a></li>
 								<li><a href='../admin/anuncios_index.php'>Anuncios</a></li>
 								<li><a href='../admin/registrospp_index.php'>Practicas profesionales</a></li>
-								<li><a class='dropdown-button' href='../bibliotecas/logout.php' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes'>$_SESSION[nombre_usuario]<i class='material-icons right'>more_vert</i></a></li>
+								<li><a class='dropdown-button' href='' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes'>$_SESSION[nombre_usuario]<i class='material-icons right'>more_vert</i></a></li>
 								</ul>
 								<ul class='side-nav' id='mobile-demo'>
 									<li><a href='../admin/index.php'>Inicio</a></li>
@@ -254,7 +254,7 @@
 								<li><a class='dropdown-button' href='../admin/catempresas.php' data-hover = 'true' data-beloworigin='true' data-gutter='12' data-constrainwidth='false' data-activates='dropdown31'>Empresas<i class='material-icons right hide-on-med-and-down'>arrow_drop_down</i></a></li>
 								<li><a href='../admin/anuncios_index.php'>Anuncios</a></li>
 								<li><a href='../admin/registrospp_index.php'>Practicas profesionales</a></li>
-								<li><a class='dropdown-button' href='../bibliotecas/logout.php' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes1'>$_SESSION[nombre_usuario]<i class='material-icons hide-on-med-and-down'>more_vert</i></a></li>
+								<li><a class='dropdown-button' href='' data-hover = 'true' data-beloworigin='true' data-constrainwidth='false' data-activates='ajustes1'>$_SESSION[nombre_usuario]<i class='material-icons hide-on-med-and-down'>more_vert</i></a></li>
 								</ul>
 							</div>
 							</nav>
