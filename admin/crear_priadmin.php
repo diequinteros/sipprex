@@ -40,7 +40,7 @@ $sqlVeri = "SELECT COUNT(codigo_admin) FROM administradores";
                 </head>
                 <body>
                     <div id='fixednav' class='navbar-fixed'>
-                    <nav class='orange lighten-1 z-depth-2'>
+                    <nav class='orange lighten-1 z-depth-2 extendido'>
                     <div  id='nav'>
                         <img id='imgnav' class='responsive-img hide-on-small-only' src='../img/iconSipprex.png' width='120'>
                         <a id = 'navlogo' href='index.php' class='brand-logo'>Sipprex</a>
